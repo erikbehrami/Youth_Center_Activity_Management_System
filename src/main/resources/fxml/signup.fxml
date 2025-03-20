@@ -24,39 +24,51 @@
                     </font>
                 </Text>
             </children></AnchorPane>
-        <TextField layoutX="415.0" layoutY="273.0" prefHeight="32.0" prefWidth="223.0" />
-        <TextField layoutX="415.0" layoutY="333.0" prefHeight="32.0" prefWidth="223.0" />
-        <Text fill="#0c1821" layoutX="416.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In">
+        <TextField layoutX="416.0" layoutY="226.0" prefHeight="32.0" prefWidth="223.0" />
+        <TextField layoutX="416.0" layoutY="283.0" prefHeight="32.0" prefWidth="223.0" />
+        <Text fill="#0c1821" layoutX="416.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign Up">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
         </Text>
-        <Text fill="#0b171fbc" layoutX="415.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your log in details below">
+        <Text fill="#0b171fbc" layoutX="415.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your sign up details below">
             <font>
                 <Font size="10.0" />
             </font>
         </Text>
-        <Text fill="#0b171fbc" layoutX="415.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email address">
+        <Text fill="#0b171fbc" layoutX="416.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name">
             <font>
                 <Font size="10.0" />
             </font>
         </Text>
-        <Text fill="#0b171fbd" layoutX="415.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+        <Text fill="#0b171fbd" layoutX="416.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email address">
             <font>
                 <Font size="10.0" />
             </font>
         </Text>
-        <CheckBox layoutX="415.0" layoutY="381.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="107.0" text="Remember me" textFill="#0b171fcc">
+        <CheckBox layoutX="415.0" layoutY="442.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="141.0" text="Accept Terms &amp; Conditions" textFill="#0b171fcc">
             <font>
                 <Font size="10.0" />
             </font>
         </CheckBox>
-        <Button layoutX="415.0" layoutY="408.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" text="Log In" textFill="WHITE" />
-        <Text fill="#0b171fbc" layoutX="658.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?">
+        <Button layoutX="415.0" layoutY="469.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" text="Sign Up" textFill="WHITE" />
+        <Text fill="#0b171fbc" layoutX="660.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?">
             <font>
                 <Font size="10.0" />
             </font>
         </Text>
-        <Button layoutX="770.0" layoutY="16.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" text="Create an account" textFill="#0c1821" />
+        <Button layoutX="786.0" layoutY="15.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" text="Log In" textFill="#0c1821" />
+      <TextField layoutX="416.0" layoutY="341.0" prefHeight="32.0" prefWidth="223.0" />
+      <TextField layoutX="416.0" layoutY="397.0" prefHeight="32.0" prefWidth="223.0" />
+      <Text fill="#0b171fbd" layoutX="417.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
+      <Text fill="#0b171fbd" layoutX="417.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>
