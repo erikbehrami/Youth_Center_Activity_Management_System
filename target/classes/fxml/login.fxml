@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <AnchorPane prefHeight="1200.0" prefWidth="369.0" style="-fx-background-color: #101935;">
+            <children>
+                <ImageView fitHeight="160.0" fitWidth="186.0" layoutX="91.0" layoutY="188.0" style="-fx-z-index: 1;">
+                    <image>
+                        <Image url="@../images/youthcenter_logo.png" />
+                    </image>
+                </ImageView>
+                <Text fill="WHITE" fontSmoothingType="LCD" layoutX="22.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: sans-serif;" text="YouthCenter Management" textAlignment="CENTER" wrappingWidth="324.8000366210938">
+                    <font>
+                        <Font name="System Bold" size="30.0" />
+                    </font>
+                </Text>
+            </children></AnchorPane>
+        <TextField layoutX="415.0" layoutY="273.0" prefHeight="32.0" prefWidth="223.0" />
+        <TextField layoutX="415.0" layoutY="333.0" prefHeight="32.0" prefWidth="223.0" />
+        <Text fill="#0c1821" layoutX="416.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Text>
+        <Text fill="#0b171fbc" layoutX="415.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your log in details below">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Text>
+        <Text fill="#0b171fbc" layoutX="415.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email address">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Text>
+        <Text fill="#0b171fbd" layoutX="415.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Text>
+        <CheckBox layoutX="415.0" layoutY="381.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="107.0" text="Remember me" textFill="#0b171fcc">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </CheckBox>
+        <Button layoutX="415.0" layoutY="408.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" text="Log In" textFill="WHITE" />
+        <Text fill="#0b171fbc" layoutX="658.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Text>
+        <Button layoutX="770.0" layoutY="16.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" text="Create an account" textFill="#0c1821" />
+    </children>
+</AnchorPane>
