@@ -1,34 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <AnchorPane layoutY="56.0" prefHeight="620.0" prefWidth="239.0" style="-fx-background-color: #041625;">
             <children>
-                <Label layoutX="63.0" layoutY="102.0" text="Welcome, Admin" textFill="WHITE">
+                <Label layoutX="63.0" layoutY="120.0" text="Welcome, Admin" textFill="WHITE">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Button layoutX="30.0" layoutY="160.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #041625; -fx-border-color: white;" text="Dashboard" textFill="WHITE" />
-                <Button layoutX="30.0" layoutY="220.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #041625; -fx-border-color: white;" text="Add Student" textFill="WHITE" />
-                <Button layoutX="30.0" layoutY="280.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #041625; -fx-border-color: white;" text="Add Teacher" textFill="WHITE" />
-                <Button layoutX="30.0" layoutY="340.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #041625; -fx-border-color: white;" text="Add Course" textFill="WHITE" />
-                <Button layoutX="30.0" layoutY="400.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #041625; -fx-border-color: white;" text="Add Assigments" textFill="WHITE" />
-                <Button layoutX="30.0" layoutY="460.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #041625; -fx-border-color: white;" text="Button" textFill="WHITE" />
-                <Button layoutX="30.0" layoutY="520.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #041625; -fx-border-color: white;" text="Button" textFill="WHITE" />
-                <Line endX="100.79997253417969" layoutX="118.0" layoutY="140.0" startX="-95.19999694824219" stroke="WHITE" strokeLineCap="BUTT" strokeWidth="1.5" />
-            <ImageView fitHeight="112.0" fitWidth="203.0" layoutX="18.0" layoutY="-10.0">
-               <image>
-                  <Image url="@../images/user1.png" />
-               </image>
-            </ImageView>
+                <Button layoutX="32.0" layoutY="199.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #041625; -fx-border-color: white;" text="Dashboard" textFill="WHITE" />
+                <Button layoutX="32.0" layoutY="274.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #041625; -fx-border-color: white;" text="Profile" textFill="WHITE" />
+                <Button layoutX="32.0" layoutY="349.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #041625; -fx-border-color: white;" text="Students" textFill="WHITE" />
+                <Button layoutX="32.0" layoutY="424.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #041625; -fx-border-color: white;" text="Teachers" textFill="WHITE" />
+                <Button layoutX="31.0" layoutY="498.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #041625; -fx-border-color: white;" text="Courses" textFill="WHITE" />
+                <Line endX="100.79997253417969" layoutX="118.0" layoutY="169.0" startX="-95.19999694824219" stroke="WHITE" strokeLineCap="BUTT" strokeWidth="1.5" />
+                <ImageView fitHeight="112.0" fitWidth="203.0" layoutX="20.0" layoutY="8.0">
+                    <image>
+                        <Image url="@../images/user1.png" />
+                    </image>
+                </ImageView>
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="56.0" prefWidth="1200.0" style="-fx-background-color: #041625;">
@@ -47,46 +52,46 @@
         </AnchorPane>
         <AnchorPane layoutX="240.0" layoutY="56.0" minHeight="0.0" minWidth="0.0" prefHeight="620.0" prefWidth="960.0">
             <children>
-        <AnchorPane layoutY="190.0" prefHeight="429.0" prefWidth="946.0">
-                <AnchorPane layoutX="14.0" prefHeight="404.0" prefWidth="462.0" style="-fx-border-color: #041625;">
-                    <children>
-                        <AreaChart layoutX="1.6" layoutY="1.6" prefHeight="404.0" prefWidth="462.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                            <xAxis>
-                                <CategoryAxis side="BOTTOM" />
-                            </xAxis>
-                            <yAxis>
-                                <NumberAxis side="LEFT" />
-                            </yAxis>
-                        </AreaChart>
-                    </children>
+                <AnchorPane layoutY="190.0" prefHeight="429.0" prefWidth="946.0">
+                    <AnchorPane layoutX="14.0" prefHeight="404.0" prefWidth="462.0" style="-fx-border-color: #041625;">
+                        <children>
+                            <AreaChart layoutX="1.6" layoutY="1.6" prefHeight="404.0" prefWidth="462.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <xAxis>
+                                    <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis side="LEFT" />
+                                </yAxis>
+                            </AreaChart>
+                        </children>
+                    </AnchorPane>
+                    <AnchorPane layoutX="491.0" prefHeight="197.0" prefWidth="454.0" style="-fx-border-color: #041625;">
+                        <children>
+                            <BarChart layoutX="2.0" layoutY="1.0" prefHeight="197.6" prefWidth="454.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <xAxis>
+                                    <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis side="LEFT" />
+                                </yAxis>
+                            </BarChart>
+                        </children>
+                    </AnchorPane>
+                    <AnchorPane layoutX="491.0" layoutY="204.6" prefHeight="198.0" prefWidth="454.0" style="-fx-border-color: #041625;">
+                        <children>
+                            <LineChart layoutX="1.6" layoutY="206.4" prefHeight="198.4" prefWidth="454.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <xAxis>
+                                    <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis side="LEFT" />
+                                </yAxis>
+                            </LineChart>
+                        </children>
+                    </AnchorPane>
                 </AnchorPane>
-                <AnchorPane layoutX="491.0" prefHeight="197.0" prefWidth="454.0" style="-fx-border-color: #041625;">
-                    <children>
-                        <BarChart layoutX="2.0" layoutY="1.0" prefHeight="197.6" prefWidth="454.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                            <xAxis>
-                                <CategoryAxis side="BOTTOM" />
-                            </xAxis>
-                            <yAxis>
-                                <NumberAxis side="LEFT" />
-                            </yAxis>
-                        </BarChart>
-                    </children>
-                </AnchorPane>
-                <AnchorPane layoutX="491.0" layoutY="204.6" prefHeight="198.0" prefWidth="454.0" style="-fx-border-color: #041625;">
-               <children>
-                        <LineChart layoutX="1.6" layoutY="206.4" prefHeight="198.4" prefWidth="454.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                            <xAxis>
-                                <CategoryAxis side="BOTTOM" />
-                            </xAxis>
-                            <yAxis>
-                                <NumberAxis side="LEFT" />
-                            </yAxis>
-                        </LineChart>
-               </children>
-                </AnchorPane>
-        </AnchorPane>
 
-                         <AnchorPane layoutX="13.0" layoutY="10.0" prefHeight="173.0" prefWidth="933.0">
+                <AnchorPane layoutX="13.0" layoutY="10.0" prefHeight="173.0" prefWidth="933.0">
                     <children>
                         <AnchorPane layoutY="11.0" prefHeight="150.0" prefWidth="295.0" style="-fx-background-color: #041625;">
                             <children>
@@ -100,51 +105,51 @@
                                         <Font size="18.0" />
                                     </font>
                                 </Label>
-                        <ImageView fitHeight="136.0" fitWidth="226.0" layoutX="-31.0" layoutY="7.0">
-                           <image>
-                              <Image url="@../images/users.png" />
-                           </image>
-                        </ImageView>
+                                <ImageView fitHeight="136.0" fitWidth="226.0" layoutX="-31.0" layoutY="7.0">
+                                    <image>
+                                        <Image url="@../images/users.png" />
+                                    </image>
+                                </ImageView>
                             </children>
                         </AnchorPane>
-                  <AnchorPane layoutX="318.5" layoutY="11.0" prefHeight="150.0" prefWidth="295.0" style="-fx-background-color: #041625;">
-                     <children>
-                        <Label layoutX="172.0" layoutY="32.0" text="Total Teachers" textFill="WHITE">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="263.0" layoutY="97.0" text="0" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="136.0" fitWidth="226.0" layoutX="-31.0" layoutY="7.0">
-                           <image>
-                              <Image url="@../images/users.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="637.0" layoutY="11.0" prefHeight="150.0" prefWidth="295.0" style="-fx-background-color: #041625;">
-                     <children>
-                        <Label layoutX="172.0" layoutY="32.0" text="Total Courses" textFill="WHITE">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="263.0" layoutY="97.0" text="0" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="136.0" fitWidth="226.0" layoutX="-31.0" layoutY="7.0">
-                           <image>
-                              <Image url="@../images/users.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
+                        <AnchorPane layoutX="318.5" layoutY="11.0" prefHeight="150.0" prefWidth="295.0" style="-fx-background-color: #041625;">
+                            <children>
+                                <Label layoutX="172.0" layoutY="32.0" text="Total Teachers" textFill="WHITE">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="263.0" layoutY="97.0" text="0" textFill="WHITE">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fitHeight="136.0" fitWidth="226.0" layoutX="-31.0" layoutY="7.0">
+                                    <image>
+                                        <Image url="@../images/users.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="637.0" layoutY="11.0" prefHeight="150.0" prefWidth="295.0" style="-fx-background-color: #041625;">
+                            <children>
+                                <Label layoutX="172.0" layoutY="32.0" text="Total Courses" textFill="WHITE">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="263.0" layoutY="97.0" text="0" textFill="WHITE">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fitHeight="136.0" fitWidth="226.0" layoutX="-31.0" layoutY="7.0">
+                                    <image>
+                                        <Image url="@../images/users.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </AnchorPane>
                     </children>
                 </AnchorPane>
             </children>

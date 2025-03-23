@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -25,7 +26,6 @@
                 </Text>
             </children></AnchorPane>
         <TextField layoutX="415.0" layoutY="273.0" prefHeight="32.0" prefWidth="223.0" />
-        <TextField layoutX="415.0" layoutY="333.0" prefHeight="32.0" prefWidth="223.0" />
         <Text fill="#0c1821" layoutX="416.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In">
             <font>
                 <Font name="System Bold" size="24.0" />
@@ -58,5 +58,6 @@
             </font>
         </Text>
         <Button layoutX="770.0" layoutY="16.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" text="Create an account" textFill="#0c1821" />
+      <PasswordField layoutX="415.0" layoutY="332.0" prefHeight="32.0" prefWidth="223.0" />
     </children>
 </AnchorPane>
