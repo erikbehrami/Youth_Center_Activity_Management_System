@@ -14,18 +14,18 @@ public class LectureRooms {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public int getFloor() {
-        return floor;
+        return this.floor;
     }
 
     public int getCapacity() {
-        return capacity;
+        return this.capacity;
     }
 }

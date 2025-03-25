@@ -26,38 +26,38 @@ public class Courses {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String getCategory() {
-        return category;
+        return this.category;
     }
 
     public int getId_professor() {
-        return id_professor;
+        return this.id_professor;
     }
 
     public int getId_lectureRooms() {
-        return id_lectureRooms;
+        return this.id_lectureRooms;
     }
 
     public int getTotalNum() {
-        return totalNum;
+        return this.totalNum;
     }
 
     public int getStudentsEnrolled() {
-        return studentsEnrolled;
+        return this.studentsEnrolled;
     }
 
     public Date getDateStarted() {
-        return dateStarted;
+        return this.dateStarted;
     }
 
     public Date getDateEnding() {
-        return dateEnding;
+        return this.dateEnding;
     }
 }
