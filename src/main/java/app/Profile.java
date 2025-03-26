@@ -14,11 +14,10 @@ public class Profile extends Application {
             scene.getStylesheets().add(getClass().getResource("/css/profile.css").toExternalForm());
             stage.setTitle("Profile");
             stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/youthcenter_logo.png")));
-
             stage.setScene(scene);
             stage.show();
         }catch (Exception e){
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }
