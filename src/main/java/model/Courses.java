@@ -13,7 +13,7 @@ public class Courses {
     private Date dateStarted;
     private Date dateEnding;
 
-    public Courses(int id,String name,String category,int id_professor,int id_lectureRooms,int totalNum,int studentsEnrolled,Date dateStarted,Date dateEnding) {
+    private Courses(int id,String name,String category,int id_professor,int id_lectureRooms,int totalNum,int studentsEnrolled,Date dateStarted,Date dateEnding) {
         this.id = id;
         this.name = name;
         this.category = category;

@@ -17,7 +17,7 @@ public class Admins {
     private String gender;
 
 
-    public Admins(int id, String username, String password, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender, String biographicalInfo) {
+    private Admins(int id, String username, String password, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender, String biographicalInfo) {
         this.id = id;
         this.username = username;
         this.password = password;

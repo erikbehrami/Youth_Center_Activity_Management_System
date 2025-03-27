@@ -6,7 +6,7 @@ public class Requests {
     private int id_professor;
     private int id_course;
 
-    public Requests(int id, int id_student, int id_professor, int id_course) {
+    private Requests(int id, int id_student, int id_professor, int id_course) {
         this.id = id;
         this.id_student = id_student;
         this.id_professor = id_professor;

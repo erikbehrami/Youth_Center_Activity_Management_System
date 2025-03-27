@@ -6,7 +6,7 @@ public class Enrolled {
     private int id_student;
     private int id_course;
 
-    public Enrolled(int id, int id_professor,int id_student,int id_course){
+    private Enrolled(int id, int id_professor,int id_student,int id_course){
         this.id = id;
         this.id_professor = id_professor;
         this.id_student = id_student;

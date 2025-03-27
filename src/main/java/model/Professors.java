@@ -15,7 +15,7 @@ public class Professors {
     private String gender;
     private String biographicalInfo;
 
-    public Professors(int id, String username, String password, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender, String biographicalInfo) {
+    private Professors(int id, String username, String password, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender, String biographicalInfo) {
         this.id = id;
         this.username = username;
         this.password = password;

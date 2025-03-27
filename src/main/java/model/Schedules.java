@@ -9,7 +9,7 @@ public class Schedules {
     private String timeStart;
     private String timeEnd;
 
-    public Schedules(int id, int id_student, String day, String timeStart, String timeEnd) {
+    private Schedules(int id, int id_student, String day, String timeStart, String timeEnd) {
         this.id = id;
         this.id_student = id_student;
         this.day = day;
