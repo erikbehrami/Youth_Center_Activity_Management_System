@@ -10,17 +10,14 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="675.0" prefWidth="923.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="682.0" prefWidth="1200.0" style="-fx-background-color: #f3f3f3;">
+      <AnchorPane prefHeight="682.0" prefWidth="1200.0" style="-fx-background-color: #f3f3f3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-             <StackPane minWidth="-Infinity" prefHeight="50" prefWidth="1200" style="-fx-background-color: #101935;" BorderPane.alignment="CENTER">
-                 <fx:include source="navBar.fxml" />
-             </StackPane>
+            <fx:include source="navBar.fxml" />
             <AnchorPane layoutX="293.0" layoutY="80.0" prefHeight="550.0" prefWidth="614.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                <children>
                   <Label layoutX="190.0" layoutY="14.0" prefHeight="48.0" prefWidth="377.0" style="-fx-region-border: 29x;" text="Register Course" textFill="#133348">

@@ -70,7 +70,5 @@ public class Admins {
     public String getGender() {
         return this.gender;
     }
-
-
 }
 
