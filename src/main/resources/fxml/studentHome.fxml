@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,349 +12,288 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="675.0" prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="675.0" maxWidth="1200.0" minHeight="675.0" minWidth="1200.0" prefHeight="675.0" prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <fx:include source="navBar.fxml" />
-      <AnchorPane layoutX="14.0" layoutY="63.0" prefHeight="178.0" prefWidth="327.0" style="-fx-background-color: #101935; -fx-background-radius: 30;">
+      <AnchorPane layoutX="33.0" layoutY="64.0" maxHeight="220.0" maxWidth="300.0" minHeight="220.0" minWidth="300.0" prefHeight="220.0" prefWidth="300.0" style="-fx-background-color: #0f1832; -fx-background-radius: 20;" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="60.0">
          <children>
-            <ImageView fitHeight="106.0" fitWidth="188.0" layoutX="76.0">
+            <ImageView fitHeight="106.0" fitWidth="200.0" layoutX="50.0" layoutY="40.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="30.0">
                <image>
                   <Image url="@../images/user1.png" />
                </image>
             </ImageView>
-            <VBox alignment="CENTER" layoutX="64.0" layoutY="106.0" prefHeight="42.0" prefWidth="200.0" spacing="1.0">
+            <Label layoutX="120.0" layoutY="140.0" text="username" textFill="WHITE" AnchorPane.topAnchor="140.0" />
+            <Label centerShape="false" layoutX="100.0" layoutY="154.0" text="userfullname" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="10.0" layoutY="270.0" maxHeight="200.0" maxWidth="300.0" minHeight="200.0" minWidth="300.0" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #0f1832; -fx-background-radius: 20;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="290.0">
+         <children>
+            <Label text="Schedule" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="15.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <VBox layoutX="100.0" layoutY="55.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
                <children>
-                  <Label text="studentFullName" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label text="studentUsername" textFill="WHITE">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
+                  <AnchorPane prefHeight="60.0" prefWidth="279.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="12.0" text="01" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="242.4" AnchorPane.topAnchor="12.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Line endY="40.0" layoutX="49.0" layoutY="10.0" stroke="WHITE" strokeWidth="2.0" AnchorPane.leftAnchor="44.0" />
+                        <Label layoutX="57.0" layoutY="12.0" text="profName" textFill="WHITE" AnchorPane.leftAnchor="55.0" />
+                        <Label centerShape="false" layoutX="55.0" layoutY="30.0" text="courseName" textFill="WHITE" AnchorPane.topAnchor="25.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="174.0" layoutY="21.0" text="startTime - endTime" textFill="WHITE" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="60.0" prefWidth="279.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="12.0" text="02" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="242.4" AnchorPane.topAnchor="12.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Line endY="40.0" layoutX="49.0" layoutY="10.0" stroke="WHITE" strokeWidth="2.0" AnchorPane.leftAnchor="44.0" />
+                        <Label layoutX="57.0" layoutY="12.0" text="profName" textFill="WHITE" AnchorPane.leftAnchor="55.0" />
+                        <Label centerShape="false" layoutX="55.0" layoutY="30.0" text="courseName" textFill="WHITE" AnchorPane.topAnchor="25.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="174.0" layoutY="21.0" text="startTime - endTime" textFill="WHITE" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="60.0" prefWidth="279.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="12.0" text="03" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="242.4" AnchorPane.topAnchor="12.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Line endY="40.0" layoutX="49.0" layoutY="10.0" stroke="WHITE" strokeWidth="2.0" AnchorPane.leftAnchor="44.0" />
+                        <Label layoutX="57.0" layoutY="12.0" text="profName" textFill="WHITE" AnchorPane.leftAnchor="55.0" />
+                        <Label centerShape="false" layoutX="55.0" layoutY="30.0" text="courseName" textFill="WHITE" AnchorPane.topAnchor="25.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="174.0" layoutY="21.0" text="startTime - endTime" textFill="WHITE" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="60.0" prefWidth="279.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="12.0" text="04" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="242.4" AnchorPane.topAnchor="12.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Line endY="40.0" layoutX="49.0" layoutY="10.0" stroke="WHITE" strokeWidth="2.0" AnchorPane.leftAnchor="44.0" />
+                        <Label layoutX="57.0" layoutY="12.0" text="profName" textFill="WHITE" AnchorPane.leftAnchor="55.0" />
+                        <Label centerShape="false" layoutX="55.0" layoutY="30.0" text="courseName" textFill="WHITE" AnchorPane.topAnchor="25.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="174.0" layoutY="21.0" text="startTime - endTime" textFill="WHITE" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="60.0" prefWidth="279.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="12.0" text="05" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="242.4" AnchorPane.topAnchor="12.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Line endY="40.0" layoutX="49.0" layoutY="10.0" stroke="WHITE" strokeWidth="2.0" AnchorPane.leftAnchor="44.0" />
+                        <Label layoutX="57.0" layoutY="12.0" text="profName" textFill="WHITE" AnchorPane.leftAnchor="55.0" />
+                        <Label centerShape="false" layoutX="55.0" layoutY="30.0" text="courseName" textFill="WHITE" AnchorPane.topAnchor="25.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="174.0" layoutY="21.0" text="startTime - endTime" textFill="WHITE" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="60.0" prefWidth="279.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="12.0" text="06" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="242.4" AnchorPane.topAnchor="12.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Line endY="40.0" layoutX="49.0" layoutY="10.0" stroke="WHITE" strokeWidth="2.0" AnchorPane.leftAnchor="44.0" />
+                        <Label layoutX="57.0" layoutY="12.0" text="profName" textFill="WHITE" AnchorPane.leftAnchor="55.0" />
+                        <Label centerShape="false" layoutX="55.0" layoutY="30.0" text="courseName" textFill="WHITE" AnchorPane.topAnchor="25.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="174.0" layoutY="21.0" text="startTime - endTime" textFill="WHITE" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
                </children>
             </VBox>
-         </children></AnchorPane>
-      <Label layoutX="382.0" layoutY="73.0" text="Courses" textFill="#101935">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
-      <ScrollPane layoutX="368.0" layoutY="100.0" prefHeight="566.0" prefWidth="819.0" style="-fx-border-color: white; -fx-background-color: white;" AnchorPane.bottomAnchor="8.600000000000023" AnchorPane.leftAnchor="368.0" AnchorPane.topAnchor="100.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="633.0" prefWidth="830.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="327.0" layoutY="60.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="315.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="60.0">
+         <children>
+            <Label layoutX="37.0" layoutY="23.0" text="Courses" textFill="#0f1832" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <GridPane layoutX="83.0" layoutY="106.0" AnchorPane.bottomAnchor="-5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <GridPane prefHeight="650.0" prefWidth="780.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="-16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.39999999999998" AnchorPane.topAnchor="0.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                     </rowConstraints>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #273d81; -fx-background-radius: 20;">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
                      <children>
-                        <AnchorPane prefHeight="150.0" prefWidth="255.0" style="-fx-background-color: #7D7DF5; -fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
-                           <children>
-                              <Text fill="WHITE" layoutX="28.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="professorName" />
-                              <Text fill="WHITE" layoutX="28.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="courseName">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                              <Button layoutX="28.0" layoutY="99.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 7;" text="Details" textFill="#0c1821" />
-                           </children>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="150.0" prefWidth="255.0" style="-fx-background-color: #FFBC61; -fx-background-radius: 10;" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
-                           <children>
-                              <Text fill="WHITE" layoutX="28.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="professorName" />
-                              <Text fill="WHITE" layoutX="28.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="courseName">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                              <Button layoutX="28.0" layoutY="99.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 7;" text="Details" textFill="#0c1821" />
-                           </children>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="150.0" prefWidth="255.0" style="-fx-background-color: #4971E1; -fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
-                           <children>
-                              <Text fill="WHITE" layoutX="28.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="professorName" />
-                              <Text fill="WHITE" layoutX="28.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="courseName">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                              <Button layoutX="28.0" layoutY="99.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 7;" text="Details" textFill="#0c1821" />
-                           </children>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="150.0" prefWidth="255.0" style="-fx-background-color: #84C9FF; -fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
-                           <children>
-                              <Text fill="WHITE" layoutX="28.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="professorName" />
-                              <Text fill="WHITE" layoutX="28.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="courseName">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                              <Button layoutX="28.0" layoutY="99.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 7;" text="Details" textFill="#0c1821" />
-                           </children>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="150.0" prefWidth="255.0" style="-fx-background-color: #958F95; -fx-background-radius: 10;" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
-                           <children>
-                              <Text fill="WHITE" layoutX="28.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="professorName" />
-                              <Text fill="WHITE" layoutX="28.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="courseName">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                              <Button layoutX="28.0" layoutY="99.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 7;" text="Details" textFill="#0c1821" />
-                           </children>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="150.0" prefWidth="255.0" style="-fx-background-color: #162B46; -fx-background-radius: 10;" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
-                           <children>
-                              <Text fill="WHITE" layoutX="28.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="professorName" />
-                              <Text fill="WHITE" layoutX="28.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="courseName">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                              <Button layoutX="28.0" layoutY="99.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 7;" text="Details" textFill="#0c1821" />
-                           </children>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="150.0" prefWidth="255.0" style="-fx-background-color: #6C526B; -fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
-                           <children>
-                              <Text fill="WHITE" layoutX="28.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="professorName" />
-                              <Text fill="WHITE" layoutX="28.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="courseName">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                              <Button layoutX="28.0" layoutY="99.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 7;" text="Details" textFill="#0c1821" />
-                           </children>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="150.0" prefWidth="255.0" style="-fx-background-color: #885A31; -fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
-                           <children>
-                              <Text fill="WHITE" layoutX="28.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="professorName" />
-                              <Text fill="WHITE" layoutX="28.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="courseName">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                              <Button layoutX="28.0" layoutY="99.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 7;" text="Details" textFill="#0c1821" />
-                           </children>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="150.0" prefWidth="255.0" style="-fx-background-color: #B8D0EE; -fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
-                           <children>
-                              <Text fill="WHITE" layoutX="28.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="professorName" />
-                              <Text fill="WHITE" layoutX="28.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="courseName">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                              <Button layoutX="28.0" layoutY="99.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 7;" text="Details" textFill="#0c1821" />
-                           </children>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="150.0" prefWidth="255.0" style="-fx-background-color: #FFBC61; -fx-background-radius: 10;" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
-                           <children>
-                              <Text fill="WHITE" layoutX="28.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="professorName" />
-                              <Text fill="WHITE" layoutX="28.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="courseName">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                              <Button layoutX="28.0" layoutY="99.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 7;" text="Details" textFill="#0c1821" />
-                           </children>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="150.0" prefWidth="255.0" style="-fx-background-color: #FFBC61; -fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
-                           <children>
-                              <Text fill="WHITE" layoutX="28.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="professorName" />
-                              <Text fill="WHITE" layoutX="28.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="courseName">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                              <Button layoutX="28.0" layoutY="99.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 7;" text="Details" textFill="#0c1821" />
-                           </children>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="150.0" prefWidth="255.0" style="-fx-background-color: #FFBC61; -fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
-                           <children>
-                              <Text fill="WHITE" layoutX="28.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="professorName" />
-                              <Text fill="WHITE" layoutX="28.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="courseName">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                              <Button layoutX="28.0" layoutY="99.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 7;" text="Details" textFill="#0c1821" />
-                           </children>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </AnchorPane>
+                        <Label layoutX="27.0" layoutY="41.0" text="profName" textFill="WHITE" AnchorPane.leftAnchor="25.0" />
+                        <Label layoutX="27.0" layoutY="59.0" text="courseName" textFill="WHITE" AnchorPane.leftAnchor="25.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="27.0" layoutY="128.0" mnemonicParsing="false" text="Details" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="25.0" />
                      </children>
-                  </GridPane>
-               </children>
-            </AnchorPane>
-        </content>
-      </ScrollPane>
-      <ScrollPane layoutX="14.0" layoutY="250.0" prefHeight="414.0" prefWidth="327.0" style="-fx-background-radius: 30;" AnchorPane.bottomAnchor="10.600000000000023" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="250.20000000000005">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="335.0" style="-fx-background-color: #101935; -fx-background-radius: 30;">
-               <children>
-                  <VBox layoutX="27.0" layoutY="56.0" prefHeight="308.0" prefWidth="229.0" spacing="15.0">
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eea82f; -fx-background-radius: 20;" GridPane.columnIndex="1">
                      <children>
-                        <AnchorPane>
-                           <children>
-                              <Line endX="-100.00001525878906" endY="39.5999755859375" layoutX="140.0" layoutY="2.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
-                              <Label layoutY="6.414213180541992" text="01" textFill="WHITE">
-                                 <font>
-                                    <Font size="22.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="60.0" layoutY="4.414213180541992" text="courseName" textFill="WHITE" />
-                              <Label layoutX="151.0" layoutY="13.414213180541992" text="timeStart - timeEnd" textFill="WHITE" />
-                              <Label layoutX="60.0" layoutY="22.414213180541992" text="profName" textFill="WHITE" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane>
-                           <children>
-                              <Line endX="-100.00001525878906" endY="39.5999755859375" layoutX="140.0" layoutY="2.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
-                              <Label layoutY="6.414213180541992" text="02" textFill="WHITE">
-                                 <font>
-                                    <Font size="22.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="60.0" layoutY="4.414213180541992" text="courseName" textFill="WHITE" />
-                              <Label layoutX="151.0" layoutY="13.414213180541992" text="timeStart - timeEnd" textFill="WHITE" />
-                              <Label layoutX="60.0" layoutY="22.414213180541992" text="profName" textFill="WHITE" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane>
-                           <children>
-                              <Line endX="-100.00001525878906" endY="39.5999755859375" layoutX="140.0" layoutY="2.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
-                              <Label layoutY="6.414213180541992" text="03" textFill="WHITE">
-                                 <font>
-                                    <Font size="22.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="60.0" layoutY="4.414213180541992" text="courseName" textFill="WHITE" />
-                              <Label layoutX="151.0" layoutY="13.414213180541992" text="timeStart - timeEnd" textFill="WHITE" />
-                              <Label layoutX="60.0" layoutY="22.414213180541992" text="profName" textFill="WHITE" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane>
-                           <children>
-                              <Line endX="-100.00001525878906" endY="39.5999755859375" layoutX="140.0" layoutY="2.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
-                              <Label layoutY="6.414213180541992" text="04" textFill="WHITE">
-                                 <font>
-                                    <Font size="22.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="60.0" layoutY="4.414213180541992" text="courseName" textFill="WHITE" />
-                              <Label layoutX="151.0" layoutY="13.414213180541992" text="timeStart - timeEnd" textFill="WHITE" />
-                              <Label layoutX="60.0" layoutY="22.414213180541992" text="profName" textFill="WHITE" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane>
-                           <children>
-                              <Line endX="-100.00001525878906" endY="39.5999755859375" layoutX="140.0" layoutY="2.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
-                              <Label layoutY="6.414213180541992" text="05" textFill="WHITE">
-                                 <font>
-                                    <Font size="22.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="60.0" layoutY="4.414213180541992" text="courseName" textFill="WHITE" />
-                              <Label layoutX="151.0" layoutY="13.414213180541992" text="timeStart - timeEnd" textFill="WHITE" />
-                              <Label layoutX="60.0" layoutY="22.414213180541992" text="profName" textFill="WHITE" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane>
-                           <children>
-                              <Line endX="-100.00001525878906" endY="39.5999755859375" layoutX="140.0" layoutY="2.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
-                              <Label layoutY="6.414213180541992" text="06" textFill="WHITE">
-                                 <font>
-                                    <Font size="22.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="60.0" layoutY="4.414213180541992" text="courseName" textFill="WHITE" />
-                              <Label layoutX="151.0" layoutY="13.414213180541992" text="timeStart - timeEnd" textFill="WHITE" />
-                              <Label layoutX="60.0" layoutY="22.414213180541992" text="profName" textFill="WHITE" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane>
-                           <children>
-                              <Line endX="-100.00001525878906" endY="39.5999755859375" layoutX="140.0" layoutY="2.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
-                              <Label layoutY="6.414213180541992" text="07" textFill="WHITE">
-                                 <font>
-                                    <Font size="22.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="60.0" layoutY="4.414213180541992" text="courseName" textFill="WHITE" />
-                              <Label layoutX="151.0" layoutY="13.414213180541992" text="timeStart - timeEnd" textFill="WHITE" />
-                              <Label layoutX="60.0" layoutY="22.414213180541992" text="profName" textFill="WHITE" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane>
-                           <children>
-                              <Line endX="-100.00001525878906" endY="39.5999755859375" layoutX="140.0" layoutY="2.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
-                              <Label layoutY="6.414213180541992" text="08" textFill="WHITE">
-                                 <font>
-                                    <Font size="22.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="60.0" layoutY="4.414213180541992" text="courseName" textFill="WHITE" />
-                              <Label layoutX="151.0" layoutY="13.414213180541992" text="timeStart - timeEnd" textFill="WHITE" />
-                              <Label layoutX="60.0" layoutY="22.414213180541992" text="profName" textFill="WHITE" />
-                           </children>
-                        </AnchorPane>
+                        <Label layoutX="27.0" layoutY="41.0" text="profName" textFill="WHITE" AnchorPane.leftAnchor="25.0" />
+                        <Label layoutX="27.0" layoutY="59.0" text="courseName" textFill="WHITE" AnchorPane.leftAnchor="25.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="27.0" layoutY="128.0" mnemonicParsing="false" text="Details" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="25.0" />
                      </children>
-                  </VBox>
-                  <Label layoutX="27.0" layoutY="13.0" text="Schedule" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ee382f; -fx-background-radius: 20;" GridPane.columnIndex="2">
+                     <children>
+                        <Label layoutX="27.0" layoutY="41.0" text="profName" textFill="WHITE" AnchorPane.leftAnchor="25.0" />
+                        <Label layoutX="27.0" layoutY="59.0" text="courseName" textFill="WHITE" AnchorPane.leftAnchor="25.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="27.0" layoutY="128.0" mnemonicParsing="false" text="Details" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="25.0" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #50a56e; -fx-background-radius: 20;" GridPane.rowIndex="1">
+                     <children>
+                        <Label layoutX="27.0" layoutY="41.0" text="profName" textFill="WHITE" AnchorPane.leftAnchor="25.0" />
+                        <Label layoutX="27.0" layoutY="59.0" text="courseName" textFill="WHITE" AnchorPane.leftAnchor="25.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="27.0" layoutY="128.0" mnemonicParsing="false" text="Details" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="25.0" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #562a85; -fx-background-radius: 20;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Label layoutX="27.0" layoutY="41.0" text="profName" textFill="WHITE" AnchorPane.leftAnchor="25.0" />
+                        <Label layoutX="27.0" layoutY="59.0" text="courseName" textFill="WHITE" AnchorPane.leftAnchor="25.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="27.0" layoutY="128.0" mnemonicParsing="false" text="Details" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="25.0" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #4c5a78; -fx-background-radius: 20;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <children>
+                        <Label layoutX="27.0" layoutY="41.0" text="profName" textFill="WHITE" AnchorPane.leftAnchor="25.0" />
+                        <Label layoutX="27.0" layoutY="59.0" text="courseName" textFill="WHITE" AnchorPane.leftAnchor="25.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="27.0" layoutY="128.0" mnemonicParsing="false" text="Details" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="25.0" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #851e63; -fx-background-radius: 20;" GridPane.rowIndex="2">
+                     <children>
+                        <Label layoutX="27.0" layoutY="41.0" text="profName" textFill="WHITE" AnchorPane.leftAnchor="25.0" />
+                        <Label layoutX="27.0" layoutY="59.0" text="courseName" textFill="WHITE" AnchorPane.leftAnchor="25.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="27.0" layoutY="128.0" mnemonicParsing="false" text="Details" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="25.0" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #77774d; -fx-background-radius: 20;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Label layoutX="27.0" layoutY="41.0" text="profName" textFill="WHITE" AnchorPane.leftAnchor="25.0" />
+                        <Label layoutX="27.0" layoutY="59.0" text="courseName" textFill="WHITE" AnchorPane.leftAnchor="25.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="27.0" layoutY="128.0" mnemonicParsing="false" text="Details" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="25.0" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #51af24; -fx-background-radius: 20;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <children>
+                        <Label layoutX="27.0" layoutY="41.0" text="profName" textFill="WHITE" AnchorPane.leftAnchor="25.0" />
+                        <Label layoutX="27.0" layoutY="59.0" text="courseName" textFill="WHITE" AnchorPane.leftAnchor="25.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="27.0" layoutY="128.0" mnemonicParsing="false" text="Details" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="25.0" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </AnchorPane>
                </children>
-            </AnchorPane>
-        </content>
-      </ScrollPane>
+            </GridPane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
