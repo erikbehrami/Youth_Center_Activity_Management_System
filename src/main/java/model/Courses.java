@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 public class Courses {
@@ -23,6 +25,21 @@ public class Courses {
         this.studentsEnrolled = studentsEnrolled;
         this.dateStarted = dateStarted;
         this.dateEnding = dateEnding;
+    }
+
+    public static Courses getInstance(ResultSet resultSet) throws SQLException {
+
+        int id = resultSet.getInt("id");
+        String name = resultSet.getString("name");
+        String category = resultSet.getString("category");
+        int id_professor = resultSet.getInt("id_professor");
+        int id_lectureRooms = resultSet.getInt("id_lectureRooms");
+        int totalNum = resultSet.getInt("totalNum");
+        int studentsEnrolled = resultSet.getInt("studentsEnrolled");
+        Date dateStarted = resultSet.getDate("dateStarted");
+        Date dateEnding = resultSet.getDate("dateEnding");
+        return new Courses(id, name, category, id_professor, id_lectureRooms, totalNum, studentsEnrolled, dateStarted, dateEnding);
+
     }
 
     public int getId() {

@@ -6,6 +6,7 @@ public class Professors {
     private int id;
     private String username;
     private String password;
+    private boolean verified;
     private String name;
     private String surname;
     private String email;
@@ -40,6 +41,9 @@ public class Professors {
 
     public String getPassword() {
         return this.password;
+    }
+    public boolean isVerified() {
+        return this.verified;
     }
 
     public String getName() {

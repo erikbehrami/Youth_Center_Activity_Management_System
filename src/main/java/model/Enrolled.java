@@ -1,5 +1,8 @@
 package model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Enrolled {
     private int id;
     private int id_professor;
@@ -11,6 +14,17 @@ public class Enrolled {
         this.id_professor = id_professor;
         this.id_student = id_student;
         this.id_course = id_course;
+    }
+
+    public static Enrolled getInstance(ResultSet resultSet) throws SQLException {
+        int id=resultSet.getInt("id");
+        int id_professor=resultSet.getInt("id_professor");
+        int id_student=resultSet.getInt("id_student");
+        int id_course=resultSet.getInt("id_course");
+
+
+        return new Enrolled(id, id_professor, id_student, id_course);
+
     }
 
     public int getId() {

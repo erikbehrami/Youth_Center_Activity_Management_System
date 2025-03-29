@@ -27,6 +27,7 @@ create table professors(
                            id integer default nextval('professors_id_seq') Primary Key ,
                            username varchar(255),
                            password varchar(255),
+                           verified boolean deafult false,
                            name varchar(255),
                            surname varchar(255),
                            email varchar(255),
