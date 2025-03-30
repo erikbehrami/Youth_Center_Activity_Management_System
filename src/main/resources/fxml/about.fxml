@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="675.0" prefWidth="1200.0" style="-fx-background-color: white;  " stylesheets="@../css/about.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+       <fx:include source="navBar.fxml" />
+      <AnchorPane layoutY="51.0" prefHeight="624.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.1999999999999318" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="51.0">
+         <children>
+             <StackPane layoutX="-0.8" prefHeight="624.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="601.0" AnchorPane.topAnchor="0.0">
+      
+                 <children>
+                     <VBox alignment="TOP_CENTER" layoutX="13.0" layoutY="32.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="546.0" spacing="10" style="-fx-background-color: white;" styleClass="aboutInfo" stylesheets="@../css/about.css">
+      
+                         <!-- Title -->
+                         <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="About Us" VBox.vgrow="ALWAYS" />
+      
+                         <!-- Description -->
+                         <Label prefHeight="92.0" prefWidth="460.0" style="-fx-font-size: 14px; -fx-background-color: white;" text="Welcome to YCAM, the ultimate platform designed to streamline and enhance youth center management. Our mission is to empower youth organizations by simplifying event planning, membership management, and communication." wrapText="true" VBox.vgrow="ALWAYS" />
+                     <Accordion maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="460.0">
+                       <panes>
+                         <TitledPane animated="false" text="What We Offer:">
+                           <content>
+                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="110.0" prefWidth="514.0">
+                                    <children>
+                                       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="107.0" prefWidth="460.0" spacing="5">
+                                          <children>
+                                             <Label prefHeight="18.0" prefWidth="182.0" text="• Effortless Member Management" VBox.vgrow="SOMETIMES" />
+                                             <Label text="• Event  Activity Scheduling" VBox.vgrow="ALWAYS" />
+                                             <Label text="• Communication Hub" VBox.vgrow="ALWAYS" />
+                                             <Label text="• Resource Allocation" VBox.vgrow="ALWAYS" />
+                                             <Label text="• Analytics  Reports" VBox.vgrow="ALWAYS" />
+                                          </children>
+                                       </VBox>
+                                    </children>
+                                 </AnchorPane>
+                           </content>
+                         </TitledPane>
+                         <TitledPane animated="false" text="Who We Serve:">
+                           <content>
+                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="460.0" spacing="5">
+                                          <children>
+                                             <Label text="• Youth Centers  Clubs" VBox.vgrow="ALWAYS" />
+                                             <Label text="• Community Organizations" VBox.vgrow="ALWAYS" />
+                                             <Label text="• Educational  After-School Programs" VBox.vgrow="ALWAYS" />
+                                          </children>
+                                       </VBox>
+                                    </children>
+                                 </AnchorPane>
+                           </content>
+                         </TitledPane>
+                         <TitledPane animated="false" text="untitled 3">
+                           <content>
+                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                           </content>
+                         </TitledPane>
+                       </panes>
+                     </Accordion>
+               
+                                           <!-- Mission Statement -->
+                         <Label prefHeight="62.0" prefWidth="460.0" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Empowering Youth. Simplifying Management. " VBox.vgrow="ALWAYS" />
+                     </VBox>
+                 </children>
+      
+             </StackPane>
+            <AnchorPane layoutX="600.0" prefHeight="624.0" prefWidth="600.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TabPane layoutY="52.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="546.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="51.799999999999955" AnchorPane.rightAnchor="53.60000000000002" AnchorPane.topAnchor="52.0" StackPane.alignment="CENTER">
+                     <tabs>
+                        <Tab text="Untitled Tab 1">
+                           <content>
+                              <StackPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="546.0">
+                                 <children>
+                                    <ImageView fitHeight="259.0" fitWidth="520.0" layoutX="12.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/qendra/qendra1.JPG" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </StackPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Untitled Tab 2">
+                           <content>
+                              <StackPane minHeight="0.0" minWidth="0.0" prefHeight="540.0" prefWidth="398.0">
+                                 <children>
+                                    <ImageView fitHeight="520.0" fitWidth="520.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@../images/qendra/qendra2.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </StackPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </TabPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+
+   </children>
+</AnchorPane>
