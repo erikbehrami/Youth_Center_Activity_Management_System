@@ -1,0 +1,59 @@
+/* Style the TabPane (main container) */
+.tab-pane {
+    -fx-background-color: transparent;
+}
+
+/* Remove the default tab header background */
+.tab-header-background {
+    -fx-background-color: transparent;
+}
+
+/* Style tabs to look like plain text */
+.tab {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 5px 10px;
+    -fx-font-size: 14px;
+    -fx-text-fill: black;
+}
+
+/* Remove selected tab highlight */
+.tab:selected {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-focus-color: transparent;
+}
+
+/* Hide the blue line by overriding tab control styling */
+.tab:selected .focus-indicator {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.aboutInfo{
+
+        -fx-background-color: #ffffff;
+        -fx-background-radius: 20px;
+        -fx-border-radius: 20px;
+        -fx-border-color: #d1d1d1;
+        -fx-border-width: 1px;
+        -fx-padding: 15px;
+        -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 2, 2);
+
+
+}
+.accordion,
+.titled-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: #808080;
+    -fx-border-width: 0px;
+    -fx-border-radius: 0;
+    -fx-effect: none;
+}
+
+.titled-pane > .title,
+.titled-pane > .content {
+    -fx-background-color: transparent;
+    -fx-effect: none;
+    -fx-border-width: 0px;
+}
