@@ -49,12 +49,11 @@ public class CreateCourseDto {
         return name;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
     public int getId_Professor() {
         return id_Professor;
+    }
+    public String getCategory() {
+        return category;
     }
 
     public int getId_lectureRooms() {
