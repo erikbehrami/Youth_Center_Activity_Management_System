@@ -1,6 +1,8 @@
 package model;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Students {
     private int id;
@@ -15,7 +17,7 @@ public class Students {
     private String gender;
     private String biographicalInfo;
 
-    private Students(int id,String username, String password, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender, String biographicalInfo) {
+    private Students(int id, String username, String password, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender, String biographicalInfo) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -28,6 +30,22 @@ public class Students {
         this.gender = gender;
         this.biographicalInfo = biographicalInfo;
 
+    }
+
+    public static Students getInstance(ResultSet resultSet) throws SQLException {
+        int id = resultSet.getInt("id");
+        String username = resultSet.getString("username");
+        String password = resultSet.getString("password");
+        String name = resultSet.getString("name");
+        String surname = resultSet.getString("surname");
+        String email = resultSet.getString("email");
+        Date birthdate = resultSet.getDate("birthdate");
+        String phoneNumber = resultSet.getString("phoneNumber");
+        String address = resultSet.getString("address");
+        String gender = resultSet.getString("gender");
+        String biographicalInfo = resultSet.getString("biographicalInfo");
+
+        return new Students(id, username, password, name, surname, email, birthdate, phoneNumber, address, gender, biographicalInfo);
     }
 
     public int getId() {
