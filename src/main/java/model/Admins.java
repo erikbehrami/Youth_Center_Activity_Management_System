@@ -2,6 +2,8 @@ package model;
 
 import javafx.application.Application;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 public class Admins {
@@ -17,7 +19,7 @@ public class Admins {
     private String gender;
 
 
-    private Admins(int id, String username, String password, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender, String biographicalInfo) {
+    private Admins(int id, String username, String password, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -29,6 +31,21 @@ public class Admins {
         this.address = address;
         this.gender = gender;
 
+    }
+
+    public static Admins getInstance(ResultSet resultSet) throws SQLException {
+        int id = resultSet.getInt("id");
+        String username = resultSet.getString("username");
+        String password = resultSet.getString("password");
+        String name = resultSet.getString("name");
+        String surname = resultSet.getString("surname");
+        String email = resultSet.getString("email");
+        java.sql.Date birthdate = resultSet.getDate("birthdate");
+        String phoneNumber = resultSet.getString("phoneNumber");
+        String address = resultSet.getString("address");
+        String gender = resultSet.getString("gender");
+
+        return new Admins(id,username,password,name,surname,email,birthdate,phoneNumber,address,gender);
     }
 
     public int getId() {
