@@ -13,13 +13,13 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController">
     <children>
         <AnchorPane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #101935;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <fx:include source="navBar.fxml" />
         </AnchorPane>
 
-        <AnchorPane layoutY="48.0" prefHeight="627.0" prefWidth="239.0" style="-fx-background-color: #101935;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
+        <AnchorPane layoutY="50.4" prefHeight="625.0" prefWidth="239.0" style="-fx-background-color: #101935;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
             <children>
                 <Label layoutX="63.0" layoutY="120.0" text="Welcome, Admin" textFill="WHITE">
                     <font>
@@ -35,11 +35,11 @@
 
                 <VBox layoutX="30.0" layoutY="205.0" prefHeight="309.0" prefWidth="180.0" spacing="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="205.0">
                     <children>
-                        <Button layoutX="32.0" layoutY="199.0" minHeight="0.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;" text="Dashboard" textFill="WHITE" AnchorPane.topAnchor="199.0" />
-                        <Button layoutX="32.0" layoutY="274.0" minHeight="0.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;" text="Profile" textFill="WHITE" />
-                        <Button layoutX="32.0" layoutY="349.0" minHeight="0.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;" text="Students" textFill="WHITE" />
-                        <Button layoutX="32.0" layoutY="424.0" minHeight="0.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;" text="Teachers" textFill="WHITE" />
-                        <Button layoutX="31.0" layoutY="498.0" minHeight="0.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;" text="Courses" textFill="WHITE" />
+                        <Button fx:id="adminDashboard" layoutX="32.0" layoutY="199.0" minHeight="0.0" mnemonicParsing="false" onAction="#handleAdminDashboard" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;" text="Dashboard" textFill="WHITE" AnchorPane.topAnchor="199.0" />
+                        <Button fx:id="adminProfile" layoutX="32.0" layoutY="274.0" minHeight="0.0" mnemonicParsing="false" onAction="#handleAdminProfile" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;" text="Profile" textFill="WHITE" />
+                        <Button fx:id="adminStudents" layoutX="32.0" layoutY="349.0" minHeight="0.0" mnemonicParsing="false" onAction="#handleAdminStudents" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;" text="Students" textFill="WHITE" />
+                        <Button fx:id="adminTeachers" layoutX="32.0" layoutY="424.0" minHeight="0.0" mnemonicParsing="false" onAction="#handleAdminTeachers" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;" text="Teachers" textFill="WHITE" />
+                        <Button fx:id="adminCourses" layoutX="31.0" layoutY="498.0" minHeight="0.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;" text="Courses" textFill="WHITE" />
                     </children>
                 </VBox>
 

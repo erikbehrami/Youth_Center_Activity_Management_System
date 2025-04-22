@@ -15,14 +15,15 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfileController">
 
     <AnchorPane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #101935;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <fx:include source="navBar.fxml" />
     </AnchorPane>
    <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.60000000000002" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
-      
+
+
           <AnchorPane maxHeight="614.4" maxWidth="1200.0" minHeight="0.0" minWidth="0.0" prefHeight="614.4" prefWidth="1200.0" StackPane.alignment="CENTER">
           <AnchorPane fx:id="profileAnchor" layoutX="60.0" layoutY="87.0" minHeight="0.0" minWidth="0.0" prefHeight="539.0" prefWidth="306.0" style="-fx-scale-x: 0.9; -fx-scale-y: 0.9;" styleClass="anchorGroup" AnchorPane.bottomAnchor="-12.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="87.0" BorderPane.alignment="CENTER">
               <children>
@@ -171,6 +172,8 @@
                   <Font size="15.0" />
               </font>
           </Button>
+   
+             <Button layoutX="14.0" layoutY="63.0" onAction="#handleGoBack" text="Go Back" />
           </AnchorPane>
       </children>
    </StackPane>

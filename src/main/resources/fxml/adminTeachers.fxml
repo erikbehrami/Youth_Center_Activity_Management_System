@@ -64,37 +64,37 @@
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                             </columnResizePolicy>
                         </TableView>
-                  <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="14.0" minHeight="0.0" minWidth="0.0" prefHeight="35.0" prefWidth="906.0" spacing="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.599999999999909" AnchorPane.topAnchor="14.0">
-                     <children>
-                              <TextField prefHeight="30.0" prefWidth="255.0" promptText="Search" style="-fx-border-color: #101935; -fx-border-radius: 5;" />
-                              <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="94.0" style="-fx-background-color: #101935;" text="Search" textFill="WHITE">
-                                  <font>
-                                      <Font size="13.0" />
-                                  </font>
-                              </Button>
-                     </children>
-                  </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="14.0" minHeight="0.0" minWidth="0.0" prefHeight="35.0" prefWidth="906.0" spacing="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.599999999999909" AnchorPane.topAnchor="14.0">
+                            <children>
+                                <TextField prefHeight="30.0" prefWidth="255.0" promptText="Search" style="-fx-border-color: #101935; -fx-border-radius: 5;" />
+                                <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="94.0" style="-fx-background-color: #101935;" text="Search" textFill="WHITE">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </HBox>
                     </children>
                 </AnchorPane>
-            <HBox alignment="TOP_RIGHT" layoutX="29.0" layoutY="561.0" minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="906.0" spacing="15.0" AnchorPane.bottomAnchor="8.399999999999956" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="24.800000000000068">
-               <children>
-                      <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #101935;" text="Add" textFill="WHITE">
-                          <font>
-                              <Font size="13.0" />
-                          </font>
-                      </Button>
-                      <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #101935;" text="Update" textFill="WHITE">
-                          <font>
-                              <Font size="13.0" />
-                          </font>
-                      </Button>
-                      <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #101935;" text="Delete" textFill="WHITE">
-                          <font>
-                              <Font size="13.0" />
-                          </font>
-                      </Button>
-               </children>
-            </HBox>
+                <HBox alignment="TOP_RIGHT" layoutX="29.0" layoutY="561.0" minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="906.0" spacing="15.0" AnchorPane.bottomAnchor="8.399999999999956" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="24.800000000000068">
+                    <children>
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #101935;" text="Add" textFill="WHITE">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #101935;" text="Update" textFill="WHITE">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #101935;" text="Delete" textFill="WHITE">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
             </children>
         </AnchorPane>
     </children>

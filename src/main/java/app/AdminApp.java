@@ -13,7 +13,8 @@ public class AdminApp extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/adminDashboard.fxml"));
             stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/youthcenter_logo.png")));
             stage.setTitle("Admin");
-            stage.setScene(new Scene(fxmlLoader.load()));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
             stage.show();
         }catch (Exception e){
             System.out.println(e.getMessage());
