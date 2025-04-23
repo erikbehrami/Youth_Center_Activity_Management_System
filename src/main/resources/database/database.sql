@@ -111,7 +111,7 @@ CREATE TABLE student_messages (
                                   id_Student INTEGER,
                                   id_Professor INTEGER,
                                   message TEXT,
-                                  sentAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                                  sentAt DATE,
                                   FOREIGN KEY (id_Student) REFERENCES students(id),
                                   FOREIGN KEY (id_Professor) REFERENCES professors(id)
 );
@@ -121,7 +121,7 @@ CREATE TABLE student_badges (
                                 id_Student INTEGER,
                                 badgeName VARCHAR(100),
                                 description TEXT,
-                                awardedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                                awardedAt DATE,
                                 FOREIGN KEY (id_Student) REFERENCES students(id)
 );
 
@@ -130,7 +130,7 @@ CREATE TABLE feedback (
                           id SERIAL PRIMARY KEY,
                           userType VARCHAR(20),
                           message TEXT,
-                          submittedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                          submittedAt DATE
 
 );
 
@@ -141,7 +141,7 @@ CREATE TABLE issues (
                         userType VARCHAR(20),
                         subject VARCHAR(255),
                         description TEXT,
-                        createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                        createdAt DATE,
                         CHECK (
                             (professorID IS NOT NULL AND studentId IS NULL)
                                 OR
@@ -156,7 +156,7 @@ CREATE TABLE contact_messages (
                                   name VARCHAR(100),
                                   email VARCHAR(255),
                                   message TEXT,
-                                  sentAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                                  sentAt DATE
 );
 
 
@@ -172,7 +172,7 @@ CREATE TABLE login_logs (
                             professorId INTEGER,
                             studentId INTEGER,
                             userType VARCHAR(20),
-                            loginTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                            loginTime DATE,
 
                             CHECK (
                                 (adminId IS NOT NULL AND professorID IS NULL AND studentId IS NULL)
@@ -209,7 +209,7 @@ CREATE TABLE course_enrollment_logs (
                                         student_id INTEGER,
                                         course_id INTEGER,
                                         action VARCHAR(50),
-                                        action_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                                        action_time DATE,
                                         FOREIGN KEY (student_id) REFERENCES students(id),
                                         FOREIGN KEY (course_id) REFERENCES courses(id)
 );
