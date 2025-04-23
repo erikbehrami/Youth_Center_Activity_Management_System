@@ -58,9 +58,9 @@ public class EnrolledRepository {
 
         try{
             PreparedStatement statement = this.connection.prepareStatement(query);
-            statement.setInt(1,CEDto.getId_course());
-            statement.setInt(2,CEDto.getId_professor());
-            statement.setInt(3,CEDto.getId_student());
+            statement.setInt(1,CEDto.getCourseID());
+            statement.setInt(2,CEDto.getProfessorID());
+            statement.setInt(3,CEDto.getStudentID());
             return statement.executeUpdate() > 0;
 
         }catch(SQLException e){
