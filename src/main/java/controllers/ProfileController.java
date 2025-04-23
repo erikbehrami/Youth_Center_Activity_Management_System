@@ -1,6 +1,6 @@
 package controllers;
 
-import SceneNavigator.SceneManager;
+import services.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
