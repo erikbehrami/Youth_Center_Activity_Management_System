@@ -42,7 +42,7 @@ public class LoginLogs {
         return professorId;
     }
 
-    public int getStudentIdId() {
+    public int getStudentId() {
         return studentId;
     }
 
