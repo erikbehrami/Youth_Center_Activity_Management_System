@@ -3,38 +3,38 @@ package model.dto.enrolled;
 public class CreateEnrolledDto {
 
 
-    private int id_professor;
-    private int id_student;
-    private int id_course;
+    private int ProfessorID;
+    private int StudentID;
+    private int CourseID;
 
-    public CreateEnrolledDto( int id_course, int id_professor, int id_student) {
+    public CreateEnrolledDto( int courseID, int ProfessorID, int StudentID) {
 
-        this.id_course = id_course;
-        this.id_professor = id_professor;
-        this.id_student = id_student;
+        this.CourseID = courseID;
+        this.ProfessorID = ProfessorID;
+        this.StudentID = StudentID;
     }
 
-    public int getId_course() {
-        return id_course;
+    public int getCourseID() {
+        return this.CourseID;
     }
 
-    public void setId_course(int id_course) {
-        this.id_course = id_course;
+    public void setCourseID(int CourseID) {
+        this.CourseID = CourseID;
     }
 
-    public int getId_student() {
-        return id_student;
+    public int getStudentID() {
+        return this.StudentID;
     }
 
-    public void setId_student(int id_student) {
-        this.id_student = id_student;
+    public void setStudentID(int StudentID) {
+        this.StudentID = StudentID;
     }
 
-    public int getId_professor() {
-        return id_professor;
+    public int getProfessorID() {
+        return this.ProfessorID;
     }
 
-    public void setId_professor(int id_professor) {
-        this.id_professor = id_professor;
+    public void setProfessorID(int ProfessorID) {
+        this.ProfessorID = ProfessorID;
     }
 }

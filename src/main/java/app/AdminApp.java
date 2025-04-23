@@ -10,8 +10,8 @@ public class AdminApp extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/adminDashboard.fxml"));
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/youthcenter_logo.png")));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(Navigator.ADMIN_DASHBOARD));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream(Navigator.LOGO)));
             stage.setTitle("Admin");
             Scene scene = new Scene(fxmlLoader.load());
             stage.setScene(scene);
