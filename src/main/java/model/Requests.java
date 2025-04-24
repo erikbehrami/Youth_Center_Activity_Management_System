@@ -2,30 +2,30 @@ package model;
 
 public class Requests {
     private int id;
-    private int id_student;
-    private int id_professor;
-    private int id_course;
+    private int studentID;
+    private int professorID;
+    private int courseID;
 
-    private Requests(int id, int id_student, int id_professor, int id_course) {
+    private Requests(int id, int studentID, int professorID, int courseID) {
         this.id = id;
-        this.id_student = id_student;
-        this.id_professor = id_professor;
-        this.id_course = id_course;
+        this.studentID = studentID;
+        this.professorID = professorID;
+        this.courseID = courseID;
     }
 
     public int getId() {
         return this.id;
     }
 
-    public int getId_student() {
-        return this.id_student;
+    public int getStudentID() {
+        return this.studentID;
     }
 
-    public int getId_professor() {
-        return this.id_professor;
+    public int getProfessorID() {
+        return this.professorID;
     }
 
-    public int getId_course() {
-        return this.id_course;
+    public int getCourseID() {
+        return this.courseID;
     }
 }

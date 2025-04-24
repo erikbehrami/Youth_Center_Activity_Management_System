@@ -2,6 +2,8 @@ package repository;
 
 import database.DBConnection;
 import model.Advertisement;
+import model.dto.advertisement.CreateAdvertisementDto;
+import model.dto.advertisement.UpdateAdvertisementDto;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -54,13 +56,13 @@ public class AdvertisementRepository {
     }
 
     // Create new advertisement
-    public boolean create(Advertisement ad) {
+    public boolean create(CreateAdvertisementDto createAdDto) {
         String query = "INSERT INTO advertisements (sponsorName, adTitle, adImageUrl) VALUES (?, ?, ?)";
         try {
             PreparedStatement statement = this.connection.prepareStatement(query);
-            statement.setString(1, ad.getSponsorName());
-            statement.setString(2, ad.getAdTitle());
-            statement.setString(3, ad.getAdImageUrl());
+            statement.setString(1, createAdDto.getSponsorName());
+            statement.setString(2, createAdDto.getAdTitle());
+            statement.setString(3, createAdDto.getAdImageUrl());
 
             boolean result = statement.executeUpdate() > 0;
             statement.close();
@@ -70,15 +72,14 @@ public class AdvertisementRepository {
         }
     }
 
-    // Update existing advertisement
-    public boolean update(Advertisement ad) {
+    // Update existing advertisement using DTO
+    public boolean update(UpdateAdvertisementDto updateAdDto) {
         String query = "UPDATE advertisements SET sponsorName = ?, adTitle = ?, adImageUrl = ? WHERE id = ?";
         try {
             PreparedStatement statement = this.connection.prepareStatement(query);
-            statement.setString(1, ad.getSponsorName());
-            statement.setString(2, ad.getAdTitle());
-            statement.setString(3, ad.getAdImageUrl());
-            statement.setInt(4, ad.getId());
+            statement.setString(1, updateAdDto.getSponsorName());
+            statement.setString(2, updateAdDto.getAdTitle());
+            statement.setString(3, updateAdDto.getAdImageUrl());
 
             boolean result = statement.executeUpdate() > 0;
             statement.close();

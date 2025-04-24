@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class LogInApp extends Application {
     public void start(Stage stage){
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(Navigator.SIGN_IN));
             Scene scene = new Scene(fxmlLoader.load());
             stage.setTitle("Log In");
             stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/youthcenter_logo.png")));

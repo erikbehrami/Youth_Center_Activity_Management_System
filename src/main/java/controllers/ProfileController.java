@@ -1,5 +1,6 @@
 package controllers;
 
+import app.Navigator;
 import services.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
@@ -13,7 +14,7 @@ public class ProfileController {
         Scene previousScene = SceneManager.getLastScene();
         currentStage.setScene(previousScene);
         currentStage.setTitle("Admin Dashboard");
-        currentStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/youthcenter_logo.png")));
+        currentStage.getIcons().add(new Image(getClass().getResourceAsStream(Navigator.LOGO)));
         currentStage.show();
     }
 }

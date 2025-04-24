@@ -10,9 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AccountController">
     <children>
-        <AnchorPane prefHeight="1200.0" prefWidth="369.0" style="-fx-background-color: #101935;">
+        <AnchorPane prefHeight="650.0" prefWidth="369.0" style="-fx-background-color: #101935;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <ImageView fitHeight="160.0" fitWidth="186.0" layoutX="91.0" layoutY="188.0" style="-fx-z-index: 1;">
                     <image>
@@ -52,12 +52,12 @@
             </font>
         </CheckBox>
         <Button layoutX="415.0" layoutY="408.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" text="Log In" textFill="WHITE" />
-        <Text fill="#0b171fbc" layoutX="658.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?">
+        <Text fill="#0b171fbc" layoutX="650.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" AnchorPane.rightAnchor="145.0" AnchorPane.topAnchor="22.0">
             <font>
                 <Font size="10.0" />
             </font>
         </Text>
-        <Button layoutX="770.0" layoutY="16.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" text="Create an account" textFill="#0c1821" />
+        <Button fx:id="CreateAnAccount" layoutX="760.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" text="Create an account" textFill="#0c1821" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="16.0" />
       <PasswordField layoutX="415.0" layoutY="332.0" prefHeight="32.0" prefWidth="223.0" />
     </children>
 </AnchorPane>
