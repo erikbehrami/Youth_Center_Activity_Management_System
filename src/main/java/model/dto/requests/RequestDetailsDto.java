@@ -1,93 +1,40 @@
 package model.dto.requests;
 
-import java.sql.Date;
-
 public class RequestDetailsDto {
     private int requestId;
+    private int studentId;
     private String studentName;
+    private int professorId;
     private String professorName;
-    private String requestType;
+    private int courseId;
     private String courseTitle;
-    private String description;
-    private String status;
-    private Date submissionDate;
 
-
-    public RequestDetailsDto(int requestId, String studentName, String professorName,
-                             String requestType, String courseTitle, String description,
-                             String status, Date submissionDate) {
+    public RequestDetailsDto(int requestId, int studentId, String studentName,
+                             int professorId, String professorName,
+                             int courseId, String courseTitle) {
         this.requestId = requestId;
+        this.studentId = studentId;
         this.studentName = studentName;
+        this.professorId = professorId;
         this.professorName = professorName;
-        this.requestType = requestType;
-        this.courseTitle = courseTitle;
-        this.description = description;
-        this.status = status;
-        this.submissionDate = submissionDate;
-    }
-
-    public int getRequestId() {
-        return requestId;
-    }
-
-    public String getStudentName() {
-        return studentName;
-    }
-
-    public String getProfessorName() {
-        return professorName;
-    }
-
-    public String getRequestType() {
-        return requestType;
-    }
-
-    public String getCourseTitle() {
-        return courseTitle;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public Date getSubmissionDate() {
-        return submissionDate;
-    }
-
- 
-    public void setRequestId(int requestId) {
-        this.requestId = requestId;
-    }
-
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
-    }
-
-    public void setProfessorName(String professorName) {
-        this.professorName = professorName;
-    }
-
-    public void setRequestType(String requestType) {
-        this.requestType = requestType;
-    }
-
-    public void setCourseTitle(String courseTitle) {
+        this.courseId = courseId;
         this.courseTitle = courseTitle;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public int getRequestId() { return requestId; }
+    public int getStudentId() { return studentId; }
+    public String getStudentName() { return studentName; }
+    public int getProfessorId() { return professorId; }
+    public String getProfessorName() { return professorName; }
+    public int getCourseId() { return courseId; }
+    public String getCourseTitle() { return courseTitle; }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
-    public void setSubmissionDate(Date submissionDate) {
-        this.submissionDate = submissionDate;
-    }
+    public void setRequestId(int requestId) { this.requestId = requestId; }
+    public void setStudentId(int studentId) { this.studentId = studentId; }
+    public void setStudentName(String studentName) { this.studentName = studentName; }
+    public void setProfessorId(int professorId) { this.professorId = professorId; }
+    public void setProfessorName(String professorName) { this.professorName = professorName; }
+    public void setCourseId(int courseId) { this.courseId = courseId; }
+    public void setCourseTitle(String courseTitle) { this.courseTitle = courseTitle; }
 }

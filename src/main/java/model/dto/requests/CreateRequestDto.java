@@ -1,84 +1,21 @@
 package model.dto.requests;
 
-import java.sql.Date;
-
 public class CreateRequestDto {
-    private String studentUsername;
-    private String professorUsername;
-    private String requestType;
-    private String courseCode;
-    private String description;
-    private String status;
-    private Date submissionDate;
+    private int studentId;
+    private int professorId;
+    private int courseId;
 
-
-    public CreateRequestDto(String studentUsername, String professorUsername,
-                            String requestType, String courseCode,
-                            String description, String status, Date submissionDate) {
-        this.studentUsername = studentUsername;
-        this.professorUsername = professorUsername;
-        this.requestType = requestType;
-        this.courseCode = courseCode;
-        this.description = description;
-        this.status = status;
-        this.submissionDate = submissionDate;
+    public CreateRequestDto(int studentId, int professorId, int courseId) {
+        this.studentId = studentId;
+        this.professorId = professorId;
+        this.courseId = courseId;
     }
 
+    public int getStudentId() { return studentId; }
+    public int getProfessorId() { return professorId; }
+    public int getCourseId() { return courseId; }
 
-    public String getStudentUsername() {
-        return studentUsername;
-    }
-
-    public String getProfessorUsername() {
-        return professorUsername;
-    }
-
-    public String getRequestType() {
-        return requestType;
-    }
-
-    public String getCourseCode() {
-        return courseCode;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public Date getSubmissionDate() {
-        return submissionDate;
-    }
-
-
-    public void setStudentUsername(String studentUsername) {
-        this.studentUsername = studentUsername;
-    }
-
-    public void setProfessorUsername(String professorUsername) {
-        this.professorUsername = professorUsername;
-    }
-
-    public void setRequestType(String requestType) {
-        this.requestType = requestType;
-    }
-
-    public void setCourseCode(String courseCode) {
-        this.courseCode = courseCode;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public void setSubmissionDate(Date submissionDate) {
-        this.submissionDate = submissionDate;
-    }
+    public void setStudentId(int studentId) { this.studentId = studentId; }
+    public void setProfessorId(int professorId) { this.professorId = professorId; }
+    public void setCourseId(int courseId) { this.courseId = courseId; }
 }
