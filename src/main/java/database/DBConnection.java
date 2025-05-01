@@ -9,7 +9,7 @@ public class DBConnection {
     private static Connection connection = null;
 
     public static Connection getConnection(){
-        String dbUrl = "jdbc:postgresql://localhost/youthCenterDB";
+        String dbUrl = "jdbc:postgresql://localhost/youthcenterdb";
         String user = "java";
         String password = "123";
 

@@ -9,22 +9,16 @@ public class CreateStudentsDto {
     private String surname;
     private String email;
     private Date birthdate;
-    private String phoneNumber;
-    private String address;
-    private String gender;
-    private String biographicalInfo;
 
-    public CreateStudentsDto(String username, String password, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender, String biographicalInfo) {
+
+    public CreateStudentsDto(String username, String password, String name, String surname, String email, Date birthdate) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.birthdate = birthdate;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
-        this.gender = gender;
-        this.biographicalInfo = biographicalInfo;
+
     }
 
     public String getUsername() {
@@ -51,22 +45,6 @@ public class CreateStudentsDto {
         return birthdate;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public String getBiographicalInfo() {
-        return biographicalInfo;
-    }
-
     public void setUsername(String username) {
         this.username = username;
     }
@@ -91,19 +69,4 @@ public class CreateStudentsDto {
         this.birthdate = birthdate;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public void setBiographicalInfo(String biographicalInfo) {
-        this.biographicalInfo = biographicalInfo;
-    }
 }

@@ -12,8 +12,9 @@ public class UpdateStudentsDto {
     private String address;
     private String gender;
     private String biographicalInfo;
+    private int id;
 
-    public UpdateStudentsDto(String password, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender, String biographicalInfo) {
+    public UpdateStudentsDto(String password, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender, String biographicalInfo,int id) {
         this.password = password;
         this.name = name;
         this.surname = surname;
@@ -23,6 +24,7 @@ public class UpdateStudentsDto {
         this.address = address;
         this.gender = gender;
         this.biographicalInfo = biographicalInfo;
+        this.id = id;
     }
 
     public String getPassword() {
@@ -95,5 +97,9 @@ public class UpdateStudentsDto {
 
     public void setBiographicalInfo(String biographicalInfo) {
         this.biographicalInfo = biographicalInfo;
+    }
+
+    public int getId() {
+        return id;
     }
 }

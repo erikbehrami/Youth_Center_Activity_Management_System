@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfileController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" stylesheets="@../css/profile.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfileController">
 
     <AnchorPane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #101935;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <fx:include source="navBar.fxml" />
@@ -173,7 +173,7 @@
               </font>
           </Button>
    
-             <Button layoutX="14.0" layoutY="63.0" onAction="#handleGoBack" text="Go Back" />
+             <Button layoutX="14.0" layoutY="63.0" onAction="#handleGoBack" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0.5; -fx-border-radius: 25; -fx-background-radius: 25;" text="Go Back" />
           </AnchorPane>
       </children>
    </StackPane>
