@@ -1,64 +1,45 @@
 package repository;
 
-import database.DBConnection;
 import model.ContactMessages;
 import model.dto.contactMessage.CreateContactMessageDto;
 
 import java.sql.*;
-import java.util.ArrayList;
 
-public class ContactMessagesRepository {
-    private Connection connection;
+public class ContactMessagesRepository extends BaseRepository<ContactMessages,CreateContactMessageDto, Object> {
 
     public ContactMessagesRepository(){
-        this.connection = DBConnection.getConnection();
+        super("contact_messages");
     }
 
-    public ArrayList<ContactMessages> getAll(){
-        String query = "select * from contact_messages";
-        ArrayList<ContactMessages> contactMessages = new ArrayList<>();
-        try{
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-            while(resultSet.next()){
-                contactMessages.add(ContactMessages.getInstance(resultSet));
+    ContactMessages fromResultSet(ResultSet res) throws SQLException{
+        return ContactMessages.getInstance(res);
+    }
+
+    public ContactMessages create(CreateContactMessageDto createContactMessageDto) {
+        String query = "insert into contact_messages (name, email, message, sentAt) values (?, ?, ?, ?)";
+
+        try {
+            PreparedStatement pstm =
+                    this.connection.prepareStatement(
+                            query, Statement.RETURN_GENERATED_KEYS);
+            pstm.setString(1, createContactMessageDto.getName());
+            pstm.setString(2, createContactMessageDto.getEmail());
+            pstm.setString(3, createContactMessageDto.getMessage());
+            java.util.Date sentAt = createContactMessageDto.getSentAt();
+            pstm.setTimestamp(4, new java.sql.Timestamp(sentAt.getTime()));
+            pstm.execute();
+            ResultSet res = pstm.getGeneratedKeys();
+            if (res.next()) {
+                int id = res.getInt(1);
+                return this.getById(id);
             }
-            resultSet.close();
-            statement.close();
-            return contactMessages;
-        }catch (SQLException e)
-        {
-            return null;
-        }
-    }
-
-    public boolean create(CreateContactMessageDto CCMdto) {
-        String query = "insert into feed_back (name, email, message) values (?, ?, ?)";
-        try {
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, CCMdto.getName());
-            statement.setString(2, CCMdto.getEmail());
-            statement.setString(3, CCMdto.getMessage());
-            boolean result = statement.executeUpdate() > 0;
-            statement.close();
-            return result;
         } catch (SQLException e) {
-            return false;
+            System.out.println(e.getMessage());
         }
+        return null;
     }
 
-    public boolean delete(int id) {
-        String query = "DELETE FROM contact_messages WHERE id = ?";
-        try {
-            PreparedStatement statement = this.connection.prepareStatement(query);
-            statement.setInt(1, id);
-            boolean result = statement.executeUpdate() > 0;
-            statement.close();
-            return result;
-        } catch (SQLException e) {
-            return false;
-        }
+    public ContactMessages update(Object object) {
+        return null;
     }
-
-
 }
