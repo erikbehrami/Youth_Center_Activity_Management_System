@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class UpdateAdminsDto {
 
+    private int id;
     private String username;
     private String password;
     private String name;
@@ -14,7 +15,8 @@ public class UpdateAdminsDto {
     private String address;
     private String gender;
 
-    public UpdateAdminsDto(String username, String password, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender) {
+    public UpdateAdminsDto(int id, String username, String password, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
@@ -25,6 +27,8 @@ public class UpdateAdminsDto {
         this.address = address;
         this.gender = gender;
     }
+
+    public int getId() { return id; }
 
     public String getUsername() {
         return username;

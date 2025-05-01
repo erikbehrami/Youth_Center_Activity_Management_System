@@ -2,17 +2,19 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AccountController">
     <children>
-        <AnchorPane prefHeight="1200.0" prefWidth="369.0" style="-fx-background-color: #101935;">
+        <AnchorPane prefHeight="650.0" prefWidth="369.0" style="-fx-background-color: #101935;">
             <children>
                 <ImageView fitHeight="160.0" fitWidth="186.0" layoutX="91.0" layoutY="188.0" style="-fx-z-index: 1;">
                     <image>
@@ -25,51 +27,89 @@
                     </font>
                 </Text>
             </children></AnchorPane>
-        <TextField layoutX="416.0" layoutY="226.0" prefHeight="32.0" prefWidth="223.0" />
-        <TextField layoutX="416.0" layoutY="283.0" prefHeight="32.0" prefWidth="223.0" />
-        <Text fill="#0c1821" layoutX="416.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign Up">
-            <font>
-                <Font name="System Bold" size="24.0" />
-            </font>
-        </Text>
-        <Text fill="#0b171fbc" layoutX="415.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your sign up details below">
+        <Text fill="#0b171fbc" layoutX="679.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?" AnchorPane.rightAnchor="108.5" AnchorPane.topAnchor="21.208984375">
             <font>
                 <Font size="10.0" />
             </font>
         </Text>
-        <Text fill="#0b171fbc" layoutX="416.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name">
-            <font>
-                <Font size="10.0" />
-            </font>
-        </Text>
-        <Text fill="#0b171fbd" layoutX="416.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email address">
-            <font>
-                <Font size="10.0" />
-            </font>
-        </Text>
-        <CheckBox layoutX="415.0" layoutY="442.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="141.0" text="Accept Terms &amp; Conditions" textFill="#0b171fcc">
-            <font>
-                <Font size="10.0" />
-            </font>
-        </CheckBox>
-        <Button layoutX="415.0" layoutY="469.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" text="Sign Up" textFill="WHITE" />
-        <Text fill="#0b171fbc" layoutX="660.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?">
-            <font>
-                <Font size="10.0" />
-            </font>
-        </Text>
-        <Button layoutX="786.0" layoutY="15.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" text="Log In" textFill="#0c1821" />
-      <Text fill="#0b171fbd" layoutX="417.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Text>
-      <Text fill="#0b171fbd" layoutX="417.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Text>
-      <PasswordField layoutX="416.0" layoutY="396.0" prefHeight="32.0" prefWidth="223.0" />
-      <PasswordField layoutX="416.0" layoutY="340.0" prefHeight="32.0" prefWidth="223.0" />
+        <Button fx:id="LogInButton" layoutX="786.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleSignIn" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" text="Log In" textFill="#0c1821" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="16.0" />
+      <VBox layoutX="415.0" layoutY="93.0" prefHeight="464.0" prefWidth="223.0" spacing="5.0">
+         <children>
+            <AnchorPane prefHeight="57.0" prefWidth="223.0">
+               <children>
+                    <Text fill="#0c1821" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign Up">
+                        <font>
+                            <Font name="System Bold" size="24.0" />
+                        </font>
+                    </Text>
+                    <Text fill="#0b171fbc" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your sign up details below">
+                        <font>
+                            <Font size="10.0" />
+                        </font>
+                    </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="60.0" prefWidth="223.0">
+               <children>
+                    <Text fill="#0b171fbc" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name">
+                        <font>
+                            <Font size="10.0" />
+                        </font>
+                    </Text>
+                    <TextField layoutY="22.0" prefHeight="32.0" prefWidth="223.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="60.0" prefWidth="223.0">
+               <children>
+                  <Text fill="#0b171fbc" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email address">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
+                  <TextField layoutY="22.0" prefHeight="32.0" prefWidth="223.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane maxWidth="223.0" prefHeight="60.0" prefWidth="223.0">
+               <children>
+                  <Text fill="#0b171fbc" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Birthdate">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
+                  <DatePicker layoutY="22.0" prefHeight="32.0" prefWidth="223.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="60.0" prefWidth="223.0">
+               <children>
+                  <Text fill="#0b171fbc" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
+                  <PasswordField layoutY="22.0" prefHeight="32.0" prefWidth="223.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="60.0" prefWidth="223.0">
+               <children>
+                  <Text fill="#0b171fbc" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
+                  <PasswordField layoutY="22.0" prefHeight="32.0" prefWidth="223.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="50.0" prefWidth="223.0">
+               <children>
+                    <Button layoutY="36.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" text="Sign Up" textFill="WHITE" />
+                    <CheckBox layoutY="7.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="141.0" text="Accept Terms &amp; Conditions" textFill="#0b171fcc">
+                        <font>
+                            <Font size="10.0" />
+                        </font>
+                    </CheckBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
     </children>
 </AnchorPane>

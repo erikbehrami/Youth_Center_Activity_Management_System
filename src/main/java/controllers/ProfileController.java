@@ -1,6 +1,6 @@
 package controllers;
 
-import app.Navigator;
+import utils.Navigator;
 import services.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;

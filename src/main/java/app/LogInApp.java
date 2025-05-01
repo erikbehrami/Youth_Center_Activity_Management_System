@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import utils.Navigator;
 
 public class LogInApp extends Application {
     public void start(Stage stage){

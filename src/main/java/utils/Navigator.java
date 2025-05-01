@@ -1,4 +1,4 @@
-package app;
+package utils;
 
 interface OverallPages {
     String PROFILE = "/fxml/profile.fxml";

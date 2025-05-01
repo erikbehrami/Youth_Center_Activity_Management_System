@@ -1,6 +1,6 @@
 package services;
 
-import app.Navigator;
+import utils.Navigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

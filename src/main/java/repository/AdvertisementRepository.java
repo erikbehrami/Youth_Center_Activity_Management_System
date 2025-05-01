@@ -1,105 +1,44 @@
 package repository;
 
-import database.DBConnection;
 import model.Advertisement;
+import model.dto.admins.UpdateAdminsDto;
 import model.dto.advertisement.CreateAdvertisementDto;
-import model.dto.advertisement.UpdateAdvertisementDto;
 
 import java.sql.*;
-import java.util.ArrayList;
 
-public class AdvertisementRepository {
-    private Connection connection;
+public class AdvertisementRepository extends BaseRepository<Advertisement, CreateAdvertisementDto, UpdateAdminsDto>{
 
     public AdvertisementRepository() {
-        this.connection = DBConnection.getConnection();
+        super("advertisements");
     }
 
-    // Get all advertisements
-    public ArrayList<Advertisement> getAll() {
-        String query = "SELECT * FROM advertisements";
-        ArrayList<Advertisement> adsList = new ArrayList<>();
-        try {
-            Statement statement = this.connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-
-            while (resultSet.next()) {
-                adsList.add(Advertisement.getInstance(resultSet));
-            }
-
-            statement.close();
-            resultSet.close();
-            return adsList;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    // Get advertisement by ID
-    public Advertisement getById(int id) {
-        String query = "SELECT * FROM advertisements WHERE id = ?";
-        try {
-            PreparedStatement statement = this.connection.prepareStatement(query);
-            statement.setInt(1, id);
-            ResultSet resultSet = statement.executeQuery();
-
-            while (resultSet.next()) {
-                return Advertisement.getInstance(resultSet);
-            }
-
-            statement.close();
-            resultSet.close();
-            return null;
-        } catch (SQLException e) {
-            return null;
-        }
+    Advertisement fromResultSet(ResultSet res) throws SQLException{
+        return Advertisement.getInstance(res);
     }
 
     // Create new advertisement
-    public boolean create(CreateAdvertisementDto createAdDto) {
+    public Advertisement create(CreateAdvertisementDto createAdDto) {
         String query = "INSERT INTO advertisements (sponsorName, adTitle, adImageUrl) VALUES (?, ?, ?)";
-        try {
-            PreparedStatement statement = this.connection.prepareStatement(query);
-            statement.setString(1, createAdDto.getSponsorName());
-            statement.setString(2, createAdDto.getAdTitle());
-            statement.setString(3, createAdDto.getAdImageUrl());
-
-            boolean result = statement.executeUpdate() > 0;
-            statement.close();
-            return result;
-        } catch (SQLException e) {
-            return false;
+        try{
+            PreparedStatement pstm =
+                    this.connection.prepareStatement(
+                            query, Statement.RETURN_GENERATED_KEYS);
+            pstm.setString(1, createAdDto.getSponsorName());
+            pstm.setString(2, createAdDto.getAdTitle());
+            pstm.setInt(3, createAdDto.getAdImageUrl().length());
+            pstm.execute();
+            ResultSet res = pstm.getGeneratedKeys();
+            if(res.next()){
+                int id = res.getInt(1);
+                return this.getById(id);
+            }
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
         }
+        return null;
     }
 
-    // Update existing advertisement using DTO
-    public boolean update(UpdateAdvertisementDto updateAdDto) {
-        String query = "UPDATE advertisements SET sponsorName = ?, adTitle = ?, adImageUrl = ? WHERE id = ?";
-        try {
-            PreparedStatement statement = this.connection.prepareStatement(query);
-            statement.setString(1, updateAdDto.getSponsorName());
-            statement.setString(2, updateAdDto.getAdTitle());
-            statement.setString(3, updateAdDto.getAdImageUrl());
-
-            boolean result = statement.executeUpdate() > 0;
-            statement.close();
-            return result;
-        } catch (SQLException e) {
-            return false;
-        }
-    }
-
-    // Delete advertisement
-    public boolean delete(int id) {
-        String query = "DELETE FROM advertisements WHERE id = ?";
-        try {
-            PreparedStatement statement = this.connection.prepareStatement(query);
-            statement.setInt(1, id);
-            boolean result = statement.executeUpdate() > 0;
-            statement.close();
-            return result;
-        } catch (SQLException e) {
-            return false;
-        }
+    public Advertisement update(UpdateAdminsDto updateAdminsDto) {
+        return null;
     }
 }

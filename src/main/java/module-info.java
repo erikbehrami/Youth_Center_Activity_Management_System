@@ -10,4 +10,6 @@ module com.example.demo {
     exports controllers;
     opens database to javafx.fxml;
     exports database;
+    exports utils;
+    opens utils to javafx.fxml;
 }
