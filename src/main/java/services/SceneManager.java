@@ -14,24 +14,40 @@ import java.util.HashMap;
 public class SceneManager {
     private static Scene scene;
     private static HashMap<String, Scene> scenes = new HashMap<>();
+    private static Stage primaryStage;  // Add this to reference your primary stage
 
+    // Get the last scene stored
     public static Scene getLastScene() {
         return SceneManager.scene;
     }
 
+    // Set the last scene
     public static void setLastScene(Scene currentScene) {
         SceneManager.scene = currentScene;
     }
 
+    // Store the new scene in the scenes map
     public static void setScenes(String path, Scene scene) {
         SceneManager.scenes.put(path, scene);
     }
 
+    // Switch scene based on ActionEvent
     public static void switchScene(ActionEvent event, String fxmlPath, String title) {
         try {
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene currentScene = currentStage.getScene();
-            setLastScene(currentScene);
+            Stage currentStage;
+
+            // If event is not null, use it to get the current stage
+            if (event != null) {
+                currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene currentScene = currentStage.getScene();
+                setLastScene(currentScene);
+            } else {
+                // If event is null, fallback to the primaryStage
+                if (primaryStage == null) {
+                    throw new IllegalStateException("Primary stage is not initialized.");
+                }
+                currentStage = primaryStage;
+            }
 
             Scene newScene;
             if (scenes.containsKey(fxmlPath)) {
@@ -49,6 +65,13 @@ public class SceneManager {
 
         } catch (IOException e) {
             System.out.println("Error switching scene: " + e.getMessage());
+        } catch (IllegalStateException e) {
+            System.out.println("Error: " + e.getMessage());
         }
+    }
+
+    // Initialize the primary stage (you can call this in your main class)
+    public static void setPrimaryStage(Stage stage) {
+        primaryStage = stage;
     }
 }

@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import services.SceneManager;
 import utils.Navigator;
 
 public class LogInApp extends Application {
@@ -12,8 +13,9 @@ public class LogInApp extends Application {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(Navigator.SIGN_IN));
             Scene scene = new Scene(fxmlLoader.load());
+            SceneManager.setPrimaryStage(stage);
             stage.setTitle("Log In");
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/youthcenter_logo.png")));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream(Navigator.LOGO)));
             stage.setResizable(false);
             stage.setScene(scene);
             stage.show();

@@ -118,18 +118,24 @@
             </AnchorPane>
             <AnchorPane prefHeight="68.0" prefWidth="187.0">
                <children>
-                    <Button layoutY="36.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" text="Sign Up" textFill="WHITE" />
-                    <CheckBox layoutY="7.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="141.0" text="Accept Terms &amp; Conditions" textFill="#0b171fcc">
+                    <Button layoutY="36.0" mnemonicParsing="false" onAction="#signUp" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" text="Sign Up" textFill="WHITE" />
+                    <CheckBox fx:id="termsAndConditionsCheckBox" layoutY="1.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="141.0" text="Accept Terms &amp; Conditions" textFill="#0b171fcc">
                         <font>
                             <Font size="10.0" />
                         </font>
                     </CheckBox>
+                  <Label fx:id="termsAndConditions" layoutY="18.0" text="Please accept the terms and conditions to continue." textFill="WHITE">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>
       </VBox>
-      <Label layoutX="650.0" layoutY="280.0" text="Label" />
-      <Label layoutX="650.0" layoutY="403.0" text="Label" />
-      <Label layoutX="650.0" layoutY="162.0" text="Username only allows A-Z 0-9 . _" textFill="RED" />
+      <Label fx:id="passwordsMessage" layoutX="650.0" layoutY="403.0" text="Passwords do not equal!" textFill="WHITE">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
     </children>
 </AnchorPane>

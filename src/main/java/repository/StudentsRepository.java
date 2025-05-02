@@ -47,12 +47,19 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
             statement.setString(5, CreateSDto.getEmail());
             statement.setDate(6, CreateSDto.getBirthdate());
 
-            statement.close();
-            ResultSet res = statement.getGeneratedKeys();
-            if(res.next()){
-                int id = res.getInt(1);
-                return this.getById(id);
+            int affectedRows = statement.executeUpdate(); // Execute the insert
+
+            if (affectedRows > 0) {
+                ResultSet res = statement.getGeneratedKeys();
+                if (res.next()) {
+                    int id = res.getInt(1);
+                    statement.close();
+                    return this.getById(id);
+                }
+                res.close();
             }
+
+            statement.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
