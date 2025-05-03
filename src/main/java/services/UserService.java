@@ -1,28 +1,25 @@
 package services;
 
-import model.Students;
 import model.dto.students.CreateStudentsDto;
 import repository.StudentsRepository;
-
-import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class UserService {
 
-StudentsRepository studentsRepository = new StudentsRepository();
+    private final StudentsRepository studentsRepository = new StudentsRepository();
 
-
-public boolean isValidEmail(String email){
-    final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
-    final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
+    public boolean isValidEmail(String email) {
+        final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+        final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
 
         return email != null && EMAIL_PATTERN.matcher(email).matches();
-}
+    }
 
-    public boolean isValidUsername(String username){
+    public boolean isValidUsername(String username) {
         final String USERNAME_REGEX = "^[a-zA-Z0-9._]{3,20}$";
-     final Pattern USERNAME_PATTERN = Pattern.compile(USERNAME_REGEX);
-        return USERNAME_PATTERN.matcher(username).matches() && studentsRepository.getByUsername(username)==null;
+        final Pattern USERNAME_PATTERN = Pattern.compile(USERNAME_REGEX);
+
+        return USERNAME_PATTERN.matcher(username).matches() && studentsRepository.getByUsername(username) == null;
     }
 
     public boolean isValidPassword(String password) {
@@ -34,14 +31,7 @@ public boolean isValidEmail(String email){
         return PASSWORD_PATTERN.matcher(password).matches();
     }
 
-    public boolean createUser(CreateStudentsDto createStudentsDto){
-if(studentsRepository.create(createStudentsDto)==null){
-    return false;
-}
-return true;
+    public boolean createUser(CreateStudentsDto createStudentsDto) {
+        return studentsRepository.create(createStudentsDto) != null;
     }
-
-
-
-
 }

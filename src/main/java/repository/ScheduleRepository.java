@@ -1,6 +1,6 @@
 package repository;
 
-import database.DBConnection;
+import database.DBConnector;
 import model.Schedules;
 import model.dto.schedule.CreateScheduleDto;
 import model.dto.schedule.UpdateScheduleDto;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ScheduleRepository {
     private Connection connection;
 
-    public ScheduleRepository(){this.connection = DBConnection.getConnection();}
+    public ScheduleRepository(){this.connection = DBConnector.getConnection();}
 
     //    getAll Schedules method
     public ArrayList<Schedules> getAll(){

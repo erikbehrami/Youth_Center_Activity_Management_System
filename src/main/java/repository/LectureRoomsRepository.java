@@ -1,6 +1,6 @@
 package repository;
 
-import database.DBConnection;
+import database.DBConnector;
 import model.LectureRooms;
 import model.dto.lectureRooms.CreateLectureRoomsDto;
 import model.dto.lectureRooms.UpdateLectureRoomsDto;
@@ -12,7 +12,7 @@ public class LectureRoomsRepository {
 
 private Connection connection;
 public LectureRoomsRepository(){
-    this.connection= DBConnection.getConnection();
+    this.connection= DBConnector.getConnection();
 }
 
 public ArrayList<LectureRooms> getAll(){

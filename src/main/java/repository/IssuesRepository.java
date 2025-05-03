@@ -1,6 +1,6 @@
 package repository;
 
-import database.DBConnection;
+import database.DBConnector;
 import model.Issues;
 import model.dto.issues.CreateIssuesDto;
 
@@ -11,7 +11,7 @@ public class IssuesRepository {
     private Connection connection;
 
     public IssuesRepository(){
-        this.connection = DBConnection.getConnection();
+        this.connection = DBConnector.getConnection();
     }
 
     public ArrayList<Issues> getAll(){

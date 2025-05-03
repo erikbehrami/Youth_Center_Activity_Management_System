@@ -70,7 +70,7 @@
                     <children>
                         <AnchorPane layoutY="11.0" minWidth="0.0" prefHeight="150.0" prefWidth="295.0" style="-fx-background-color: #101935;" HBox.hgrow="ALWAYS">
                             <children>
-                                <Label layoutX="172.0" layoutY="32.0" text="Total Students" textFill="WHITE" AnchorPane.rightAnchor="21.6" AnchorPane.topAnchor="25.0">
+                                <Label layoutX="172.0" layoutY="32.0" text="%admin.TotalStudents" textFill="WHITE" AnchorPane.rightAnchor="21.6" AnchorPane.topAnchor="25.0">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
@@ -89,7 +89,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="318.5" layoutY="11.0" minHeight="0.0" minWidth="0.0" prefHeight="153.0" prefWidth="295.0" style="-fx-background-color: #101935;" HBox.hgrow="ALWAYS">
                             <children>
-                                <Label layoutX="172.0" layoutY="32.0" text="Total Teachers" textFill="WHITE" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="25.0">
+                                <Label layoutX="172.0" layoutY="32.0" text="%admin.TotalTeachers" textFill="WHITE" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="25.0">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
@@ -108,7 +108,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="637.0" layoutY="11.0" minHeight="0.0" minWidth="0.0" prefHeight="150.0" prefWidth="295.0" style="-fx-background-color: #101935;" HBox.hgrow="ALWAYS">
                             <children>
-                                <Label layoutX="172.0" layoutY="32.0" text="Total Courses" textFill="WHITE" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="25.0">
+                                <Label layoutX="172.0" layoutY="32.0" text="%admin.TotalCourses" textFill="WHITE" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="25.0">
                                     <font>
                                         <Font size="16.0" />
                                     </font>

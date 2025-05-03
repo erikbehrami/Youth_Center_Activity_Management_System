@@ -1,30 +1,28 @@
 package controllers;
 
 import utils.Navigator;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import services.SceneManager;
 
 
-public class AdminController {
+public class AdminController extends BaseController {
 
     @FXML
-    public void handleAdminDashboard(ActionEvent event) {
-        SceneManager.switchScene(event, Navigator.ADMIN_DASHBOARD, "Admin Dashboard");
+    private void handleAdminDashboard() {
+        sceneManager.switchScene(Navigator.ADMIN_DASHBOARD, "Admin Dashboard");
     }
 
     @FXML
-    public void handleAdminProfile(ActionEvent event) {
-        SceneManager.switchScene(event, Navigator.PROFILE, "Admin Profile");
+    private void handleAdminProfile() {
+        sceneManager.switchScene(Navigator.PROFILE, "Admin Profile");
     }
 
     @FXML
-    public void handleAdminStudents(ActionEvent event) {
-        SceneManager.switchScene(event, Navigator.ADMIN_STUDENTS, "Admin Students");
+    private void handleAdminStudents() {
+        sceneManager.switchScene(Navigator.ADMIN_STUDENTS, "Admin Students");
     }
 
     @FXML
-    public void handleAdminTeachers(ActionEvent event) {
-        SceneManager.switchScene(event, Navigator.ADMIN_TEACHERS, "Admin Teachers");
+    private void handleAdminTeachers() {
+        sceneManager.switchScene(Navigator.ADMIN_TEACHERS, "Admin Teachers");
     }
 }

@@ -1,6 +1,6 @@
 package repository;
 
-import database.DBConnection;
+import database.DBConnector;
 import model.Requests;
 import model.dto.requests.CreateRequestDto;
 import model.dto.requests.UpdateRequestDto;
@@ -13,7 +13,7 @@ public class RequestsRepository {
     private final Connection connection;
 
     public RequestsRepository() {
-        this.connection = DBConnection.getConnection();
+        this.connection = DBConnector.getConnection();
     }
 
     public List<Requests> getAll() {

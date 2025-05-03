@@ -4,7 +4,9 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -22,28 +24,34 @@
                         <Image url="@../images/youthcenter_logo.png" />
                     </image>
                 </ImageView>
-                <Text fill="WHITE" fontSmoothingType="LCD" layoutX="22.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: sans-serif;" text="YouthCenter Management" textAlignment="CENTER" wrappingWidth="324.8000366210938">
+                <Text fill="WHITE" fontSmoothingType="LCD" layoutX="22.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: sans-serif;" text="Youth Center Management" textAlignment="CENTER" wrappingWidth="324.8000366210938">
                     <font>
                         <Font name="System Bold" size="30.0" />
                     </font>
                 </Text>
             </children></AnchorPane>
-        <Text fill="#0b171fbc" layoutX="679.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?" AnchorPane.rightAnchor="108.5" AnchorPane.topAnchor="21.208984375">
+        <Text fill="#0b171fbc" layoutX="679.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%signup.haveAcc" AnchorPane.rightAnchor="108.5" AnchorPane.topAnchor="21.208984375">
             <font>
                 <Font size="10.0" />
             </font>
         </Text>
-        <Button fx:id="LogInButton" layoutX="786.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleSignIn" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" text="Log In" textFill="#0c1821" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="16.0" />
+        <SplitMenuButton layoutX="810.0" layoutY="48.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" text="%language" textFill="#0c1821" textOverrun="CLIP">
+            <items>
+                <MenuItem fx:id="ENGLISH" mnemonicParsing="false" onAction="#handleENLanguageClick" text="EN" />
+                <MenuItem fx:id="ALBANIAN" mnemonicParsing="false" onAction="#handleSQLanguageClick" text="SQ" />
+            </items>
+        </SplitMenuButton>
+        <Button fx:id="LogInButton" layoutX="786.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleSignIn" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" text="%signup.signin" textFill="#0c1821" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="16.0" />
       <VBox layoutX="415.0" layoutY="82.0" prefHeight="464.0" prefWidth="223.0" spacing="5.0">
          <children>
             <AnchorPane prefHeight="57.0" prefWidth="223.0">
                <children>
-                    <Text fill="#0c1821" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign Up">
+                    <Text fill="#0c1821" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%signup.title">
                         <font>
                             <Font name="System Bold" size="24.0" />
                         </font>
                     </Text>
-                    <Text fill="#0b171fbc" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your sign up details below">
+                    <Text fill="#0b171fbc" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%signup.details">
                         <font>
                             <Font size="10.0" />
                         </font>
@@ -52,7 +60,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="60.0" prefWidth="223.0">
                <children>
-                  <Text fill="#0b171fbc" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+                  <Text fill="#0b171fbc" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%signup.username">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -62,14 +70,14 @@
             </AnchorPane>
             <AnchorPane prefHeight="60.0" prefWidth="223.0">
                <children>
-                    <Text fill="#0b171fbc" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                    <Text fill="#0b171fbc" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%signup.name">
                         <font>
                             <Font size="10.0" />
                         </font>
                     </Text>
                     <TextField fx:id="name" layoutY="22.0" prefHeight="32.0" prefWidth="107.0" />
                   <TextField fx:id="surname" layoutX="115.0" layoutY="22.0" prefHeight="32.0" prefWidth="107.0" />
-                  <Text fill="#0b171fbc" layoutX="115.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Surname">
+                  <Text fill="#0b171fbc" layoutX="115.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%signup.surname">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -78,7 +86,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="60.0" prefWidth="223.0">
                <children>
-                  <Text fill="#0b171fbc" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email address">
+                  <Text fill="#0b171fbc" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%signup.email">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -88,7 +96,7 @@
             </AnchorPane>
             <AnchorPane maxWidth="223.0" prefHeight="60.0" prefWidth="223.0">
                <children>
-                  <Text fill="#0b171fbc" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Birthdate">
+                  <Text fill="#0b171fbc" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%signup.birthdate">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -98,7 +106,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="60.0" prefWidth="223.0">
                <children>
-                  <Text fill="#0b171fbc" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                  <Text fill="#0b171fbc" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%signup.password">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -108,7 +116,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="60.0" prefWidth="223.0">
                <children>
-                  <Text fill="#0b171fbc" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password">
+                  <Text fill="#0b171fbc" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%signup.confirmPassword">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -118,8 +126,8 @@
             </AnchorPane>
             <AnchorPane prefHeight="68.0" prefWidth="187.0">
                <children>
-                    <Button layoutY="36.0" mnemonicParsing="false" onAction="#signUp" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" text="Sign Up" textFill="WHITE" />
-                    <CheckBox fx:id="termsAndConditionsCheckBox" layoutY="1.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="141.0" text="Accept Terms &amp; Conditions" textFill="#0b171fcc">
+                    <Button layoutY="36.0" mnemonicParsing="false" onAction="#signUp" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" text="%signup.btnSignUp" textFill="WHITE" />
+                    <CheckBox fx:id="termsAndConditionsCheckBox" layoutY="1.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="223.0" text="%signup.acceptTerms" textFill="#0b171fcc">
                         <font>
                             <Font size="10.0" />
                         </font>

@@ -1,14 +1,14 @@
 package repository;
 
-import database.DBConnection;
+import database.DBConnector;
 import java.sql.*;
 import java.util.ArrayList;
 
 abstract class BaseRepository<Model, CreateModelDto, UpdateModelDto> {
     protected Connection connection;
-    private String tableName;
+    private final String tableName;
     public BaseRepository(String tableName){
-        this.connection = DBConnection.getConnection();
+        this.connection = DBConnector.getConnection();
         this.tableName = tableName;
     }
     abstract Model fromResultSet(ResultSet res) throws SQLException;

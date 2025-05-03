@@ -1,8 +1,7 @@
 package repository;
 
-import database.DBConnection;
+import database.DBConnector;
 import model.Courses;
-import model.Enrolled;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ public class CourseRepository {
 
     private Connection connection;
     public CourseRepository(){
-        this.connection= DBConnection.getConnection();
+        this.connection= DBConnector.getConnection();
     }
 
     public ArrayList<Courses> getAll(){

@@ -1,7 +1,6 @@
 package repository;
 
-import database.DBConnection;
-import model.Admins;
+import database.DBConnector;
 import model.Faqs;
 import model.dto.faqs.CreateFaqsDto;
 import model.dto.faqs.UpdateFaqsDto;
@@ -13,7 +12,7 @@ public class FaqsRepository {
     private Connection connection;
 
     public FaqsRepository() {
-        this.connection = DBConnection.getConnection();
+        this.connection = DBConnector.getConnection();
     }
 
     public ArrayList<Faqs> getAll() {

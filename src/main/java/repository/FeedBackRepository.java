@@ -1,6 +1,6 @@
 package repository;
 
-import database.DBConnection;
+import database.DBConnector;
 import model.FeedBack;
 import model.dto.feedBack.CreateFeedBackDto;
 
@@ -11,7 +11,7 @@ public class FeedBackRepository {
     private Connection connection;
 
     public FeedBackRepository() {
-        this.connection = DBConnection.getConnection();
+        this.connection = DBConnector.getConnection();
     }
 
     public ArrayList<FeedBack> getAll(){

@@ -1,13 +1,11 @@
 package repository;
 
-import database.DBConnection;
 import model.Enrolled;
-import model.LectureRooms;
 import model.dto.enrolled.CreateEnrolledDto;
 
 
 import java.sql.*;
-import java.util.ArrayList;
+
 public class EnrolledRepository extends BaseRepository<Enrolled, CreateEnrolledDto, Object> {
     public EnrolledRepository() {
         super("enrolled");

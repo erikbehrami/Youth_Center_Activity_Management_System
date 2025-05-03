@@ -5,16 +5,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import services.LanguageManager;
+import services.SceneManager;
 import utils.Navigator;
 
 public class AdminApp extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(Navigator.ADMIN_DASHBOARD));
-            stage.getIcons().add(new Image(getClass().getResourceAsStream(Navigator.LOGO)));
-            stage.setTitle("Admin");
-            Scene scene = new Scene(fxmlLoader.load());
+            LanguageManager languageManager = LanguageManager.getInstance();
+            SceneManager sceneManager = SceneManager.getInstance();
+            sceneManager.setPrimaryStage(stage);
+
+            FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource(Navigator.ADMIN_DASHBOARD));
+            loader.setResources(languageManager.getResourceBundle());
+            Scene scene = new Scene(loader.load());
+
             stage.setScene(scene);
             stage.show();
         }catch (Exception e){

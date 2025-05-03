@@ -1,6 +1,6 @@
 package repository;
 
-import database.DBConnection;
+import database.DBConnector;
 import model.Professors;
 import model.dto.professors.CreateProfessorDto;
 import model.dto.professors.UpdateProfessorDto;
@@ -13,7 +13,7 @@ public class ProfessorsRepository {
     private final Connection connection;
 
     public ProfessorsRepository() {
-        this.connection = DBConnection.getConnection();
+        this.connection = DBConnector.getConnection();
     }
 
 

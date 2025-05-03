@@ -1,6 +1,6 @@
 package repository;
 
-import database.DBConnection;
+import database.DBConnector;
 import model.StudentBadges;
 import model.dto.studentBadges.CreateStudentBadges;
 import java.sql.*;
@@ -11,7 +11,7 @@ public class StudentBadgesRepository {
     private final Connection connection;
 
     public StudentBadgesRepository() {
-        this.connection = DBConnection.getConnection();
+        this.connection = DBConnector.getConnection();
     }
 
     public boolean create(CreateStudentBadges dto) {

@@ -1,5 +1,5 @@
 package controllers;
 
-public class NavBarController {
+public class NavBarController extends BaseController {
 
 }

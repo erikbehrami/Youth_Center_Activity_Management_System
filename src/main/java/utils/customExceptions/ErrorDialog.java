@@ -11,8 +11,6 @@ import utils.Navigator;
 
 
 public class ErrorDialog {
-
-
     public static void showAlert(Alert.AlertType alertType, String message) {
         Alert alert = new Alert(alertType);
         alert.setHeaderText(null);
@@ -60,7 +58,8 @@ public class ErrorDialog {
         }
 
         alert.setOnCloseRequest(event -> {
-            SceneManager.switchScene(null, Navigator.SIGN_IN, "Sign In");
+            SceneManager sceneManager = SceneManager.getInstance();
+            sceneManager.switchScene(Navigator.SIGN_IN, "Sign In");
         });
         alert.showAndWait();
     }

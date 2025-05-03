@@ -1,77 +1,74 @@
 package services;
 
-import utils.Navigator;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
+import utils.Navigator;
 import java.io.IOException;
-import java.util.HashMap;
 
 public class SceneManager {
-    private static Scene scene;
-    private static HashMap<String, Scene> scenes = new HashMap<>();
-    private static Stage primaryStage;  // Add this to reference your primary stage
+    private static SceneManager sceneManager;
+    private final LanguageManager languageManager;
+    private Scene scene;
+    private static Stage primaryStage;
+    private String currentPath;
+    private String lastPath;
+    private String title;
 
-    // Get the last scene stored
-    public static Scene getLastScene() {
-        return SceneManager.scene;
+    private SceneManager(){
+        this.languageManager = LanguageManager.getInstance();
+        this.currentPath = Navigator.SIGN_IN;
+        this.scene = this.init();
     }
 
-    // Set the last scene
-    public static void setLastScene(Scene currentScene) {
-        SceneManager.scene = currentScene;
+    public static SceneManager getInstance(){
+        if(sceneManager == null)
+            sceneManager = new SceneManager();
+        return sceneManager;
     }
 
-    // Store the new scene in the scenes map
-    public static void setScenes(String path, Scene scene) {
-        SceneManager.scenes.put(path, scene);
-    }
-
-    // Switch scene based on ActionEvent
-    public static void switchScene(ActionEvent event, String fxmlPath, String title) {
+    private Scene init(){
         try {
-            Stage currentStage;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(this.currentPath));
+            loader.setResources(this.languageManager.getResourceBundle());
+            this.title = "Sign In";
+            return new Scene(loader.load());
+        }catch (IOException e){
+            return null;
+        }
+    }
 
-            // If event is not null, use it to get the current stage
-            if (event != null) {
-                currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                Scene currentScene = currentStage.getScene();
-                setLastScene(currentScene);
-            } else {
-                // If event is null, fallback to the primaryStage
-                if (primaryStage == null) {
-                    throw new IllegalStateException("Primary stage is not initialized.");
-                }
-                currentStage = primaryStage;
-            }
+    public Scene getScene() {
+        return this.scene;
+    }
 
-            Scene newScene;
-            if (scenes.containsKey(fxmlPath)) {
-                newScene = scenes.get(fxmlPath);
-            } else {
+    public void setPrimaryStage(Stage primaryStage) {
+        SceneManager.primaryStage = primaryStage;
+    }
+
+    public String getLastPath() { return this.lastPath; }
+
+    public void reload(){ switchScene(currentPath, null); }
+
+    public void switchScene(String fxmlPath, String title) {
+        this.lastPath = this.currentPath;
+        this.currentPath = fxmlPath;
+
+        if(title != null) {
+            this.title = title;
+        }
+        try {
                 FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource(fxmlPath));
-                newScene = new Scene(loader.load());
-                setScenes(fxmlPath, newScene);
-            }
+                loader.setResources(this.languageManager.getResourceBundle());
+                scene = new Scene(loader.load());
 
-            currentStage.setScene(newScene);
-            currentStage.setTitle(title);
-            currentStage.getIcons().add(new Image(SceneManager.class.getResourceAsStream(Navigator.LOGO)));
-            currentStage.show();
+                primaryStage.setTitle(this.title);
+                primaryStage.setScene(scene);
 
         } catch (IOException e) {
             System.out.println("Error switching scene: " + e.getMessage());
         } catch (IllegalStateException e) {
             System.out.println("Error: " + e.getMessage());
         }
-    }
-
-    // Initialize the primary stage (you can call this in your main class)
-    public static void setPrimaryStage(Stage stage) {
-        primaryStage = stage;
     }
 }

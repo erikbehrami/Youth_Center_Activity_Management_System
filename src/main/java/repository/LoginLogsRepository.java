@@ -1,6 +1,6 @@
 package repository;
 
-import database.DBConnection;
+import database.DBConnector;
 import model.LoginLogs;
 
 import java.sql.*;
@@ -10,7 +10,7 @@ public class LoginLogsRepository {
     private Connection connection;
 
     public LoginLogsRepository() {
-        this.connection = DBConnection.getConnection();
+        this.connection = DBConnector.getConnection();
     }
 
     public ArrayList<LoginLogs> getAll() {

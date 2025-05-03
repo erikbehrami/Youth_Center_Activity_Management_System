@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -27,7 +29,7 @@
       </AnchorPane>
       <HBox alignment="CENTER" layoutX="302.0" prefHeight="50.0" prefWidth="595.2" spacing="20.0" AnchorPane.leftAnchor="302.0" AnchorPane.rightAnchor="302.4" AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS">
          <children>
-            <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Home" textFill="#ffebeb">
+            <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.Home" textFill="#ffebeb">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -35,7 +37,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="profileButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Profile" textFill="#ffebeb">
+            <Button fx:id="profileButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.Profile" textFill="#ffebeb">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -43,7 +45,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="aboutButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="About" textFill="#ffebeb">
+            <Button fx:id="aboutButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.About" textFill="#ffebeb">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -51,7 +53,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="contactButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Contact" textFill="#ffebeb">
+            <Button fx:id="contactButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.Contact" textFill="#ffebeb">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -63,7 +65,7 @@
       </HBox>
       <AnchorPane layoutX="892.0" prefHeight="50.0" prefWidth="302.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="contactButton" layoutX="208.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #0088ac; -fx-background-color: #0088ac;" text="Log Out" textFill="#ffebeb" AnchorPane.rightAnchor="14.399999999999977" AnchorPane.topAnchor="10.0">
+            <Button layoutX="208.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #0088ac; -fx-background-color: #0088ac;" text="%navbar.LogOut" textFill="#ffebeb" AnchorPane.rightAnchor="14.399999999999977" AnchorPane.topAnchor="10.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -71,6 +73,12 @@
                   <Font size="14.0" />
                </font>
             </Button>
+            <SplitMenuButton layoutX="139.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: #101935; -fx-border-color: #101935; -fx-border-radius: 0;" text="%language" textOverrun="CLIP" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="10.0">
+               <items>
+                  <MenuItem fx:id="ENGLISH" mnemonicParsing="false" onAction="#handleENLanguageClick" text="EN" />
+                  <MenuItem fx:id="ALBANIAN" mnemonicParsing="false" onAction="#handleSQLanguageClick" text="SQ" />
+               </items>
+            </SplitMenuButton>
          </children>
       </AnchorPane>
    </children>
