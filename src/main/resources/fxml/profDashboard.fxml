@@ -1,196 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.SplitMenuButton?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfController">
 
    <children>
       <fx:include source="navBar.fxml" />
-      <Pane layoutY="49.0" prefHeight="628.0" prefWidth="242.0" style="-fx-background-color: #0f1833;">
-         <children>
-            <SplitMenuButton layoutX="12.0" layoutY="13.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="217.0">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
-               <graphic>
-                  <Pane focusTraversable="true" prefHeight="42.0" prefWidth="112.0">
-                     <children>
-                        <ImageView fitHeight="39.0" fitWidth="49.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/profDashboard/user.png" />
-                           </image>
-                        </ImageView>
-                        <Text layoutX="47.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ermir Mëziu" wrappingWidth="99.73672485351562">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#898383" layoutX="49.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ermirmeziu@gmail.com" wrappingWidth="102.13668823242188">
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </Pane>
-               </graphic>
-            </SplitMenuButton>
-            <Text fill="#7e7878" layoutX="12.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Main menu" wrappingWidth="83.80001449584961" />
-            <StackPane layoutX="12.0" layoutY="76.0" prefHeight="58.0" prefWidth="217.0">
-               <children>
-                  <TextField prefHeight="28.0" prefWidth="218.0" promptText="Search">
-                     <padding>
-                        <Insets left="40.0" />
-                     </padding>
-                  </TextField>
-                  <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
-                     <image>
-                        <Image url="@../images/profDashboard/search.png" />
-                     </image>
-                     <StackPane.margin>
-                        <Insets left="5.0" top="1.0" />
-                     </StackPane.margin>
-                  </ImageView>
-               </children>
-            </StackPane>
-            <VBox layoutX="12.0" layoutY="166.0" prefHeight="322.0" prefWidth="218.0">
-               <children>
-                  <Button alignment="TOP_LEFT" graphicTextGap="40.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="221.0" style="-fx-background-color: white;" text="Dashboard">
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/profDashboard/home.png" />
-                           </image>
-                           <viewport>
-                              <Rectangle2D />
-                           </viewport>
-                        </ImageView>
-                     </graphic>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="TOP_LEFT" graphicTextGap="40.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="221.0" style="-fx-background-color: white;" text="Courses">
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/profDashboard/courses.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="TOP_LEFT" graphicTextGap="40.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="221.0" style="-fx-background-color: white;" text="My Students">
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/profDashboard/student.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="TOP_LEFT" graphicTextGap="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: white;" text="Schedule">
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/profDashboard/settings.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="TOP_LEFT" graphicTextGap="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: white;" text="Payment">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/profDashboard/pay.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-            <HBox layoutY="572.0" prefHeight="40.0" prefWidth="242.0" spacing="15.0">
-               <children>
-                  <Button alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="118.0" style="-fx-background-color: white;" text="Settings">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/profDashboard/settings.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="117.0" style="-fx-background-color: white;" text="Help">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/profDashboard/help.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-               <padding>
-                  <Insets left="12.0" right="12.0" />
-               </padding>
-            </HBox>
-         </children>
-      </Pane>
+      <fx:include source="profSidebar.fxml" />
       <AnchorPane layoutX="236.0" layoutY="49.0" prefHeight="628.0" prefWidth="957.0">
          <children>
-            <Label layoutX="18.0" layoutY="12.0" prefHeight="36.0" prefWidth="242.0" text="Welcome back, Ermir Mëziu" textFill="#101935">
+            <Label layoutX="18.0" layoutY="12.0" prefHeight="36.0" prefWidth="326.0" text="%prof.Welcome" textFill="#101935">
                <font>
                   <Font name="System Bold Italic" size="17.0" />
                </font>
@@ -198,7 +32,7 @@
             <Label layoutX="19.0" layoutY="48.0" prefHeight="18.0" prefWidth="160.0" text="Gjeneron daten aktuale " />
             <Pane layoutX="757.0" layoutY="25.0" prefHeight="36.0" prefWidth="200.0">
                <children>
-                  <Button alignment="TOP_LEFT" graphicTextGap="20.0" layoutX="11.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="181.0" style="-fx-background-color: white;" styleClass="buttonShadow" stylesheets="@../css/profile.css" text="Add Course">
+                  <Button alignment="TOP_LEFT" graphicTextGap="20.0" layoutX="11.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="181.0" style="-fx-background-color: white;" styleClass="buttonShadow" stylesheets="@../css/profile.css" text="%prof.AddCourse">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -224,7 +58,7 @@
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Text>
-                  <Text layoutX="46.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Classes">
+                  <Text layoutX="43.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%prof.TotalClasses">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -252,7 +86,7 @@
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Text>
-                  <Text layoutX="47.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Students">
+                  <Text layoutX="38.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%prof.TotalStudents">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -280,7 +114,7 @@
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Text>
-                  <Text layoutX="47.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Lessons">
+                  <Text layoutX="42.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%prof.TotalLessons">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -298,12 +132,12 @@
             </Pane>
             <Pane layoutX="19.0" layoutY="480.0" prefHeight="134.0" prefWidth="534.0" styleClass="buttonShadow" stylesheets="@../css/profile.css">
                <children>
-                  <Text layoutX="19.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top courses" wrappingWidth="82.55761718749989">
+                  <Text layoutX="20.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%prof.Topcourses" wrappingWidth="107.0595703125">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Button layoutX="479.0" layoutY="6.0" mnemonicParsing="false" style="-fx-background-color: white;" text="See All" textFill="#898383">
+                  <Button layoutX="450.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleProfCourses" style="-fx-background-color: white;" text="%prof.SeeAll" textFill="#898383">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -315,7 +149,7 @@
                               <Image url="@../images/profDashboard/codingCourse.png" />
                            </image>
                         </ImageView>
-                        <Text layoutX="57.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Web Development" wrappingWidth="117.79998779296875">
+                        <Text layoutX="57.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%prof.Web" wrappingWidth="117.79998779296875">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -339,7 +173,7 @@
                               <Image url="@../images/profDashboard/mathCourse.png" />
                            </image>
                         </ImageView>
-                        <Text layoutX="57.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Math" wrappingWidth="117.79998779296875">
+                        <Text layoutX="57.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%prof.Math" wrappingWidth="117.79998779296875">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -363,7 +197,7 @@
                               <Image url="@../images/profDashboard/physicsCourse.png" />
                            </image>
                         </ImageView>
-                        <Text layoutX="57.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Physics" wrappingWidth="117.79998779296875">
+                        <Text layoutX="57.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%prof.Physics" wrappingWidth="117.79998779296875">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -387,7 +221,7 @@
                               <Image url="@../images/profDashboard/chemitryCourse.png" />
                            </image>
                         </ImageView>
-                        <Text layoutX="57.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chemistry" wrappingWidth="117.79998779296875">
+                        <Text layoutX="57.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%prof.Chemistry" wrappingWidth="117.79998779296875">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -408,7 +242,7 @@
             </Pane>
             <Pane layoutX="20.0" layoutY="250.0" prefHeight="214.0" prefWidth="534.0" styleClass="buttonShadow" stylesheets="@../css/profile.css">
                <children>
-                  <AreaChart cacheShape="false" horizontalZeroLineVisible="false" layoutY="2.0" legendSide="TOP" prefHeight="214.0" prefWidth="520.0" title="Total attendance report" verticalZeroLineVisible="false">
+                  <AreaChart cacheShape="false" horizontalZeroLineVisible="false" layoutY="2.0" legendSide="TOP" prefHeight="214.0" prefWidth="520.0" title="%prof.Attendance" verticalZeroLineVisible="false">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
@@ -422,7 +256,7 @@
                <children>
                   <HBox prefHeight="42.0" prefWidth="369.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: white;" text="All Course">
+                        <Button mnemonicParsing="false" onAction="#handleProfCourses" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: white;" text="%prof.AllCourse">
                            <HBox.margin>
                               <Insets top="10.0" />
                            </HBox.margin>
@@ -430,7 +264,7 @@
                               <Font size="13.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: white;" text="Students" textFill="#898383">
+                        <Button mnemonicParsing="false" onAction="#handleProfStudents" prefHeight="30.0" prefWidth="86.0" style="-fx-background-color: white;" text="%prof.Students" textFill="#898383">
                            <font>
                               <Font size="13.0" />
                            </font>
@@ -438,21 +272,24 @@
                               <Insets left="-10.0" top="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" style="-fx-background-color: white;" text="Filter" textFill="#898383">
+                        <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="78.0" style="-fx-background-color: white;" text="%prof.Filter" textFill="#898383">
                            <HBox.margin>
-                              <Insets left="100.0" top="10.0" />
+                              <Insets left="25.0" top="10.0" />
                            </HBox.margin>
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" style="-fx-background-color: white;" text="Sort" textFill="#898383">
+                        <Button mnemonicParsing="false" style="-fx-background-color: white;" text="%prof.Sort" textFill="#898383">
                            <font>
                               <Font size="13.0" />
                            </font>
                            <HBox.margin>
                               <Insets top="10.0" />
                            </HBox.margin>
+                           <padding>
+                              <Insets left="30.0" top="1.0" />
+                           </padding>
                         </Button>
                      </children>
                   </HBox>
@@ -463,22 +300,22 @@
                   </Pane>
                   <Pane layoutX="10.0" layoutY="42.0" prefHeight="42.0" prefWidth="349.0" style="-fx-background-color: #f8f8f8; -fx-border-radius: 20px;">
                      <children>
-                        <Text fill="#959598" layoutX="7.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="46.40000000000009">
+                        <Text fill="#959598" layoutX="11.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%prof.Name" wrappingWidth="46.40000000000009">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <Text fill="#959598" layoutX="100.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" wrappingWidth="67.19998779296884">
+                        <Text fill="#959598" layoutX="104.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%prof.Amount" wrappingWidth="67.19998779296884">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <Text fill="#959598" layoutX="208.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="34.57031249999994">
+                        <Text fill="#959598" layoutX="222.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%prof.Date" wrappingWidth="34.57031249999994">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <Text fill="#959598" layoutX="306.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" wrappingWidth="46.40000000000009">
+                        <Text fill="#959598" layoutX="304.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%prof.Status" wrappingWidth="46.40000000000009">
                            <font>
                               <Font size="13.0" />
                            </font>
