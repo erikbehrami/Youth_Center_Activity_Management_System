@@ -27,9 +27,9 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <HBox alignment="CENTER" layoutX="302.0" prefHeight="50.0" prefWidth="595.2" spacing="20.0" AnchorPane.leftAnchor="302.0" AnchorPane.rightAnchor="302.4" AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS">
+      <HBox alignment="CENTER" layoutX="302.0" prefHeight="50.0" prefWidth="614.0" spacing="20.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="302.0" AnchorPane.rightAnchor="302.4" AnchorPane.topAnchor="1.0" HBox.hgrow="ALWAYS">
          <children>
-            <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.Home" textFill="#ffebeb">
+            <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.Home" textFill="#ffebeb">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -37,7 +37,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="profileButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.Profile" textFill="#ffebeb">
+            <Button fx:id="profileButton" mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.Profile" textFill="#ffebeb">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -45,7 +45,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="aboutButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.About" textFill="#ffebeb">
+            <Button fx:id="aboutButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.About" textFill="#ffebeb">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -53,7 +53,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="contactButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.Contact" textFill="#ffebeb">
+            <Button fx:id="contactButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.Contact" textFill="#ffebeb">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -65,7 +65,7 @@
       </HBox>
       <AnchorPane layoutX="892.0" prefHeight="50.0" prefWidth="302.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button layoutX="208.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #0088ac; -fx-background-color: #0088ac;" text="%navbar.LogOut" textFill="#ffebeb" AnchorPane.rightAnchor="14.399999999999977" AnchorPane.topAnchor="10.0">
+            <Button layoutX="208.0" layoutY="10.0" maxHeight="30.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #0088ac;" styleClass="change" text="%navbar.LogOut" textFill="#ffebeb" AnchorPane.rightAnchor="14.399999999999977" AnchorPane.topAnchor="10.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -73,18 +73,20 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <SplitMenuButton layoutX="139.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: #101935; -fx-border-color: #101935; -fx-border-radius: 0;" text="%language" textOverrun="CLIP" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="10.0">
+            <SplitMenuButton layoutX="66.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="66.0" style="-fx-border-color: black; -fx-background-color: #101935;" styleClass="change" text="%language" textOverrun="CLIP" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="10.0">
                <items>
-                  <MenuItem fx:id="ENGLISH" mnemonicParsing="false" onAction="#handleENLanguageClick" text="EN" />
-                  <MenuItem fx:id="ALBANIAN" mnemonicParsing="false" onAction="#handleSQLanguageClick" text="SQ" />
+                  <MenuItem fx:id="ENGLISH" mnemonicParsing="false" onAction="#handleENLanguageClick" styleClass="navButton" text="EN" />
+                  <MenuItem fx:id="ALBANIAN" mnemonicParsing="false" onAction="#handleSQLanguageClick" styleClass="navButton" text="SQ" />
                </items>
             </SplitMenuButton>
-            <SplitMenuButton layoutX="72.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: #101935; -fx-border-color: #101935; -fx-border-radius: 0;" text="mode" textOverrun="CLIP">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#changeMode" text="Light" />
-                  <MenuItem mnemonicParsing="false" onAction="#changeMode" text="Dark" />
-               </items>
-            </SplitMenuButton>
+            <Button layoutX="137.0" layoutY="10.0" maxHeight="30.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#changeMode" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #0088ac;" styleClass="change" text="%navbar.mode" textFill="#ffebeb" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="10.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

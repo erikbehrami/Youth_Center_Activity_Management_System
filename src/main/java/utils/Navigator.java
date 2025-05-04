@@ -13,7 +13,6 @@ interface AdminPages {
 
 interface Modes {
     String DARK_MODE = "/css/modes/darkMode.css";
-    String LIGHT_MODE = "/css/modes/lightMode.css";
 
 }
 

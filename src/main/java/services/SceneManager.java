@@ -2,16 +2,16 @@ package services;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import utils.Navigator;
-import utils.modeManager.ModeChange;
-
+import utils.ModeChange;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class SceneManager {
     private static SceneManager sceneManager;
     private final LanguageManager languageManager;
-    private final ModeChange modeChange;
     private Scene scene;
     private static Stage primaryStage;
     private String currentPath;
@@ -21,8 +21,8 @@ public class SceneManager {
     private SceneManager(){
         this.languageManager = LanguageManager.getInstance();
         this.currentPath = Navigator.SIGN_IN;
+        this.title = "Sign In";
         this.scene = this.init();
-        this.modeChange = ModeChange.getInstance();
     }
 
     public static SceneManager getInstance(){
@@ -35,7 +35,6 @@ public class SceneManager {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(this.currentPath));
             loader.setResources(this.languageManager.getResourceBundle());
-            this.title = "Sign In";
             return new Scene(loader.load());
         }catch (IOException e){
             return null;
@@ -48,11 +47,21 @@ public class SceneManager {
 
     public void setPrimaryStage(Stage primaryStage) {
         SceneManager.primaryStage = primaryStage;
+
+        InputStream logoStream = getClass().getResourceAsStream(Navigator.LOGO);
+        if (logoStream != null) {
+            primaryStage.getIcons().add(new Image(logoStream));
+        }
+
+        primaryStage.setResizable(false);
+        primaryStage.setScene(this.scene);
+        primaryStage.setTitle(this.title);
+        primaryStage.show();
     }
 
     public String getLastPath() { return this.lastPath; }
 
-    public void reload(){ switchScene(currentPath, null); }
+    private boolean setResizeable(String path){ return !(path.equals(Navigator.SIGN_IN) || path.equals(Navigator.SIGN_UP)); }
 
     public void switchScene(String fxmlPath, String title) {
         this.lastPath = this.currentPath;
@@ -62,16 +71,15 @@ public class SceneManager {
             this.title = title;
         }
         try {
-                FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource(fxmlPath));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(this.currentPath));
                 loader.setResources(this.languageManager.getResourceBundle());
                 scene = new Scene(loader.load());
 
-                modeChange.changeMode(scene);
+                ModeChange.changeMode(scene);
 
+                primaryStage.setResizable(this.setResizeable(this.currentPath));
                 primaryStage.setTitle(this.title);
                 primaryStage.setScene(scene);
-
-
 
         } catch (IOException e) {
             System.out.println("Error switching scene: " + e.getMessage());
@@ -79,4 +87,6 @@ public class SceneManager {
             System.out.println("Error: " + e.getMessage());
         }
     }
+
+    public void reload(){ switchScene(this.currentPath, null); }
 }

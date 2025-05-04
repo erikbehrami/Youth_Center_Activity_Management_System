@@ -10,19 +10,15 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController">
     <children>
-        <AnchorPane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #101935;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <fx:include source="navBar.fxml" />
+        <AnchorPane layoutY="50.0" prefHeight="620.0" prefWidth="239.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
+            <fx:include source="adminSidebar.fxml" AnchorPane.bottomAnchor="0" AnchorPane.topAnchor="0" />
         </AnchorPane>
 
-        <AnchorPane prefHeight="675.0" prefWidth="239.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <fx:include source="adminSidebar.fxml" />
-        </AnchorPane>
-
-        <AnchorPane layoutX="239.0" layoutY="56.0" minHeight="0.0" minWidth="0.0" prefHeight="620.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="0.7999999999999545" AnchorPane.topAnchor="55.2">
+        <AnchorPane layoutX="239.0" layoutY="56.0" minHeight="0.0" minWidth="0.0" prefHeight="620.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="254.0" AnchorPane.rightAnchor="0.7999999999999545" AnchorPane.topAnchor="50.0">
             <children>
-                <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="529.0" prefWidth="934.0" style="-fx-border-color: #101935;" AnchorPane.bottomAnchor="75.79999999999995" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="14.0">
+                <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="552.0" prefWidth="921.0" style="-fx-border-color: #101935;" styleClass="change" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
                     <children>
-                        <TableView editable="true" layoutX="14.0" layoutY="56.0" prefHeight="460.0" prefWidth="906.0" AnchorPane.bottomAnchor="12.599999999999966" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.600000000000023" AnchorPane.topAnchor="56.0">
+                        <TableView editable="true" layoutX="14.0" layoutY="56.0" prefHeight="460.0" prefWidth="906.0" styleClass="change" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="56.0">
                             <columns>
                                 <TableColumn prefWidth="88.0" text="ID" />
                                 <TableColumn prefWidth="117.60000610351562" text="%admin.Name" />
@@ -35,33 +31,37 @@
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                             </columnResizePolicy>
                         </TableView>
-                  <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="14.0" minHeight="0.0" minWidth="0.0" prefHeight="35.0" prefWidth="906.0" spacing="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.599999999999909" AnchorPane.topAnchor="14.0">
-                     <children>
-                              <TextField prefHeight="30.0" prefWidth="255.0" promptText="Search" style="-fx-border-color: #101935; -fx-border-radius: 5;" />
-                              <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="94.0" style="-fx-background-color: #101935;" text="%admin.Search" textFill="WHITE">
-                                  <font>
-                                      <Font size="13.0" />
-                                  </font>
-                              </Button>
-                     </children>
-                  </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="14.0" minHeight="0.0" minWidth="0.0" prefHeight="35.0" prefWidth="906.0" spacing="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.599999999999909" AnchorPane.topAnchor="14.0">
+                            <children>
+                                <TextField prefHeight="30.0" prefWidth="255.0" promptText="%admin.Search" style="-fx-border-color: #101935; -fx-border-radius: 5;" styleClass="change" />
+                                <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="94.0" style="-fx-background-color: #101935;" styleClass="change" text="%admin.Search" textFill="WHITE">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </HBox>
                     </children>
                 </AnchorPane>
-            <HBox alignment="TOP_RIGHT" layoutX="29.0" layoutY="561.0" minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="906.0" spacing="15.0" AnchorPane.bottomAnchor="8.399999999999956" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="24.800000000000068">
-               <children>
-                      <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #101935;" text="%admin.Add" textFill="WHITE">
-                          <font>
-                              <Font size="13.0" />
-                          </font>
-                      </Button>
-                      <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #101935;" text="%admin.Delete" textFill="WHITE">
-                          <font>
-                              <Font size="13.0" />
-                          </font>
-                      </Button>
-               </children>
-            </HBox>
+                <HBox alignment="TOP_RIGHT" layoutX="40.0" layoutY="576.0" minHeight="0.0" minWidth="0.0" prefHeight="35.0" prefWidth="891.0" spacing="15.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="28.0">
+                    <children>
+                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #101935;" styleClass="change" text="%admin.Add" textFill="WHITE">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #101935;" styleClass="change" text="%admin.Delete" textFill="WHITE">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
             </children>
+        </AnchorPane>
+
+        <AnchorPane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #101935;" styleClass="navbar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <fx:include source="navBar.fxml" />
         </AnchorPane>
     </children>
 </AnchorPane>
