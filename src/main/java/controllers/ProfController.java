@@ -1,0 +1,22 @@
+package controllers;
+
+import javafx.fxml.FXML;
+import utils.Navigator;
+
+public class ProfController extends BaseController {
+
+    @FXML
+    private void handleProfDashboard(){
+        sceneManager.switchScene(Navigator.PROF_DASHBOARD, "Prof Dashboard");
+    }
+
+    @FXML
+    private void handleProfCourses(){
+        sceneManager.switchScene(Navigator.PROF_COURSES, "Prof Courses");
+    }
+
+    @FXML
+    private void handleProfStudents(){
+        sceneManager.switchScene(Navigator.PROF_STUDENTS, "Prof Students");
+    }
+}
