@@ -4,11 +4,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import utils.Navigator;
+import utils.modeManager.ModeChange;
+
 import java.io.IOException;
 
 public class SceneManager {
     private static SceneManager sceneManager;
     private final LanguageManager languageManager;
+    private final ModeChange modeChange;
     private Scene scene;
     private static Stage primaryStage;
     private String currentPath;
@@ -19,6 +22,7 @@ public class SceneManager {
         this.languageManager = LanguageManager.getInstance();
         this.currentPath = Navigator.SIGN_IN;
         this.scene = this.init();
+        this.modeChange = ModeChange.getInstance();
     }
 
     public static SceneManager getInstance(){
@@ -62,8 +66,12 @@ public class SceneManager {
                 loader.setResources(this.languageManager.getResourceBundle());
                 scene = new Scene(loader.load());
 
+                modeChange.changeMode(scene);
+
                 primaryStage.setTitle(this.title);
                 primaryStage.setScene(scene);
+
+
 
         } catch (IOException e) {
             System.out.println("Error switching scene: " + e.getMessage());

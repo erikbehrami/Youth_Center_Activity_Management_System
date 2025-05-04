@@ -79,6 +79,12 @@
                   <MenuItem fx:id="ALBANIAN" mnemonicParsing="false" onAction="#handleSQLanguageClick" text="SQ" />
                </items>
             </SplitMenuButton>
+            <SplitMenuButton layoutX="72.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: #101935; -fx-border-color: #101935; -fx-border-radius: 0;" text="mode" textOverrun="CLIP">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#changeMode" text="Light" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeMode" text="Dark" />
+               </items>
+            </SplitMenuButton>
          </children>
       </AnchorPane>
    </children>

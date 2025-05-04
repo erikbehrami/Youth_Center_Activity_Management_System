@@ -25,6 +25,8 @@ public class AdminApp extends Application {
             stage.show();
         }catch (Exception e){
             System.out.println(e.getMessage());
+//            e.printStackTrace();
         }
+
     }
 }

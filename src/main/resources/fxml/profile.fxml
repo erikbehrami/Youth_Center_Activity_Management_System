@@ -20,12 +20,12 @@
     <AnchorPane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #101935;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <fx:include source="navBar.fxml" />
     </AnchorPane>
-   <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.60000000000002" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+   <StackPane layoutY="50.4" prefHeight="625.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
       <children>
 
-
-          <AnchorPane maxHeight="614.4" maxWidth="1200.0" minHeight="0.0" minWidth="0.0" prefHeight="614.4" prefWidth="1200.0" StackPane.alignment="CENTER">
-          <AnchorPane fx:id="profileAnchor" layoutX="60.0" layoutY="87.0" minHeight="0.0" minWidth="0.0" prefHeight="539.0" prefWidth="306.0" style="-fx-scale-x: 0.9; -fx-scale-y: 0.9;" styleClass="anchorGroup" AnchorPane.bottomAnchor="-12.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="87.0" BorderPane.alignment="CENTER">
+      
+                <AnchorPane layoutX="-100.0" maxHeight="634.0" maxWidth="1200.0" minHeight="0.0" minWidth="0.0" prefHeight="630.0" prefWidth="1200.0" StackPane.alignment="CENTER">
+          <AnchorPane fx:id="profileAnchor" layoutX="59.0" layoutY="37.0" minHeight="0.0" minWidth="0.0" prefHeight="539.0" prefWidth="306.0" style="-fx-scale-x: 0.9; -fx-scale-y: 0.9;" styleClass="anchorGroup" AnchorPane.bottomAnchor="38.200000000000045" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="37.0" BorderPane.alignment="CENTER">
               <children>
                   <ImageView fitHeight="126.0" fitWidth="126.0" layoutX="94.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
                       <image>
@@ -80,7 +80,7 @@
               </children>
           </AnchorPane>
 
-          <AnchorPane fx:id="profileAnchor" layoutX="346.0" layoutY="257.0" minHeight="0.0" minWidth="0.0" prefHeight="303.0" prefWidth="797.0" style="-fx-scale-x: 0.9; -fx-scale-y: 0.9;" styleClass="anchorGroup" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="49.0">
+                <AnchorPane fx:id="profileAnchor" layoutX="353.0" layoutY="206.0" minHeight="0.0" minWidth="0.0" prefHeight="303.0" prefWidth="797.0" style="-fx-scale-x: 0.9; -fx-scale-y: 0.9;" styleClass="anchorGroup" AnchorPane.bottomAnchor="115.59999999999997" AnchorPane.rightAnchor="49.40000000000009">
               <children>
                   <AnchorPane layoutX="307.0" layoutY="52.0" prefHeight="186.0" prefWidth="436.0">
                       <children>
@@ -122,7 +122,7 @@
               </children>
           </AnchorPane>
 
-          <AnchorPane fx:id="profileAnchor" layoutX="346.0" layoutY="106.0" minHeight="0.0" minWidth="0.0" prefHeight="143.0" prefWidth="792.0" style="-fx-scale-x: 0.9; -fx-scale-y: 0.9;" styleClass="anchorGroup" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="106.0">
+                <AnchorPane fx:id="profileAnchor" layoutX="356.0" layoutY="57.0" minHeight="0.0" minWidth="0.0" prefHeight="143.0" prefWidth="792.0" style="-fx-scale-x: 0.9; -fx-scale-y: 0.9;" styleClass="anchorGroup" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="57.0">
               <children>
                   <Label layoutX="25.0" layoutY="16.0" text="Contact">
                       <font>
@@ -144,11 +144,6 @@
                           <AnchorPane prefHeight="59.0" prefWidth="105.0" />
                           <AnchorPane prefHeight="74.0" prefWidth="178.0">
                               <children>
-                                  <Label layoutY="-5.0" text="Address">
-                                      <font>
-                                          <Font size="16.0" />
-                                      </font>
-                                  </Label>
                                   <TextField layoutY="25.0" prefHeight="30.0" prefWidth="178.0" style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.5;" />
                               </children>
                           </AnchorPane>
@@ -165,15 +160,20 @@
                           </AnchorPane>
                       </children>
                   </HBox>
+                      <Label layoutX="314.0" layoutY="45.0" text="Address">
+                          <font>
+                              <Font size="16.0" />
+                          </font>
+                      </Label>
               </children>
           </AnchorPane>
-          <Button layoutX="393.0" layoutY="560.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="718.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0.5; -fx-border-radius: 25; -fx-background-radius: 25;" text="Submit Changes" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.rightAnchor="88.59999999999991">
+          <Button layoutX="393.0" layoutY="519.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="718.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0.5; -fx-border-radius: 25; -fx-background-radius: 25;" text="Submit Changes" AnchorPane.bottomAnchor="65.79999999999995" AnchorPane.rightAnchor="88.59999999999991">
               <font>
                   <Font size="15.0" />
               </font>
           </Button>
    
-             <Button layoutX="14.0" layoutY="63.0" onAction="#handleGoBack" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0.5; -fx-border-radius: 25; -fx-background-radius: 25;" text="Go Back" />
+                   <Button layoutX="14.0" layoutY="14.0" onAction="#handleGoBack" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0.5; -fx-border-radius: 25; -fx-background-radius: 25;" text="Go Back" />
           </AnchorPane>
       </children>
    </StackPane>

@@ -5,19 +5,27 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import services.LanguageManager;
+import services.SceneManager;
+import utils.Navigator;
 
 public class Profile extends Application {
-    public void start(Stage stage){
+    public void start(Stage stage) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/profile.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            scene.getStylesheets().add(getClass().getResource("/css/profile.css").toExternalForm());
-            stage.setTitle("Profile");
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/youthcenter_logo.png")));
+            LanguageManager languageManager = LanguageManager.getInstance();
+            SceneManager sceneManager = SceneManager.getInstance();
+            sceneManager.setPrimaryStage(stage);
+
+            FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource(Navigator.PROFILE));
+            loader.setResources(languageManager.getResourceBundle());
+            Scene scene = new Scene(loader.load());
+
             stage.setScene(scene);
             stage.show();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
+
         }
     }
-}
+
+    }
