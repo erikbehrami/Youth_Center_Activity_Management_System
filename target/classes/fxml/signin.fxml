@@ -26,36 +26,36 @@
                     </font>
                 </Text>
             </children></AnchorPane>
-        <TextField layoutX="415.0" layoutY="273.0" prefHeight="32.0" prefWidth="223.0" />
-        <Text fill="#0c1821" layoutX="416.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%login.title">
+        <TextField layoutX="415.0" layoutY="273.0" prefHeight="32.0" prefWidth="223.0" styleClass="change" />
+        <Text fill="#0c1821" layoutX="416.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="%login.title">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
         </Text>
-        <Text fill="#0b171fbc" layoutX="415.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%login.details">
+        <Text fill="#0b171fbc" layoutX="415.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="%login.details">
             <font>
                 <Font size="10.0" />
             </font>
         </Text>
-        <Text fill="#0b171fbc" layoutX="415.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%login.username">
+        <Text fill="#0b171fbc" layoutX="415.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="%login.username">
             <font>
                 <Font size="10.0" />
             </font>
         </Text>
-        <Text fill="#0b171fbd" layoutX="415.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%login.password">
+        <Text fill="#0b171fbd" layoutX="415.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="%login.password">
             <font>
                 <Font size="10.0" />
             </font>
         </Text>
-        <Button layoutX="415.0" layoutY="391.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" text="%login.btnLogin" textFill="WHITE" />
-        <Text fill="#0b171fbc" layoutX="652.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%login.noAcc" AnchorPane.rightAnchor="144.6748046875" AnchorPane.topAnchor="22.0">
+        <Button layoutX="415.0" layoutY="391.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" styleClass="change" text="%login.btnLogin" textFill="WHITE" />
+        <Text fill="#0b171fbc" layoutX="652.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="%login.noAcc" AnchorPane.rightAnchor="144.6748046875" AnchorPane.topAnchor="22.0">
             <font>
                 <Font size="10.0" />
             </font>
         </Text>
-        <Button fx:id="CreateAnAccount" layoutX="760.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" text="%login.btnNewAcc" textFill="#0c1821" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="16.0" />
-      <PasswordField layoutX="415.0" layoutY="332.0" prefHeight="32.0" prefWidth="223.0" />
-      <SplitMenuButton layoutX="810.0" layoutY="48.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" text="%language" textFill="#0c1821" textOverrun="CLIP">
+        <Button fx:id="CreateAnAccount" layoutX="760.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" styleClass="change" text="%login.btnNewAcc" textFill="#0c1821" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="16.0" />
+      <PasswordField layoutX="415.0" layoutY="332.0" prefHeight="32.0" prefWidth="223.0" styleClass="change" />
+      <SplitMenuButton layoutX="810.0" layoutY="48.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" styleClass="change" text="%language" textFill="#0c1821" textOverrun="CLIP">
         <items>
           <MenuItem fx:id="ENGLISH" mnemonicParsing="false" onAction="#handleENLanguageClick" text="EN" />
           <MenuItem fx:id="ALBANIAN" mnemonicParsing="false" onAction="#handleSQLanguageClick" text="SQ" />
