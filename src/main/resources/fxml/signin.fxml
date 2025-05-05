@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AccountController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignInController">
     <children>
         <AnchorPane prefHeight="650.0" prefWidth="369.0" style="-fx-background-color: #101935;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -25,8 +25,9 @@
                         <Font name="System Bold" size="30.0" />
                     </font>
                 </Text>
-            </children></AnchorPane>
-        <TextField layoutX="415.0" layoutY="273.0" prefHeight="32.0" prefWidth="223.0" styleClass="change" />
+            </children>
+        </AnchorPane>
+        <TextField fx:id="email" layoutX="415.0" layoutY="273.0" prefHeight="32.0" prefWidth="223.0" styleClass="change" />
         <Text fill="#0c1821" layoutX="416.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="%login.title">
             <font>
                 <Font name="System Bold" size="24.0" />
@@ -37,7 +38,7 @@
                 <Font size="10.0" />
             </font>
         </Text>
-        <Text fill="#0b171fbc" layoutX="415.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="%login.username">
+        <Text fill="#0b171fbc" layoutX="415.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="%login.email">
             <font>
                 <Font size="10.0" />
             </font>
@@ -54,12 +55,12 @@
             </font>
         </Text>
         <Button fx:id="CreateAnAccount" layoutX="760.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" styleClass="change" text="%login.btnNewAcc" textFill="#0c1821" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="16.0" />
-      <PasswordField layoutX="415.0" layoutY="332.0" prefHeight="32.0" prefWidth="223.0" styleClass="change" />
-      <SplitMenuButton layoutX="810.0" layoutY="48.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" styleClass="change" text="%language" textFill="#0c1821" textOverrun="CLIP">
-        <items>
-          <MenuItem fx:id="ENGLISH" mnemonicParsing="false" onAction="#handleENLanguageClick" text="EN" />
-          <MenuItem fx:id="ALBANIAN" mnemonicParsing="false" onAction="#handleSQLanguageClick" text="SQ" />
-        </items>
-      </SplitMenuButton>
+        <PasswordField fx:id="password" layoutX="415.0" layoutY="332.0" prefHeight="32.0" prefWidth="223.0" styleClass="change" />
+        <SplitMenuButton layoutX="810.0" layoutY="48.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" styleClass="change" text="%language" textFill="#0c1821" textOverrun="CLIP">
+            <items>
+                <MenuItem fx:id="ENGLISH" mnemonicParsing="false" onAction="#handleENLanguageClick" text="EN" />
+                <MenuItem fx:id="ALBANIAN" mnemonicParsing="false" onAction="#handleSQLanguageClick" text="SQ" />
+            </items>
+        </SplitMenuButton>
     </children>
 </AnchorPane>

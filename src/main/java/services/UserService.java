@@ -1,12 +1,16 @@
 package services;
 
+import model.dto.professors.CreateProfessorDto;
 import model.dto.students.CreateStudentsDto;
+import repository.ProfessorsRepository;
 import repository.StudentsRepository;
+
 import java.util.regex.Pattern;
 
 public class UserService {
 
     private final StudentsRepository studentsRepository = new StudentsRepository();
+    private final ProfessorsRepository professorsRepository = new ProfessorsRepository();
 
     public boolean isValidEmail(String email) {
         final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
@@ -31,7 +35,16 @@ public class UserService {
         return PASSWORD_PATTERN.matcher(password).matches();
     }
 
+    public boolean isProfessor(String email) {
+        return email.contains("@proff.");
+    }
+
+
     public boolean createUser(CreateStudentsDto createStudentsDto) {
         return studentsRepository.create(createStudentsDto) != null;
+    }
+
+    public boolean createProfessor(CreateProfessorDto createProfessorDto) {
+        return professorsRepository.create(createProfessorDto) != null;
     }
 }

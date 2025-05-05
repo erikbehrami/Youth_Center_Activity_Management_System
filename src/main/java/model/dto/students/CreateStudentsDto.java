@@ -4,16 +4,18 @@ import java.sql.Date;
 
 public class CreateStudentsDto {
     private String username;
-    private String password;
+    private String salt;
+    private String passwordHash;
     private String name;
     private String surname;
     private String email;
     private Date birthdate;
 
 
-    public CreateStudentsDto(String username, String password, String name, String surname, String email, Date birthdate) {
+    public CreateStudentsDto(String username, String salt, String passwordHash, String name, String surname, String email, Date birthdate) {
         this.username = username;
-        this.password = password;
+        this.salt = salt;
+        this.passwordHash = passwordHash;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -23,10 +25,6 @@ public class CreateStudentsDto {
 
     public String getUsername() {
         return username;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public String getName() {
@@ -49,10 +47,6 @@ public class CreateStudentsDto {
         this.username = username;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -69,4 +63,19 @@ public class CreateStudentsDto {
         this.birthdate = birthdate;
     }
 
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
 }

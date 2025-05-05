@@ -7,7 +7,8 @@ import java.sql.SQLException;
 public class Students {
     private int id;
     private String username;
-    private String password;
+    private String salt;
+    private String passwordHash;
     private String name;
     private String surname;
     private String email;
@@ -17,10 +18,11 @@ public class Students {
     private String gender;
     private String biographicalInfo;
 
-    private Students(int id, String username, String password, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender, String biographicalInfo) {
+    private Students(int id, String username, String salt, String passwordHash, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender, String biographicalInfo) {
         this.id = id;
         this.username = username;
-        this.password = password;
+        this.passwordHash = passwordHash;
+        this.salt = salt;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -35,7 +37,8 @@ public class Students {
     public static Students getInstance(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("id");
         String username = resultSet.getString("username");
-        String password = resultSet.getString("password");
+        String salt = resultSet.getString("salt");
+        String passwordHash = resultSet.getString("passwordHash");
         String name = resultSet.getString("name");
         String surname = resultSet.getString("surname");
         String email = resultSet.getString("email");
@@ -45,7 +48,7 @@ public class Students {
         String gender = resultSet.getString("gender");
         String biographicalInfo = resultSet.getString("biographicalInfo");
 
-        return new Students(id, username, password, name, surname, email, birthdate, phoneNumber, address, gender, biographicalInfo);
+        return new Students(id, username, salt, passwordHash, name, surname, email, birthdate, phoneNumber, address, gender, biographicalInfo);
     }
 
     public int getId() {
@@ -56,8 +59,12 @@ public class Students {
         return this.username;
     }
 
-    public String getPassword() {
-        return this.password;
+    public String getSalt() {
+        return salt;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
     public String getName() {

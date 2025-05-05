@@ -9,7 +9,8 @@ import java.util.Date;
 public class Admins {
     private int id;
     private String username;
-    private String password;
+    private String salt;
+    private String passwordHash;
     private String name;
     private String surname;
     private String email;
@@ -19,10 +20,11 @@ public class Admins {
     private String gender;
 
 
-    private Admins(int id, String username, String password, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender) {
+    private Admins(int id, String username, String salt, String passwordHash, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender) {
         this.id = id;
         this.username = username;
-        this.password = password;
+        this.salt = salt;
+        this.passwordHash = passwordHash;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -36,7 +38,8 @@ public class Admins {
     public static Admins getInstance(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("id");
         String username = resultSet.getString("username");
-        String password = resultSet.getString("password");
+        String salt = resultSet.getString("salt");
+        String passwordHash = resultSet.getString("passwordHash");
         String name = resultSet.getString("name");
         String surname = resultSet.getString("surname");
         String email = resultSet.getString("email");
@@ -45,7 +48,7 @@ public class Admins {
         String address = resultSet.getString("address");
         String gender = resultSet.getString("gender");
 
-        return new Admins(id,username,password,name,surname,email,birthdate,phoneNumber,address,gender);
+        return new Admins(id, username, salt, passwordHash, name, surname, email, birthdate, phoneNumber, address, gender);
     }
 
     public int getId() {
@@ -56,8 +59,12 @@ public class Admins {
         return this.username;
     }
 
-    public String getPassword() {
-        return this.password;
+    public String getSalt() {
+        return salt;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
     public String getName() {
