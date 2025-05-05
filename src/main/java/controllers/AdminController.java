@@ -1,10 +1,74 @@
 package controllers;
 
-import utils.Navigator;
 import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
+import services.AdminServices.AdminDashboardService;
+import utils.Navigator;
 
+import java.util.HashMap;
+import java.util.Map;
 
 public class AdminController extends BaseController {
+    @FXML
+    private Label adminStudentsNUM;
+    @FXML
+    private Label adminTeachersNUM;
+    @FXML
+    private Label adminCoursesNUM;
+    @FXML
+    private BarChart<String, Number> studentChart;
+    @FXML
+    private LineChart<String, Number> courseChart;
+    @FXML
+    private LineChart<String, Number> profChart;
+
+    private AdminDashboardService adminDashboardService;
+
+    @FXML
+    private void initialize() {
+        adminDashboardService = new AdminDashboardService();
+
+        if (adminStudentsNUM != null) {
+            adminStudentsNUM.setText(String.valueOf(adminDashboardService.getStudentCount()));
+        }
+
+        if (adminTeachersNUM != null) {
+            adminTeachersNUM.setText(String.valueOf(adminDashboardService.getProfessorCount()));
+        }
+
+        if (adminCoursesNUM != null) {
+            adminCoursesNUM.setText(String.valueOf(adminDashboardService.getCourseCount()));
+        }
+
+        if (studentChart != null) {
+            HashMap<Integer, Integer> studentCountsByYear = adminDashboardService.getStudentCountByYear();
+            populateChart(studentChart, studentCountsByYear);
+        }
+
+        if (courseChart != null) {
+            HashMap<Integer, Integer> courseCountsByYear = adminDashboardService.getCourseCountByYear();
+            populateChart(courseChart, courseCountsByYear);
+        }
+
+        if (profChart != null) {
+            HashMap<Integer, Integer> professorCountsByYear = adminDashboardService.getProfessorCountByYear();
+            populateChart(profChart, professorCountsByYear);
+        }
+    }
+
+    private void populateChart(XYChart<String, Number> chart, HashMap<Integer, Integer> countByYear) {
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+
+        for (Map.Entry<Integer, Integer> entry : countByYear.entrySet()) {
+            series.getData().add(new XYChart.Data<>(String.valueOf(entry.getKey()), entry.getValue()));
+        }
+
+        chart.getData().clear();
+        chart.getData().add(series);
+    }
 
     @FXML
     private void handleAdminDashboard() {

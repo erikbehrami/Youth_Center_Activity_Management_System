@@ -38,8 +38,6 @@ create table professors(
                            biographicalInfo text
 );
 
-
-
 create table students(
                          id integer default nextval('students_id_seq') Primary Key ,
                          username varchar(255),
@@ -211,4 +209,6 @@ CREATE TABLE course_enrollment_logs (
                                         FOREIGN KEY (student_id) REFERENCES students(id),
                                         FOREIGN KEY (course_id) REFERENCES courses(id)
 );
+
+
 

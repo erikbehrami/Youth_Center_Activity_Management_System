@@ -1,22 +1,24 @@
-package utils;
+package services;
 
 import javafx.scene.Scene;
+import utils.Navigator;
 
-public final class ModeChange {
+public final class ModeManager {
     private static String mode = "LIGHT_MODE";
 
-    private ModeChange() {}
+    private ModeManager() {
+    }
 
     public static String getMode() {
-        return ModeChange.mode;
+        return ModeManager.mode;
     }
 
     public static void setMode(String mode) {
-        ModeChange.mode = mode;
+        ModeManager.mode = mode;
     }
 
     public static void changeMode(Scene scene) {
-        String darkModeStylesheet = ModeChange.class.getResource(Navigator.DARK_MODE).toExternalForm();
+        String darkModeStylesheet = ModeManager.class.getResource(Navigator.DARK_MODE).toExternalForm();
 
         if (mode.equals(Navigator.DARK_MODE)) {
             scene.getStylesheets().add(darkModeStylesheet);

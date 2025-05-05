@@ -12,6 +12,7 @@ public class UserService {
     private final StudentsRepository studentsRepository = new StudentsRepository();
     private final ProfessorsRepository professorsRepository = new ProfessorsRepository();
 
+
     public boolean isValidEmail(String email) {
         final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
         final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
@@ -48,3 +49,5 @@ public class UserService {
         return professorsRepository.create(createProfessorDto) != null;
     }
 }
+
+

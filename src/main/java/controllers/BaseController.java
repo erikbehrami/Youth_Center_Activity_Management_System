@@ -2,9 +2,10 @@ package controllers;
 
 import javafx.fxml.FXML;
 import services.LanguageManager;
+import services.ModeManager;
 import services.SceneManager;
 import utils.Navigator;
-import utils.ModeChange;
+
 import java.util.Locale;
 
 abstract class BaseController {
@@ -33,11 +34,11 @@ abstract class BaseController {
     }
 
     @FXML
-    protected void changeMode(){
-        if(ModeChange.getMode().equals(Navigator.DARK_MODE)){
-            ModeChange.setMode("LIGHT_MODE");
-        }else{
-            ModeChange.setMode(Navigator.DARK_MODE);
+    protected void changeMode() {
+        if (ModeManager.getMode().equals(Navigator.DARK_MODE)) {
+            ModeManager.setMode("LIGHT_MODE");
+        } else {
+            ModeManager.setMode(Navigator.DARK_MODE);
         }
         sceneManager.reload();
     }
