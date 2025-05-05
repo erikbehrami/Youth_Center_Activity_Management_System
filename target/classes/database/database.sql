@@ -11,7 +11,8 @@ CREATE SEQUENCE requests_id_seq START 500000 INCREMENT 1;
 create table admins(
                        id integer default nextval('admins_id_seq') Primary Key ,
                        username varchar(255),
-                       password varchar(255),
+                       salt TEXT NOT NULL,
+                       passwordHash TEXT NOT NULL,
                        name varchar(255),
                        surname varchar(255),
                        email varchar(255),
@@ -19,14 +20,13 @@ create table admins(
                        phoneNumber varchar(15),
                        address varchar(255),
                        gender varchar(20)
-
 );
-
 
 create table professors(
                            id integer default nextval('professors_id_seq') Primary Key ,
                            username varchar(255),
-                           password varchar(255),
+                           salt TEXT NOT NULL,
+                           passwordHash TEXT NOT NULL,
                            verified boolean DEFAULT false,
                            name varchar(255),
                            surname varchar(255),
@@ -36,7 +36,6 @@ create table professors(
                            address varchar(255),
                            gender varchar(20),
                            biographicalInfo text
-
 );
 
 
@@ -44,7 +43,8 @@ create table professors(
 create table students(
                          id integer default nextval('students_id_seq') Primary Key ,
                          username varchar(255),
-                         password varchar(255),
+                         salt TEXT NOT NULL,
+                         passwordHash TEXT NOT NULL,
                          name varchar(255),
                          surname varchar(255),
                          email varchar(255),
@@ -53,9 +53,7 @@ create table students(
                          address varchar(255),
                          gender varchar(20),
                          biographicalInfo text
-
 );
-
 create table lectureRooms(
                              id integer default nextval('lectureRooms_id_seq') Primary Key ,
                              name varchar(255),
