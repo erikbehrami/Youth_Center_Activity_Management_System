@@ -2,11 +2,13 @@ package services;
 
 import model.dto.students.CreateStudentsDto;
 import repository.StudentsRepository;
+
 import java.util.regex.Pattern;
 
 public class UserService {
 
     private final StudentsRepository studentsRepository = new StudentsRepository();
+
 
     public boolean isValidEmail(String email) {
         final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
@@ -35,3 +37,5 @@ public class UserService {
         return studentsRepository.create(createStudentsDto) != null;
     }
 }
+
+

@@ -1,133 +1,85 @@
 package repository;
 
-import database.DBConnector;
 import model.Professors;
 import model.dto.professors.CreateProfessorDto;
 import model.dto.professors.UpdateProfessorDto;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
 
 
-public class ProfessorsRepository {
-    private final Connection connection;
-
+public class ProfessorsRepository extends BaseRepository<Professors, CreateProfessorDto, UpdateProfessorDto> {
     public ProfessorsRepository() {
-        this.connection = DBConnector.getConnection();
+        super("professors");
     }
 
-
-    public List<Professors> getAll() {
-        String query = "SELECT * FROM professors";
-        List<Professors> professors = new ArrayList<>();
-
-        try (Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
-
-            while (rs.next()) {
-                professors.add(Professors.getInstance(rs));
-            }
-            return professors;
-        } catch (SQLException e) {
-            System.err.println("Error fetching professors: " + e.getMessage());
-            return null;
-        }
+    Professors fromResultSet(ResultSet res) throws SQLException {
+        return Professors.getInstance(res);
     }
 
-
-    public Professors getById(int id) {
-        String query = "SELECT * FROM professors WHERE id = ?";
-
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setInt(1, id);
-
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    return Professors.getInstance(rs);
-                }
-            }
-            return null;
-        } catch (SQLException e) {
-            System.err.println("Error fetching professor by ID: " + e.getMessage());
-            return null;
-        }
-    }
-
-
-    public int create(CreateProfessorDto dto) {
+    public Professors create(CreateProfessorDto dto) {
         String query = "INSERT INTO professors (username, password, name, surname, email, " +
                 "birthdate, phoneNumber, address, gender, biographicalInfo) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        try (PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
-            // Set parameters matching table structure
-            stmt.setString(1, dto.getUsername());
-            stmt.setString(2, dto.getPassword());
-            stmt.setString(3, dto.getName());
-            stmt.setString(4, dto.getSurname());
-            stmt.setString(5, dto.getEmail());
-            stmt.setDate(6, dto.getBirthdate());
-            stmt.setString(7, dto.getPhoneNumber());
-            stmt.setString(8, dto.getAddress());
-            stmt.setString(9, dto.getGender());
-            stmt.setString(10, dto.getBiographicalInfo());
+        try {
+            PreparedStatement pstm = this.connection.prepareStatement(
+                    query, Statement.RETURN_GENERATED_KEYS);
 
-            int affectedRows = stmt.executeUpdate();
-            if (affectedRows == 0) {
-                return -1;
+            pstm.setString(1, dto.getUsername());
+            pstm.setString(2, dto.getPassword());
+            pstm.setString(3, dto.getName());
+            pstm.setString(4, dto.getSurname());
+            pstm.setString(5, dto.getEmail());
+            pstm.setDate(6, new java.sql.Date(dto.getBirthdate().getTime()));
+            pstm.setString(7, dto.getPhoneNumber());
+            pstm.setString(8, dto.getAddress());
+            pstm.setString(9, dto.getGender());
+            pstm.setString(10, dto.getBiographicalInfo());
+
+            pstm.execute();
+
+            ResultSet res = pstm.getGeneratedKeys();
+            if (res.next()) {
+                int id = res.getInt(1);
+                return this.getById(id);
             }
+        } catch (SQLException e) {
+            System.out.println("Error creating professor: " + e.getMessage());
+        }
+        return null;
+    }
 
-            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    return generatedKeys.getInt(1);
-                }
+    public Professors update(UpdateProfessorDto dto) {
+        return null;
+    }
+
+    public HashMap<Integer, Integer> getProfessorCountByYear() {
+        HashMap<Integer, Integer> professorCountByYear = new HashMap<>();
+        String query = """
+                    SELECT EXTRACT(YEAR FROM birthdate) AS year, COUNT(id) AS professor_count
+                    FROM professors
+                    GROUP BY year
+                    ORDER BY year;
+                """;
+
+        try (PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                int year = rs.getInt("year");
+                int count = rs.getInt("professor_count");
+                professorCountByYear.put(year, count);
             }
-            return -1;
         } catch (SQLException e) {
-            System.err.println("Error creating professor: " + e.getMessage());
-            return -1;
+            e.printStackTrace();
         }
+
+        return professorCountByYear;
     }
-
-    public boolean update(UpdateProfessorDto dto) {
-        String query = "UPDATE professors SET password = ?, name = ?, surname = ?, " +
-                "email = ?, birthdate = ?, phoneNumber = ?, address = ?, " +
-                "gender = ?, biographicalInfo = ?, verified = ? WHERE id = ?";
-
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            // Set parameters matching table structure
-            stmt.setString(1, dto.getPassword());
-            stmt.setString(2, dto.getName());
-            stmt.setString(3, dto.getSurname());
-            stmt.setString(4, dto.getEmail());
-            stmt.setDate(5, dto.getBirthdate());
-            stmt.setString(6, dto.getPhoneNumber());
-            stmt.setString(7, dto.getAddress());
-            stmt.setString(8, dto.getGender());
-            stmt.setString(9, dto.getBiographicalInfo());
-            stmt.setBoolean(10, dto.isVerified());
-            stmt.setInt(11, dto.getId());
-
-            return stmt.executeUpdate() > 0;
-        } catch (SQLException e) {
-            System.err.println("Error updating professor: " + e.getMessage());
-            return false;
-        }
-    }
-
-
-    public boolean delete(int id) {
-        String query = "DELETE FROM professors WHERE id = ?";
-
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setInt(1, id);
-            return stmt.executeUpdate() > 0;
-        } catch (SQLException e) {
-            System.err.println("Error deleting professor: " + e.getMessage());
-            return false;
-        }
-    }
-
+    
     public Professors getByUsername(String username) {
         String query = "SELECT * FROM professors WHERE username = ?";
 

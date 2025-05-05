@@ -23,8 +23,6 @@ public class Profile extends Application {
             stage.show();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-
         }
     }
-
-    }
+}

@@ -12,4 +12,6 @@ module com.example.demo {
     exports database;
     exports utils;
     opens utils to javafx.fxml;
+    exports services;
+    opens services to javafx.fxml;
 }

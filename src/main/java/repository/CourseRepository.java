@@ -1,52 +1,77 @@
 package repository;
 
-import database.DBConnector;
 import model.Courses;
+import model.dto.course.CreateCourseDto;
 
-import java.sql.*;
-import java.util.ArrayList;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
 
-public class CourseRepository {
+public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, Object> {
 
-    private Connection connection;
-    public CourseRepository(){
-        this.connection= DBConnector.getConnection();
+    public CourseRepository() {
+        super("courses");
     }
 
-    public ArrayList<Courses> getAll(){
-        String query = "select * from courses";
-        ArrayList<Courses> coursesList = new ArrayList<>();
-        try{
-            Statement statement = this.connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
+    Courses fromResultSet(ResultSet res) throws SQLException {
+        return Courses.getInstance(res);
+    }
 
-            while(resultSet.next()){
-                coursesList.add(Courses.getInstance(resultSet));
+    // Create new course
+    public Courses create(CreateCourseDto createCourseDto) {
+        String query = "INSERT INTO courses (name, category, id_professor, id_lectureRooms, totalNum, studentsEnrolled, dateStarted, dateEnding) VALUES (?,?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement pstm = this.connection.prepareStatement(
+                    query, Statement.RETURN_GENERATED_KEYS);
+
+            pstm.setString(1, createCourseDto.getName());
+            pstm.setString(2, createCourseDto.getCategory());
+            pstm.setInt(3, createCourseDto.getId_Professor());
+            pstm.setInt(4, createCourseDto.getId_lectureRooms());
+            pstm.setInt(5, createCourseDto.getTotalNum());
+            pstm.setInt(6, createCourseDto.getStudentsEnrolled());
+            pstm.setDate(7, new java.sql.Date(createCourseDto.getDateStarted().getTime()));
+            pstm.setDate(8, new java.sql.Date(createCourseDto.getDateEnding().getTime()));
+
+            pstm.execute();
+            ResultSet res = pstm.getGeneratedKeys();
+            if (res.next()) {
+                int id = res.getInt(1);
+                return this.getById(id);
             }
-            resultSet.close();
-            statement.close();
-            return coursesList;
-        } catch (Exception e) {
-            return null;
+        } catch (SQLException e) {
+            System.out.println("Error creating course: " + e.getMessage());
         }
-    }//getAll courses function
+        return null;
+    }
 
-    public Courses getById(int id){
-        String query = "select * from courses where id = ?";
-        try{
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1,id);
-            ResultSet resultSet = statement.executeQuery();
-            while(resultSet.next()){
-                return Courses.getInstance(resultSet);
+    @Override
+    Courses update(Object updateDto) {
+        return null;
+    }
+
+    public HashMap<Integer, Integer> getCourseCountByYear() {
+        HashMap<Integer, Integer> courseCountByYear = new HashMap<>();
+        String query = """
+                    SELECT EXTRACT(YEAR FROM dateStarted) AS year, COUNT(id) AS course_count
+                    FROM courses
+                    GROUP BY year
+                    ORDER BY year;
+                """;
+
+        try (PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                int year = rs.getInt("year");
+                int count = rs.getInt("course_count");
+                courseCountByYear.put(year, count);
             }
-            statement.close();
-            resultSet.close();
-            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        catch(SQLException e){
-            return null;
-        }
-    }//getById courses function
 
+        return courseCountByYear;
+    }
 }

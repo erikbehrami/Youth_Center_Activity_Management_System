@@ -3,7 +3,6 @@ package app;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import services.LanguageManager;
 import services.SceneManager;
@@ -23,9 +22,8 @@ public class ProfApp extends Application {
 
             stage.setScene(scene);
             stage.show();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-//            e.printStackTrace();
         }
     }
 }

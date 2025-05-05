@@ -4,7 +4,12 @@ package repository;
 import model.Students;
 import model.dto.students.CreateStudentsDto;
 import model.dto.students.UpdateStudentsDto;
-import java.sql.*;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
 
 
 public class StudentsRepository extends BaseRepository<Students, CreateStudentsDto, UpdateStudentsDto> {
@@ -13,30 +18,30 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
         super("students");
     }
 
-    Students fromResultSet(ResultSet res) throws SQLException{
+    Students fromResultSet(ResultSet res) throws SQLException {
         return Students.getInstance(res);
     }
 
-    public Students getByUsername(String username){
+    public Students getByUsername(String username) {
         String query = "select * from students where username = ?";
-        try{
+        try {
             PreparedStatement statement = this.connection.prepareStatement(query);
             statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 return Students.getInstance(resultSet);
             }
             statement.close();
             resultSet.close();
             return null;
-        } catch (SQLException e){
+        } catch (SQLException e) {
             return null;
         }
     }
 
-    public Students create(CreateStudentsDto CreateSDto){
+    public Students create(CreateStudentsDto CreateSDto) {
         String query = "insert into students (username, password, name, surname, email, birthdate) values (?,?,?,?,?,?)";
-        try{
+        try {
             PreparedStatement statement =
                     this.connection.prepareStatement(
                             query, Statement.RETURN_GENERATED_KEYS);
@@ -66,9 +71,9 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
         return null;
     }
 
-    public Students update(UpdateStudentsDto UpdateSDto){
+    public Students update(UpdateStudentsDto UpdateSDto) {
         String query = "update students set password = ?, name = ?, surname = ?, email = ?, birthdate = ?, phoneNumber = ?, address = ?, gender = ?, biographicalInfo = ? where id = ?";
-        try{
+        try {
             PreparedStatement statement =
                     this.connection.prepareStatement(
                             query, Statement.RETURN_GENERATED_KEYS);
@@ -85,7 +90,7 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
             statement.setInt(9, UpdateSDto.getId());
             statement.execute();
             ResultSet res = statement.getGeneratedKeys();
-            if(res.next()){
+            if (res.next()) {
                 int id = res.getInt(1);
                 return this.getById(id);
             }
@@ -93,6 +98,30 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
             System.out.println(e.getMessage());
         }
         return null;
+    }
+
+    public HashMap<Integer, Integer> getStudentCountByYear() {
+        HashMap<Integer, Integer> studentCountByYear = new HashMap<>();
+        String query = """
+                    SELECT EXTRACT(YEAR FROM c.dateStarted) AS year, COUNT(e.id) AS student_count
+                    FROM enrolled e
+                    JOIN courses c ON e.id_Course = c.id
+                    GROUP BY year
+                    ORDER BY year;
+                """;
+
+        try (PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                int year = rs.getInt("year");
+                int count = rs.getInt("student_count");
+                studentCountByYear.put(year, count);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return studentCountByYear;
     }
 
 }

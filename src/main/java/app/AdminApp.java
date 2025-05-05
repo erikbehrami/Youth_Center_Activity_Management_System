@@ -22,9 +22,8 @@ public class AdminApp extends Application {
 
             stage.setScene(scene);
             stage.show();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
     }
 }

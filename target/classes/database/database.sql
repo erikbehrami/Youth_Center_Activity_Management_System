@@ -19,9 +19,7 @@ create table admins(
                        phoneNumber varchar(15),
                        address varchar(255),
                        gender varchar(20)
-
 );
-
 
 create table professors(
                            id integer default nextval('professors_id_seq') Primary Key ,
@@ -38,8 +36,6 @@ create table professors(
                            biographicalInfo text
 
 );
-
-
 
 create table students(
                          id integer default nextval('students_id_seq') Primary Key ,
@@ -213,4 +209,6 @@ CREATE TABLE course_enrollment_logs (
                                         FOREIGN KEY (student_id) REFERENCES students(id),
                                         FOREIGN KEY (course_id) REFERENCES courses(id)
 );
+
+
 

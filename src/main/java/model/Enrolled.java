@@ -9,7 +9,8 @@ public class Enrolled {
     private int id_student;
     private int id_course;
 
-    private Enrolled(int id, int id_professor,int id_student,int id_course){
+
+    private Enrolled(int id, int id_professor, int id_student, int id_course) {
         this.id = id;
         this.id_professor = id_professor;
         this.id_student = id_student;
@@ -17,10 +18,10 @@ public class Enrolled {
     }
 
     public static Enrolled getInstance(ResultSet resultSet) throws SQLException {
-        int id=resultSet.getInt("id");
-        int id_professor=resultSet.getInt("id_professor");
-        int id_student=resultSet.getInt("id_student");
-        int id_course=resultSet.getInt("id_course");
+        int id = resultSet.getInt("id");
+        int id_professor = resultSet.getInt("id_professor");
+        int id_student = resultSet.getInt("id_student");
+        int id_course = resultSet.getInt("id_course");
 
 
         return new Enrolled(id, id_professor, id_student, id_course);

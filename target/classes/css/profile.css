@@ -1,27 +1,25 @@
-.anchorGroup{
-    -fx-background-color: white;   /* Solid white background */
-    -fx-background-radius: 25;     /* Rounded corners */
-    -fx-border-radius: 25;         /* Rounded border */
-    -fx-border-color: #D3D3D3;     /* Light gray border */
-    -fx-border-width: 2px;         /* Thin border */
-    -fx-padding: 15px;             /* Some padding inside */
+.anchorGroup {
+    -fx-background-color: white; /* Solid white background */
+    -fx-background-radius: 25; /* Rounded corners */
+    -fx-border-radius: 25; /* Rounded border */
+    -fx-border-color: #D3D3D3; /* Light gray border */
+    -fx-border-width: 2px; /* Thin border */
+    -fx-padding: 15px; /* Some padding inside */
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 4); /* Soft shadow */
-
-
 }
 
-.headerButton{
+.headerButton {
     -fx-background-color: white;
-    -fx-border-color:black;
+    -fx-border-color: black;
     -fx-border-width: 0.5;
     /*-fx-border-radius:25;*/
     /*-fx-background-radius: 25;*/
 
 }
 
-.hideUnhidePassword{
+.hideUnhidePassword {
     -fx-background-color: white;
-    -fx-border-color:black;
+    -fx-border-color: black;
     -fx-border-width: 0.5;
 }
 

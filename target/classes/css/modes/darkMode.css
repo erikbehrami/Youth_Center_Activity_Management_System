@@ -4,9 +4,14 @@
     -fx-text-fill: white !important;
 }
 
+.adminAxis {
+    -fx-tick-label-fill: white !important;
+}
+
+
 .change {
     -fx-border-color: white !important;
-    -fx-border-width: 1.2;
+    -fx-border-width: 1.2 !important;
 }
 
 .adminSidebar {
@@ -18,8 +23,4 @@
     -fx-border-color: white !important;
     -fx-border-width: 0 0 1.2 0 !important;
     -fx-border-style: none none solid none !important;
-}
-
-.text {
-    -fx-fill: white !important;
 }
