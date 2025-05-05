@@ -1,4 +1,3 @@
-
 CREATE SEQUENCE professors_id_seq START 1000 INCREMENT 1;
 CREATE SEQUENCE admins_id_seq START 1 INCREMENT 1;
 CREATE SEQUENCE students_id_seq START 220000 INCREMENT 1;
@@ -9,7 +8,7 @@ CREATE SEQUENCE schedules_id_seq START 100000 INCREMENT 1;
 CREATE SEQUENCE requests_id_seq START 500000 INCREMENT 1;
 
 create table admins(
-                       id integer default nextval('admins_id_seq') Primary Key ,
+                       id integer default nextval('admins_id_seq') Primary Key,
                        username varchar(255),
                        salt TEXT NOT NULL,
                        passwordHash TEXT NOT NULL,
@@ -19,11 +18,12 @@ create table admins(
                        birthdate date,
                        phoneNumber varchar(15),
                        address varchar(255),
-                       gender varchar(20)
+                       gender varchar(20),
+                       registration_date date default CURRENT_DATE
 );
 
 create table professors(
-                           id integer default nextval('professors_id_seq') Primary Key ,
+                           id integer default nextval('professors_id_seq') Primary Key,
                            username varchar(255),
                            salt TEXT NOT NULL,
                            passwordHash TEXT NOT NULL,
@@ -35,11 +35,12 @@ create table professors(
                            phoneNumber varchar(15),
                            address varchar(255),
                            gender varchar(20),
-                           biographicalInfo text
+                           biographicalInfo text,
+                           registration_date date default CURRENT_DATE
 );
 
 create table students(
-                         id integer default nextval('students_id_seq') Primary Key ,
+                         id integer default nextval('students_id_seq') Primary Key,
                          username varchar(255),
                          salt TEXT NOT NULL,
                          passwordHash TEXT NOT NULL,
@@ -50,8 +51,10 @@ create table students(
                          phoneNumber varchar(15),
                          address varchar(255),
                          gender varchar(20),
-                         biographicalInfo text
+                         biographicalInfo text,
+                         registration_date date default CURRENT_DATE
 );
+
 create table lectureRooms(
                              id integer default nextval('lectureRooms_id_seq') Primary Key ,
                              name varchar(255),

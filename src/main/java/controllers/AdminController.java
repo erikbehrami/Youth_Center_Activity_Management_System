@@ -45,22 +45,23 @@ public class AdminController extends BaseController {
 
         if (studentChart != null) {
             HashMap<Integer, Integer> studentCountsByYear = adminDashboardService.getStudentCountByYear();
-            populateChart(studentChart, studentCountsByYear);
+            populateChart(studentChart, "New Students", studentCountsByYear);
         }
 
         if (courseChart != null) {
             HashMap<Integer, Integer> courseCountsByYear = adminDashboardService.getCourseCountByYear();
-            populateChart(courseChart, courseCountsByYear);
+            populateChart(courseChart, "New Courses", courseCountsByYear);
         }
 
         if (profChart != null) {
             HashMap<Integer, Integer> professorCountsByYear = adminDashboardService.getProfessorCountByYear();
-            populateChart(profChart, professorCountsByYear);
+            populateChart(profChart, "New Professors", professorCountsByYear);
         }
     }
 
-    private void populateChart(XYChart<String, Number> chart, HashMap<Integer, Integer> countByYear) {
+    private void populateChart(XYChart<String, Number> chart, String title, HashMap<Integer, Integer> countByYear) {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName(title);
 
         for (Map.Entry<Integer, Integer> entry : countByYear.entrySet()) {
             series.getData().add(new XYChart.Data<>(String.valueOf(entry.getKey()), entry.getValue()));

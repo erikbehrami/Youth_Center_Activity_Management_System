@@ -1,14 +1,15 @@
 package repository;
 
 
-import model.Professors;
 import model.Students;
-import model.dto.professors.CreateProfessorDto;
-import model.dto.professors.UpdateProfessorDto;
 import model.dto.students.CreateStudentsDto;
 import model.dto.students.UpdateStudentsDto;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
 
 
 public class StudentsRepository extends BaseRepository<Students, CreateStudentsDto, UpdateStudentsDto> {
@@ -101,4 +102,26 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
         return null;
     }
 
+    public HashMap<Integer, Integer> getStudentCountByYear() {
+        HashMap<Integer, Integer> studentCountByYear = new HashMap<>();
+        String query = """
+                    SELECT EXTRACT(YEAR FROM registration_date) AS year, COUNT(id) AS student_count
+                    FROM students
+                    GROUP BY year
+                    ORDER BY year;
+                """;
+
+        try (PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                int year = rs.getInt("year");
+                int count = rs.getInt("student_count");
+                studentCountByYear.put(year, count);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return studentCountByYear;
+    }
 }

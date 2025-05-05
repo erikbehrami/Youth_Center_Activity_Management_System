@@ -4,7 +4,11 @@ import model.Professors;
 import model.dto.professors.CreateProfessorDto;
 import model.dto.professors.UpdateProfessorDto;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
 
 
 public class ProfessorsRepository extends BaseRepository<Professors, CreateProfessorDto, UpdateProfessorDto> {
@@ -96,6 +100,29 @@ public class ProfessorsRepository extends BaseRepository<Professors, CreateProfe
             System.out.println(e.getMessage());
         }
         return null;
+    }
+
+    public HashMap<Integer, Integer> getProfessorCountByYear() {
+        HashMap<Integer, Integer> professorCountByYear = new HashMap<>();
+        String query = """
+                    SELECT EXTRACT(YEAR FROM registration_date) AS year, COUNT(id) AS professor_count
+                    FROM professors
+                    GROUP BY year
+                    ORDER BY year;
+                """;
+
+        try (PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                int year = rs.getInt("year");
+                int count = rs.getInt("professor_count");
+                professorCountByYear.put(year, count);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return professorCountByYear;
     }
 
 }
