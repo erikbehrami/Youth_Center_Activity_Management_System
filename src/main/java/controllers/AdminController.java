@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -15,11 +14,10 @@ import model.Students;
 import services.AdminServices.AdminDashboardService;
 import utils.Navigator;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class AdminController extends BaseController {
+
     @FXML
     private Label adminStudentsNUM;
     @FXML
@@ -50,7 +48,7 @@ public class AdminController extends BaseController {
     private TableColumn<Professors, java.util.Date> profBIRTHDAY;
 
     @FXML
-    private TableView<Students> studentsTable; // Change to Students model
+    private TableView<Students> studentsTable;
     @FXML
     private TableColumn<Students, Integer> stdID;
     @FXML
@@ -70,14 +68,15 @@ public class AdminController extends BaseController {
     private void initialize() {
         loadCounts();
         loadCharts();
+        setupStudentsTable();
         setupProfessorsTable();
-        setupStudentsTable();  // Setup the students table
         if (professorsTable != null) {
             loadProfessorsData();
         }
         if (studentsTable != null) {
-            loadStudentsData();  // Load students data
+            loadStudentsData();
         }
+
     }
 
     private void loadCounts() {
@@ -96,28 +95,19 @@ public class AdminController extends BaseController {
 
     private void loadCharts() {
         if (studentChart != null) {
-            populateChart(studentChart, "New Students", adminDashboardService.getStudentCountByYear());
+            studentChart.getData().clear();
+            studentChart.getData().add(adminDashboardService.getStudentChartSeries());
         }
 
         if (courseChart != null) {
-            populateChart(courseChart, "New Courses", adminDashboardService.getCourseCountByYear());
+            courseChart.getData().clear();
+            courseChart.getData().add(adminDashboardService.getCourseChartSeries());
         }
 
         if (profChart != null) {
-            populateChart(profChart, "New Professors", adminDashboardService.getProfessorCountByYear());
+            profChart.getData().clear();
+            profChart.getData().add(adminDashboardService.getProfessorChartSeries());
         }
-    }
-
-    private void populateChart(XYChart<String, Number> chart, String title, HashMap<Integer, Integer> countByYear) {
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName(title);
-
-        for (Map.Entry<Integer, Integer> entry : countByYear.entrySet()) {
-            series.getData().add(new XYChart.Data<>(String.valueOf(entry.getKey()), entry.getValue()));
-        }
-
-        chart.getData().clear();
-        chart.getData().add(series);
     }
 
     private void setupProfessorsTable() {
@@ -141,17 +131,13 @@ public class AdminController extends BaseController {
     private void loadProfessorsData() {
         List<Professors> allProfessors = adminDashboardService.getAllProfessors();
         ObservableList<Professors> professorList = FXCollections.observableArrayList(allProfessors);
-        if (professorList != null) {
-            professorsTable.setItems(professorList);
-        }
+        professorsTable.setItems(professorList);
     }
 
     private void loadStudentsData() {
-        List<Students> allStudents = adminDashboardService.getAllStudents();  // Get students data
+        List<Students> allStudents = adminDashboardService.getAllStudents();
         ObservableList<Students> studentList = FXCollections.observableArrayList(allStudents);
-        if (studentList != null) {
-            studentsTable.setItems(studentList);  // Bind the students data to the table
-        }
+        studentsTable.setItems(studentList);
     }
 
     @FXML
