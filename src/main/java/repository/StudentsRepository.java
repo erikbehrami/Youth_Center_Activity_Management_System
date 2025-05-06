@@ -1,6 +1,7 @@
 package repository;
 
 
+import model.Professors;
 import model.Students;
 import model.dto.students.CreateStudentsDto;
 import model.dto.students.UpdateStudentsDto;
@@ -123,5 +124,20 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
         }
 
         return studentCountByYear;
+    }
+
+    public Students getByEmail(String email) {
+        String query = "SELECT * FROM students WHERE EMAIL = ?";
+        try {
+            PreparedStatement pstm = this.connection.prepareStatement(query);
+            pstm.setString(1, email);
+            ResultSet res = pstm.executeQuery();
+            if (res.next()) {
+                return this.fromResultSet(res);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 }

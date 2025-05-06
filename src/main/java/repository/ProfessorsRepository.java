@@ -1,5 +1,6 @@
 package repository;
 
+import model.Admins;
 import model.Professors;
 import model.dto.professors.CreateProfessorDto;
 import model.dto.professors.UpdateProfessorDto;
@@ -123,6 +124,21 @@ public class ProfessorsRepository extends BaseRepository<Professors, CreateProfe
         }
 
         return professorCountByYear;
+    }
+
+    public Professors getByEmail(String email) {
+        String query = "SELECT * FROM professors WHERE EMAIL = ?";
+        try {
+            PreparedStatement pstm = this.connection.prepareStatement(query);
+            pstm.setString(1, email);
+            ResultSet res = pstm.executeQuery();
+            if (res.next()) {
+                return this.fromResultSet(res);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
 }

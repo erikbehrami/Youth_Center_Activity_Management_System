@@ -40,7 +40,7 @@ public class PasswordHasher {
     public static byte[] decodeSalt(String saltStr) {
         return Base64.getDecoder().decode(saltStr);
     }
-
+    
 }
 
 

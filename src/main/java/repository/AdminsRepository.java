@@ -12,14 +12,14 @@ public class AdminsRepository extends BaseRepository<Admins, CreateAdminsDto, Up
         super("admins");
     }
 
-    Admins fromResultSet(ResultSet res) throws SQLException{
+    Admins fromResultSet(ResultSet res) throws SQLException {
         return Admins.getInstance(res);
     }
 
     // Create new admins
     public Admins create(CreateAdminsDto createAdminsDto) {
         String query = "insert into admins (username, password, name, surname, email, birthdate, phoneNumber, address, gender) values (?,?,?,?,?,?,?,?,?)";
-        try{
+        try {
             PreparedStatement pstm =
                     this.connection.prepareStatement(
                             query, Statement.RETURN_GENERATED_KEYS);
@@ -34,11 +34,11 @@ public class AdminsRepository extends BaseRepository<Admins, CreateAdminsDto, Up
             pstm.setString(9, createAdminsDto.getGender());
             pstm.execute();
             ResultSet res = pstm.getGeneratedKeys();
-            if(res.next()){
+            if (res.next()) {
                 int id = res.getInt(1);
                 return this.getById(id);
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return null;
@@ -47,7 +47,7 @@ public class AdminsRepository extends BaseRepository<Admins, CreateAdminsDto, Up
     //Update admins
     public Admins update(UpdateAdminsDto updateAdDto) {
         String query = "update admins set password = ?, name = ?, surname = ?, email = ?, birthdate = ?, phoneNumber = ?, address = ?, gender = ? where id = ?";
-        try{
+        try {
             PreparedStatement pstm =
                     this.connection.prepareStatement(
                             query, Statement.RETURN_GENERATED_KEYS);
@@ -62,11 +62,26 @@ public class AdminsRepository extends BaseRepository<Admins, CreateAdminsDto, Up
             pstm.setInt(9, updateAdDto.getId());
             pstm.execute();
             ResultSet res = pstm.getGeneratedKeys();
-            if(res.next()){
+            if (res.next()) {
                 int id = res.getInt(1);
                 return this.getById(id);
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public Admins getByEmail(String email) {
+        String query = "SELECT * FROM admins WHERE EMAIL = ?";
+        try {
+            PreparedStatement pstm = this.connection.prepareStatement(query);
+            pstm.setString(1, email);
+            ResultSet res = pstm.executeQuery();
+            if (res.next()) {
+                return this.fromResultSet(res);
+            }
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return null;

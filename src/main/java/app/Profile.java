@@ -15,7 +15,7 @@ public class Profile extends Application {
             SceneManager sceneManager = SceneManager.getInstance();
             sceneManager.setPrimaryStage(stage);
 
-            FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource(Navigator.PROFILE));
+            FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource(Navigator.SIGN_IN));
             loader.setResources(languageManager.getResourceBundle());
             Scene scene = new Scene(loader.load());
 
