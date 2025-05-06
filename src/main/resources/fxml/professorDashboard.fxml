@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfController">
+
+    <children>
+
+        <fx:include source="profSidebar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0" />
+        <AnchorPane layoutX="243.2" prefHeight="628.0" prefWidth="955.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+            <children>
+                <Label layoutX="18.0" layoutY="12.0" prefHeight="36.0" prefWidth="326.0" text="%prof.Welcome" textFill="#101935">
+                    <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                    </font>
+                </Label>
+                <Label layoutX="19.0" layoutY="48.0" prefHeight="18.0" prefWidth="160.0" text="Gjeneron daten aktuale " />
+                <Pane layoutX="757.0" layoutY="25.0" prefHeight="36.0" prefWidth="200.0">
+                    <children>
+                        <Button graphicTextGap="40.0" layoutX="11.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="181.0" style="-fx-background-color: white;" stylesheets="@../css/profile.css" text="%prof.AddCourse">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                            <styleClass>
+                                <String fx:value="buttonShadow" />
+                                <String fx:value="change" />
+                            </styleClass>
+                        </Button>
+                        <FontAwesomeIconView glyphName="PLUS" layoutX="22.0" layoutY="24.0" size="20" styleClass="icon" />
+                    </children>
+                </Pane>
+                <Pane layoutX="19.0" layoutY="91.0" prefHeight="142.0" prefWidth="160.0" stylesheets="@../css/profile.css">
+                    <children>
+                        <Text layoutX="47.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="02/08" wrappingWidth="92.95703125">
+                            <font>
+                                <Font name="System Bold" size="22.0" />
+                            </font>
+                        </Text>
+                        <Text layoutX="43.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="%prof.TotalClasses">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Text>
+                        <FontAwesomeIconView glyphName="BOOK" layoutX="14.0" layoutY="48.0" size="35" styleClass="icon" />
+                        <FontAwesomeIconView glyphName="ELLIPSIS_V" layoutX="130.0" layoutY="41.0" size="25" styleClass="icon" />
+                    </children>
+                    <styleClass>
+                        <String fx:value="buttonShadow" />
+                        <String fx:value="change" />
+                    </styleClass>
+                </Pane>
+                <Pane layoutX="206.0" layoutY="91.0" prefHeight="142.0" prefWidth="160.0" stylesheets="@../css/profile.css">
+                    <children>
+                        <Text layoutX="45.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="18/30" wrappingWidth="92.95703125">
+                            <font>
+                                <Font name="System Bold" size="22.0" />
+                            </font>
+                        </Text>
+                        <Text layoutX="38.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="%prof.TotalStudents">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Text>
+                        <FontAwesomeIconView glyphName="GRADUATION_CAP" layoutX="15.0" layoutY="48.0" size="35" styleClass="icon" />
+                        <FontAwesomeIconView glyphName="ELLIPSIS_V" layoutX="132.0" layoutY="40.0" size="25" styleClass="icon" />
+                    </children>
+                    <styleClass>
+                        <String fx:value="buttonShadow" />
+                        <String fx:value="change" />
+                    </styleClass>
+                </Pane>
+                <Pane layoutX="393.0" layoutY="92.0" prefHeight="142.0" prefWidth="160.0" stylesheets="@../css/profile.css">
+                    <children>
+                        <FontAwesomeIconView glyphName="CALENDAR" layoutX="16.0" layoutY="48.0" size="35" styleClass="icon" />
+                        <Text layoutX="46.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="42/50" wrappingWidth="92.95703125">
+                            <font>
+                                <Font name="System Bold" size="22.0" />
+                            </font>
+                        </Text>
+                        <Text layoutX="42.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="%prof.TotalLessons">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Text>
+                        <FontAwesomeIconView glyphName="ELLIPSIS_V" layoutX="132.0" layoutY="42.0" size="25" styleClass="icon" />
+                    </children>
+                    <styleClass>
+                        <String fx:value="buttonShadow" />
+                        <String fx:value="change" />
+                    </styleClass>
+                </Pane>
+                <Pane layoutX="19.0" layoutY="480.0" prefHeight="134.0" prefWidth="534.0" stylesheets="@../css/profile.css">
+                    <children>
+                        <Text layoutX="20.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="%prof.Topcourses" wrappingWidth="107.0595703125">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Text>
+                        <Button layoutX="450.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleProfCourses" style="-fx-background-color: white;" styleClass="icon" text="%prof.SeeAll" textFill="#898383">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </Button>
+                        <Pane layoutX="28.0" layoutY="34.0" prefHeight="40.0" prefWidth="224.0" stylesheets="@../css/profile.css">
+                            <children>
+                                <Text layoutX="57.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="%prof.Web" wrappingWidth="117.79998779296875">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="#898383" layoutX="58.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="521 sales" wrappingWidth="83.80001449584961">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="#187338" layoutX="175.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$1200">
+                                    <font>
+                                        <Font name="System Bold Italic" size="12.0" />
+                                    </font>
+                                </Text>
+                                <FontAwesomeIconView glyphName="LAPTOP" layoutX="12.0" layoutY="28.0" selectionEnd="0" size="25" styleClass="icon" />
+                            </children>
+                            <styleClass>
+                                <String fx:value="buttonShadow" />
+                                <String fx:value="change" />
+                            </styleClass>
+                        </Pane>
+                        <Pane layoutX="27.0" layoutY="82.0" prefHeight="40.0" prefWidth="224.0" stylesheets="@../css/profile.css">
+                            <children>
+                                <Text layoutX="57.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="%prof.Math" wrappingWidth="117.79998779296875">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="#898383" layoutX="58.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="300 sales" wrappingWidth="83.80001449584961">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="#187338" layoutX="175.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$752">
+                                    <font>
+                                        <Font name="System Bold Italic" size="12.0" />
+                                    </font>
+                                </Text>
+                                <FontAwesomeIconView glyphName="FAX" layoutX="16.0" layoutY="26.0" size="20" styleClass="icon" />
+                            </children>
+                            <styleClass>
+                                <String fx:value="buttonShadow" />
+                                <String fx:value="change" />
+                            </styleClass>
+                        </Pane>
+                        <Pane layoutX="282.0" layoutY="34.0" prefHeight="40.0" prefWidth="224.0" stylesheets="@../css/profile.css">
+                            <children>
+                                <Text layoutX="57.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="%prof.Physics" wrappingWidth="117.79998779296875">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="#898383" layoutX="58.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="224 sales" wrappingWidth="83.80001449584961">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="#187338" layoutX="175.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$614">
+                                    <font>
+                                        <Font name="System Bold Italic" size="12.0" />
+                                    </font>
+                                </Text>
+                                <FontAwesomeIconView glyphName="MAGNET" layoutX="14.0" layoutY="27.0" size="20" styleClass="icon" />
+                            </children>
+                            <styleClass>
+                                <String fx:value="buttonShadow" />
+                                <String fx:value="change" />
+                            </styleClass>
+                        </Pane>
+                        <Pane layoutX="281.0" layoutY="82.0" prefHeight="40.0" prefWidth="224.0" stylesheets="@../css/profile.css">
+                            <children>
+                                <Text layoutX="57.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="%prof.Chemistry" wrappingWidth="117.79998779296875">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="#898383" layoutX="58.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="112 sales" wrappingWidth="83.80001449584961">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="#187338" layoutX="175.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$444">
+                                    <font>
+                                        <Font name="System Bold Italic" size="12.0" />
+                                    </font>
+                                </Text>
+                                <FontAwesomeIconView glyphName="FLASK" layoutX="15.0" layoutY="26.0" size="20" styleClass="icon" />
+                            </children>
+                            <styleClass>
+                                <String fx:value="buttonShadow" />
+                                <String fx:value="change" />
+                            </styleClass>
+                        </Pane>
+                    </children>
+                    <styleClass>
+                        <String fx:value="buttonShadow" />
+                        <String fx:value="change" />
+                    </styleClass>
+                </Pane>
+                <Pane layoutX="20.0" layoutY="250.0" prefHeight="214.0" prefWidth="534.0" stylesheets="@../css/profile.css">
+                    <children>
+                        <AreaChart cacheShape="false" horizontalZeroLineVisible="false" layoutX="8.0" layoutY="2.0" legendSide="TOP" prefHeight="207.0" prefWidth="512.0" styleClass="icon" title="%prof.Attendance" verticalZeroLineVisible="false">
+                            <xAxis>
+                                <CategoryAxis side="BOTTOM" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis side="LEFT" />
+                            </yAxis>
+                        </AreaChart>
+                    </children>
+                    <styleClass>
+                        <String fx:value="buttonShadow" />
+                        <String fx:value="change" />
+                    </styleClass>
+                </Pane>
+                <Pane layoutX="580.0" layoutY="92.0" prefHeight="522.0" prefWidth="368.5" stylesheets="@../css/profile.css">
+                    <children>
+                        <HBox layoutX="7.0" layoutY="2.0" prefHeight="38.0" prefWidth="350.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#handleProfCourses" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: white;" text="%prof.AllCourse">
+                                    <HBox.margin>
+                                        <Insets top="10.0" />
+                                    </HBox.margin>
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Button>
+                                <Button mnemonicParsing="false" onAction="#handleProfStudents" prefHeight="30.0" prefWidth="86.0" style="-fx-background-color: white;" text="%prof.Students" textFill="#898383">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets left="-10.0" top="10.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="78.0" style="-fx-background-color: white;" text="%prof.Filter" textFill="#898383">
+                                    <HBox.margin>
+                                        <Insets left="25.0" top="10.0" />
+                                    </HBox.margin>
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Button>
+                                <Button mnemonicParsing="false" style="-fx-background-color: white;" text="%prof.Sort" textFill="#898383">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets top="10.0" />
+                                    </HBox.margin>
+                                    <padding>
+                                        <Insets left="30.0" top="1.0" />
+                                    </padding>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <Pane layoutX="8.0" layoutY="31.0" prefHeight="8.0" prefWidth="360.0">
+                            <children>
+                                <Line endX="265.5999755859375" layoutX="85.0" layoutY="5.0" startX="-82.0" stroke="#898383" />
+                            </children>
+                        </Pane>
+                        <Pane layoutX="10.0" layoutY="40.0" prefHeight="42.0" prefWidth="349.0" style="-fx-background-color: #f8f8f8; -fx-border-radius: 20px;">
+                            <children>
+                                <Text fill="#959598" layoutX="11.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%prof.Name" wrappingWidth="46.40000000000009">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="#959598" layoutX="104.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%prof.Amount" wrappingWidth="67.19998779296884">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="#959598" layoutX="222.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%prof.Date" wrappingWidth="34.57031249999994">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Text>
+                                <Text fill="#959598" layoutX="304.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%prof.Status" wrappingWidth="46.40000000000009">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Text>
+                            </children>
+                        </Pane>
+                        <VBox layoutX="11.0" layoutY="90.0" prefHeight="422.0" prefWidth="349.0">
+                            <children>
+                                <HBox prefHeight="54.0" prefWidth="350.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="Web Dev" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="7.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="\$1200" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="27.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="01-02025" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="39.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text fill="#187338" strokeType="OUTSIDE" strokeWidth="0.0" text="+Active" wrappingWidth="51.356868743896484">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="24.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                    </children>
+                                </HBox>
+                                <Separator prefHeight="0.0" prefWidth="350.0" />
+                                <HBox prefHeight="54.0" prefWidth="350.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="Web Dev" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="7.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="\$1200" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="27.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="01-02025" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="39.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text fill="#187338" strokeType="OUTSIDE" strokeWidth="0.0" text="+Active" wrappingWidth="51.356868743896484">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="24.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                    </children>
+                                </HBox>
+                                <Separator prefWidth="200.0" />
+                                <HBox prefHeight="54.0" prefWidth="350.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="Web Dev" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="7.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="\$1200" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="27.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="01-02025" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="39.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text fill="#187338" strokeType="OUTSIDE" strokeWidth="0.0" text="+Active" wrappingWidth="51.356868743896484">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="24.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                    </children>
+                                </HBox>
+                                <Separator prefWidth="200.0" />
+                                <HBox prefHeight="54.0" prefWidth="350.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="Web Dev" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="7.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="\$1200" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="27.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="01-02025" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="39.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text fill="#187338" strokeType="OUTSIDE" strokeWidth="0.0" text="+Active" wrappingWidth="51.356868743896484">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="24.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                    </children>
+                                </HBox>
+                                <Separator prefWidth="200.0" />
+                                <HBox prefHeight="54.0" prefWidth="350.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="Web Dev" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="7.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="\$1200" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="27.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="01-02025" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="39.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text fill="#187338" strokeType="OUTSIDE" strokeWidth="0.0" text="+Active" wrappingWidth="51.356868743896484">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="24.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                    </children>
+                                </HBox>
+                                <Separator prefWidth="200.0" />
+                                <HBox prefHeight="54.0" prefWidth="350.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="Web Dev" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="7.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="\$1200" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="27.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="01-02025" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="39.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text fill="#187338" strokeType="OUTSIDE" strokeWidth="0.0" text="+Active" wrappingWidth="51.356868743896484">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="24.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                    </children>
+                                </HBox>
+                                <Separator prefWidth="200.0" />
+                                <HBox prefHeight="54.0" prefWidth="350.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="Web Dev" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="7.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="\$1200" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="27.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="01-02025" wrappingWidth="65.75701904296875">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="39.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <Text fill="#187338" strokeType="OUTSIDE" strokeWidth="0.0" text="+Active" wrappingWidth="51.356868743896484">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="24.0" top="18.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <Line endX="287.19989013671875" layoutX="71.0" layoutY="86.0" startX="-60.00006103515625" stroke="#898383" styleClass="text" />
+                    </children>
+                    <styleClass>
+                        <String fx:value="buttonShadow" />
+                        <String fx:value="change" />
+                    </styleClass>
+                </Pane>
+            </children>
+        </AnchorPane>
+
+        <AnchorPane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #101935;" styleClass="navbar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <fx:include source="navBar.fxml" />
+        </AnchorPane>
+    </children>
+
+</AnchorPane>

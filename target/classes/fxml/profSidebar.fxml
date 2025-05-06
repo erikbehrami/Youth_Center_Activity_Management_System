@@ -1,165 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane layoutY="49.0" prefHeight="628.0" prefWidth="242.0" style="-fx-background-color: #0f1833;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfController">
-        <children>
-            <SplitMenuButton layoutX="12.0" layoutY="13.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="217.0">
-                <items>
-                    <MenuItem mnemonicParsing="false" text="Action 1" />
-                    <MenuItem mnemonicParsing="false" text="Action 2" />
-                </items>
-                <graphic>
-                    <Pane focusTraversable="true" prefHeight="42.0" prefWidth="112.0">
-                        <children>
-                            <ImageView fitHeight="39.0" fitWidth="49.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                                <image>
-                                    <Image url="@../images/profDashboard/user.png" />
-                                </image>
-                            </ImageView>
-                            <Text layoutX="47.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ermir Mëziu" wrappingWidth="99.73672485351562">
-                                <font>
-                                    <Font name="System Bold" size="14.0" />
-                                </font>
-                            </Text>
-                            <Text fill="#898383" layoutX="49.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ermirmeziu@gmail.com" wrappingWidth="102.13668823242188">
-                                <font>
-                                    <Font size="9.0" />
-                                </font>
-                            </Text>
-                        </children>
-                    </Pane>
-                </graphic>
-            </SplitMenuButton>
-            <Text fill="#7e7878" layoutX="12.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%profSideBar.Mainmenu" wrappingWidth="83.80001449584961" />
-            <StackPane layoutX="12.0" layoutY="76.0" prefHeight="58.0" prefWidth="217.0">
-                <children>
-                    <TextField prefHeight="28.0" prefWidth="218.0" promptText="%profSideBar.Search">
-                        <padding>
-                            <Insets left="40.0" />
-                        </padding>
-                    </TextField>
-                    <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
-                        <image>
-                            <Image url="@../images/profDashboard/search.png" />
-                        </image>
-                        <StackPane.margin>
-                            <Insets left="5.0" top="1.0" />
-                        </StackPane.margin>
-                    </ImageView>
-                </children>
-            </StackPane>
-            <VBox layoutX="12.0" layoutY="166.0" prefHeight="322.0" prefWidth="218.0">
-                <children>
-                    <Button alignment="TOP_LEFT" graphicTextGap="40.0" mnemonicParsing="false" onAction="#handleProfDashboard" prefHeight="39.0" prefWidth="221.0" style="-fx-background-color: white;" text="%profSideBar.Dashboard">
-                        <graphic>
-                            <ImageView fitHeight="32.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                                <image>
-                                    <Image url="@../images/profDashboard/home.png" />
-                                </image>
-                                <viewport>
-                                    <Rectangle2D />
-                                </viewport>
-                            </ImageView>
-                        </graphic>
-                        <VBox.margin>
-                            <Insets />
-                        </VBox.margin>
-                        <font>
-                            <Font name="System Bold" size="12.0" />
-                        </font>
-                    </Button>
-                    <Button alignment="TOP_LEFT" graphicTextGap="40.0" mnemonicParsing="false" onAction="#handleProfCourses" prefHeight="39.0" prefWidth="221.0" style="-fx-background-color: white;" text="%profSideBar.Courses">
-                        <VBox.margin>
-                            <Insets top="20.0" />
-                        </VBox.margin>
-                        <graphic>
-                            <ImageView fitHeight="32.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                                <image>
-                                    <Image url="@../images/profDashboard/courses.png" />
-                                </image>
-                            </ImageView>
-                        </graphic>
-                        <font>
-                            <Font name="System Bold" size="12.0" />
-                        </font>
-                    </Button>
-                    <Button alignment="TOP_LEFT" graphicTextGap="40.0" mnemonicParsing="false" onAction="#handleProfStudents" prefHeight="39.0" prefWidth="221.0" style="-fx-background-color: white;" text="%profSideBar.MyStudents">
-                        <VBox.margin>
-                            <Insets top="20.0" />
-                        </VBox.margin>
-                        <font>
-                            <Font name="System Bold" size="12.0" />
-                        </font>
-                        <graphic>
-                            <ImageView fitHeight="32.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                                <image>
-                                    <Image url="@../images/profDashboard/student.png" />
-                                </image>
-                            </ImageView>
-                        </graphic>
-                    </Button>
-                    <Button alignment="TOP_LEFT" graphicTextGap="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: white;" text="%profSideBar.Schedule">
-                        <VBox.margin>
-                            <Insets top="20.0" />
-                        </VBox.margin>
-                        <font>
-                            <Font name="System Bold" size="12.0" />
-                        </font>
-                        <graphic>
-                            <ImageView fitHeight="32.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                                <image>
-                                    <Image url="@../images/profDashboard/settings.png" />
-                                </image>
-                            </ImageView>
-                        </graphic>
-                    </Button>
-                </children>
-            </VBox>
-            <HBox layoutY="572.0" prefHeight="40.0" prefWidth="242.0" spacing="15.0">
-                <children>
-                    <Button alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="118.0" style="-fx-background-color: white;" text="%profSideBar.Settings">
-                        <font>
-                            <Font name="System Bold" size="10.0" />
-                        </font>
-                        <graphic>
-                            <ImageView fitHeight="30.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                                <image>
-                                    <Image url="@../images/profDashboard/settings.png" />
-                                </image>
-                            </ImageView>
-                        </graphic>
-                    </Button>
-                    <Button alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="117.0" style="-fx-background-color: white;" text="%profSideBar.Help">
-                        <font>
-                            <Font name="System Bold" size="10.0" />
-                        </font>
-                        <graphic>
-                            <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                <image>
-                                    <Image url="@../images/profDashboard/help.png" />
-                                </image>
-                            </ImageView>
-                        </graphic>
-                    </Button>
-                </children>
-                <padding>
-                    <Insets left="12.0" right="12.0" />
-                </padding>
-            </HBox>
-        </children>
-    </AnchorPane>
+<AnchorPane layoutY="49.0" prefHeight="628.0" prefWidth="242.0" style="-fx-background-color: #0f1833;" styleClass="profSidebar" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfController">
+    <children>
+        <Text fill="#7e7878" layoutX="12.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="%profSideBar.Mainmenu" wrappingWidth="83.80001449584961" />
+        <StackPane layoutX="12.0" layoutY="76.0" prefHeight="58.0" prefWidth="217.0">
+            <children>
+                <TextField prefHeight="28.0" prefWidth="218.0" promptText="%profSideBar.Search">
+                    <padding>
+                        <Insets left="40.0" />
+                    </padding>
+                    <styleClass>
+                        <String fx:value="change" />
+                        <String fx:value="icon" />
+                    </styleClass>
+                </TextField>
+                <FontAwesomeIconView glyphName="SEARCH" size="17" strokeType="INSIDE" styleClass="icon" textOrigin="CENTER" translateX="-90.0" translateY="-1.0" />
+            </children>
+        </StackPane>
+        <VBox layoutX="12.0" layoutY="166.0" prefHeight="229.0" prefWidth="218.0">
+            <children>
+                <Button alignment="TOP_LEFT" graphicTextGap="40.0" mnemonicParsing="false" onAction="#handleProfDashboard" prefHeight="39.0" prefWidth="221.0" style="-fx-background-color: white;" styleClass="change" text="%profSideBar.Dashboard">
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <graphic>
+                        <FontAwesomeIconView glyphName="HOME" selectionStart="1" size="27" styleClass="icon" tabSize="15" textAlignment="CENTER" wrappingWidth="24.79998779296875" />
+                    </graphic>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </Button>
+                <Button alignment="TOP_LEFT" graphicTextGap="40.0" mnemonicParsing="false" onAction="#handleProfCourses" prefHeight="39.0" prefWidth="221.0" style="-fx-background-color: white;" styleClass="change" text="%profSideBar.Courses">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <graphic>
+                        <FontAwesomeIconView glyphName="BOOK" size="27" strokeMiterLimit="0.0" styleClass="icon" translateY="1.0" />
+                    </graphic>
+                </Button>
+                <Button alignment="TOP_LEFT" graphicTextGap="40.0" mnemonicParsing="false" onAction="#handleProfStudents" prefHeight="39.0" prefWidth="221.0" style="-fx-background-color: white;" styleClass="change" text="%profSideBar.MyStudents">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <graphic>
+                        <FontAwesomeIconView glyphName="USER" size="27" styleClass="icon" translateY="1.0" />
+                    </graphic>
+                </Button>
+                <Button alignment="TOP_LEFT" graphicTextGap="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: white;" styleClass="change" text="%profSideBar.Schedule">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <graphic>
+                        <FontAwesomeIconView glyphName="CALENDAR" size="27" styleClass="icon" />
+                    </graphic>
+                </Button>
+            </children>
+        </VBox>
+        <HBox layoutY="572.0" prefHeight="40.0" prefWidth="242.0" spacing="15.0">
+            <children>
+                <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="118.0" style="-fx-background-color: white;" styleClass="change" text="%profSideBar.Settings">
+                    <font>
+                        <Font name="System Bold" size="10.0" />
+                    </font>
+                    <graphic>
+                        <FontAwesomeIconView glyphName="GEAR" size="25" styleClass="icon" />
+                    </graphic>
+                </Button>
+                <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="117.0" style="-fx-background-color: white;" styleClass="change" text="%profSideBar.Help">
+                    <font>
+                        <Font name="System Bold" size="10.0" />
+                    </font>
+                    <graphic>
+                        <FontAwesomeIconView glyphName="INFO" size="25" styleClass="icon" />
+                    </graphic>
+                </Button>
+            </children>
+            <padding>
+                <Insets left="12.0" right="12.0" />
+            </padding>
+        </HBox>
+        <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="18.0" layoutY="62.0" size="50" />
+        <Label layoutX="81.0" layoutY="31.0" prefHeight="18.0" prefWidth="126.0" text="%prof.ProfName" textFill="WHITE">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

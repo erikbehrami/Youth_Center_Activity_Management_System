@@ -12,7 +12,7 @@ interface AdminPages {
 }
 
 interface ProfPages {
-    String PROF_DASHBOARD = "/fxml/profDashboard.fxml";
+    String PROF_DASHBOARD = "/fxml/professorDashboard.fxml";
     String PROF_COURSES = "/fxml/profCourses.fxml";
     String PROF_STUDENTS = "/fxml/profStudents.fxml";
 }

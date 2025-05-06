@@ -24,3 +24,13 @@
     -fx-border-width: 0 0 1.2 0 !important;
     -fx-border-style: none none solid none !important;
 }
+
+.profSidebar {
+    -fx-border-color: white !important;
+     -fx-border-width: 0 1.2 0 0 !important;
+    -fx-border-style: none  solid none  none !important;
+}
+
+.icon{
+    -fx-fill:white
+}
