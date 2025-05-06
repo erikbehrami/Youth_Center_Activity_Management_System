@@ -118,9 +118,8 @@ public class SignUpController extends BaseController {
                 } else {
                     ErrorDialog.showRegistrationSuccess(Alert.AlertType.INFORMATION, "Fail");
                 }
-
+                
             }
-
 
         } catch (Exception e) {
             System.out.println();

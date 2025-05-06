@@ -30,7 +30,7 @@ abstract class BaseController {
 
     @FXML
     protected void handleGoBack() {
-        sceneManager.switchScene(sceneManager.getLastPath(), null);
+        sceneManager.switchScene(sceneManager.getLastPath());
     }
 
     @FXML

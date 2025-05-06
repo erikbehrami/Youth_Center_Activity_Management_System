@@ -1,10 +1,13 @@
 package services.AdminServices;
 
+import model.Professors;
+import model.Students;
 import repository.CourseRepository;
 import repository.EnrolledRepository;
 import repository.ProfessorsRepository;
 import repository.StudentsRepository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AdminDashboardService {
@@ -42,5 +45,13 @@ public class AdminDashboardService {
 
     public HashMap<Integer, Integer> getProfessorCountByYear() {
         return professorsRepository.getProfessorCountByYear();
+    }
+
+    public ArrayList<Professors> getAllProfessors() {
+        return professorsRepository.getAll();
+    }
+
+    public ArrayList<Students> getAllStudents() {
+        return studentsRepository.getAll();
     }
 }

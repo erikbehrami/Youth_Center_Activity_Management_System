@@ -1,14 +1,22 @@
 package controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.Professors;
+import model.Students;
 import services.AdminServices.AdminDashboardService;
 import utils.Navigator;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AdminController extends BaseController {
@@ -18,6 +26,7 @@ public class AdminController extends BaseController {
     private Label adminTeachersNUM;
     @FXML
     private Label adminCoursesNUM;
+
     @FXML
     private BarChart<String, Number> studentChart;
     @FXML
@@ -25,12 +34,53 @@ public class AdminController extends BaseController {
     @FXML
     private LineChart<String, Number> profChart;
 
-    private AdminDashboardService adminDashboardService;
+    @FXML
+    private TableView<Professors> professorsTable;
+    @FXML
+    private TableColumn<Professors, Integer> profID;
+    @FXML
+    private TableColumn<Professors, String> profNAME;
+    @FXML
+    private TableColumn<Professors, String> profSURNAME;
+    @FXML
+    private TableColumn<Professors, String> profEMAIL;
+    @FXML
+    private TableColumn<Professors, String> profGENDER;
+    @FXML
+    private TableColumn<Professors, java.util.Date> profBIRTHDAY;
+
+    @FXML
+    private TableView<Students> studentsTable; // Change to Students model
+    @FXML
+    private TableColumn<Students, Integer> stdID;
+    @FXML
+    private TableColumn<Students, String> stdNAME;
+    @FXML
+    private TableColumn<Students, String> stdSURNAME;
+    @FXML
+    private TableColumn<Students, String> stdEMAIL;
+    @FXML
+    private TableColumn<Students, String> stdGENDER;
+    @FXML
+    private TableColumn<Students, java.util.Date> stdBIRTHDAY;
+
+    private final AdminDashboardService adminDashboardService = new AdminDashboardService();
 
     @FXML
     private void initialize() {
-        adminDashboardService = new AdminDashboardService();
+        loadCounts();
+        loadCharts();
+        setupProfessorsTable();
+        setupStudentsTable();  // Setup the students table
+        if (professorsTable != null) {
+            loadProfessorsData();
+        }
+        if (studentsTable != null) {
+            loadStudentsData();  // Load students data
+        }
+    }
 
+    private void loadCounts() {
         if (adminStudentsNUM != null) {
             adminStudentsNUM.setText(String.valueOf(adminDashboardService.getStudentCount()));
         }
@@ -42,20 +92,19 @@ public class AdminController extends BaseController {
         if (adminCoursesNUM != null) {
             adminCoursesNUM.setText(String.valueOf(adminDashboardService.getCourseCount()));
         }
+    }
 
+    private void loadCharts() {
         if (studentChart != null) {
-            HashMap<Integer, Integer> studentCountsByYear = adminDashboardService.getStudentCountByYear();
-            populateChart(studentChart, "New Students", studentCountsByYear);
+            populateChart(studentChart, "New Students", adminDashboardService.getStudentCountByYear());
         }
 
         if (courseChart != null) {
-            HashMap<Integer, Integer> courseCountsByYear = adminDashboardService.getCourseCountByYear();
-            populateChart(courseChart, "New Courses", courseCountsByYear);
+            populateChart(courseChart, "New Courses", adminDashboardService.getCourseCountByYear());
         }
 
         if (profChart != null) {
-            HashMap<Integer, Integer> professorCountsByYear = adminDashboardService.getProfessorCountByYear();
-            populateChart(profChart, "New Professors", professorCountsByYear);
+            populateChart(profChart, "New Professors", adminDashboardService.getProfessorCountByYear());
         }
     }
 
@@ -69,6 +118,40 @@ public class AdminController extends BaseController {
 
         chart.getData().clear();
         chart.getData().add(series);
+    }
+
+    private void setupProfessorsTable() {
+        if (profID != null) profID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        if (profNAME != null) profNAME.setCellValueFactory(new PropertyValueFactory<>("name"));
+        if (profSURNAME != null) profSURNAME.setCellValueFactory(new PropertyValueFactory<>("surname"));
+        if (profEMAIL != null) profEMAIL.setCellValueFactory(new PropertyValueFactory<>("email"));
+        if (profGENDER != null) profGENDER.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        if (profBIRTHDAY != null) profBIRTHDAY.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
+    }
+
+    private void setupStudentsTable() {
+        if (stdID != null) stdID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        if (stdNAME != null) stdNAME.setCellValueFactory(new PropertyValueFactory<>("name"));
+        if (stdSURNAME != null) stdSURNAME.setCellValueFactory(new PropertyValueFactory<>("surname"));
+        if (stdEMAIL != null) stdEMAIL.setCellValueFactory(new PropertyValueFactory<>("email"));
+        if (stdGENDER != null) stdGENDER.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        if (stdBIRTHDAY != null) stdBIRTHDAY.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
+    }
+
+    private void loadProfessorsData() {
+        List<Professors> allProfessors = adminDashboardService.getAllProfessors();
+        ObservableList<Professors> professorList = FXCollections.observableArrayList(allProfessors);
+        if (professorList != null) {
+            professorsTable.setItems(professorList);
+        }
+    }
+
+    private void loadStudentsData() {
+        List<Students> allStudents = adminDashboardService.getAllStudents();  // Get students data
+        ObservableList<Students> studentList = FXCollections.observableArrayList(allStudents);
+        if (studentList != null) {
+            studentsTable.setItems(studentList);  // Bind the students data to the table
+        }
     }
 
     @FXML

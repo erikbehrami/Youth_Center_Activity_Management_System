@@ -17,7 +17,7 @@ public class ProfessorsRepository extends BaseRepository<Professors, CreateProfe
         super("professors");
     }
 
-    Professors fromResultSet(ResultSet res) throws SQLException {
+    public Professors fromResultSet(ResultSet res) throws SQLException {
         return Professors.getInstance(res);
     }
 

@@ -10,51 +10,77 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class SceneManager {
-    private static SceneManager sceneManager;
+    private static SceneManager instance;
     private final LanguageManager languageManager;
-    private Scene scene;
     private static Stage primaryStage;
+    private Scene currentScene;
     private String currentPath;
     private String lastPath;
     private String title;
 
     private SceneManager() {
-        this.languageManager = LanguageManager.getInstance();
-        this.currentPath = Navigator.SIGN_IN;
+        languageManager = LanguageManager.getInstance();
+        this.currentPath = Navigator.ADMIN_DASHBOARD;
         this.title = "Sign In";
-        this.scene = this.init();
     }
 
     public static SceneManager getInstance() {
-        if (sceneManager == null)
-            sceneManager = new SceneManager();
-        return sceneManager;
+        if (instance == null) {
+            instance = new SceneManager();
+        }
+        return instance;
     }
 
-    private Scene init() {
+    public void setPrimaryStage(Stage stage) {
+        SceneManager.primaryStage = stage;
+        this.currentScene = this.createScene();
+        this.configurePrimaryStage();
+    }
+
+    private Scene createScene() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(this.currentPath));
-            loader.setResources(this.languageManager.getResourceBundle());
-            return new Scene(loader.load());
+            loader.setResources(languageManager.getResourceBundle());
+            Scene scene = new Scene(loader.load());
+            ModeManager.changeMode(scene);
+            return scene;
         } catch (IOException e) {
             return null;
         }
     }
 
-    public Scene getScene() {
-        return this.scene;
+    public void switchScene(String fxmlPath) {
+        this.switchScene(fxmlPath, null);
     }
 
-    public void setPrimaryStage(Stage primaryStage) {
-        SceneManager.primaryStage = primaryStage;
+    public void switchScene(String fxmlPath, String title) {
+        this.lastPath = this.currentPath;
+        this.currentPath = fxmlPath;
 
-        InputStream logoStream = getClass().getResourceAsStream(Navigator.LOGO);
+        if (title != null) {
+            this.title = title;
+        }
+
+        this.currentScene = createScene();
+
+        this.configurePrimaryStage();
+    }
+
+    public void reload() {
+        switchScene(this.currentPath, this.title);
+    }
+
+    public void setLogo(String logoPath) {
+        InputStream logoStream = getClass().getResourceAsStream(logoPath);
         if (logoStream != null) {
             primaryStage.getIcons().add(new Image(logoStream));
         }
+    }
 
-        primaryStage.setResizable(false);
-        primaryStage.setScene(this.scene);
+    public void configurePrimaryStage() {
+        setLogo(Navigator.LOGO);
+        primaryStage.setResizable(this.setResizeable(this.currentPath));
+        primaryStage.setScene(this.currentScene);
         primaryStage.setTitle(this.title);
         primaryStage.show();
     }
@@ -65,34 +91,5 @@ public class SceneManager {
 
     private boolean setResizeable(String path) {
         return !(path.equals(Navigator.SIGN_IN) || path.equals(Navigator.SIGN_UP));
-    }
-
-    public void switchScene(String fxmlPath, String title) {
-        this.lastPath = this.currentPath;
-        this.currentPath = fxmlPath;
-
-        if (title != null) {
-            this.title = title;
-        }
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(this.currentPath));
-            loader.setResources(this.languageManager.getResourceBundle());
-            scene = new Scene(loader.load());
-
-            ModeManager.changeMode(scene);
-
-            primaryStage.setResizable(this.setResizeable(this.currentPath));
-            primaryStage.setTitle(this.title);
-            primaryStage.setScene(scene);
-
-        } catch (IOException e) {
-            System.out.println("Error switching scene: " + e.getMessage());
-        } catch (IllegalStateException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
-
-    public void reload() {
-        switchScene(this.currentPath, null);
     }
 }

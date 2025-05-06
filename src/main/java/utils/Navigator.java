@@ -16,6 +16,7 @@ interface ProfPages {
     String PROF_COURSES = "/fxml/profCourses.fxml";
     String PROF_STUDENTS = "/fxml/profStudents.fxml";
 }
+
 interface Modes {
     String DARK_MODE = "/css/modes/darkMode.css";
 
@@ -26,6 +27,10 @@ interface AccountPages {
     String SIGN_UP = "/fxml/signup.fxml";
 }
 
-public class Navigator implements OverallPages, AdminPages, AccountPages, Modes, ProfPages {
+interface StudentPages {
+    String STUDENT_PROFILE = "/fxml/studentHome.fxml";
+}
+
+public class Navigator implements OverallPages, AdminPages, AccountPages, Modes, ProfPages, StudentPages {
 
 }

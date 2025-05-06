@@ -8,10 +8,13 @@
     -fx-tick-label-fill: white !important;
 }
 
-
 .change {
     -fx-border-color: white !important;
     -fx-border-width: 1.2 !important;
+}
+
+Text {
+    -fx-fill: white !important;
 }
 
 .adminSidebar {

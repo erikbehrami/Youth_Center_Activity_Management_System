@@ -14,12 +14,13 @@ public class AdminApp extends Application {
         try {
             LanguageManager languageManager = LanguageManager.getInstance();
             SceneManager sceneManager = SceneManager.getInstance();
+
             sceneManager.setPrimaryStage(stage);
 
             FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource(Navigator.ADMIN_DASHBOARD));
             loader.setResources(languageManager.getResourceBundle());
             Scene scene = new Scene(loader.load());
-
+            
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
