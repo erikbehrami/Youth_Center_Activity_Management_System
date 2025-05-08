@@ -3,6 +3,8 @@ package utils;
 interface OverallPages {
     String PROFILE = "/fxml/profile.fxml";
     String LOGO = "/images/youthcenter_logo.png";
+    String HOME = "/fxml/home.fxml";
+    String INFO = "/fxml/info.fxml";
 }
 
 interface AdminPages {
