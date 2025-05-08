@@ -1,6 +1,5 @@
 package repository;
 
-import model.Admins;
 import model.Professors;
 import model.dto.professors.CreateProfessorDto;
 import model.dto.professors.UpdateProfessorDto;
@@ -9,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -141,4 +141,44 @@ public class ProfessorsRepository extends BaseRepository<Professors, CreateProfe
         return null;
     }
 
+    public ArrayList<Professors> getVerifiedProfessors() {
+        ArrayList<Professors> professors = new ArrayList<>();
+        String query = "SELECT * FROM professors WHERE verified = true";
+        try {
+            Statement stm = this.connection.createStatement();
+            ResultSet res = stm.executeQuery(query);
+            while (res.next()) {
+                professors.add(this.fromResultSet(res));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return professors;
+    }
+
+    public ArrayList<Professors> getUnVerifiedProfessors() {
+        ArrayList<Professors> professors = new ArrayList<>();
+        String query = "SELECT * FROM professors WHERE verified = false";
+        try {
+            Statement stm = this.connection.createStatement();
+            ResultSet res = stm.executeQuery(query);
+            while (res.next()) {
+                professors.add(this.fromResultSet(res));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return professors;
+    }
+
+    public boolean acceptProfessor(int professorId) {
+        String query = "UPDATE professors SET verified = TRUE WHERE id = ?";
+        try (PreparedStatement statement = this.connection.prepareStatement(query)) {
+            statement.setInt(1, professorId);
+            return statement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            System.out.println("Error accepting professor: " + e.getMessage());
+        }
+        return false;
+    }
 }

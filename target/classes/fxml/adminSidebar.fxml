@@ -1,38 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="625.0" prefWidth="254.0" style="-fx-background-color: #101935;"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.AdminController.AdminSidebarController">
+    <children>
+        <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="597.0" prefWidth="239.0" styleClass="adminSidebar"
+                    AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0"
+                    AnchorPane.topAnchor="14.0">
 
-<AnchorPane prefHeight="625.0" prefWidth="254.0" style="-fx-background-color: #101935;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController">
-   <children>
-      <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="597.0" prefWidth="239.0" styleClass="adminSidebar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
-
-      <Label layoutX="54.0" layoutY="119.0" text="%admin.Welcome" textFill="WHITE" AnchorPane.rightAnchor="52.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="112.0" fitWidth="203.0" layoutX="12.0" layoutY="14.0" AnchorPane.rightAnchor="11.0">
-         <image>
-            <Image url="@../images/user1.png" />
-         </image>
-      </ImageView>
-      <Line endX="100.79997253417969" layoutX="111.19999694824219" layoutY="168.0" startX="-95.19999694824219" stroke="WHITE" strokeLineCap="BUTT" strokeWidth="1.5" AnchorPane.rightAnchor="14.000030517578125" />
-      <VBox layoutX="23.0" layoutY="201.0" prefHeight="309.0" prefWidth="180.0" spacing="20.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="201.0">
-         <children>
-            <Button layoutX="32.0" layoutY="199.0" minHeight="0.0" mnemonicParsing="false" onAction="#handleAdminDashboard" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;" styleClass="change" text="%admin.Dashboard" textFill="WHITE" AnchorPane.topAnchor="199.0" />
-            <Button layoutX="32.0" layoutY="274.0" minHeight="0.0" mnemonicParsing="false" onAction="#handleAdminProfile" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;" styleClass="change" text="%admin.Profile" textFill="WHITE" />
-            <Button layoutX="32.0" layoutY="349.0" minHeight="0.0" mnemonicParsing="false" onAction="#handleAdminStudents" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;" styleClass="change" text="%admin.Students" textFill="WHITE" />
-            <Button layoutX="32.0" layoutY="424.0" minHeight="0.0" mnemonicParsing="false" onAction="#handleAdminTeachers" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;" styleClass="change" text="%admin.Teachers" textFill="WHITE" />
-            <Button layoutX="31.0" layoutY="498.0" minHeight="0.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;" styleClass="change" text="%admin.Courses" textFill="WHITE" />
-         </children>
-      </VBox>
-      </AnchorPane>
-   </children>
+            <Label layoutX="54.0" layoutY="119.0" text="%admin.Welcome" textFill="WHITE" AnchorPane.rightAnchor="52.0">
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
+            <ImageView fitHeight="112.0" fitWidth="203.0" layoutX="12.0" layoutY="14.0" AnchorPane.rightAnchor="11.0">
+                <image>
+                    <Image url="@../images/user1.png"/>
+                </image>
+            </ImageView>
+            <Line endX="100.79997253417969" layoutX="111.19999694824219" layoutY="168.0" startX="-95.19999694824219"
+                  stroke="WHITE" strokeLineCap="BUTT" strokeWidth="1.5" AnchorPane.rightAnchor="14.000030517578125"/>
+            <VBox layoutX="23.0" layoutY="201.0" prefHeight="309.0" prefWidth="180.0" spacing="20.0"
+                  AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="201.0">
+                <children>
+                    <Button layoutX="32.0" layoutY="199.0" minHeight="0.0" mnemonicParsing="false"
+                            onAction="#handleAdminDashboard" prefHeight="45.0" prefWidth="180.0"
+                            style="-fx-background-color: #101935; -fx-border-color: white;" styleClass="change"
+                            text="%admin.Dashboard" textFill="WHITE" AnchorPane.topAnchor="199.0"/>
+                    <Button layoutX="32.0" layoutY="274.0" minHeight="0.0" mnemonicParsing="false"
+                            onAction="#handleAdminProfile" prefHeight="45.0" prefWidth="180.0"
+                            style="-fx-background-color: #101935; -fx-border-color: white;" styleClass="change"
+                            text="%admin.Profile" textFill="WHITE"/>
+                    <Button layoutX="32.0" layoutY="349.0" minHeight="0.0" mnemonicParsing="false"
+                            onAction="#handleAdminStudents" prefHeight="45.0" prefWidth="180.0"
+                            style="-fx-background-color: #101935; -fx-border-color: white;" styleClass="change"
+                            text="%admin.Students" textFill="WHITE"/>
+                    <Button layoutX="32.0" layoutY="424.0" minHeight="0.0" mnemonicParsing="false"
+                            onAction="#handleAdminTeachers" prefHeight="45.0" prefWidth="180.0"
+                            style="-fx-background-color: #101935; -fx-border-color: white;" styleClass="change"
+                            text="%admin.Teachers" textFill="WHITE"/>
+                    <Button layoutX="31.0" layoutY="498.0" minHeight="0.0" mnemonicParsing="false" prefHeight="45.0"
+                            prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;"
+                            styleClass="change" text="%admin.Courses" textFill="WHITE"/>
+                </children>
+            </VBox>
+        </AnchorPane>
+    </children>
 </AnchorPane>

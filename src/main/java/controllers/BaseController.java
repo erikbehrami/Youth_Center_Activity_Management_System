@@ -8,9 +8,9 @@ import utils.Navigator;
 
 import java.util.Locale;
 
-abstract class BaseController {
-    SceneManager sceneManager = SceneManager.getInstance();
-    LanguageManager languageManager = LanguageManager.getInstance();
+public abstract class BaseController {
+    protected SceneManager sceneManager = SceneManager.getInstance();
+    protected LanguageManager languageManager = LanguageManager.getInstance();
 
     @FXML
     protected void handleSQLanguageClick() {

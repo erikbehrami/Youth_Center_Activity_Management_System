@@ -4,15 +4,21 @@ module com.example.demo {
     requires java.sql;
 
     opens model to javafx.base;
+    exports model to javafx.base;
 
     opens app to javafx.fxml;
-    exports app;
-    opens controllers to javafx.fxml;
-    exports controllers;
     opens database to javafx.fxml;
+    opens services to javafx.fxml;
+    opens utils to javafx.fxml;
+    opens controllers.AdminController to javafx.fxml;
+    opens services.AdminServices to javafx.fxml;
+    opens controllers to javafx.fxml;
+
+    exports app;
+    exports controllers;
     exports database;
     exports utils;
-    opens utils to javafx.fxml;
     exports services;
-    opens services to javafx.fxml;
+    exports controllers.AdminController;
+    exports services.AdminServices;
 }

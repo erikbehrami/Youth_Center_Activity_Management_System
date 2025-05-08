@@ -21,7 +21,6 @@ public class SceneManager {
     private SceneManager() {
         languageManager = LanguageManager.getInstance();
         this.currentPath = Navigator.ADMIN_DASHBOARD;
-        this.title = "Sign In";
     }
 
     public static SceneManager getInstance() {

@@ -155,3 +155,13 @@ VALUES (1000, 220000, 501),
        (1018, 220018, 519),
        (1019, 220019, 500);
 
+
+INSERT INTO admins (username, salt, passwordHash, name, surname, email)
+VALUES (
+           'admin',
+           'jTGxeqYSfUAiWahgDMGIZA==',
+           'mpiEm1uIatV+AE1wwXBz/1BZfyiVr7cKEt61yctCO5o=',
+           'admin',
+           'admin',
+           'admin@admin.com'
+       ); // pw Admin123@

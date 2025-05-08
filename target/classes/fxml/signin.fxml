@@ -56,7 +56,7 @@
         </Text>
         <Button fx:id="CreateAnAccount" layoutX="760.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" styleClass="change" text="%login.btnNewAcc" textFill="#0c1821" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="16.0" />
         <PasswordField fx:id="password" layoutX="415.0" layoutY="332.0" prefHeight="32.0" prefWidth="223.0" styleClass="change" />
-        <SplitMenuButton layoutX="810.0" layoutY="48.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" styleClass="change" text="%language" textFill="#0c1821" textOverrun="CLIP">
+        <SplitMenuButton layoutX="810.0" layoutY="48.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" styleClass="change" text="%language" textFill="#0c1821" textOverrun="CLIP" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="48.0">
             <items>
                 <MenuItem fx:id="ENGLISH" mnemonicParsing="false" onAction="#handleENLanguageClick" text="EN" />
                 <MenuItem fx:id="ALBANIAN" mnemonicParsing="false" onAction="#handleSQLanguageClick" text="SQ" />

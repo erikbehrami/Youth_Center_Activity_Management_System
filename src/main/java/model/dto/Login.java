@@ -1,7 +1,5 @@
 package model.dto;
 
-//import javax.swing.*;
-
 public class Login {
 
     private String email;

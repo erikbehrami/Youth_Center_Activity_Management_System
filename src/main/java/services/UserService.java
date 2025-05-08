@@ -11,12 +11,10 @@ import repository.AdminsRepository;
 import repository.ProfessorsRepository;
 import repository.StudentsRepository;
 import utils.Navigator;
+import utils.customExceptions.InvalidEmail;
 import utils.customExceptions.InvalidPassword;
 import utils.customExceptions.WrongLogin;
-import utils.customExceptions.InvalidEmail;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.regex.Pattern;
 
 public class UserService {
