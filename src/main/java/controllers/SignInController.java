@@ -1,6 +1,7 @@
 package controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import model.dto.Login;
@@ -20,6 +21,9 @@ public class SignInController extends BaseController {
     PasswordField password;
 
     @FXML
+    Button loginButton;
+
+    @FXML
     private void handleSignUp() {
         sceneManager.switchScene(Navigator.SIGN_UP, "Sign Up");
     }
@@ -30,5 +34,12 @@ public class SignInController extends BaseController {
         UserService userService = new UserService();
         userService.handleLogin(login);
     }
+
+    @FXML
+    public void initialize() {
+        loginButton.setDefaultButton(true);
+
+    }
+
 
 }

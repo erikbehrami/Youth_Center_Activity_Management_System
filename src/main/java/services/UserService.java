@@ -13,6 +13,7 @@ import repository.StudentsRepository;
 import utils.Navigator;
 import utils.customExceptions.InvalidEmail;
 import utils.customExceptions.InvalidPassword;
+import utils.customExceptions.NotVerified;
 import utils.customExceptions.WrongLogin;
 
 import java.util.regex.Pattern;
@@ -95,8 +96,13 @@ public class UserService {
                     String salt = professor.getSalt();
                     String passwordGenerated = PasswordHasher.hashPassword(password, salt);
                     if (passwordGenerated.equals(professor.getPasswordHash())) {
-                        sceneManager.switchScene(Navigator.PROF_DASHBOARD, "Professor Dashboard");
-                        return;
+                        if (professor.isVerified()) {
+                            sceneManager.switchScene(Navigator.PROF_DASHBOARD, "Professor Dashboard");
+                            return;
+                        } else {
+                            throw new NotVerified("Account not verified");
+                        }
+
                     }
                 }
                 throw new WrongLogin("Invalid email or password.");

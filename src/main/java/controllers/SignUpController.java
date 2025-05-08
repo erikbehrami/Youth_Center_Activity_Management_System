@@ -9,6 +9,8 @@ import services.UserService;
 import utils.Navigator;
 import utils.customExceptions.*;
 
+import java.util.Locale;
+
 public class SignUpController extends BaseController {
 
     @FXML
@@ -31,12 +33,19 @@ public class SignUpController extends BaseController {
     private Label termsAndConditions;
     @FXML
     private CheckBox termsAndConditionsCheckBox;
+    @FXML
+    private Button signupButton;
 
     @FXML
     private void handleSignIn() {
         sceneManager.switchScene(Navigator.SIGN_IN, "Sign In");
     }
 
+    @FXML
+    public void initialize() {
+        signupButton.setDefaultButton(true);
+
+    }
 
     @FXML
     private void signUp() {
@@ -69,16 +78,28 @@ public class SignUpController extends BaseController {
 
             if (!password.getText().equals(confirmPassword.getText())) {
                 passwordsMessage.setStyle("-fx-text-fill: red;");
-                throw new LogMessage("Passwords do not match");
+                if (languageManager.getLocale() == Locale.ENGLISH) {
+                    passwordsMessage.setText("Passwords do not match");
+                    throw new LogMessage("Passwords do not match");
+                } else {
+                    passwordsMessage.setText("Fjalëkalimet nuk përputhen");
+                    throw new LogMessage("Fjalëkalimet nuk përputhen");
+                }
             } else {
-                passwordsMessage.setStyle("-fx-text-fill: white;");
+                passwordsMessage.setText("");
             }
 
             if (!termsAndConditionsCheckBox.isSelected()) {
                 termsAndConditions.setStyle("-fx-text-fill: red;");
-                throw new LogMessage("Please accept the terms and conditions to continue.");
+                if (languageManager.getLocale() == Locale.ENGLISH) {
+                    termsAndConditions.setText("Please accept the terms and conditions to continue.");
+                    throw new LogMessage("Please accept the terms and conditions to continue.");
+                } else {
+                    termsAndConditions.setText("Ju lutemi pranoni kushtet dhe rregullat për të vazhduar.");
+                    throw new LogMessage("Ju lutemi pranoni kushtet dhe rregullat për të vazhduar.");
+                }
             } else {
-                termsAndConditions.setStyle("-fx-text-fill: white;");
+                termsAndConditions.setText("");
             }
             String rawPassword = password.getText();
             String salt = PasswordHasher.encodeSalt(PasswordHasher.generateSalt());
@@ -118,7 +139,7 @@ public class SignUpController extends BaseController {
                 } else {
                     ErrorDialog.showRegistrationSuccess(Alert.AlertType.INFORMATION, "Fail");
                 }
-                
+
             }
 
         } catch (Exception e) {

@@ -1,0 +1,6 @@
+/* In your styles.css file or within the JavaFX scene */
+.button:focused {
+    -fx-border-color: #4a90e2 !important;
+    -fx-focus-color: #4a90e2 !important;
+
+}

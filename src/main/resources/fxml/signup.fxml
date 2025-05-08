@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignUpController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../css/focus.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignUpController">
     <children>
         <AnchorPane prefHeight="650.0" prefWidth="369.0" style="-fx-background-color: #101935;" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0">
             <children>
@@ -36,13 +36,6 @@
                 <Font size="10.0" />
             </font>
         </Text>
-        <SplitMenuButton layoutX="810.0" layoutY="48.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" styleClass="change" text="%language" textFill="#0c1821" textOverrun="CLIP" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="48.0">
-            <items>
-                <MenuItem fx:id="ENGLISH" mnemonicParsing="false" onAction="#handleENLanguageClick" text="EN" />
-                <MenuItem fx:id="ALBANIAN" mnemonicParsing="false" onAction="#handleSQLanguageClick" text="SQ" />
-            </items>
-        </SplitMenuButton>
-        <Button fx:id="LogInButton" layoutX="786.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleSignIn" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" styleClass="change" text="%signup.signin" textFill="#0c1821" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="16.0" />
         <VBox layoutX="415.0" layoutY="82.0" prefHeight="464.0" prefWidth="223.0" spacing="5.0">
             <children>
                 <AnchorPane prefHeight="57.0" prefWidth="223.0">
@@ -127,7 +120,6 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="68.0" prefWidth="187.0">
                     <children>
-                        <Button layoutY="36.0" mnemonicParsing="false" onAction="#signUp" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" styleClass="change" text="%signup.btnSignUp" textFill="WHITE" />
                         <CheckBox fx:id="termsAndConditionsCheckBox" layoutY="1.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="223.0" text="%signup.acceptTerms" textFill="#0b171fcc">
                             <font>
                                 <Font size="10.0" />
@@ -138,6 +130,7 @@
                                 <Font size="10.0" />
                             </font>
                         </Label>
+                        <Button fx:id="signupButton" layoutY="36.0" mnemonicParsing="false" onAction="#signUp" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" styleClass="change" text="%signup.btnSignUp" textFill="WHITE" />
                     </children>
                 </AnchorPane>
             </children>
@@ -147,5 +140,12 @@
                 <Font size="10.0" />
             </font>
         </Label>
+        <Button fx:id="LogInButton" layoutX="786.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleSignIn" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" styleClass="change" text="%signup.signin" textFill="#0c1821" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="16.0" />
+        <SplitMenuButton layoutX="810.0" layoutY="48.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" styleClass="change" text="%language" textFill="#0c1821" textOverrun="CLIP" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="48.0">
+            <items>
+                <MenuItem fx:id="ENGLISH" mnemonicParsing="false" onAction="#handleENLanguageClick" text="EN" />
+                <MenuItem fx:id="ALBANIAN" mnemonicParsing="false" onAction="#handleSQLanguageClick" text="SQ" />
+            </items>
+        </SplitMenuButton>
     </children>
 </AnchorPane>
