@@ -20,7 +20,7 @@ public class SceneManager {
 
     private SceneManager() {
         languageManager = LanguageManager.getInstance();
-        this.currentPath = Navigator.ADMIN_DASHBOARD;
+        this.currentPath = Navigator.HOME;
         this.title = "Youth Center Management System";
     }
 
@@ -90,6 +90,6 @@ public class SceneManager {
     }
 
     private boolean setResizeable(String path) {
-        return !(path.equals(Navigator.SIGN_IN) || path.equals(Navigator.SIGN_UP));
+        return !(path.equals(Navigator.SIGN_IN) || path.equals(Navigator.SIGN_UP) || path.equals(Navigator.HOME));
     }
 }
