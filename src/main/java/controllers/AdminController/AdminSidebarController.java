@@ -21,7 +21,7 @@ public class AdminSidebarController extends BaseController {
     }
 
     @FXML
-    private void handleAdminTeachers() {
+    private void handleAdminProfessors() {
         sceneManager.switchScene(Navigator.ADMIN_TEACHERS, "Admin Teachers");
     }
 }

@@ -1,59 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" stylesheets="@../css/admin.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController.AdminDashboardController">
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0"
+            prefWidth="1200.0" stylesheets="@../css/admin.css" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController.AdminDashboardController">
     <children>
-        <AnchorPane layoutY="50.0" prefHeight="620.0" prefWidth="239.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
-            <fx:include source="adminSidebar.fxml" AnchorPane.bottomAnchor="0" AnchorPane.topAnchor="0" />
+        <AnchorPane layoutY="50.0" prefHeight="620.0" prefWidth="239.0" AnchorPane.bottomAnchor="0.0"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
+            <fx:include source="adminSidebar.fxml" AnchorPane.bottomAnchor="0" AnchorPane.topAnchor="0"/>
         </AnchorPane>
 
-        <AnchorPane layoutX="253.0" layoutY="53.0" minHeight="0.0" minWidth="0.0" prefHeight="625.0" prefWidth="947.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="254.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+        <AnchorPane layoutX="253.0" layoutY="53.0" minHeight="0.0" minWidth="0.0" prefHeight="625.0" prefWidth="947.0"
+                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="254.0" AnchorPane.rightAnchor="0.0"
+                    AnchorPane.topAnchor="50.0">
             <children>
-                <HBox layoutY="190.0" prefHeight="429.0" prefWidth="946.0" spacing="20.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="190.0">
-                    <AnchorPane layoutX="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="404.0" prefWidth="462.0" style="-fx-border-color: #101935;" styleClass="change" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="14.0" HBox.hgrow="ALWAYS">
+                <HBox layoutY="190.0" prefHeight="429.0" prefWidth="946.0" spacing="20.0" AnchorPane.bottomAnchor="14.0"
+                      AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="190.0">
+                    <AnchorPane layoutX="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="404.0" prefWidth="462.0"
+                                style="-fx-border-color: #101935;" styleClass="change" AnchorPane.bottomAnchor="25.0"
+                                AnchorPane.leftAnchor="14.0" HBox.hgrow="ALWAYS">
                         <children>
-                            <BarChart fx:id="studentChart" layoutX="1.6" layoutY="1.6" legendSide="TOP" minHeight="0.0" minWidth="0.0" prefHeight="404.0" prefWidth="462.4" styleClass="chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <BarChart fx:id="studentChart" layoutX="1.6" layoutY="1.6" legendSide="TOP" minHeight="0.0"
+                                      minWidth="0.0" prefHeight="404.0" prefWidth="462.4" AnchorPane.bottomAnchor="0.0"
+                                      AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                      AnchorPane.topAnchor="0.0">
                                 <xAxis>
-                                    <CategoryAxis side="BOTTOM" styleClass="adminAxis" />
+                                    <CategoryAxis side="BOTTOM" styleClass="adminAxis"/>
                                 </xAxis>
                                 <yAxis>
-                                    <NumberAxis side="LEFT" styleClass="adminAxis" />
+                                    <NumberAxis side="LEFT" styleClass="adminAxis"/>
                                 </yAxis>
                             </BarChart>
                         </children>
                     </AnchorPane>
                     <VBox minHeight="0.0" minWidth="0.0" spacing="20.0" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
-                        <AnchorPane layoutX="491.0" prefHeight="197.0" prefWidth="454.0" style="-fx-border-color: #101935;" styleClass="change" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                        <AnchorPane layoutX="491.0" prefHeight="197.0" prefWidth="454.0"
+                                    style="-fx-border-color: #101935;" styleClass="change" AnchorPane.rightAnchor="0.0"
+                                    AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
                             <children>
-                                <LineChart fx:id="courseChart" legendSide="TOP" minHeight="0.0" minWidth="0.0" prefHeight="198.4" prefWidth="454.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <LineChart fx:id="courseChart" legendSide="TOP" minHeight="0.0" minWidth="0.0"
+                                           prefHeight="198.4" prefWidth="454.4" AnchorPane.bottomAnchor="0.0"
+                                           AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                           AnchorPane.topAnchor="0.0">
                                     <xAxis>
-                                        <CategoryAxis side="BOTTOM" styleClass="adminAxis" />
+                                        <CategoryAxis side="BOTTOM" styleClass="adminAxis"/>
                                     </xAxis>
                                     <yAxis>
-                                        <NumberAxis side="LEFT" styleClass="adminAxis" />
+                                        <NumberAxis side="LEFT" styleClass="adminAxis"/>
                                     </yAxis>
                                 </LineChart>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="491.0" layoutY="204.6" prefHeight="198.0" prefWidth="454.0" style="-fx-border-color: #101935;" styleClass="change" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="0.0" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                        <AnchorPane layoutX="491.0" layoutY="204.6" prefHeight="198.0" prefWidth="454.0"
+                                    style="-fx-border-color: #101935;" styleClass="change"
+                                    AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="0.0" HBox.hgrow="ALWAYS"
+                                    VBox.vgrow="ALWAYS">
                             <children>
-                                <LineChart fx:id="profChart" layoutX="1.6" layoutY="206.4" legendSide="TOP" minHeight="0.0" minWidth="0.0" prefHeight="198.4" prefWidth="454.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <LineChart fx:id="profChart" layoutX="1.6" layoutY="206.4" legendSide="TOP"
+                                           minHeight="0.0" minWidth="0.0" prefHeight="198.4" prefWidth="454.4"
+                                           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <xAxis>
-                                        <CategoryAxis side="BOTTOM" styleClass="adminAxis" />
+                                        <CategoryAxis side="BOTTOM" styleClass="adminAxis"/>
                                     </xAxis>
                                     <yAxis>
-                                        <NumberAxis side="LEFT" styleClass="adminAxis" />
+                                        <NumberAxis side="LEFT" styleClass="adminAxis"/>
                                     </yAxis>
                                 </LineChart>
                             </children>
@@ -61,61 +76,73 @@
                     </VBox>
                 </HBox>
 
-                <HBox alignment="CENTER" layoutY="12.0" prefHeight="162.0" prefWidth="960.0" spacing="24.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                <HBox alignment="CENTER" layoutY="12.0" prefHeight="162.0" prefWidth="960.0" spacing="24.0"
+                      AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
                     <children>
-                        <AnchorPane minWidth="0.0" prefHeight="150.0" prefWidth="295.0" style="-fx-background-color: #101935;" styleClass="change" HBox.hgrow="ALWAYS">
+                        <AnchorPane minWidth="0.0" prefHeight="150.0" prefWidth="295.0"
+                                    style="-fx-background-color: #101935;" styleClass="change" HBox.hgrow="ALWAYS">
                             <children>
-                                <Label layoutX="172.0" layoutY="32.0" text="%admin.TotalStudents" textFill="WHITE" AnchorPane.rightAnchor="21.6" AnchorPane.topAnchor="25.0">
+                                <Label layoutX="172.0" layoutY="32.0" text="%admin.TotalStudents" textFill="WHITE"
+                                       AnchorPane.rightAnchor="21.6" AnchorPane.topAnchor="25.0">
                                     <font>
-                                        <Font size="16.0" />
+                                        <Font size="16.0"/>
                                     </font>
                                 </Label>
                                 <ImageView fitHeight="136.0" fitWidth="226.0" layoutX="-33.0" layoutY="13.0">
                                     <image>
-                                        <Image url="@../images/users.png" />
+                                        <Image url="@../images/users.png"/>
                                     </image>
                                 </ImageView>
-                                <Label fx:id="adminStudentsNUM" layoutX="189.0" layoutY="110.0" text="0" textFill="WHITE" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="21.0">
+                                <Label fx:id="adminStudentsNUM" layoutX="189.0" layoutY="110.0" text="0"
+                                       textFill="WHITE" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="21.0">
                                     <font>
-                                        <Font size="18.0" />
+                                        <Font size="18.0"/>
                                     </font>
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="318.5" layoutY="11.0" minHeight="0.0" minWidth="0.0" prefHeight="153.0" prefWidth="295.0" style="-fx-background-color: #101935;" styleClass="change" HBox.hgrow="ALWAYS">
+                        <AnchorPane layoutX="318.5" layoutY="11.0" minHeight="0.0" minWidth="0.0" prefHeight="153.0"
+                                    prefWidth="295.0" style="-fx-background-color: #101935;" styleClass="change"
+                                    HBox.hgrow="ALWAYS">
                             <children>
-                                <Label layoutX="172.0" layoutY="32.0" text="%admin.TotalTeachers" textFill="WHITE" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="25.0">
+                                <Label layoutX="172.0" layoutY="32.0" text="%admin.TotalProfessors" textFill="WHITE"
+                                       AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="25.0">
                                     <font>
-                                        <Font size="16.0" />
+                                        <Font size="16.0"/>
                                     </font>
                                 </Label>
                                 <ImageView fitHeight="136.0" fitWidth="226.0" layoutX="-32.0" layoutY="13.0">
                                     <image>
-                                        <Image url="@../images/users.png" />
+                                        <Image url="@../images/users.png"/>
                                     </image>
                                 </ImageView>
-                                <Label fx:id="adminTeachersNUM" layoutX="204.0" layoutY="104.0" text="0" textFill="WHITE" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="21.0">
+                                <Label fx:id="adminProfessorsNUM" layoutX="204.0" layoutY="104.0" text="0"
+                                       textFill="WHITE" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="21.0">
                                     <font>
-                                        <Font size="18.0" />
+                                        <Font size="18.0"/>
                                     </font>
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="637.0" layoutY="11.0" minHeight="0.0" minWidth="0.0" prefHeight="150.0" prefWidth="295.0" style="-fx-background-color: #101935;" styleClass="change" HBox.hgrow="ALWAYS">
+                        <AnchorPane layoutX="637.0" layoutY="11.0" minHeight="0.0" minWidth="0.0" prefHeight="150.0"
+                                    prefWidth="295.0" style="-fx-background-color: #101935;" styleClass="change"
+                                    HBox.hgrow="ALWAYS">
                             <children>
-                                <Label layoutX="172.0" layoutY="32.0" text="%admin.TotalCourses" textFill="WHITE" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="25.0">
+                                <Label layoutX="172.0" layoutY="32.0" text="%admin.TotalCourses" textFill="WHITE"
+                                       AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="25.0">
                                     <font>
-                                        <Font size="16.0" />
+                                        <Font size="16.0"/>
                                     </font>
                                 </Label>
                                 <ImageView fitHeight="136.0" fitWidth="226.0" layoutX="-31.0" layoutY="13.0">
                                     <image>
-                                        <Image url="@../images/users.png" />
+                                        <Image url="@../images/users.png"/>
                                     </image>
                                 </ImageView>
-                                <Label fx:id="adminCoursesNUM" layoutX="195.0" layoutY="107.0" text="0" textFill="WHITE" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="21.0">
+                                <Label fx:id="adminCoursesNUM" layoutX="195.0" layoutY="107.0" text="0" textFill="WHITE"
+                                       AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="21.0">
                                     <font>
-                                        <Font size="18.0" />
+                                        <Font size="18.0"/>
                                     </font>
                                 </Label>
                             </children>
@@ -125,8 +152,9 @@
             </children>
         </AnchorPane>
 
-        <AnchorPane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #101935;" styleClass="navbar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <fx:include source="navBar.fxml" />
+        <AnchorPane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #101935;" styleClass="navbar"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <fx:include source="navBar.fxml"/>
         </AnchorPane>
     </children>
 </AnchorPane>

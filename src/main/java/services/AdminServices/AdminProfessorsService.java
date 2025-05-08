@@ -4,9 +4,9 @@ import model.Professors;
 
 import java.util.ArrayList;
 
-public class AdminTeachersService extends BaseAdminService {
+public class AdminProfessorsService extends BaseAdminService {
 
-    public AdminTeachersService() {
+    public AdminProfessorsService() {
         super();
     }
 

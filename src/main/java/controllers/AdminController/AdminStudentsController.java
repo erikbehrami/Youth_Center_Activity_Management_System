@@ -3,9 +3,11 @@ package controllers.AdminController;
 import controllers.BaseController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Students;
 import services.AdminServices.AdminStudentsService;
@@ -28,7 +30,11 @@ public class AdminStudentsController extends BaseController {
     @FXML
     private TableColumn<Students, java.util.Date> stdBIRTHDAY;
 
+    @FXML
+    private TextField searchField;
+
     private final AdminStudentsService adminStudentsService = new AdminStudentsService();
+    private FilteredList<Students> filteredStudents;
 
     @FXML
     private void initialize() {
@@ -36,13 +42,38 @@ public class AdminStudentsController extends BaseController {
         if (studentsTable != null) {
             loadStudentsData();
         }
+
+        if (searchField != null) {
+            searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+                this.handleSearch();
+            });
+        }
     }
+
+    @FXML
+    private void handleGenerateData() {
+        sceneManager.reload();
+    }
+
+    @FXML
+    private void handleSearch() {
+        String lowerText = this.searchField.getText().toLowerCase();
+
+        filteredStudents.setPredicate(student -> {
+            if (lowerText.isEmpty()) return true;
+            return student.getName().toLowerCase().contains(lowerText) || student.getSurname().toLowerCase().contains(lowerText);
+        });
+    }
+
 
     private void loadStudentsData() {
         List<Students> allStudents = adminStudentsService.getAllStudents();
         ObservableList<Students> studentList = FXCollections.observableArrayList(allStudents);
-        studentsTable.setItems(studentList);
+        filteredStudents = new FilteredList<>(studentList, p -> true);
+
+        studentsTable.setItems(filteredStudents);
     }
+
 
     private void setupStudentsTable() {
         if (stdID != null) stdID.setCellValueFactory(new PropertyValueFactory<>("id"));

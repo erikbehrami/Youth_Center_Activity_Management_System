@@ -95,6 +95,7 @@ create table schedules (
                            timeEnd varchar(5),
                            FOREIGN KEY (id_Courses) REFERENCES courses(id) ON DELETE SET NULL ON UPDATE CASCADE
 );
+
 create table requests(
                          id integer default nextval('requests_id_seq') Primary Key ,
                          id_Student integer,
@@ -123,7 +124,6 @@ CREATE TABLE student_badges (
                                 awardedAt DATE,
                                 FOREIGN KEY (id_Student) REFERENCES students(id)
 );
-
 
 CREATE TABLE feedback (
                           id SERIAL PRIMARY KEY,
@@ -199,7 +199,6 @@ CREATE TABLE advertisements (
                                 sponsorName VARCHAR(255),
                                 adTitle VARCHAR(255),
                                 adImageUrl TEXT
-
 );
 
 

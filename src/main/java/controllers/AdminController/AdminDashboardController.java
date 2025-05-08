@@ -19,7 +19,7 @@ public class AdminDashboardController extends BaseController {
     @FXML
     private Label adminStudentsNUM;
     @FXML
-    private Label adminTeachersNUM;
+    private Label adminProfessorsNUM;
     @FXML
     private Label adminCoursesNUM;
 
@@ -34,8 +34,8 @@ public class AdminDashboardController extends BaseController {
             adminStudentsNUM.setText(String.valueOf(adminDashboardService.getStudentCount()));
         }
 
-        if (adminTeachersNUM != null) {
-            adminTeachersNUM.setText(String.valueOf(adminDashboardService.getProfessorCount()));
+        if (adminProfessorsNUM != null) {
+            adminProfessorsNUM.setText(String.valueOf(adminDashboardService.getProfessorCount()));
         }
 
         if (adminCoursesNUM != null) {

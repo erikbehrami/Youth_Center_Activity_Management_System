@@ -11,11 +11,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import model.Professors;
-import services.AdminServices.AdminTeachersService;
+import services.AdminServices.AdminProfessorsService;
 
 import java.util.List;
 
-public class AdminTeachersController extends BaseController {
+public class AdminProfessorsController extends BaseController {
     @FXML
     private TableView<Professors> professorsTable;
     @FXML
@@ -50,7 +50,8 @@ public class AdminTeachersController extends BaseController {
     @FXML
     private TableColumn<Professors, Void> profDECLINE;
 
-    private final AdminTeachersService adminTeachersService = new AdminTeachersService();
+
+    private final AdminProfessorsService adminTeachersService = new AdminProfessorsService();
 
     @FXML
     private void initialize() {
@@ -62,6 +63,11 @@ public class AdminTeachersController extends BaseController {
         if (professorsTable1 != null) {
             loadUnverifiedProfessorsData();
         }
+    }
+
+    @FXML
+    private void handleGenerateData() {
+        sceneManager.reload();
     }
 
     private void setupUnverifiedProfessorsTable() {
@@ -129,7 +135,7 @@ public class AdminTeachersController extends BaseController {
             });
         }
     }
-    
+
     private void setupProfessorsTable() {
         if (profID != null) profID.setCellValueFactory(new PropertyValueFactory<>("id"));
         if (profNAME != null) profNAME.setCellValueFactory(new PropertyValueFactory<>("name"));

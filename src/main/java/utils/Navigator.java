@@ -8,7 +8,7 @@ interface OverallPages {
 interface AdminPages {
     String ADMIN_DASHBOARD = "/fxml/adminDashboard.fxml";
     String ADMIN_STUDENTS = "/fxml/adminStudents.fxml";
-    String ADMIN_TEACHERS = "/fxml/adminTeachers.fxml";
+    String ADMIN_TEACHERS = "/fxml/adminProfessors.fxml";
 }
 
 interface ProfPages {

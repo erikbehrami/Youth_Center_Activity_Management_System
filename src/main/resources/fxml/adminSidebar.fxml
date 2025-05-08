@@ -42,9 +42,9 @@
                             style="-fx-background-color: #101935; -fx-border-color: white;" styleClass="change"
                             text="%admin.Students" textFill="WHITE"/>
                     <Button layoutX="32.0" layoutY="424.0" minHeight="0.0" mnemonicParsing="false"
-                            onAction="#handleAdminTeachers" prefHeight="45.0" prefWidth="180.0"
+                            onAction="#handleAdminProfessors" prefHeight="45.0" prefWidth="180.0"
                             style="-fx-background-color: #101935; -fx-border-color: white;" styleClass="change"
-                            text="%admin.Teachers" textFill="WHITE"/>
+                            text="%admin.Professors" textFill="WHITE"/>
                     <Button layoutX="31.0" layoutY="498.0" minHeight="0.0" mnemonicParsing="false" prefHeight="45.0"
                             prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;"
                             styleClass="change" text="%admin.Courses" textFill="WHITE"/>

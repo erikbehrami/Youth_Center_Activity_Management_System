@@ -12,3 +12,7 @@
     -fx-background-insets: 0, 2;
     -fx-background-radius: 5px;
 }
+
+test {
+    -fx-background-color: lightblue;
+}

@@ -21,6 +21,7 @@ public class SceneManager {
     private SceneManager() {
         languageManager = LanguageManager.getInstance();
         this.currentPath = Navigator.ADMIN_DASHBOARD;
+        this.title = "Youth Center Management System";
     }
 
     public static SceneManager getInstance() {

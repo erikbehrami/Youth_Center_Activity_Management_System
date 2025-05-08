@@ -37,3 +37,10 @@ Text {
 .icon {
     -fx-fill: white
 }
+
+
+.table-view .table-cell {
+    -fx-border-width: .5 !important;
+    -fx-border-color: white !important;
+    -fx-border-style: solid !important;
+}
