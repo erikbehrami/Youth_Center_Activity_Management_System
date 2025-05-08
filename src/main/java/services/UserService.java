@@ -83,6 +83,7 @@ public class UserService {
                 if (adminsRepository.getByEmail(email) != null) {
                     Admins admin = adminsRepository.getByEmail(email);
                     String salt = admin.getSalt();
+                    SessionManager.getInstance().setCurrentUser(admin);
                     String passwordGenerated = PasswordHasher.hashPassword(password, salt);
                     if (passwordGenerated.equals(admin.getPasswordHash())) {
                         sceneManager.switchScene(Navigator.ADMIN_DASHBOARD, "Admin Dashboard");
@@ -94,6 +95,7 @@ public class UserService {
                 if (professorsRepository.getByEmail(email) != null) {
                     Professors professor = professorsRepository.getByEmail(email);
                     String salt = professor.getSalt();
+                    SessionManager.getInstance().setCurrentUser(professor);
                     String passwordGenerated = PasswordHasher.hashPassword(password, salt);
                     if (passwordGenerated.equals(professor.getPasswordHash())) {
                         if (professor.isVerified()) {
@@ -110,6 +112,7 @@ public class UserService {
                 if (studentsRepository.getByEmail(email) != null) {
                     Students student = studentsRepository.getByEmail(email);
                     String salt = student.getSalt();
+                    SessionManager.getInstance().setCurrentUser(student);
                     String passwordGenerated = PasswordHasher.hashPassword(password, salt);
                     if (passwordGenerated.equals(student.getPasswordHash())) {
                         sceneManager.switchScene(Navigator.STUDENT_PROFILE, "Student Dashboard");

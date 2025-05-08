@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-public class Professors {
+public class Professors implements User{
     private int id;
     private String username;
     private String salt;

@@ -1,12 +1,11 @@
 package repository;
 
+import database.DBConnector;
 import model.Courses;
 import model.dto.course.CreateCourseDto;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, Object> {
@@ -74,4 +73,27 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, O
 
         return courseCountByYear;
     }
+
+    public ArrayList<Courses> getAll(int professorId){
+        ArrayList<Courses> coursesList = new ArrayList<>();
+        String query = "SELECT * FROM courses WHERE id_professor = ?";
+
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, professorId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Courses course = Courses.getInstance(rs);
+                coursesList.add(course);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return coursesList;
+    }
+
 }

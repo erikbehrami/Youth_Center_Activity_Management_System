@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-public class Admins {
+public class Admins implements User{
     private int id;
     private String username;
     private String salt;

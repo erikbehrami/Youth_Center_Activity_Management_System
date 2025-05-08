@@ -6,11 +6,13 @@ module com.example.demo {
     opens model to javafx.base;
     exports model to javafx.base;
 
+
     opens app to javafx.fxml;
     opens database to javafx.fxml;
     opens services to javafx.fxml;
     opens utils to javafx.fxml;
     opens controllers.AdminController to javafx.fxml;
+    opens controllers.ProfessorController to javafx.fxml;
     opens services.AdminServices to javafx.fxml;
     opens controllers to javafx.fxml;
 
@@ -21,4 +23,5 @@ module com.example.demo {
     exports services;
     exports controllers.AdminController;
     exports services.AdminServices;
+    exports controllers.ProfessorController;
 }

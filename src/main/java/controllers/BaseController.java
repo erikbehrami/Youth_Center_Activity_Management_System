@@ -9,32 +9,32 @@ import utils.Navigator;
 import java.util.Locale;
 
 public abstract class BaseController {
-    protected SceneManager sceneManager = SceneManager.getInstance();
-    protected LanguageManager languageManager = LanguageManager.getInstance();
+    public SceneManager sceneManager = SceneManager.getInstance();
+    public LanguageManager languageManager = LanguageManager.getInstance();
 
     @FXML
-    protected void handleSQLanguageClick() {
+    private void handleSQLanguageClick() {
         loadLanguage(new Locale("sq"));
     }
 
     @FXML
-    protected void handleENLanguageClick() {
+    private void handleENLanguageClick() {
         loadLanguage(Locale.ENGLISH);
     }
 
     @FXML
-    protected void loadLanguage(Locale locale) {
+    private void loadLanguage(Locale locale) {
         languageManager.setLocale(locale);
         sceneManager.reload();
     }
 
     @FXML
-    protected void handleGoBack() {
+    private void handleGoBack() {
         sceneManager.switchScene(sceneManager.getLastPath());
     }
 
     @FXML
-    protected void changeMode() {
+    private void changeMode() {
         if (ModeManager.getMode().equals(Navigator.DARK_MODE)) {
             ModeManager.setMode("LIGHT_MODE");
         } else {
