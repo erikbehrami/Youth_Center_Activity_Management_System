@@ -6,22 +6,17 @@ import java.sql.SQLException;
 
 public class DBConnector {
 
-    private static Connection connection = null;
+    private static final String DB_URL = "jdbc:postgresql://localhost/youthcenterdb";
+    private static final String USER = "java";
+    private static final String PASSWORD = "123";
 
-    public static Connection getConnection(){
-        String dbUrl = "jdbc:postgresql://localhost/youthcenterdb";
-        String user = "java";
-        String password = "123";
-
-        if(connection != null){
-            return connection;
-        }
+    public static Connection getConnection() {
         try {
-            connection= DriverManager.getConnection(dbUrl, user, password);
-        }catch (SQLException e) {
-            System.out.println(e.getMessage());
+            return DriverManager.getConnection(DB_URL, USER, PASSWORD);
+        } catch (SQLException e) {
+            System.out.println("Database connection failed: " + e.getMessage());
+            return null;
         }
-        return connection;
     }
 }
 

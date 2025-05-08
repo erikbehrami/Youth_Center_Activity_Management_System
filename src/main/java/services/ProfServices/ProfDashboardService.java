@@ -11,9 +11,8 @@ public class ProfDashboardService extends BaseProfessorService{
     public int getTotalCourses() {
         int totalCourses = 0;
 
-        SessionManager session = SessionManager.getInstance();
-        if (session.isProfessor()) {
-            int professorId = session.currentUser().getId();
+        if (sessionManager.isProfessor()) {
+            int professorId = sessionManager.currentUser().getId();
             totalCourses = getTotalCoursesForProfessor(professorId);
         }
         return totalCourses;

@@ -1,15 +1,14 @@
 package repository;
 
 
+import database.DBConnector;
 import model.Professors;
 import model.Students;
 import model.dto.students.CreateStudentsDto;
 import model.dto.students.UpdateStudentsDto;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -139,5 +138,45 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
             System.out.println(e.getMessage());
         }
         return null;
+    }
+
+    public ArrayList<Students> getEnrolledStudents(int professorId){
+        ArrayList<Students> enrolledStudents = new ArrayList<>();
+        String query = """
+                SELECT
+                    s.id AS id,
+                    s.username,
+                    s.salt,
+                    s.passwordHash,
+                    s.name,
+                    s.surname,
+                    s.email,
+                    s.birthdate,
+                    s.phoneNumber,
+                    s.address,
+                    s.gender,
+                    s.biographicalInfo
+                FROM students s
+                JOIN enrolled e ON s.id = e.id_student
+                JOIN courses c ON c.id = e.id_course
+                WHERE c.id_professor = ?
+                """;
+
+        try(Connection conn = DBConnector.getConnection();
+            PreparedStatement preparedStatement = conn.prepareStatement(query)){
+
+            preparedStatement.setInt(1,professorId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                Students students = Students.getInstance(resultSet);
+                enrolledStudents.add(students);
+            }
+        }catch (SQLException se){
+            se.printStackTrace();
+        }
+
+        return enrolledStudents;
+
     }
 }

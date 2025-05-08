@@ -1,13 +1,11 @@
 package repository;
 
+import database.DBConnector;
 import model.Professors;
 import model.dto.professors.CreateProfessorDto;
 import model.dto.professors.UpdateProfessorDto;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -38,7 +36,22 @@ public class ProfessorsRepository extends BaseRepository<Professors, CreateProfe
             return null;
         }
     }
+    public int getTotalCourses(int professorId){
+        int total = 0;
+        String query = "SELECT COUNT(*) FROM courses WHERE id_professor = ?";
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
 
+            stmt.setInt(1, professorId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                total = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return total;
+    }
 
     public Professors create(CreateProfessorDto CreatePDTO) {
         String query = "insert into professors (username, salt,passwordHash, name, surname, email, birthdate) values (?,?,?,?,?,?,?)";

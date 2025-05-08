@@ -12,7 +12,6 @@ public class ProfCoursesService extends BaseProfessorService{
 
     public ArrayList<Courses> getAllCourses()
     {
-        SessionManager sessionManager = SessionManager.getInstance();
         if (sessionManager.isProfessor())
         {
             int id_professor = sessionManager.currentUser().getId();

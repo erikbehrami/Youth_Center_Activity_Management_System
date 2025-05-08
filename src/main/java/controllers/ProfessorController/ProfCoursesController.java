@@ -1,6 +1,5 @@
 package controllers.ProfessorController;
 
-import controllers.BaseController;
 import controllers.ProfController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -50,8 +49,8 @@ public class ProfCoursesController extends ProfController {
         if (crsID != null) crsID.setCellValueFactory(new PropertyValueFactory<>("id"));
         if (crsNAME != null) crsNAME.setCellValueFactory(new PropertyValueFactory<>("name"));
         if (crsCATEGORY != null) crsCATEGORY.setCellValueFactory(new PropertyValueFactory<>("category"));
-        if (crsENROLLED != null) crsENROLLED.setCellValueFactory(new PropertyValueFactory<>("enrolled"));
-        if (crsSTART != null) crsSTART.setCellValueFactory(new PropertyValueFactory<>("start"));
-        if (crsEND != null) crsEND.setCellValueFactory(new PropertyValueFactory<>("end"));
+        if (crsENROLLED != null) crsENROLLED.setCellValueFactory(new PropertyValueFactory<>("studentsEnrolled"));
+        if (crsSTART != null) crsSTART.setCellValueFactory(new PropertyValueFactory<>("dateStarted"));
+        if (crsEND != null) crsEND.setCellValueFactory(new PropertyValueFactory<>("dateEnding"));
     }
 }
