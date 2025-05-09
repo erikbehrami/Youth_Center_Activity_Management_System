@@ -2,6 +2,7 @@
 <module version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
+    <orderEntry type="jdk" jdkName="openjdk-23" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.apiguardian:apiguardian-api:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: org.checkerframework:checker-qual:3.48.3" level="project" />

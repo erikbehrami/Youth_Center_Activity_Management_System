@@ -13,6 +13,6 @@
     -fx-background-radius: 5px;
 }
 
-test {
-    -fx-background-color: lightblue;
+.table-view .table-cell {
+    -fx-alignment: CENTER_LEFT !important;
 }

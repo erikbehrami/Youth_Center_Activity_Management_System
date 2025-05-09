@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import model.dto.Login;
 import services.UserService;
 import utils.Navigator;
@@ -24,6 +27,9 @@ public class SignInController extends BaseController {
     Button loginButton;
 
     @FXML
+    private AnchorPane baseAnchor;
+
+    @FXML
     private void handleSignUp() {
         sceneManager.switchScene(Navigator.SIGN_UP, "Sign Up");
     }
@@ -38,7 +44,11 @@ public class SignInController extends BaseController {
     @FXML
     public void initialize() {
         loginButton.setDefaultButton(true);
-
+        baseAnchor.setOnKeyPressed((KeyEvent event) -> {
+            if (event.getCode() == KeyCode.ESCAPE) {
+                sceneManager.switchScene(sceneManager.getLastPath(), "Home");
+            }
+        });
     }
 
 

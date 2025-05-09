@@ -2,6 +2,9 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import model.dto.professors.CreateProfessorDto;
 import model.dto.students.CreateStudentsDto;
 import services.PasswordHasher;
@@ -35,6 +38,8 @@ public class SignUpController extends BaseController {
     private CheckBox termsAndConditionsCheckBox;
     @FXML
     private Button signupButton;
+    @FXML
+    private AnchorPane baseAnchor;
 
     @FXML
     private void handleSignIn() {
@@ -44,7 +49,11 @@ public class SignUpController extends BaseController {
     @FXML
     public void initialize() {
         signupButton.setDefaultButton(true);
-
+        baseAnchor.setOnKeyPressed((KeyEvent event) -> {
+            if (event.getCode() == KeyCode.ESCAPE) {
+                sceneManager.switchScene(sceneManager.getLastPath(), "Home");
+            }
+        });
     }
 
     @FXML
