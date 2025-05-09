@@ -14,8 +14,8 @@ public class ProfCoursesService extends BaseProfessorService{
     {
         if (sessionManager.isProfessor())
         {
-            int id_professor = sessionManager.currentUser().getId();
-            return this.courseRepository.getAll(id_professor);
+            int professorID = sessionManager.currentUser().getId();
+            return this.courseRepository.getAll(professorID);
         }
         return null;
     }

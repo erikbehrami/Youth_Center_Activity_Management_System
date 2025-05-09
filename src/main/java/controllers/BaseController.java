@@ -28,6 +28,7 @@ public abstract class BaseController {
         sceneManager.reload();
     }
 
+
     @FXML
     private void handleGoBack() {
         sceneManager.switchScene(sceneManager.getLastPath());

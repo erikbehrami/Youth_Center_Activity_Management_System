@@ -1,104 +1,62 @@
 package repository;
 
-import database.DBConnector;
 import model.LectureRooms;
 import model.dto.lectureRooms.CreateLectureRoomsDto;
 import model.dto.lectureRooms.UpdateLectureRoomsDto;
 
-import java.sql.*;
-import java.util.ArrayList;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-public class LectureRoomsRepository {
+public class LectureRoomsRepository extends BaseRepository<LectureRooms, CreateLectureRoomsDto, UpdateLectureRoomsDto> {
 
-private Connection connection;
-public LectureRoomsRepository(){
-    this.connection= DBConnector.getConnection();
-}
-
-public ArrayList<LectureRooms> getAll(){
-    String query = "select * from lectureRooms";
-    ArrayList<LectureRooms> lectureRoomsList = new ArrayList<>();
-    try{
-        Statement statement = this.connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
-
-        while(resultSet.next()){
-            lectureRoomsList.add(LectureRooms.getInstance(resultSet));
-        }
-        resultSet.close();
-        statement.close();
-        return lectureRoomsList;
-    } catch (Exception e) {
-            return null;
+    public LectureRoomsRepository() {
+        super("lectureRooms");
     }
-}//getAll lectureRooms function
 
+    @Override
+    protected LectureRooms fromResultSet(ResultSet res) throws SQLException {
+        return LectureRooms.getInstance(res);
+    }
 
-    public LectureRooms getById(int id){
-    String query = "select * from lectureRooms where id = ?";
-    try{
-        PreparedStatement statement = connection.prepareStatement(query);
-        statement.setInt(1,id);
-        ResultSet resultSet = statement.executeQuery();
-        while(resultSet.next()){
-            return LectureRooms.getInstance(resultSet);
+    // Create a new lecture room
+    public LectureRooms create(CreateLectureRoomsDto dto) {
+        String query = "INSERT INTO lectureRooms (name, floor, capacity) VALUES (?, ?, ?)";
+        try {
+            PreparedStatement pstm = this.connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            pstm.setString(1, dto.getName());
+            pstm.setInt(2, dto.getFloor());
+            pstm.setInt(3, dto.getCapacity());
+            pstm.executeUpdate();
+
+            ResultSet res = pstm.getGeneratedKeys();
+            if (res.next()) {
+                int id = res.getInt(1);
+                return this.getById(id);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error creating lecture room: " + e.getMessage());
         }
-        statement.close();
-        resultSet.close();
         return null;
     }
-    catch(SQLException e){
-return null;
-    }
-    }//getById lectureRooms function
 
-
-
-    public boolean create(CreateLectureRoomsDto CreateLRDto){
-    String query = "insert into lectureRooms (name, floor, capacity) VALUES (?,?,?)";
-    try{
-        PreparedStatement statement = this.connection.prepareStatement(query);
-        statement.setString(1,CreateLRDto.getName());
-        statement.setInt(2,CreateLRDto.getFloor());
-        statement.setInt(3,CreateLRDto.getCapacity());
-        statement.close();
-        return statement.executeUpdate()>0;
-
-    }catch(Exception e){
-        return false;
-    }
-    }//create LectureRoom function
-
-
-    public boolean update(UpdateLectureRoomsDto UpdateLRDto){
-        String query = "update lectureRooms set name=?,capacity=? where id=?";
+    // Update an existing lecture room
+    public LectureRooms update(UpdateLectureRoomsDto dto) {
+        String query = "UPDATE lectureRooms SET name = ?, capacity = ? WHERE id = ?";
         try {
-            PreparedStatement statement = this.connection.prepareStatement(query);
-            statement.setString(1, UpdateLRDto.getName());
-            statement.setInt(2, UpdateLRDto.getCapacity());
-            statement.setInt(3, UpdateLRDto.getId());
-            return statement.executeUpdate()>0;
+            PreparedStatement pstm = this.connection.prepareStatement(query);
+            pstm.setString(1, dto.getName());
+            pstm.setInt(2, dto.getCapacity());
+            pstm.setInt(3, dto.getId());
 
-
-        }catch(Exception e){
-            return false;
+            int rows = pstm.executeUpdate();
+            if (rows > 0) {
+                return this.getById(dto.getId());
+            }
+        } catch (SQLException e) {
+            System.out.println("Error updating lecture room: " + e.getMessage());
         }
-    }//update LectureRoom function
-
-
-
-    public boolean delete(int id){
-        String query  = "delete from lectureRooms where id =?";
-        try{
-            PreparedStatement statement = this.connection.prepareStatement(query);
-            statement.setInt(1,id);
-            statement.execute();
-            return true;
-        }catch(Exception e){
-            return false;
-        }
+        return null;
     }
 }
-
-
-

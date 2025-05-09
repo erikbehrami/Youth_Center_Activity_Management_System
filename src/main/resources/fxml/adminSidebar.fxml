@@ -46,7 +46,8 @@
                             style="-fx-background-color: #101935; -fx-border-color: white;" styleClass="change"
                             text="%admin.Professors" textFill="WHITE"/>
                     <Button layoutX="31.0" layoutY="498.0" minHeight="0.0" mnemonicParsing="false" prefHeight="45.0"
-                            prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white;"
+                            prefWidth="180.0" onAction="#handleAdminCourses"
+                            style="-fx-background-color: #101935; -fx-border-color: white;"
                             styleClass="change" text="%admin.Courses" textFill="WHITE"/>
                 </children>
             </VBox>

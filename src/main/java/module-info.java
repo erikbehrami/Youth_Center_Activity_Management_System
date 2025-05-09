@@ -15,6 +15,7 @@ module com.example.demo {
     opens controllers.ProfessorController to javafx.fxml;
     opens services.AdminServices to javafx.fxml;
     opens controllers to javafx.fxml;
+    opens model.dto to javafx.fxml;
 
     exports app;
     exports controllers;
@@ -24,4 +25,5 @@ module com.example.demo {
     exports controllers.AdminController;
     exports services.AdminServices;
     exports controllers.ProfessorController;
+    exports model.dto;
 }

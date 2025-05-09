@@ -5,12 +5,15 @@ interface OverallPages {
     String LOGO = "/images/youthcenter_logo.png";
     String HOME = "/fxml/home.fxml";
     String INFO = "/fxml/info.fxml";
+    String REGISTER_COURSE = "/fxml/registerCourse.fxml";
 }
 
 interface AdminPages {
     String ADMIN_DASHBOARD = "/fxml/adminDashboard.fxml";
     String ADMIN_STUDENTS = "/fxml/adminStudents.fxml";
     String ADMIN_TEACHERS = "/fxml/adminProfessors.fxml";
+    String ADMIN_COURSES = "/fxml/adminCourses.fxml";
+
 }
 
 interface ProfPages {

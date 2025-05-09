@@ -27,8 +27,8 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, O
 
             pstm.setString(1, createCourseDto.getName());
             pstm.setString(2, createCourseDto.getCategory());
-            pstm.setInt(3, createCourseDto.getId_Professor());
-            pstm.setInt(4, createCourseDto.getId_lectureRooms());
+            pstm.setInt(3, createCourseDto.getProfessorId());
+            pstm.setInt(4, createCourseDto.getLectureRoomId());
             pstm.setInt(5, createCourseDto.getTotalNum());
             pstm.setInt(6, createCourseDto.getStudentsEnrolled());
             pstm.setDate(7, new java.sql.Date(createCourseDto.getDateStarted().getTime()));
@@ -68,15 +68,15 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, O
                 courseCountByYear.put(year, count);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
         return courseCountByYear;
     }
 
-    public ArrayList<Courses> getAll(int professorId){
+    public ArrayList<Courses> getAll(int professorId) {
         ArrayList<Courses> coursesList = new ArrayList<>();
-        String query = "SELECT * FROM courses WHERE id_professor = ?";
+        String query = "SELECT * FROM courses WHERE id_Professor = ?";
 
         try (Connection conn = DBConnector.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -90,7 +90,7 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, O
                 coursesList.add(course);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
         return coursesList;

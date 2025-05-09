@@ -13,6 +13,7 @@ public class SceneManager {
     private static SceneManager instance;
     private final LanguageManager languageManager;
     private static Stage primaryStage;
+    private static Stage secondaryStage;
     private Scene currentScene;
     private String currentPath;
     private String lastPath;
@@ -33,13 +34,13 @@ public class SceneManager {
 
     public void setPrimaryStage(Stage stage) {
         SceneManager.primaryStage = stage;
-        this.currentScene = this.createScene();
+        this.currentScene = this.createScene(this.currentPath);
         this.configurePrimaryStage();
     }
 
-    private Scene createScene() {
+    private Scene createScene(String fxmlPath) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(this.currentPath));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             loader.setResources(languageManager.getResourceBundle());
             Scene scene = new Scene(loader.load());
             ModeManager.changeMode(scene);
@@ -53,6 +54,24 @@ public class SceneManager {
         this.switchScene(fxmlPath, null);
     }
 
+    public void createNewStage(String fxmlPath, String title) {
+        if (secondaryStage != null) {
+            secondaryStage.close();
+        }
+        Scene scene = this.createScene(fxmlPath);
+        secondaryStage = new Stage();
+        secondaryStage.setTitle(title);
+        secondaryStage.setScene(scene);
+        setLogo(secondaryStage);
+        secondaryStage.centerOnScreen();
+        secondaryStage.setResizable(false);
+        secondaryStage.show();
+    }
+
+    public static Stage getSecondaryStage() {
+        return SceneManager.secondaryStage;
+    }
+
     public void switchScene(String fxmlPath, String title) {
         this.lastPath = this.currentPath;
         this.currentPath = fxmlPath;
@@ -61,7 +80,7 @@ public class SceneManager {
             this.title = title;
         }
 
-        this.currentScene = createScene();
+        this.currentScene = createScene(this.currentPath);
 
         this.configurePrimaryStage();
     }
@@ -70,18 +89,19 @@ public class SceneManager {
         switchScene(this.currentPath, this.title);
     }
 
-    public void setLogo(String logoPath) {
-        InputStream logoStream = getClass().getResourceAsStream(logoPath);
+    public void setLogo(Stage stage) {
+        InputStream logoStream = getClass().getResourceAsStream(Navigator.LOGO);
         if (logoStream != null) {
-            primaryStage.getIcons().add(new Image(logoStream));
+            stage.getIcons().add(new Image(logoStream));
         }
     }
 
     public void configurePrimaryStage() {
-        setLogo(Navigator.LOGO);
+        setLogo(primaryStage);
         primaryStage.setResizable(this.setResizeable(this.currentPath));
         primaryStage.setScene(this.currentScene);
         primaryStage.setTitle(this.title);
+        primaryStage.centerOnScreen();
         primaryStage.show();
     }
 
