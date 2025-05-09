@@ -92,7 +92,6 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, O
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
         return coursesList;
     }
 

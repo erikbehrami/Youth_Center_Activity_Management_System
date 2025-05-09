@@ -12,6 +12,10 @@ public class ProfDashboardController extends ProfController {
     private Label profTotalClasses;
     @FXML
     private Label profTotalStudents;
+    @FXML
+    private Label profName;
+    @FXML
+    private Label generateDate;
 
 
     @FXML
@@ -22,6 +26,17 @@ public class ProfDashboardController extends ProfController {
     private void loadCounts() {
         if (profTotalClasses !=null){
             profTotalClasses.setText(String.valueOf(profDashboardService.getTotalCourses()));
+        }
+        if (profTotalStudents !=null){
+            profTotalStudents.setText(String.valueOf(profDashboardService.getTotalStudents()));
+        }
+        if (profName !=null)
+        {
+            profName.setText(String.valueOf(profDashboardService.getProfName()));
+        }
+        if (generateDate !=null)
+        {
+            generateDate.setText(String.valueOf(profDashboardService.getDate()));
         }
     }
 

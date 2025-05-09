@@ -20,9 +20,10 @@
                             <columns>
                                 <TableColumn fx:id="crsID" prefWidth="88.0" text="ID" />
                                 <TableColumn fx:id="crsNAME" prefWidth="176.00006866455078" text="%course.Name" />
-                                <TableColumn fx:id="crsCATEGORY" prefWidth="206.39996337890625" text="%course.Category" />
-                                <TableColumn fx:id="crsENROLLED" prefWidth="181.60000610351562" text="%course.EnrolledStudents" />
-                                <TableColumn fx:id="crsSTART" prefWidth="112.0" text="%course.StartDate" />
+                                <TableColumn fx:id="crsCATEGORY" prefWidth="173.59996032714844" text="%course.Category" />
+                        <TableColumn fx:id="crsLECTUREROOMID" prefWidth="141.5999755859375" text="%course.lectureRoom" />
+                                <TableColumn fx:id="crsENROLLED" prefWidth="113.60003662109375" text="%course.EnrolledStudents" />
+                                <TableColumn fx:id="crsSTART" prefWidth="100.79998779296875" text="%course.StartDate" />
                                 <TableColumn fx:id="crsEND" prefWidth="135.20001220703125" text="%course.EndDate" />
                             </columns>
                             <columnResizePolicy>

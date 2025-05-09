@@ -1,7 +1,6 @@
 package services.ProfServices;
 
 import model.Courses;
-import services.SessionManager;
 
 import java.util.ArrayList;
 

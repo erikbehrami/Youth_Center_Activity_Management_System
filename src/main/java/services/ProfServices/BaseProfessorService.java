@@ -27,4 +27,8 @@ public abstract class BaseProfessorService {
     public int getTotalCoursesForProfessor(int professorId) {
         return this.professorsRepository.getTotalCourses(professorId);
     }
+
+    public int getTotalStudentsForProfessor(int professorId){
+        return this.studentsRepository.getEnrolledStudents(professorId).size();
+    }
 }

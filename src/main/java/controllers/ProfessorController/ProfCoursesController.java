@@ -23,6 +23,8 @@ public class ProfCoursesController extends ProfController {
     @FXML
     private TableColumn<Courses, String> crsCATEGORY;
     @FXML
+    private TableColumn<Courses, Integer> crsLECTUREROOMID;
+    @FXML
     private TableColumn<Courses, String> crsENROLLED;
     @FXML
     private TableColumn<Courses, Date> crsSTART;
@@ -49,6 +51,7 @@ public class ProfCoursesController extends ProfController {
         if (crsID != null) crsID.setCellValueFactory(new PropertyValueFactory<>("id"));
         if (crsNAME != null) crsNAME.setCellValueFactory(new PropertyValueFactory<>("name"));
         if (crsCATEGORY != null) crsCATEGORY.setCellValueFactory(new PropertyValueFactory<>("category"));
+        if (crsLECTUREROOMID !=null) crsLECTUREROOMID.setCellValueFactory(new PropertyValueFactory<>("lectureRoomId"));
         if (crsENROLLED != null) crsENROLLED.setCellValueFactory(new PropertyValueFactory<>("studentsEnrolled"));
         if (crsSTART != null) crsSTART.setCellValueFactory(new PropertyValueFactory<>("dateStarted"));
         if (crsEND != null) crsEND.setCellValueFactory(new PropertyValueFactory<>("dateEnding"));
