@@ -25,7 +25,7 @@ public class ProfCoursesController extends ProfController {
     @FXML
     private TableColumn<Courses, Integer> crsLECTUREROOMID;
     @FXML
-    private TableColumn<Courses, String> crsENROLLED;
+    private TableColumn<Courses, Integer> crsENROLLED;
     @FXML
     private TableColumn<Courses, Date> crsSTART;
     @FXML
@@ -43,6 +43,14 @@ public class ProfCoursesController extends ProfController {
 
     private void loadCoursesData() {
         List<Courses> allCourses = profCoursesService.getAllCourses();
+
+        for (Courses course : allCourses) {
+            int professorId = course.getProfessorId();
+            int courseId = course.getId();
+            int enrolledCount = profCoursesService.getEnrolled(professorId, courseId);
+            course.setStudentsEnrolled(enrolledCount);
+        }
+
         ObservableList<Courses> coursesList = FXCollections.observableArrayList(allCourses);
         coursesTable.setItems(coursesList);
     }

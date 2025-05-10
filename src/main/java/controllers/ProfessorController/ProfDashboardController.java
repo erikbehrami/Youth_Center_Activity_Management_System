@@ -2,6 +2,7 @@ package controllers.ProfessorController;
 
 import controllers.ProfController;
 import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
 import javafx.scene.control.Label;
 import services.ProfServices.ProfDashboardService;
 
@@ -16,11 +17,14 @@ public class ProfDashboardController extends ProfController {
     private Label profName;
     @FXML
     private Label generateDate;
+    @FXML
+    private BarChart<String, Number> coursesChart;
 
 
     @FXML
     private void initialize() {
         loadCounts();
+        loadCharts();
     }
 
     private void loadCounts() {
@@ -40,4 +44,10 @@ public class ProfDashboardController extends ProfController {
         }
     }
 
+    private void loadCharts(){
+        if (coursesChart != null) {
+            coursesChart.getData().clear();
+            coursesChart.getData().add(profDashboardService.getCourseChartSeries());
+        }
+    }
 }

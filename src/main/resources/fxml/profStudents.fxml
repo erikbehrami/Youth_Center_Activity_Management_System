@@ -20,9 +20,9 @@
                             <columns>
                                 <TableColumn fx:id="stdID" prefWidth="88.0" text="ID" />
                                 <TableColumn fx:id="stdNAME" prefWidth="117.60000610351562" text="%profStudent.Name" />
-                                <TableColumn fx:id="stdSURNAME" prefWidth="120.79998779296875" text="%profStudent.Surname" />
-                                <TableColumn fx:id="stdEMAIL" prefWidth="117.5999755859375" text="%profStudent.Email" />
-                                <TableColumn fx:id="stdGENDER" prefWidth="120.00006103515625" text="%profStudent.Gender" />
+                                <TableColumn fx:id="stdSURNAME" prefWidth="130.40005493164062" text="%profStudent.Surname" />
+                                <TableColumn fx:id="stdEMAIL" prefWidth="222.39993286132812" text="%profStudent.Email" />
+                                <TableColumn fx:id="stdGENDER" prefWidth="137.59991455078125" text="%profStudent.Gender" />
                                 <TableColumn fx:id="stdBIRTHDAY" prefWidth="157.5999755859375" text="%profStudent.Birthday" />
                             </columns>
                             <columnResizePolicy>
@@ -31,12 +31,7 @@
                         </TableView>
                         <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="14.0" minHeight="0.0" minWidth="0.0" prefHeight="35.0" prefWidth="906.0" spacing="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.599999999999909" AnchorPane.topAnchor="14.0">
                             <children>
-                                <TextField prefHeight="30.0" prefWidth="255.0" promptText="Search" style="-fx-border-color: #101935; -fx-border-radius: 5;" styleClass="change" />
-                                <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="94.0" style="-fx-background-color: #101935;" styleClass="change" text="%profStudent.Search" textFill="WHITE">
-                                    <font>
-                                        <Font size="13.0" />
-                                    </font>
-                                </Button>
+                                <TextField fx:id="searchField" prefHeight="30.0" prefWidth="255.0" promptText="Search" style="-fx-border-color: #101935; -fx-border-radius: 5;" styleClass="change" />
                             </children>
                         </HBox>
                     </children>

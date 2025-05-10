@@ -71,7 +71,8 @@ public class AdminProfessorsController extends BaseController {
     }
 
     private void setupUnverifiedProfessorsTable() {
-        if (profID1 != null) profID1.setCellValueFactory(new PropertyValueFactory<>("id"));
+        if (profID1 != null)
+            profID1.setCellValueFactory(new PropertyValueFactory<>("id"));
         if (profNAME1 != null) profNAME1.setCellValueFactory(new PropertyValueFactory<>("name"));
         if (profSURNAME1 != null) profSURNAME1.setCellValueFactory(new PropertyValueFactory<>("surname"));
         if (profEMAIL1 != null) profEMAIL1.setCellValueFactory(new PropertyValueFactory<>("email"));

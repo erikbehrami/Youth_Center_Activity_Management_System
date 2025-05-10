@@ -7,6 +7,7 @@ import model.dto.course.CreateCourseDto;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, Object> {
 
@@ -94,5 +95,32 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, O
         }
         return coursesList;
     }
+
+    public HashMap<Integer, Integer> getCourseCountByYearForProfessor(int professorId) {
+        HashMap<Integer, Integer> courseCountByYear = new HashMap<>();
+        String query = """
+                    SELECT EXTRACT(YEAR FROM dateStarted) AS year, COUNT(id) AS course_count
+                    FROM courses
+                    WHERE id_Professor = ?
+                    GROUP BY year
+                    ORDER BY year;
+                """;
+
+        try (PreparedStatement stmt = connection.prepareStatement(query)){
+                  stmt.setInt(1, professorId);
+              ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                int year = rs.getInt("year");
+                int count = rs.getInt("course_count");
+                courseCountByYear.put(year, count);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return courseCountByYear;
+    }
+
 
 }

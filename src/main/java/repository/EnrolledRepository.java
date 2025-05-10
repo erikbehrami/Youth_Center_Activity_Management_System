@@ -1,6 +1,8 @@
 package repository;
 
+import database.DBConnector;
 import model.Enrolled;
+import model.Students;
 import model.dto.enrolled.CreateEnrolledDto;
 
 
@@ -40,5 +42,28 @@ public class EnrolledRepository extends BaseRepository<Enrolled, CreateEnrolledD
     @Override
     public Enrolled update(Object updateDto) {
         return null;
+    }
+
+    public int getEnrolledStudents(int professorId, int courseId) {
+        String query = """
+            SELECT COUNT(*) FROM enrolled e
+            JOIN students s ON s.id = e.id_student
+            WHERE e.id_professor = ? AND e.id_course = ?
+            """;
+        int count = 0;
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, professorId);
+            preparedStatement.setInt(2, courseId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                count = resultSet.getInt(1);
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return count;
     }
 }

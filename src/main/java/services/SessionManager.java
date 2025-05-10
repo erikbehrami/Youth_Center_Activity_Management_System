@@ -38,4 +38,5 @@ public class SessionManager {
     public boolean isStudent() {
         return user instanceof model.Students;
     }
+
 }

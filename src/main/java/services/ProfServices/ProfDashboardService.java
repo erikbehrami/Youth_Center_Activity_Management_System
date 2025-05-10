@@ -1,6 +1,10 @@
 package services.ProfServices;
 
+import javafx.scene.chart.XYChart;
+import services.LanguageManager;
+
 import java.time.LocalDate;
+import java.util.Locale;
 
 public class ProfDashboardService extends BaseProfessorService{
 
@@ -37,7 +41,23 @@ public class ProfDashboardService extends BaseProfessorService{
     }
 
     public LocalDate getDate(){
-        LocalDate currentDate = LocalDate.now();
-        return currentDate;
+        return LocalDate.now();
     }
+
+    public XYChart.Series<String, Number> getCourseChartSeries() {
+        LanguageManager languageManager = LanguageManager.getInstance();
+        String text;
+        if(languageManager.getLocale().equals(Locale.ENGLISH)){
+            text = "Courses";
+        }else{
+            text = "Kurset";
+        }
+        if (sessionManager.isProfessor()){
+            int professorId = sessionManager.currentUser().getId();
+            return this.createChartSeries(text,courseRepository.getCourseCountByYearForProfessor(professorId));
+        }
+        return null;
+    }
+
+
 }

@@ -22,7 +22,7 @@ public class Courses {
         this.professorId = professorId;
         this.lectureRoomId = lectureRoomId;
         this.totalNum = totalNum;
-        this.studentsEnrolled = studentsEnrolled;
+        this.studentsEnrolled = studentsEnrolled ;
         this.dateStarted = dateStarted;
         this.dateEnding = dateEnding;
     }
@@ -76,4 +76,9 @@ public class Courses {
     public Date getDateEnding() {
         return dateEnding;
     }
+
+    public void setStudentsEnrolled(int studentsEnrolled) {
+        this.studentsEnrolled = studentsEnrolled;
+    }
+
 }

@@ -19,10 +19,10 @@
                         <TableView fx:id="coursesTable" editable="true" layoutX="20.0" layoutY="61.599999999999994" prefHeight="521.0" prefWidth="898.0" styleClass="change" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="61.0">
                             <columns>
                                 <TableColumn fx:id="crsID" prefWidth="88.0" text="ID" />
-                                <TableColumn fx:id="crsNAME" prefWidth="176.00006866455078" text="%course.Name" />
-                                <TableColumn fx:id="crsCATEGORY" prefWidth="173.59996032714844" text="%course.Category" />
-                        <TableColumn fx:id="crsLECTUREROOMID" prefWidth="141.5999755859375" text="%course.lectureRoom" />
-                                <TableColumn fx:id="crsENROLLED" prefWidth="113.60003662109375" text="%course.EnrolledStudents" />
+                                <TableColumn fx:id="crsNAME" prefWidth="136.0" text="%course.Name" />
+                                <TableColumn fx:id="crsCATEGORY" prefWidth="140.800048828125" text="%course.Category" />
+                        <TableColumn fx:id="crsLECTUREROOMID" prefWidth="129.5999755859375" text="%course.lectureRoom" />
+                                <TableColumn fx:id="crsENROLLED" prefWidth="171.20001220703125" text="%course.EnrolledStudents" />
                                 <TableColumn fx:id="crsSTART" prefWidth="100.79998779296875" text="%course.StartDate" />
                                 <TableColumn fx:id="crsEND" prefWidth="135.20001220703125" text="%course.EndDate" />
                             </columns>
