@@ -2,48 +2,44 @@ package model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class LoginLogs {
     private int id;
-    private int adminId;
-    private int professorId;
-    private int studentId;
+    private int userId;
+    private String email;
     private String userType;
-    private final Date loginTime = new Date();
+    private Timestamp loginTime;
 
-    public LoginLogs(int id, int adminId, int professorId, int studentId, String userType) {
+    public LoginLogs(int id, int userId, String email, String userType, Timestamp loginTime) {
         this.id = id;
-        this.adminId = adminId;
-        this.professorId = professorId;
-        this.studentId = studentId;
+        this.userId = userId;
+        this.email = email;
         this.userType = userType;
+        this.loginTime = loginTime;
     }
 
     public static LoginLogs getInstance(ResultSet rs) throws SQLException {
         int id = rs.getInt("id");
-        int adminId = rs.getInt("adminId");
-        int professorId = rs.getInt("professorId");
-        int studentId = rs.getInt("studentId");
+        int userId = rs.getInt("userId");
+        String email = rs.getString("email");
         String userType = rs.getString("userType");
+        Timestamp timestamp = rs.getTimestamp("loginTime");
 
-        return new LoginLogs(id, adminId, professorId, studentId, userType);
+        return new LoginLogs(id, userId, email, userType, timestamp);
     }
 
     public int getId() {
         return id;
     }
 
-    public int getAdminId() {
-        return adminId;
+    public int getUserId() {
+        return userId;
     }
 
-    public int getProfessorId() {
-        return professorId;
-    }
-
-    public int getStudentId() {
-        return studentId;
+    public String getEmail() {
+        return email;
     }
 
     public String getUserType() {

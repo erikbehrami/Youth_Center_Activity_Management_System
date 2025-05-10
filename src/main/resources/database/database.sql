@@ -106,7 +106,7 @@ create table requests(
                          FOREIGN KEY (id_Course) REFERENCES courses(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE student_messages (
+CREATE TABLE studentMessages (
                                   id SERIAL PRIMARY KEY,
                                   id_Student INTEGER,
                                   id_Professor INTEGER,
@@ -116,7 +116,7 @@ CREATE TABLE student_messages (
                                   FOREIGN KEY (id_Professor) REFERENCES professors(id)
 );
 
-CREATE TABLE student_badges (
+CREATE TABLE studentBadges (
                                 id SERIAL PRIMARY KEY,
                                 id_Student INTEGER,
                                 badgeName VARCHAR(100),
@@ -150,7 +150,7 @@ CREATE TABLE issues (
                         FOREIGN KEY (studentId) REFERENCES students(id)
 );
 
-CREATE TABLE contact_messages (
+CREATE TABLE contactMessages (
                                   id SERIAL PRIMARY KEY,
                                   name VARCHAR(100),
                                   email VARCHAR(255),
@@ -165,28 +165,17 @@ CREATE TABLE faqs (
                       answer TEXT
 );
 
-CREATE TABLE login_logs (
+CREATE TABLE loginLogs (
                             id SERIAL PRIMARY KEY,
-                            adminId INTEGER,
-                            professorId INTEGER,
-                            studentId INTEGER,
+                            userId INTEGER,
                             userType VARCHAR(20),
-                            loginTime DATE,
+                            email varchar(255),
+                            loginTime TIMESTAMPTZ
 
-                            CHECK (
-                                (adminId IS NOT NULL AND professorID IS NULL AND studentId IS NULL)
-                                    OR
-                                (professorID IS NOT NULL AND adminId IS NULL AND studentId IS NULL)
-                                    OR
-                                (studentId IS NOT NULL AND adminId IS NULL AND professorID IS NULL)
-                                ),
-                            FOREIGN KEY (adminId) REFERENCES admins(id),
-                            FOREIGN KEY (professorId) REFERENCES professors(id),
-                            FOREIGN KEY (studentId) REFERENCES students(id)
 );
 
 
-CREATE TABLE professor_specializations (
+CREATE TABLE professorSpecializations (
                                            id SERIAL PRIMARY KEY,
                                            id_Professor INTEGER,
                                            specialization VARCHAR(100),
@@ -202,7 +191,7 @@ CREATE TABLE advertisements (
 );
 
 
-CREATE TABLE course_enrollment_logs (
+CREATE TABLE courseEnrollmentLogs (
                                         id SERIAL PRIMARY KEY,
                                         student_id INTEGER,
                                         course_id INTEGER,

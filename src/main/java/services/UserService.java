@@ -7,6 +7,7 @@ import model.Professors;
 import model.Students;
 import model.dto.LoginDTO;
 import model.dto.RegisterDTO;
+import model.dto.loginLogs.CreateLoginLogsDto;
 import model.dto.professors.CreateProfessorDto;
 import model.dto.students.CreateStudentsDto;
 import repository.AdminsRepository;
@@ -25,7 +26,7 @@ public class UserService {
     private final AdminsRepository adminsRepository = new AdminsRepository();
     private final SceneManager sceneManager = SceneManager.getInstance();
     private final LanguageManager languageManager = LanguageManager.getInstance();
-
+    private final LogsService logsService = LogsService.getInstance();
 
     public boolean isValidEmail(String email) {
         final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
@@ -102,6 +103,8 @@ public class UserService {
                     SessionManager.getInstance().setCurrentUser(admin);
                     String passwordGenerated = PasswordHasher.hashPassword(password, salt);
                     if (passwordGenerated.equals(admin.getPasswordHash())) {
+                        CreateLoginLogsDto createLoginLogsDto = new CreateLoginLogsDto(admin.getId(), admin.getEmail(), admin.getClass().getSimpleName());
+                        logsService.logLogInProcess(createLoginLogsDto);
                         sceneManager.switchScene(Navigator.ADMIN_DASHBOARD, "Admin Dashboard");
                         return;
                     }
@@ -115,6 +118,8 @@ public class UserService {
                     String passwordGenerated = PasswordHasher.hashPassword(password, salt);
                     if (passwordGenerated.equals(professor.getPasswordHash())) {
                         if (professor.isVerified()) {
+                            CreateLoginLogsDto createLoginLogsDto = new CreateLoginLogsDto(professor.getId(), professor.getEmail(), professor.getClass().getSimpleName());
+                            logsService.logLogInProcess(createLoginLogsDto);
                             sceneManager.switchScene(Navigator.PROF_DASHBOARD, "Professor Dashboard");
                             return;
                         } else {
@@ -131,6 +136,8 @@ public class UserService {
                     SessionManager.getInstance().setCurrentUser(student);
                     String passwordGenerated = PasswordHasher.hashPassword(password, salt);
                     if (passwordGenerated.equals(student.getPasswordHash())) {
+                        CreateLoginLogsDto createLoginLogsDto = new CreateLoginLogsDto(student.getId(), student.getEmail(), student.getClass().getSimpleName());
+                        logsService.logLogInProcess(createLoginLogsDto);
                         sceneManager.switchScene(Navigator.STUDENT_PROFILE, "Student Dashboard");
                         return;
                     }

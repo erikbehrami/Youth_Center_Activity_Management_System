@@ -2,49 +2,56 @@ package repository;
 
 import database.DBConnector;
 import model.LoginLogs;
+import model.Professors;
+import model.dto.loginLogs.CreateLoginLogsDto;
+import model.dto.professors.CreateProfessorDto;
+import model.dto.professors.UpdateProfessorDto;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class LoginLogsRepository {
-    private Connection connection;
+public class LoginLogsRepository extends BaseRepository<LoginLogs, CreateLoginLogsDto, Object> {
+
 
     public LoginLogsRepository() {
-        this.connection = DBConnector.getConnection();
+        super("loginlogs");
     }
 
-    public ArrayList<LoginLogs> getAll() {
-        String query = "select * from login_logs order by loginTime desc";
-        ArrayList<LoginLogs> logsList = new ArrayList<>();
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {
-                logsList.add(LoginLogs.getInstance(resultSet));
-            }
-            resultSet.close();
-            statement.close();
-            return logsList;
-        } catch (SQLException e) {
-            return null;
-        }
+    public LoginLogs fromResultSet(ResultSet res) throws SQLException {
+        return LoginLogs.getInstance(res);
     }
 
-    public ArrayList<LoginLogs> getByUserType(String userType) {
-        String query = "select * from login_logs where userType = ? order by loginTime desc";
-        ArrayList<LoginLogs> logsList = new ArrayList<>();
+    public LoginLogs create(CreateLoginLogsDto CreateLLDTO) {
+        String query = "insert into loginlogs (userId,email,userType,loginTime) values (?,?,?,?)";
         try {
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, userType);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                logsList.add(LoginLogs.getInstance(resultSet));
+            PreparedStatement statement =
+                    this.connection.prepareStatement(
+                            query, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, CreateLLDTO.getUserId());
+            statement.setString(2, CreateLLDTO.getEmail());
+            statement.setString(3, CreateLLDTO.getUserType());
+            statement.setTimestamp(4, CreateLLDTO.getLoginTime());
+
+            int affectedRows = statement.executeUpdate();
+
+            if (affectedRows > 0) {
+                ResultSet res = statement.getGeneratedKeys();
+                if (res.next()) {
+                    int id = res.getInt(1);
+                    statement.close();
+                    return this.getById(id);
+                }
+                res.close();
             }
-            resultSet.close();
+
             statement.close();
-            return logsList;
         } catch (SQLException e) {
-            return null;
+            System.out.println(e.getMessage());
         }
+        return null;
+    }
+
+    public LoginLogs update(Object o) {
+        return null;
     }
 }

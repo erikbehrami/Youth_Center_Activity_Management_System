@@ -72,6 +72,7 @@ public class SignUpController extends BaseController {
             passwordFieldText.setManaged(true);
             passwordFieldText.setVisible(true);
             eye.setText("\uf06e");
+            passwordFieldText.requestFocus();
 
             confirmPasswordFieldText.setText(confirmPassword.getText());
             confirmPassword.setManaged(false);
@@ -89,6 +90,7 @@ public class SignUpController extends BaseController {
             passwordFieldText.setManaged(false);
             passwordFieldText.setVisible(false);
             eye.setText("\uf070");
+            password.requestFocus();
 
             confirmPassword.setText(confirmPasswordFieldText.getText());
             confirmPassword.setManaged(true);
@@ -98,6 +100,46 @@ public class SignUpController extends BaseController {
             confirmedEye.setText("\uf070");
             check = false;
         }
+    }
+
+    public void unhidePassword1() {
+        if (password.isVisible()) {
+
+            passwordFieldText.setText(password.getText());
+            password.setManaged(false);
+            password.setVisible(false);
+            passwordFieldText.setManaged(true);
+            passwordFieldText.setVisible(true);
+            eye.setText("\uf06e");
+
+            confirmPasswordFieldText.setText(confirmPassword.getText());
+            confirmPassword.setManaged(false);
+            confirmPassword.setVisible(false);
+            confirmPasswordFieldText.setManaged(true);
+            confirmPasswordFieldText.setVisible(true);
+            confirmedEye.setText("\uf06e");
+            check = true;
+            confirmPasswordFieldText.requestFocus();
+
+        } else {
+
+            password.setText(passwordFieldText.getText());
+            password.setManaged(true);
+            password.setVisible(true);
+            passwordFieldText.setManaged(false);
+            passwordFieldText.setVisible(false);
+            eye.setText("\uf070");
+
+            confirmPassword.setText(confirmPasswordFieldText.getText());
+            confirmPassword.setManaged(true);
+            confirmPassword.setVisible(true);
+            confirmPasswordFieldText.setManaged(false);
+            confirmPasswordFieldText.setVisible(false);
+            confirmedEye.setText("\uf070");
+            check = false;
+            confirmPassword.requestFocus();
+        }
+
     }
 
     @FXML

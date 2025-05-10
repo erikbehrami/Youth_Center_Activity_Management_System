@@ -54,6 +54,7 @@ public class SignInController extends BaseController {
     @FXML
     public void initialize() {
         loginButton.setDefaultButton(true);
+
         baseAnchor.setOnKeyPressed((KeyEvent event) -> {
             if (event.getCode() == KeyCode.ESCAPE) {
                 sceneManager.switchScene(Navigator.HOME, "Home");
@@ -71,6 +72,7 @@ public class SignInController extends BaseController {
             passwordFieldText.setVisible(true);
             eye.setText("\uf06e");
             check = true;
+            passwordFieldText.requestFocus();
         } else {
 
             password.setText(passwordFieldText.getText());
@@ -80,6 +82,7 @@ public class SignInController extends BaseController {
             passwordFieldText.setVisible(false);
             eye.setText("\uf070");
             check = false;
+            password.requestFocus();
 
         }
     }

@@ -21,7 +21,7 @@ public class SceneManager {
 
     private SceneManager() {
         languageManager = LanguageManager.getInstance();
-        this.currentPath = Navigator.SIGN_UP;
+        this.currentPath = Navigator.HOME;
         this.title = "Youth Center Management System";
     }
 
