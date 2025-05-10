@@ -4,13 +4,16 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import services.LanguageManager;
 import services.SceneManager;
 import utils.Navigator;
 
-
+import java.util.Locale;
 
 
 public class ErrorDialog {
+    static LanguageManager languageManager = LanguageManager.getInstance();
+
     public static void showAlert(Alert.AlertType alertType, String message) {
         Alert alert = new Alert(alertType);
         alert.setHeaderText(null);
@@ -28,12 +31,20 @@ public class ErrorDialog {
 
     }
 
-    public static void showRegistrationSuccess(Alert.AlertType alertType,String type) {
+    public static void showRegistrationSuccess(Alert.AlertType alertType, String type) {
         Alert alert = new Alert(alertType);
-        if(type.equals("Success")){
-            alert.setTitle("Registration Successful");
+        if (type.equals("Success")) {
+            if (languageManager.getLocale() == Locale.ENGLISH) {
+                alert.setTitle("Registration Successful");
+                alert.setContentText("You have successfully registered!");
+            } else {
+                alert.setTitle("Regjistrimi i suksesshëm");
+                alert.setContentText("Jeni regjistruar me sukses!");
+            }
+
+
             alert.setHeaderText(null);
-            alert.setContentText("You have successfully registered!");
+
             Image successIcon = new Image(ErrorDialog.class.getResource("/images/icons/check.png").toExternalForm());
             ImageView imageView = new ImageView(successIcon);
             imageView.setFitWidth(48);
@@ -44,10 +55,15 @@ public class ErrorDialog {
 
 
         } else if (type.equals("Fail")) {
-
-            alert.setTitle("Registration Failed");
+            if (languageManager.getLocale() == Locale.ENGLISH) {
+                alert.setTitle("Registration Failed");
+                alert.setContentText("There was an issue with your registration. Please try again.");
+            } else {
+                alert.setTitle("Regjistrimi dështoi");
+                alert.setContentText("Patëm një problem me regjistrimin tuaj. Ju lutemi provoni përsëri.");
+            }
             alert.setHeaderText(null);
-            alert.setContentText("There was an issue with your registration. Please try again.");
+
             Image cancelIcon = new Image(ErrorDialog.class.getResource("/images/icons/cancel.png").toExternalForm());
             ImageView imageView = new ImageView(cancelIcon);
             imageView.setFitWidth(48);

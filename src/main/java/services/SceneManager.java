@@ -21,7 +21,7 @@ public class SceneManager {
 
     private SceneManager() {
         languageManager = LanguageManager.getInstance();
-        this.currentPath = Navigator.HOME;
+        this.currentPath = Navigator.SIGN_UP;
         this.title = "Youth Center Management System";
     }
 
@@ -46,6 +46,7 @@ public class SceneManager {
             ModeManager.changeMode(scene);
             return scene;
         } catch (IOException e) {
+            e.printStackTrace();
             return null;
         }
     }

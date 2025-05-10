@@ -1,21 +1,21 @@
 package services;
 
 
+import javafx.scene.control.Alert;
 import model.Admins;
 import model.Professors;
 import model.Students;
-import model.dto.Login;
+import model.dto.LoginDTO;
+import model.dto.RegisterDTO;
 import model.dto.professors.CreateProfessorDto;
 import model.dto.students.CreateStudentsDto;
 import repository.AdminsRepository;
 import repository.ProfessorsRepository;
 import repository.StudentsRepository;
 import utils.Navigator;
-import utils.customExceptions.InvalidEmail;
-import utils.customExceptions.InvalidPassword;
-import utils.customExceptions.NotVerified;
-import utils.customExceptions.WrongLogin;
+import utils.customExceptions.*;
 
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 public class UserService {
@@ -24,6 +24,7 @@ public class UserService {
     private final ProfessorsRepository professorsRepository = new ProfessorsRepository();
     private final AdminsRepository adminsRepository = new AdminsRepository();
     private final SceneManager sceneManager = SceneManager.getInstance();
+    private final LanguageManager languageManager = LanguageManager.getInstance();
 
 
     public boolean isValidEmail(String email) {
@@ -32,6 +33,7 @@ public class UserService {
 
         return email != null && EMAIL_PATTERN.matcher(email).matches();
     }
+
 
     public boolean isValidUsername(String username) {
         final String USERNAME_REGEX = "^[a-zA-Z0-9._]{3,20}$";
@@ -66,17 +68,31 @@ public class UserService {
         return professorsRepository.create(createProfessorDto) != null;
     }
 
+    boolean checkIfEmailAlreadyExists(String email) {
+        if (isAdmin(email)) {
+            if ((adminsRepository.getByEmail(email) == null)) {
+                return false;
+            }
+        }
+        if (isProfessor(email)) {
+            if ((professorsRepository.getByEmail(email) == null)) {
+                return false;
+            }
+        }
+        return !(studentsRepository.getByEmail(email) == null);
+    }
 
-    public void handleLogin(Login login) {
 
-        String email = login.getEmail();
-        String password = login.getPassword();
+    public void handleLogin(LoginDTO loginDTO) {
+
+        String email = loginDTO.getEmail();
+        String password = loginDTO.getPassword();
         try {
             if (!isValidEmail(email)) {
-                throw new InvalidEmail("Invalid email");
+                throw new InvalidEmailException("Invalid email");
             }
             if (!isValidPassword(password)) {
-                throw new InvalidPassword("Invalid password");
+                throw new InvalidPasswordException("Invalid password");
             }
 
             if (isAdmin(email)) {
@@ -90,7 +106,7 @@ public class UserService {
                         return;
                     }
                 }
-                throw new WrongLogin("Invalid email or password.");
+                throw new WrongLoginException("Invalid email or password.");
             } else if (isProfessor(email)) {
                 if (professorsRepository.getByEmail(email) != null) {
                     Professors professor = professorsRepository.getByEmail(email);
@@ -102,12 +118,12 @@ public class UserService {
                             sceneManager.switchScene(Navigator.PROF_DASHBOARD, "Professor Dashboard");
                             return;
                         } else {
-                            throw new NotVerified("Account not verified");
+                            throw new NotVerifiedException("Account not verified");
                         }
 
                     }
                 }
-                throw new WrongLogin("Invalid email or password.");
+                throw new WrongLoginException("Invalid email or password.");
             } else {
                 if (studentsRepository.getByEmail(email) != null) {
                     Students student = studentsRepository.getByEmail(email);
@@ -119,7 +135,7 @@ public class UserService {
                         return;
                     }
                 }
-                throw new WrongLogin("Invalid email or password.");
+                throw new WrongLoginException("Invalid email or password.");
             }
 
 
@@ -128,6 +144,109 @@ public class UserService {
 
         }
 
+    }
+
+    public void handleSignUp(RegisterDTO registerDTO) {
+        UserService userService = new UserService();
+
+        try {
+            if (!isValidUsername(registerDTO.getUsername())) {
+                throw new InvalidUsernameException("Invalid username");
+            }
+
+            if (registerDTO.getName().isEmpty()) {
+                throw new CustomException("name");
+            }
+
+            if (registerDTO.getSurname().isEmpty()) {
+                throw new CustomException("surname");
+            }
+
+            if (!isValidEmail(registerDTO.getEmailAddress())) {
+                throw new InvalidEmailException("Invalid email");
+            }
+
+            if (registerDTO.getBirthDate() == null) {
+                throw new CustomException("birthdate");
+            }
+
+            if (!userService.isValidPassword(registerDTO.getPassword())) {
+                throw new InvalidPasswordException("Invalid password");
+            }
+
+
+            if (!registerDTO.getPassword().equals(registerDTO.getConfirmPassword())) {
+                registerDTO.getPasswordMessage().setStyle("-fx-text-fill: red;");
+                if (languageManager.getLocale() == Locale.ENGLISH) {
+                    registerDTO.getPasswordMessage().setText("Passwords do not match");
+                    throw new LogMessage("Passwords do not match");
+                } else {
+                    registerDTO.getPasswordMessage().setText("Fjalëkalimet nuk përputhen");
+                    throw new LogMessage("Fjalëkalimet nuk përputhen");
+                }
+            } else {
+                registerDTO.getPasswordMessage().setText("");
+            }
+
+            if (!registerDTO.isTermsAccepted()) {
+                registerDTO.getTermsAndConditions().setStyle("-fx-text-fill: red;");
+                if (languageManager.getLocale() == Locale.ENGLISH) {
+                    registerDTO.getTermsAndConditions().setText("Please accept the terms and conditions to continue.");
+                    throw new LogMessage("Please accept the terms and conditions to continue.");
+                } else {
+                    registerDTO.getTermsAndConditions().setText("Ju lutemi pranoni kushtet dhe rregullat për të vazhduar.");
+                    throw new LogMessage("Ju lutemi pranoni kushtet dhe rregullat për të vazhduar.");
+                }
+            } else {
+                registerDTO.getTermsAndConditions().setText("");
+            }
+            if (checkIfEmailAlreadyExists(registerDTO.getEmailAddress())) {
+                throw new EmailAlreadyExists("Email already exists");
+            }
+            String rawPassword = registerDTO.getPassword();
+            String salt = PasswordHasher.encodeSalt(PasswordHasher.generateSalt());
+            String hashedPassword = PasswordHasher.hashPassword(rawPassword, salt);
+
+            java.sql.Date birthdate = java.sql.Date.valueOf(registerDTO.getBirthDate());
+
+            if (userService.isProfessor(registerDTO.getEmailAddress())) {
+                CreateProfessorDto createProfessorDto = new CreateProfessorDto(
+                        registerDTO.getUsername(),
+                        salt,
+                        hashedPassword,
+                        registerDTO.getName(),
+                        registerDTO.getSurname(),
+                        registerDTO.getEmailAddress(),
+                        birthdate
+                );
+                if (userService.createProfessor(createProfessorDto)) {
+                    ErrorDialog.showRegistrationSuccess(Alert.AlertType.INFORMATION, "Success");
+                } else {
+                    ErrorDialog.showRegistrationSuccess(Alert.AlertType.INFORMATION, "Fail");
+                }
+
+            } else {
+                CreateStudentsDto createStudentsDto = new CreateStudentsDto(
+                        registerDTO.getUsername(),
+                        salt,
+                        hashedPassword,
+                        registerDTO.getName(),
+                        registerDTO.getSurname(),
+                        registerDTO.getEmailAddress(),
+                        birthdate
+                );
+
+                if (userService.createUser(createStudentsDto)) {
+                    ErrorDialog.showRegistrationSuccess(Alert.AlertType.INFORMATION, "Success");
+                } else {
+                    ErrorDialog.showRegistrationSuccess(Alert.AlertType.INFORMATION, "Fail");
+                }
+
+            }
+
+        } catch (Exception e) {
+            System.out.println();
+        }
     }
 }
 

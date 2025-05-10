@@ -5,14 +5,10 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import model.dto.professors.CreateProfessorDto;
-import model.dto.students.CreateStudentsDto;
-import services.PasswordHasher;
+import model.dto.RegisterDTO;
 import services.UserService;
 import utils.Navigator;
-import utils.customExceptions.*;
 
-import java.util.Locale;
 
 public class SignUpController extends BaseController {
 
@@ -27,9 +23,9 @@ public class SignUpController extends BaseController {
     @FXML
     private DatePicker birthDate;
     @FXML
-    private TextField password;
+    private PasswordField password;
     @FXML
-    private TextField confirmPassword;
+    private PasswordField confirmPassword;
     @FXML
     private Label passwordsMessage;
     @FXML
@@ -40,6 +36,15 @@ public class SignUpController extends BaseController {
     private Button signupButton;
     @FXML
     private AnchorPane baseAnchor;
+    @FXML
+    private TextField confirmPasswordFieldText;
+    @FXML
+    private TextField passwordFieldText;
+    @FXML
+    private Label eye;
+    @FXML
+    private Label confirmedEye;
+
 
     @FXML
     private void handleSignIn() {
@@ -51,108 +56,63 @@ public class SignUpController extends BaseController {
         signupButton.setDefaultButton(true);
         baseAnchor.setOnKeyPressed((KeyEvent event) -> {
             if (event.getCode() == KeyCode.ESCAPE) {
-                sceneManager.switchScene(sceneManager.getLastPath(), "Home");
+                sceneManager.switchScene(Navigator.HOME, "Home");
             }
         });
     }
 
     @FXML
-    private void signUp() {
-        UserService userService = new UserService();
+    public void unhidePassword() {
+        if (password.isVisible()) {
 
-        try {
-            if (!userService.isValidUsername(username.getText())) {
-                throw new InvalidUsername("Invalid username");
-            }
+            passwordFieldText.setText(password.getText());
+            password.setManaged(false);
+            password.setVisible(false);
+            passwordFieldText.setManaged(true);
+            passwordFieldText.setVisible(true);
+            eye.setText("\uf06e");
 
-            if (name.getText().isEmpty()) {
-                throw new CustomException("name");
-            }
+            confirmPasswordFieldText.setText(confirmPassword.getText());
+            confirmPassword.setManaged(false);
+            confirmPassword.setVisible(false);
+            confirmPasswordFieldText.setManaged(true);
+            confirmPasswordFieldText.setVisible(true);
+            confirmedEye.setText("\uf06e");
 
-            if (surname.getText().isEmpty()) {
-                throw new CustomException("surname");
-            }
+        } else {
 
-            if (!userService.isValidEmail(emailAddress.getText())) {
-                throw new InvalidEmail("Invalid email");
-            }
+            password.setText(passwordFieldText.getText());
+            password.setManaged(true);
+            password.setVisible(true);
+            passwordFieldText.setManaged(false);
+            passwordFieldText.setVisible(false);
+            eye.setText("\uf070");
 
-            if (birthDate.getValue() == null) {
-                throw new CustomException("birthdate");
-            }
-
-            if (!userService.isValidPassword(password.getText())) {
-                throw new InvalidPassword("Invalid password");
-            }
-
-            if (!password.getText().equals(confirmPassword.getText())) {
-                passwordsMessage.setStyle("-fx-text-fill: red;");
-                if (languageManager.getLocale() == Locale.ENGLISH) {
-                    passwordsMessage.setText("Passwords do not match");
-                    throw new LogMessage("Passwords do not match");
-                } else {
-                    passwordsMessage.setText("Fjalëkalimet nuk përputhen");
-                    throw new LogMessage("Fjalëkalimet nuk përputhen");
-                }
-            } else {
-                passwordsMessage.setText("");
-            }
-
-            if (!termsAndConditionsCheckBox.isSelected()) {
-                termsAndConditions.setStyle("-fx-text-fill: red;");
-                if (languageManager.getLocale() == Locale.ENGLISH) {
-                    termsAndConditions.setText("Please accept the terms and conditions to continue.");
-                    throw new LogMessage("Please accept the terms and conditions to continue.");
-                } else {
-                    termsAndConditions.setText("Ju lutemi pranoni kushtet dhe rregullat për të vazhduar.");
-                    throw new LogMessage("Ju lutemi pranoni kushtet dhe rregullat për të vazhduar.");
-                }
-            } else {
-                termsAndConditions.setText("");
-            }
-            String rawPassword = password.getText();
-            String salt = PasswordHasher.encodeSalt(PasswordHasher.generateSalt());
-            String hashedPassword = PasswordHasher.hashPassword(rawPassword, salt);
-
-            java.sql.Date birthdate = java.sql.Date.valueOf(birthDate.getValue());
-
-            if (userService.isProfessor(emailAddress.getText())) {
-                CreateProfessorDto createProfessorDto = new CreateProfessorDto(
-                        username.getText(),
-                        salt,
-                        hashedPassword,
-                        name.getText(),
-                        surname.getText(),
-                        emailAddress.getText(),
-                        birthdate
-                );
-                if (userService.createProfessor(createProfessorDto)) {
-                    ErrorDialog.showRegistrationSuccess(Alert.AlertType.INFORMATION, "Success");
-                } else {
-                    ErrorDialog.showRegistrationSuccess(Alert.AlertType.INFORMATION, "Fail");
-                }
-
-            } else {
-                CreateStudentsDto createStudentsDto = new CreateStudentsDto(
-                        username.getText(),
-                        salt,
-                        hashedPassword,
-                        name.getText(),
-                        surname.getText(),
-                        emailAddress.getText(),
-                        birthdate
-                );
-
-                if (userService.createUser(createStudentsDto)) {
-                    ErrorDialog.showRegistrationSuccess(Alert.AlertType.INFORMATION, "Success");
-                } else {
-                    ErrorDialog.showRegistrationSuccess(Alert.AlertType.INFORMATION, "Fail");
-                }
-
-            }
-
-        } catch (Exception e) {
-            System.out.println();
+            confirmPassword.setText(confirmPasswordFieldText.getText());
+            confirmPassword.setManaged(true);
+            confirmPassword.setVisible(true);
+            confirmPasswordFieldText.setManaged(false);
+            confirmPasswordFieldText.setVisible(false);
+            confirmedEye.setText("\uf070");
         }
     }
+
+    @FXML
+    private void signUp() {
+        RegisterDTO registerDTO = new RegisterDTO(
+                name.getText(),
+                surname.getText(),
+                username.getText(),
+                emailAddress.getText(),
+                birthDate.getValue(),
+                password.getText(),
+                confirmPassword.getText(),
+                termsAndConditionsCheckBox.isSelected(),
+                passwordsMessage,
+                termsAndConditions
+        );
+        UserService userService = new UserService();
+        userService.handleSignUp(registerDTO);
+    }
+
 }

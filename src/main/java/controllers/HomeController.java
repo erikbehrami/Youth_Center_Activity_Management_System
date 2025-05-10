@@ -1,9 +1,7 @@
 package controllers;
 
 import javafx.fxml.FXML;
-import model.dto.Login;
 import services.SceneManager;
-import services.UserService;
 import utils.Navigator;
 
 public class HomeController {

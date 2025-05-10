@@ -2,17 +2,18 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import model.dto.Login;
+import model.dto.LoginDTO;
 import services.UserService;
 import utils.Navigator;
+import utils.customExceptions.LogMessage;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
+import java.util.Locale;
 
 public class SignInController extends BaseController {
 
@@ -22,12 +23,16 @@ public class SignInController extends BaseController {
 
     @FXML
     PasswordField password;
+    @FXML
+    TextField passwordFieldText;
 
     @FXML
     Button loginButton;
 
     @FXML
     private AnchorPane baseAnchor;
+    @FXML
+    private Label eye;
 
     @FXML
     private void handleSignUp() {
@@ -36,9 +41,9 @@ public class SignInController extends BaseController {
 
     @FXML
     private void signIn() {
-        Login login = new Login(email.getText(), password.getText());
+        LoginDTO loginDTO = new LoginDTO(email.getText(), password.getText());
         UserService userService = new UserService();
-        userService.handleLogin(login);
+        userService.handleLogin(loginDTO);
     }
 
     @FXML
@@ -46,9 +51,30 @@ public class SignInController extends BaseController {
         loginButton.setDefaultButton(true);
         baseAnchor.setOnKeyPressed((KeyEvent event) -> {
             if (event.getCode() == KeyCode.ESCAPE) {
-                sceneManager.switchScene(sceneManager.getLastPath(), "Home");
+                sceneManager.switchScene(Navigator.HOME, "Home");
             }
         });
+    }
+
+    public void unhidePassword() {
+        if (password.isVisible()) {
+
+            passwordFieldText.setText(password.getText());
+            password.setManaged(false);
+            password.setVisible(false);
+            passwordFieldText.setManaged(true);
+            passwordFieldText.setVisible(true);
+            eye.setText("\uf06e");
+        } else {
+
+            password.setText(passwordFieldText.getText());
+            password.setManaged(true);
+            password.setVisible(true);
+            passwordFieldText.setManaged(false);
+            passwordFieldText.setVisible(false);
+            eye.setText("\uf070");
+
+        }
     }
 
 

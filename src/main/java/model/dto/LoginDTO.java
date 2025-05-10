@@ -1,11 +1,11 @@
 package model.dto;
 
-public class Login {
+public class LoginDTO {
 
     private String email;
     private String password;
 
-    public Login(String email, String password) {
+    public LoginDTO(String email, String password) {
         this.email = email;
         this.password = password;
     }
