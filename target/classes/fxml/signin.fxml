@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitMenuButton?>
@@ -11,66 +12,97 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="baseAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../css/focus.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignInController">
+<AnchorPane fx:id="baseAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../css/focus.css"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.SignInController">
     <children>
-        <AnchorPane prefHeight="650.0" prefWidth="369.0" style="-fx-background-color: #101935;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane prefHeight="650.0" prefWidth="369.0" style="-fx-background-color: #101935;"
+                    AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <ImageView fitHeight="160.0" fitWidth="186.0" layoutX="91.0" layoutY="188.0" style="-fx-z-index: 1;">
                     <image>
-                        <Image url="@../images/youthcenter_logo.png" />
+                        <Image url="@../images/youthcenter_logo.png"/>
                     </image>
                 </ImageView>
-                <Text fill="WHITE" fontSmoothingType="LCD" layoutX="22.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: sans-serif;" text="Youth Center Management" textAlignment="CENTER" wrappingWidth="324.8000366210938">
+                <Text fill="WHITE" fontSmoothingType="LCD" layoutX="22.0" layoutY="385.0" strokeType="OUTSIDE"
+                      strokeWidth="0.0" style="-fx-font-family: sans-serif;" text="Youth Center Management"
+                      textAlignment="CENTER" wrappingWidth="324.8000366210938">
                     <font>
-                        <Font name="System Bold" size="30.0" />
+                        <Font name="System Bold" size="30.0"/>
                     </font>
                 </Text>
             </children>
         </AnchorPane>
 
-        <TextField fx:id="email" layoutX="415.0" layoutY="273.0" prefHeight="32.0" prefWidth="223.0" styleClass="change" />
+        <TextField fx:id="email" layoutX="415.0" layoutY="273.0" prefHeight="32.0" prefWidth="230.0"
+                   styleClass="change"/>
 
-        <Text fill="#0c1821" layoutX="416.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="%login.title">
+        <Text fill="#0c1821" layoutX="416.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text"
+              text="%loginDTO.title">
             <font>
-                <Font name="System Bold" size="24.0" />
+                <Font name="System Bold" size="24.0"/>
             </font>
         </Text>
 
-        <Text fill="#0b171fbc" layoutX="415.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="%login.details">
+        <Text fill="#0b171fbc" layoutX="415.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text"
+              text="%loginDTO.details">
             <font>
-                <Font size="10.0" />
+                <Font size="10.0"/>
             </font>
         </Text>
 
-        <Text fill="#0b171fbc" layoutX="415.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="%login.email">
+        <Text fill="#0b171fbc" layoutX="415.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text"
+              text="%loginDTO.email">
             <font>
-                <Font size="10.0" />
+                <Font size="10.0"/>
             </font>
         </Text>
 
-        <Text fill="#0b171fbd" layoutX="415.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="%login.password">
+        <Text fill="#0b171fbd" layoutX="415.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text"
+              text="%loginDTO.password">
             <font>
-                <Font size="10.0" />
+                <Font size="10.0"/>
             </font>
         </Text>
 
-        <PasswordField fx:id="password" layoutX="415.0" layoutY="332.0" prefHeight="32.0" prefWidth="223.0" styleClass="change" />
+        <Button fx:id="loginButton" layoutX="415.0" layoutY="391.0" mnemonicParsing="false" onAction="#signIn"
+                prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" styleClass="change"
+                text="%loginDTO.btnLogin" textFill="WHITE"/>
 
-        <Button fx:id="loginButton" layoutX="415.0" layoutY="391.0" mnemonicParsing="false" onAction="#signIn" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" styleClass="change" text="%login.btnLogin" textFill="WHITE" />
-
-        <Text fill="#0b171fbc" layoutX="652.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="%login.noAcc" AnchorPane.rightAnchor="144.6748046875" AnchorPane.topAnchor="22.0">
+        <Text fill="#0b171fbc" layoutX="652.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text"
+              text="%loginDTO.noAcc" AnchorPane.rightAnchor="144.6748046875" AnchorPane.topAnchor="22.0">
             <font>
-                <Font size="10.0" />
+                <Font size="10.0"/>
             </font>
         </Text>
 
-        <Button fx:id="CreateAnAccount" layoutX="760.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" styleClass="change" text="%login.btnNewAcc" textFill="#0c1821" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="16.0" />
+        <Button fx:id="CreateAnAccount" layoutX="760.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleSignUp"
+                prefHeight="25.0" prefWidth="115.0"
+                style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;"
+                styleClass="change" text="%loginDTO.btnNewAcc" textFill="#0c1821" AnchorPane.rightAnchor="25.0"
+                AnchorPane.topAnchor="16.0"/>
 
-        <SplitMenuButton layoutX="810.0" layoutY="48.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" styleClass="change" text="%language" textFill="#0c1821" textOverrun="CLIP" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="48.0">
+        <SplitMenuButton layoutX="810.0" layoutY="48.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="65.0"
+                         style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;"
+                         styleClass="change" text="%language" textFill="#0c1821" textOverrun="CLIP"
+                         AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="48.0">
             <items>
-                <MenuItem fx:id="ENGLISH" mnemonicParsing="false" onAction="#handleENLanguageClick" text="EN" />
-                <MenuItem fx:id="ALBANIAN" mnemonicParsing="false" onAction="#handleSQLanguageClick" text="SQ" />
+                <MenuItem fx:id="ENGLISH" mnemonicParsing="false" onAction="#handleENLanguageClick" text="EN"/>
+                <MenuItem fx:id="ALBANIAN" mnemonicParsing="false" onAction="#handleSQLanguageClick" text="SQ"/>
             </items>
         </SplitMenuButton>
+        <TextField fx:id="passwordFieldText" layoutX="415.0" layoutY="333.0" prefHeight="32.0" prefWidth="205.0"
+                   style="-fx-background-radius: 3 0 0 3; -fx-border-radius: 3 0 0 3;" styleClass="change"/>
+        <PasswordField fx:id="password" layoutX="415.0" layoutY="333.0" prefHeight="32.0" prefWidth="205.0"
+                       style="-fx-background-radius: 3 0 0 3; -fx-border-radius: 3 0 0 3;" styleClass="change"/>
+        <Button layoutX="621.0" layoutY="333.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                minWidth="-Infinity" mnemonicParsing="false" onAction="#unhidePassword" prefHeight="32.0"
+                prefWidth="24.0"
+                style="-fx-background-color: #e0e0e0; -fx-border-color: #ccc; -fx-background-radius: 0 3 3 0; -fx-border-radius: 0 3 3 0; -fx-padding: 5 10; -fx-font-family: &quot;Segoe UI&quot;, sans-serif; -fx-font-size: 12px; -fx-text-fill: #333; -fx-alignment: CENTER_LEFT; -fx-border-color: #b0bec5;"/>
+        <Label fx:id="eye" layoutX="627.0" layoutY="341.0" onMouseClicked="#unhidePassword"
+               style="-fx-font-family: FontAwesome;" styleClass="icon" text=""/>
+
+
     </children>
 </AnchorPane>

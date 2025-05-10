@@ -34,6 +34,8 @@ public class SignInController extends BaseController {
     @FXML
     private Label eye;
 
+    private boolean check = false;
+
     @FXML
     private void handleSignUp() {
         sceneManager.switchScene(Navigator.SIGN_UP, "Sign Up");
@@ -41,6 +43,9 @@ public class SignInController extends BaseController {
 
     @FXML
     private void signIn() {
+        if (check) {
+            password.setText(passwordFieldText.getText());
+        }
         LoginDTO loginDTO = new LoginDTO(email.getText(), password.getText());
         UserService userService = new UserService();
         userService.handleLogin(loginDTO);
@@ -65,6 +70,7 @@ public class SignInController extends BaseController {
             passwordFieldText.setManaged(true);
             passwordFieldText.setVisible(true);
             eye.setText("\uf06e");
+            check = true;
         } else {
 
             password.setText(passwordFieldText.getText());
@@ -73,6 +79,7 @@ public class SignInController extends BaseController {
             passwordFieldText.setManaged(false);
             passwordFieldText.setVisible(false);
             eye.setText("\uf070");
+            check = false;
 
         }
     }

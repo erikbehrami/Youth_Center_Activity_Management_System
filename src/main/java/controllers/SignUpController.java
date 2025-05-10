@@ -45,6 +45,7 @@ public class SignUpController extends BaseController {
     @FXML
     private Label confirmedEye;
 
+    private boolean check = false;
 
     @FXML
     private void handleSignIn() {
@@ -78,6 +79,7 @@ public class SignUpController extends BaseController {
             confirmPasswordFieldText.setManaged(true);
             confirmPasswordFieldText.setVisible(true);
             confirmedEye.setText("\uf06e");
+            check = true;
 
         } else {
 
@@ -94,11 +96,18 @@ public class SignUpController extends BaseController {
             confirmPasswordFieldText.setManaged(false);
             confirmPasswordFieldText.setVisible(false);
             confirmedEye.setText("\uf070");
+            check = false;
         }
     }
 
     @FXML
     private void signUp() {
+        if (check) {
+            password.setText(passwordFieldText.getText());
+            confirmPassword.setText(confirmPasswordFieldText.getText());
+        }
+
+
         RegisterDTO registerDTO = new RegisterDTO(
                 name.getText(),
                 surname.getText(),
