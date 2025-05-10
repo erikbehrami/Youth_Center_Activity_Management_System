@@ -6,6 +6,6 @@ import utils.Navigator;
 public class NavBarController extends BaseController {
     @FXML
     private void handleSignIn() {
-        sceneManager.switchScene(Navigator.SIGN_IN, "Sign In");
+        sceneManager.switchScene(Navigator.HOME, "Youth Center Management System");
     }
 }

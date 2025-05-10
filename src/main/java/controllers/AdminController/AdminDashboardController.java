@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import services.AdminServices.AdminDashboardService;
 
 public class AdminDashboardController extends BaseController {
-    private final AdminDashboardService adminDashboardService = new AdminDashboardService();
     @FXML
     private BarChart<String, Number> studentChart;
     @FXML
@@ -31,32 +30,32 @@ public class AdminDashboardController extends BaseController {
 
     private void loadCounts() {
         if (adminStudentsNUM != null) {
-            adminStudentsNUM.setText(String.valueOf(adminDashboardService.getStudentCount()));
+            adminStudentsNUM.setText(String.valueOf(AdminDashboardService.getStudentCount()));
         }
 
         if (adminProfessorsNUM != null) {
-            adminProfessorsNUM.setText(String.valueOf(adminDashboardService.getProfessorCount()));
+            adminProfessorsNUM.setText(String.valueOf(AdminDashboardService.getProfessorCount()));
         }
 
         if (adminCoursesNUM != null) {
-            adminCoursesNUM.setText(String.valueOf(adminDashboardService.getCourseCount()));
+            adminCoursesNUM.setText(String.valueOf(AdminDashboardService.getCourseCount()));
         }
     }
 
     private void loadCharts() {
         if (studentChart != null) {
             studentChart.getData().clear();
-            studentChart.getData().add(adminDashboardService.getStudentChartSeries());
+            studentChart.getData().add(AdminDashboardService.getStudentChartSeries());
         }
 
         if (courseChart != null) {
             courseChart.getData().clear();
-            courseChart.getData().add(adminDashboardService.getCourseChartSeries());
+            courseChart.getData().add(AdminDashboardService.getCourseChartSeries());
         }
 
         if (profChart != null) {
             profChart.getData().clear();
-            profChart.getData().add(adminDashboardService.getProfessorChartSeries());
+            profChart.getData().add(AdminDashboardService.getProfessorChartSeries());
         }
     }
 }

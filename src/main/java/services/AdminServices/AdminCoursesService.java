@@ -2,16 +2,21 @@ package services.AdminServices;
 
 
 import model.Courses;
+import repository.CourseRepository;
 
 import java.util.ArrayList;
 
-public class AdminCoursesService extends BaseAdminService {
-    public AdminCoursesService() {
-        super();
+public class AdminCoursesService {
+    private final static CourseRepository coursesRepository = new CourseRepository();
+
+    private AdminCoursesService() {
     }
 
-    public ArrayList<Courses> getAllCourses() {
-        return this.courseRepository.getAll();
+    public static ArrayList<Courses> getAllCourses() {
+        return coursesRepository.getAll();
     }
 
+    public static void deleteCourse(int courseId) {
+        coursesRepository.delete(courseId);
+    }
 }

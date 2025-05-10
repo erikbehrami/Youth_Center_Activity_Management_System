@@ -2,9 +2,11 @@ module com.example.demo {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires jakarta.mail;
 
     opens model to javafx.base;
     exports model to javafx.base;
+
 
 
     opens app to javafx.fxml;
@@ -15,6 +17,8 @@ module com.example.demo {
     opens controllers.ProfessorController to javafx.fxml;
     opens services.AdminServices to javafx.fxml;
     opens controllers to javafx.fxml;
+    opens controllers.RegisterController to javafx.fxml;
+    opens services.RegisterService to javafx.fxml;
     opens model.dto to javafx.fxml;
 
     exports app;
@@ -26,4 +30,6 @@ module com.example.demo {
     exports services.AdminServices;
     exports controllers.ProfessorController;
     exports model.dto;
+    exports services.RegisterService;
+    exports controllers.RegisterController;
 }

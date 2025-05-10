@@ -1,15 +1,21 @@
 package services.AdminServices;
 
 import model.Students;
+import repository.StudentsRepository;
 
 import java.util.ArrayList;
 
-public class AdminStudentsService extends BaseAdminService {
-    public AdminStudentsService() {
-        super();
+public class AdminStudentsService {
+    private final static StudentsRepository studentsRepository = new StudentsRepository();
+
+    private AdminStudentsService() {
     }
 
-    public ArrayList<Students> getAllStudents() {
-        return this.studentsRepository.getAll();
+    public static ArrayList<Students> getAllStudents() {
+        return studentsRepository.getAll();
+    }
+
+    public static void deleteStudent(int studentId) {
+        studentsRepository.delete(studentId);
     }
 }

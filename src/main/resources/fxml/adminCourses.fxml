@@ -34,6 +34,7 @@
                                 <TableColumn fx:id="courseTotalNUM" prefWidth="145.0" text="%amin.totalNUM"/>
                                 <TableColumn fx:id="courseDateStarted" prefWidth="145.0" text="%admin.dateStarted"/>
                                 <TableColumn fx:id="courseDateEnding" prefWidth="145.0" text="%admin.dateEnding"/>
+                                <TableColumn fx:id="courseDELETE" prefWidth="145.0"/>
                             </columns>
                             <columnResizePolicy>
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
@@ -44,15 +45,15 @@
                               AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="8.0">
                             <children>
                                 <TextField fx:id="searchField" prefHeight="31.0" prefWidth="255.0"
-                                           promptText="%admin.SearchByName"
+                                           promptText="%admin.SearchByCourseName"
                                            style="-fx-border-color: #101935; -fx-border-radius: 5;"
                                            styleClass="change"/>
                                 <AnchorPane prefHeight="35.0" prefWidth="514.0" HBox.hgrow="ALWAYS">
                                     <children>
                                         <Button alignment="CENTER" layoutX="397.0" layoutY="6.0" mnemonicParsing="false"
                                                 onAction="#handleGenerateData" prefHeight="30.0" prefWidth="119.0"
-                                                style="-fx-background-color: #0088ac;" text="Refresh Data"
-                                                textFill="WHITE" AnchorPane.rightAnchor="0.0"
+                                                style="-fx-background-color: #0088ac;" styleClass="change"
+                                                text="%refreshData" textFill="WHITE" AnchorPane.rightAnchor="0.0"
                                                 AnchorPane.topAnchor="0.0"/>
                                     </children>
                                 </AnchorPane>
@@ -71,9 +72,10 @@
                                 <Font size="13.0"/>
                             </font>
                         </Button>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0"
-                                style="-fx-background-color: #101935;" styleClass="change" text="%admin.Delete"
-                                textFill="WHITE">
+
+                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="35.0"
+                                prefWidth="94.0" style="-fx-background-color: #101935;" styleClass="change"
+                                text="%admin.Update" textFill="WHITE">
                             <font>
                                 <Font size="13.0"/>
                             </font>

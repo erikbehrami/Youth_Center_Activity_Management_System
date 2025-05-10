@@ -1,28 +1,29 @@
 package services.AdminServices;
 
 import model.Professors;
+import repository.ProfessorsRepository;
 
 import java.util.ArrayList;
 
-public class AdminProfessorsService extends BaseAdminService {
+public class AdminProfessorsService {
+    private final static ProfessorsRepository professorsRepository = new ProfessorsRepository();
 
-    public AdminProfessorsService() {
-        super();
+    private AdminProfessorsService() {
     }
 
-    public ArrayList<Professors> getVerifiedProfessors() {
-        return this.professorsRepository.getVerifiedProfessors();
+    public static ArrayList<Professors> getVerifiedProfessors() {
+        return AdminProfessorsService.professorsRepository.getVerifiedProfessors();
     }
 
-    public ArrayList<Professors> getUnVerifiedProfessors() {
-        return this.professorsRepository.getUnVerifiedProfessors();
+    public static ArrayList<Professors> getUnVerifiedProfessors() {
+        return AdminProfessorsService.professorsRepository.getUnVerifiedProfessors();
     }
 
-    public void acceptProfessor(int id) {
-        this.professorsRepository.acceptProfessor(id);
+    public static void acceptProfessor(int id) {
+        AdminProfessorsService.professorsRepository.acceptProfessor(id);
     }
 
-    public void declineProfessor(int id) {
-        this.professorsRepository.delete(id);
+    public static void declineProfessor(int id) {
+        AdminProfessorsService.professorsRepository.delete(id);
     }
 }
