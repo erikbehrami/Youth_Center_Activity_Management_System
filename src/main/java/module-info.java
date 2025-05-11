@@ -15,6 +15,7 @@ module com.example.demo {
     opens utils to javafx.fxml;
     opens controllers.AdminController to javafx.fxml;
     opens controllers.ProfessorController to javafx.fxml;
+    opens controllers.StudentController to javafx.fxml;
     opens services.AdminServices to javafx.fxml;
     opens controllers to javafx.fxml;
     opens controllers.RegisterController to javafx.fxml;
@@ -29,6 +30,7 @@ module com.example.demo {
     exports controllers.AdminController;
     exports services.AdminServices;
     exports controllers.ProfessorController;
+    exports controllers.StudentController;
     exports model.dto;
     exports services.RegisterService;
     exports controllers.RegisterController;
