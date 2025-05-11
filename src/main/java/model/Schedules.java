@@ -23,8 +23,8 @@ public class Schedules {
         int id = rs.getInt("id");
         int courseID = rs.getInt("id_courses");
         String day = rs.getString("day");
-        String timeStart = rs.getString("time_start");
-        String timeEnd = rs.getString("time_end");
+        String timeStart = rs.getString("timestart");
+        String timeEnd = rs.getString("timeend");
 
         return new Schedules(id, courseID, day, timeStart, timeEnd);
     }

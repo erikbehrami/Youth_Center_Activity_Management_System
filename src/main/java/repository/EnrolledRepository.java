@@ -1,12 +1,15 @@
 package repository;
 
 import database.DBConnector;
+import model.Courses;
 import model.Enrolled;
 import model.Students;
 import model.dto.enrolled.CreateEnrolledDto;
 
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EnrolledRepository extends BaseRepository<Enrolled, CreateEnrolledDto, Object> {
     public EnrolledRepository() {
@@ -65,5 +68,22 @@ public class EnrolledRepository extends BaseRepository<Enrolled, CreateEnrolledD
             se.printStackTrace();
         }
         return count;
+    }
+    // Get enrolled courses for student
+    public List<Courses> getCoursesForStudent(int studentId) {
+        String query = "SELECT c.* FROM courses c JOIN enrolled e ON c.id = e.id_course WHERE e.id_student = ?";
+        List<Courses> courses = new ArrayList<>();
+        try (
+            Connection conn = DBConnector.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, studentId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                courses.add(Courses.getInstance(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return courses;
     }
 }

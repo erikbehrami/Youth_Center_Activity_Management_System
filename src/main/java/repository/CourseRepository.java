@@ -122,5 +122,19 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, O
         return courseCountByYear;
     }
 
-
+    public String getProfessorNameById(int profId) {
+        String query = "SELECT name, surname FROM professors WHERE id = ?";
+        try (
+            Connection conn = DBConnector.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, profId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("name") + " " + rs.getString("surname");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return "";
+    }
 }
