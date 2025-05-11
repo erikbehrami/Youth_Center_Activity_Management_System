@@ -177,6 +177,61 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
         }
 
         return enrolledStudents;
+    }
 
+    public HashMap<Integer, Integer> getStudentsCountByYearForProfessor(int professorId) {
+        HashMap<Integer, Integer> studentCountByYear = new HashMap<>();
+        String query = """
+                   SELECT EXTRACT(YEAR FROM s.registration_date) AS year, COUNT(DISTINCT s.name) AS student_count
+                   FROM students s
+                   JOIN enrolled e ON s.id = e.id_student
+                   JOIN courses c ON c.id = e.id_course
+                   WHERE c.id_professor = ?
+                   GROUP BY year
+                   ORDER BY year;
+                """;
+
+        try (PreparedStatement stmt = connection.prepareStatement(query)){
+            stmt.setInt(1, professorId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                int year = rs.getInt("year");
+                int count = rs.getInt("student_count");
+                studentCountByYear.put(year, count);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return studentCountByYear;
+    }
+
+    public int getMaleStudentsCountForProfessor(int professorId) {
+        String query = """
+            SELECT count(*)
+            FROM students s
+            JOIN enrolled e ON s.id = e.id_student
+            JOIN courses c ON c.id = e.id_course
+            WHERE c.id_professor = ? AND s.gender = 'Male'
+            """;
+
+        int maleStudentsCount = 0;
+
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, professorId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                maleStudentsCount = resultSet.getInt(1);
+            }
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+
+        return maleStudentsCount;
     }
 }
