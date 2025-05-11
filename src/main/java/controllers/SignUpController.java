@@ -1,11 +1,13 @@
 package controllers;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import model.dto.RegisterDTO;
+import services.SessionManager;
 import services.UserService;
 import utils.Navigator;
 
@@ -46,9 +48,11 @@ public class SignUpController extends BaseController {
     private Label confirmedEye;
 
     private boolean check = false;
+    SessionManager sessionManager = SessionManager.getInstance();
 
     @FXML
     private void handleSignIn() {
+        sessionManager.setRegisterDTO(null);
         sceneManager.switchScene(Navigator.SIGN_IN, "Sign In");
     }
 
@@ -60,7 +64,53 @@ public class SignUpController extends BaseController {
                 sceneManager.switchScene(Navigator.HOME, "Home");
             }
         });
+        RegisterDTO savedDTO = sessionManager.getRegisterDTO();
+        if (savedDTO != null) {
+            username.setText(savedDTO.getUsername());
+            name.setText(savedDTO.getName());
+            surname.setText(savedDTO.getSurname());
+            emailAddress.setText(savedDTO.getEmailAddress());
+            birthDate.setValue(savedDTO.getBirthDate());
+            password.setText(savedDTO.getPassword());
+            confirmPassword.setText(savedDTO.getConfirmPassword());
+            termsAndConditionsCheckBox.setSelected(savedDTO.isTermsAccepted());
+        }
     }
+
+    @FXML
+    private void handleENClick() {
+        sessionManager.setRegisterDTO(new RegisterDTO(
+                name.getText(),
+                surname.getText(),
+                username.getText(),
+                emailAddress.getText(),
+                birthDate.getValue(),
+                password.getText(),
+                confirmPassword.getText(),
+                termsAndConditionsCheckBox.isSelected(),
+                passwordsMessage,
+                termsAndConditions
+        ));
+        handleENLanguageClick();
+    }
+
+    @FXML
+    private void handleSQClick() {
+        sessionManager.setRegisterDTO(new RegisterDTO(
+                name.getText(),
+                surname.getText(),
+                username.getText(),
+                emailAddress.getText(),
+                birthDate.getValue(),
+                password.getText(),
+                confirmPassword.getText(),
+                termsAndConditionsCheckBox.isSelected(),
+                passwordsMessage,
+                termsAndConditions
+        ));
+        handleSQLanguageClick();
+    }
+
 
     @FXML
     public void unhidePassword() {
@@ -154,7 +204,7 @@ public class SignUpController extends BaseController {
                 name.getText(),
                 surname.getText(),
                 username.getText(),
-                emailAddress.getText(),
+                emailAddress.getText().toLowerCase(),
                 birthDate.getValue(),
                 password.getText(),
                 confirmPassword.getText(),
@@ -165,5 +215,6 @@ public class SignUpController extends BaseController {
         UserService userService = new UserService();
         userService.handleSignUp(registerDTO);
     }
+
 
 }

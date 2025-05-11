@@ -13,12 +13,12 @@ public abstract class BaseController {
     public LanguageManager languageManager = LanguageManager.getInstance();
 
     @FXML
-    private void handleSQLanguageClick() {
+    protected void handleSQLanguageClick() {
         loadLanguage(new Locale("sq"));
     }
 
     @FXML
-    private void handleENLanguageClick() {
+    protected void handleENLanguageClick() {
         loadLanguage(Locale.ENGLISH);
     }
 

@@ -9,11 +9,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import model.dto.LoginDTO;
+import services.SessionManager;
 import services.UserService;
 import utils.Navigator;
-import utils.customExceptions.LogMessage;
-
-import java.util.Locale;
 
 public class SignInController extends BaseController {
 
@@ -35,9 +33,11 @@ public class SignInController extends BaseController {
     private Label eye;
 
     private boolean check = false;
+    SessionManager sessionManager = SessionManager.getInstance();
 
     @FXML
     private void handleSignUp() {
+        sessionManager.setLoginDTO(null);
         sceneManager.switchScene(Navigator.SIGN_UP, "Sign Up");
     }
 
@@ -46,9 +46,27 @@ public class SignInController extends BaseController {
         if (check) {
             password.setText(passwordFieldText.getText());
         }
-        LoginDTO loginDTO = new LoginDTO(email.getText(), password.getText());
+        LoginDTO loginDTO = new LoginDTO(email.getText().toLowerCase(), password.getText());
         UserService userService = new UserService();
         userService.handleLogin(loginDTO);
+    }
+
+    @FXML
+    private void handleENClick() {
+        sessionManager.setLoginDTO(new LoginDTO(
+                email.getText(),
+                password.getText()
+        ));
+        handleENLanguageClick();
+    }
+
+    @FXML
+    private void handleSQClick() {
+        sessionManager.setLoginDTO(new LoginDTO(
+                email.getText(),
+                password.getText()
+        ));
+        handleSQLanguageClick();
     }
 
     @FXML
@@ -60,6 +78,11 @@ public class SignInController extends BaseController {
                 sceneManager.switchScene(Navigator.HOME, "Home");
             }
         });
+        LoginDTO savedDTO = sessionManager.getLoginDTO();
+        if (savedDTO != null) {
+            email.setText(savedDTO.getEmail());
+            password.setText(savedDTO.getPassword());
+        }
     }
 
     public void unhidePassword() {

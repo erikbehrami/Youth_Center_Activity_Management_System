@@ -70,8 +70,8 @@
 
               <SplitMenuButton layoutX="810.0" layoutY="48.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0c1821; -fx-border-radius: 5;" styleClass="accButton" text="%language" textFill="#0c1821" textOverrun="CLIP" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="48.0">
             <items>
-                <MenuItem fx:id="ENGLISH" mnemonicParsing="false" onAction="#handleENLanguageClick" text="EN" />
-                <MenuItem fx:id="ALBANIAN" mnemonicParsing="false" onAction="#handleSQLanguageClick" text="SQ" />
+                <MenuItem fx:id="ENGLISH" mnemonicParsing="false" onAction="#handleENClick" text="EN" />
+                <MenuItem fx:id="ALBANIAN" mnemonicParsing="false" onAction="#handleSQClick" text="SQ" />
             </items>
         </SplitMenuButton>
         <Label fx:id="eye" layoutX="627.0" layoutY="341.0" onMouseClicked="#unhidePassword" style="-fx-font-family: FontAwesome;" styleClass="icon" text="" />

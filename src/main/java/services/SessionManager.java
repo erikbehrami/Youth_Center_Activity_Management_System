@@ -1,12 +1,17 @@
 package services;
 
 import model.User;
+import model.dto.LoginDTO;
+import model.dto.RegisterDTO;
 
 public class SessionManager {
     private static SessionManager instance;
     private User user;
+    private RegisterDTO registerDTO;
+    private LoginDTO loginDTO;
 
-    private SessionManager() {}
+    private SessionManager() {
+    }
 
     public static SessionManager getInstance() {
         if (instance == null) {
@@ -39,4 +44,19 @@ public class SessionManager {
         return user instanceof model.Students;
     }
 
+    public void setRegisterDTO(RegisterDTO registerDTO) {
+        this.registerDTO = registerDTO;
+    }
+
+    public RegisterDTO getRegisterDTO() {
+        return this.registerDTO;
+    }
+
+    public LoginDTO getLoginDTO() {
+        return loginDTO;
+    }
+
+    public void setLoginDTO(LoginDTO loginDTO) {
+        this.loginDTO = loginDTO;
+    }
 }

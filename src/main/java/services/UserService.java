@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import model.Admins;
 import model.Professors;
 import model.Students;
+import model.User;
 import model.dto.LoginDTO;
 import model.dto.RegisterDTO;
 import model.dto.loginLogs.CreateLoginLogsDto;
@@ -27,6 +28,7 @@ public class UserService {
     private final SceneManager sceneManager = SceneManager.getInstance();
     private final LanguageManager languageManager = LanguageManager.getInstance();
     private final LogsService logsService = LogsService.getInstance();
+    private final SessionManager sessionManager = SessionManager.getInstance();
 
     public boolean isValidEmail(String email) {
         final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
@@ -40,7 +42,15 @@ public class UserService {
         final String USERNAME_REGEX = "^[a-zA-Z0-9._]{3,20}$";
         final Pattern USERNAME_PATTERN = Pattern.compile(USERNAME_REGEX);
 
-        return USERNAME_PATTERN.matcher(username).matches() && studentsRepository.getByUsername(username) == null;
+        return USERNAME_PATTERN.matcher(username).matches();
+    }
+
+    public boolean doesUsernameExist(String username) {
+        return (studentsRepository.getByUsername(username) == null && professorsRepository.getByUsername(username) == null);
+    }
+
+    public boolean doesEmailExist(String email) {
+        return (studentsRepository.getByEmail(email) == null && professorsRepository.getByEmail(email) == null);
     }
 
     public boolean isValidPassword(String password) {
@@ -105,6 +115,7 @@ public class UserService {
                     if (passwordGenerated.equals(admin.getPasswordHash())) {
                         CreateLoginLogsDto createLoginLogsDto = new CreateLoginLogsDto(admin.getId(), admin.getEmail(), admin.getClass().getSimpleName());
                         logsService.logLogInProcess(createLoginLogsDto);
+                        sessionManager.setRegisterDTO(null);
                         sceneManager.switchScene(Navigator.ADMIN_DASHBOARD, "Admin Dashboard");
                         return;
                     }
@@ -120,6 +131,7 @@ public class UserService {
                         if (professor.isVerified()) {
                             CreateLoginLogsDto createLoginLogsDto = new CreateLoginLogsDto(professor.getId(), professor.getEmail(), professor.getClass().getSimpleName());
                             logsService.logLogInProcess(createLoginLogsDto);
+                            sessionManager.setRegisterDTO(null);
                             sceneManager.switchScene(Navigator.PROF_DASHBOARD, "Professor Dashboard");
                             return;
                         } else {
@@ -138,6 +150,7 @@ public class UserService {
                     if (passwordGenerated.equals(student.getPasswordHash())) {
                         CreateLoginLogsDto createLoginLogsDto = new CreateLoginLogsDto(student.getId(), student.getEmail(), student.getClass().getSimpleName());
                         logsService.logLogInProcess(createLoginLogsDto);
+                        sessionManager.setRegisterDTO(null);
                         sceneManager.switchScene(Navigator.STUDENT_PROFILE, "Student Dashboard");
                         return;
                     }
@@ -160,6 +173,9 @@ public class UserService {
             if (!isValidUsername(registerDTO.getUsername())) {
                 throw new InvalidUsernameException("Invalid username");
             }
+            if (!doesUsernameExist(registerDTO.getUsername())) {
+                throw new UsernameAlreadyExistsException("Username already exists");
+            }
 
             if (registerDTO.getName().isEmpty()) {
                 throw new CustomException("name");
@@ -171,6 +187,9 @@ public class UserService {
 
             if (!isValidEmail(registerDTO.getEmailAddress())) {
                 throw new InvalidEmailException("Invalid email");
+            }
+            if (!doesEmailExist(registerDTO.getEmailAddress())) {
+                throw new EmailAlreadyExistsException("Email already exists");
             }
 
             if (registerDTO.getBirthDate() == null) {
@@ -244,6 +263,7 @@ public class UserService {
                 );
 
                 if (userService.createUser(createStudentsDto)) {
+                    sessionManager.setRegisterDTO(null);
                     ErrorDialog.showRegistrationSuccess(Alert.AlertType.INFORMATION, "Success");
                 } else {
                     ErrorDialog.showRegistrationSuccess(Alert.AlertType.INFORMATION, "Fail");
