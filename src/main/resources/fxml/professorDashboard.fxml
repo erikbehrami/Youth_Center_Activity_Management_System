@@ -30,7 +30,7 @@
             </Label>
                 <Pane layoutX="733.0" layoutY="25.0" prefHeight="36.0" prefWidth="200.0">
                     <children>
-                        <Button graphicTextGap="40.0" layoutX="6.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="181.0" style="-fx-background-color: white;" stylesheets="@../css/profile.css" text="%prof.AddCourse">
+                        <Button graphicTextGap="40.0" layoutX="6.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="181.0" style="-fx-background-color: white;" stylesheets="@../css/prof.css" text="%prof.AddCourse">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -42,7 +42,7 @@
                         <FontAwesomeIconView glyphName="PLUS" layoutX="22.0" layoutY="24.0" size="20" styleClass="icon" />
                     </children>
                 </Pane>
-                <Pane layoutX="19.0" layoutY="117.0" prefHeight="142.0" prefWidth="160.0" stylesheets="@../css/profile.css">
+                <Pane layoutX="19.0" layoutY="117.0" prefHeight="142.0" prefWidth="160.0" stylesheets="@../css/prof.css">
                     <children>
                         <Text layoutX="43.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="%prof.TotalClasses">
                             <font>
@@ -69,7 +69,7 @@
                         <String fx:value="change" />
                     </styleClass>
                 </Pane>
-                <Pane layoutX="19.0" layoutY="285.0" prefHeight="142.0" prefWidth="160.0" stylesheets="@../css/profile.css">
+                <Pane layoutX="19.0" layoutY="285.0" prefHeight="142.0" prefWidth="160.0" stylesheets="@../css/prof.css">
                     <children>
                         <Text layoutX="38.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="%prof.TotalStudents">
                             <font>
@@ -96,7 +96,7 @@
                         <String fx:value="change" />
                     </styleClass>
                 </Pane>
-                <Pane layoutX="204.0" layoutY="284.0" prefHeight="328.0" prefWidth="350.0" stylesheets="@../css/profile.css">
+                <Pane layoutX="204.0" layoutY="284.0" prefHeight="328.0" prefWidth="350.0" stylesheets="@../css/prof.css">
                     <styleClass>
                         <String fx:value="buttonShadow" />
                         <String fx:value="change" />
@@ -127,7 +127,7 @@
                   </Label>
                </graphic>
                 </Label>
-            <VBox layoutX="582.0" layoutY="95.0" prefHeight="170.0" prefWidth="338.0" stylesheets="@../css/profile.css">
+            <VBox layoutX="582.0" layoutY="95.0" prefHeight="170.0" prefWidth="338.0" stylesheets="@../css/prof.css">
                <children>
                   <Label prefHeight="20.0" prefWidth="130.0" text="%prof.AssistantTip">
                      <VBox.margin>
@@ -167,7 +167,7 @@
                   <String fx:value="change" />
                </styleClass>
             </VBox>
-            <AnchorPane layoutX="582.0" layoutY="285.0" prefHeight="328.0" prefWidth="338.0" stylesheets="@../css/profile.css">
+            <AnchorPane layoutX="582.0" layoutY="285.0" prefHeight="328.0" prefWidth="338.0" stylesheets="@../css/prof.css">
                <styleClass>
                   <String fx:value="buttonShadow" />
                   <String fx:value="change" />
@@ -186,7 +186,7 @@
                   </LineChart>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="205.0" layoutY="95.0" prefHeight="170.0" prefWidth="350.0" stylesheets="@../css/profile.css">
+            <AnchorPane layoutX="205.0" layoutY="95.0" prefHeight="170.0" prefWidth="350.0" stylesheets="@../css/prof.css">
                <styleClass>
                   <String fx:value="buttonShadow" />
                   <String fx:value="change" />
@@ -195,7 +195,7 @@
                   <PieChart fx:id="genderPieChart" labelLineLength="2.0" layoutX="8.0" layoutY="6.0" legendSide="TOP" prefHeight="162.0" prefWidth="338.0" />
                </children>
             </AnchorPane>
-            <Button fx:id="generatePdfButton" layoutX="57.0" layoutY="485.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="64.0" text="Button"  onAction="#generatePDFReport" />
+            <Button fx:id="generatePdfButton" layoutX="57.0" layoutY="485.0" mnemonicParsing="false" onAction="#generatePDFReport" prefHeight="60.0" prefWidth="64.0" text="Button" />
             </children>
         </AnchorPane>
 

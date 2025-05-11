@@ -3,6 +3,11 @@ module com.example.demo {
     requires javafx.fxml;
     requires java.sql;
     requires jakarta.mail;
+    requires java.desktop;
+    requires kernel;
+    requires layout;
+    requires io;
+    requires javafx.swing;
 
     opens model to javafx.base;
     exports model to javafx.base;
@@ -34,4 +39,5 @@ module com.example.demo {
     exports model.dto;
     exports services.RegisterService;
     exports controllers.RegisterController;
+    exports services.ProfServices;
 }

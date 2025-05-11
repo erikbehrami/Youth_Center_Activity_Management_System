@@ -75,11 +75,6 @@
             <artifactId>itext-core</artifactId>
             <version>${itext.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>bouncy-castle-adapter</artifactId>
-            <version>${itext.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>com.itextpdf</groupId>
