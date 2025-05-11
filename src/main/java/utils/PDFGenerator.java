@@ -85,7 +85,7 @@ public class PDFGenerator {
             System.out.println("PDF Report generated successfully at " + dest);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -96,7 +96,7 @@ public class PDFGenerator {
         try {
             ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }

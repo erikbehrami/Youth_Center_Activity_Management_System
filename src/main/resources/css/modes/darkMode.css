@@ -56,3 +56,12 @@ Text {
     -fx-border-color: white !important;
     -fx-border-style: solid !important;
 }
+
+.register-left {
+    -fx-background-color: #101935 !important;
+}
+
+.register-right {
+    -fx-background-color: white !important;
+    -fx-border-width: 1.2 !important;
+}

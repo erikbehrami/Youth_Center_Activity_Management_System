@@ -15,7 +15,7 @@
    <children>
       <AnchorPane layoutX="33.0" layoutY="64.0" maxHeight="220.0" maxWidth="300.0" minHeight="220.0" minWidth="300.0" prefHeight="220.0" prefWidth="300.0" style="-fx-background-color: #0f1832; -fx-background-radius: 20;" styleClass="studentBorders" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="60.0">
          <children>
-            <ImageView fitHeight="106.0" fitWidth="200.0" layoutX="53.4" layoutY="30.4" AnchorPane.leftAnchor="53.4" AnchorPane.topAnchor="30.4">
+            <ImageView fitHeight="106.0" fitWidth="200.0" layoutX="52.6" layoutY="30.4" AnchorPane.leftAnchor="52.6" AnchorPane.topAnchor="30.4">
                <image>
                   <Image url="@../images/user1.png" />
                </image>

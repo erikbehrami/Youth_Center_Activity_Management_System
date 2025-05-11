@@ -65,7 +65,7 @@
       </HBox>
       <AnchorPane layoutX="892.0" prefHeight="50.0" prefWidth="302.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button layoutX="208.0" layoutY="10.0" maxHeight="30.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleSignIn" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #0088ac;" styleClass="change" text="%navbar.LogOut" textFill="#ffebeb" AnchorPane.rightAnchor="14.399999999999977" AnchorPane.topAnchor="10.0">
+            <Button layoutX="208.0" layoutY="10.0" maxHeight="30.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleLogOutClick" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #0088ac;" styleClass="change" text="%navbar.LogOut" textFill="#ffebeb" AnchorPane.rightAnchor="14.399999999999977" AnchorPane.topAnchor="10.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
