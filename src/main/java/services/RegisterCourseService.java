@@ -2,10 +2,12 @@ package services;
 
 import model.LectureRooms;
 import model.Professors;
+import model.Students;
 import model.dto.course.CreateCourseDto;
 import repository.CourseRepository;
 import repository.LectureRoomsRepository;
 import repository.ProfessorsRepository;
+import repository.StudentsRepository;
 
 import java.util.ArrayList;
 
@@ -53,4 +55,13 @@ public class RegisterCourseService {
     public ArrayList<LectureRooms> getAllLectureRooms() {
         return lectureRoomsRepository.getAll();
     }
+
+    public boolean canRegisterMoreCourses(int professorId) {
+        int currentCoursesCount = coursesRepository.getAll(professorId).size();
+        int maxCourses = professorRepository.getMaxCourses(professorId);
+        System.out.println("Current number of courses for Professor ID " + professorId + ": " + currentCoursesCount);
+        return currentCoursesCount < maxCourses;
+    }
+
+
 }

@@ -18,39 +18,54 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.image.WritableImage;
 import javax.imageio.ImageIO;
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class PDFGenerator {
 
     public void generateDashboardReport(ProfDashboardService service, BarChart<String, Number> courseChart, LineChart<String, Number> studentChart) {
-        // File path for PDF generation
-        String dest = "Professor_Dashboard_Report.pdf";
+        String folderPath = "src/main/resources/PDF";
+        Path path = Paths.get(folderPath);
+
+        if (!Files.exists(path)) {
+            try {
+                Files.createDirectory(path);
+                System.out.println("Directory 'PDF' created successfully.");
+            } catch (IOException e) {
+                System.out.println("Failed to create directory 'PDF'");
+                e.printStackTrace();
+            }
+        }
+
+        String dest = folderPath + "/Professor_Dashboard_Report.pdf";
+        String courseChartPath = folderPath + "/course_chart.png";
+        String studentChartPath = folderPath + "/student_chart.png";
+
+        deleteOldChart(courseChartPath);
+        deleteOldChart(studentChartPath);
 
         try {
-            // Initialize the writer and document
             PdfWriter writer = new PdfWriter(new FileOutputStream(dest));
             PdfDocument pdfDoc = new PdfDocument(writer);
             Document document = new Document(pdfDoc);
 
-            // Title
             Paragraph title = new Paragraph("Professor Dashboard Report")
                     .setFontSize(18)
                     .setBold()
                     .setMarginBottom(10);
             document.add(title);
 
-            // Professor Info
-            document.add(new Paragraph("Professor Name: " + service.getProfName()).setMarginBottom(5));
+            document.add(new Paragraph("Professor UserName: " + service.getProfName()).setMarginBottom(5));
             document.add(new Paragraph("Total Courses: " + service.getTotalCourses()).setMarginBottom(5));
             document.add(new Paragraph("Total Students: " + service.getTotalStudents()).setMarginBottom(5));
             document.add(new Paragraph("Date: " + service.getDate().toString()).setMarginBottom(10));
 
-            // Assistant Tip and Motivational Quote
             document.add(new Paragraph("Assistant Tip:").setBold().setMarginTop(10));
             document.add(new Paragraph(service.getAssistantTip()).setMarginBottom(10));
             document.add(new Paragraph("Motivational Quote:").setBold().setMarginTop(10));
             document.add(new Paragraph(service.getMotivationalQuote()).setMarginBottom(15));
 
-            // Gender Distribution Table
             document.add(new Paragraph("Gender Distribution:").setFontSize(14).setBold().setMarginTop(15));
 
             float[] columnWidths = {200F, 200F};
@@ -66,13 +81,11 @@ public class PDFGenerator {
 
             document.add(table);
 
-            // CHART EXPORTING
-            exportChartToImage(courseChart, "course_chart.png");
-            exportChartToImage(studentChart, "student_chart.png");
+            exportChartToImage(courseChart, courseChartPath);
+            exportChartToImage(studentChart, studentChartPath);
 
-            // Add Images to PDF
-            Image courseImage = new Image(ImageDataFactory.create("course_chart.png"));
-            Image studentImage = new Image(ImageDataFactory.create("student_chart.png"));
+            Image courseImage = new Image(ImageDataFactory.create(courseChartPath));
+            Image studentImage = new Image(ImageDataFactory.create(studentChartPath));
 
             document.add(new Paragraph("Courses Distribution:").setBold().setMarginTop(20));
             document.add(courseImage.setAutoScale(true).setMarginBottom(10));
@@ -80,7 +93,6 @@ public class PDFGenerator {
             document.add(new Paragraph("Students Distribution:").setBold().setMarginTop(20));
             document.add(studentImage.setAutoScale(true).setMarginBottom(10));
 
-            // Close the document
             document.close();
             System.out.println("PDF Report generated successfully at " + dest);
 
@@ -89,7 +101,6 @@ public class PDFGenerator {
         }
     }
 
-    // Helper method to export charts as images
     private void exportChartToImage(javafx.scene.chart.Chart chart, String fileName) {
         WritableImage image = chart.snapshot(new SnapshotParameters(), null);
         File file = new File(fileName);
@@ -97,6 +108,17 @@ public class PDFGenerator {
             ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
         } catch (IOException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    private void deleteOldChart(String path) {
+        File file = new File(path);
+        if (file.exists()) {
+            if (file.delete()) {
+                System.out.println("Old chart image deleted: " + path);
+            } else {
+                System.out.println("Failed to delete old chart image: " + path);
+            }
         }
     }
 }

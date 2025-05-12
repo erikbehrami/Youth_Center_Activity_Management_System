@@ -135,12 +135,12 @@ public class ProfDashboardService extends BaseProfessorService{
                     "Arsimi është arma më e fuqishme që mund të përdorni për të ndryshuar botën. – Nelson Mandela",
                     "Mësimdhënia është profesioni që krijon të gjitha profesionet e tjera.",
                     "Mësuesit më të mirë janë ata që tregojnë ku të shikosh, jo çfarë të shohësh.",
-                    "Një mësues i mirë mund të inspirojë shpresë, të ndezë imagjinatën dhe të kultivojë dashurinë për të mësuar.",
+                    "Një mësues i mirë mund të inspirojë shpresë, të ndezë imagjinatën dhe të kultivojë dashurinë për të mësuar. – Brad Henry",
                     "Mendja nuk është një enë për t’u mbushur, por një zjarr për t’u ndezur. – Plutarku",
                     "Arsimi nuk është përgatitje për jetën; është jeta vetë. – John Dewey",
-                    "Arti i mësimdhënies është arti i ndihmës për zbulim.",
+                    "Arti i mësimdhënies është arti i ndihmës për zbulim. – Mark Van Doren",
                     "Mësuesit mbjellin fara njohurie që zgjasin një jetë të tërë.",
-                    "Një mësues ndikon në përjetësi; nuk mund të dijë kurrë se ku përfundon ndikimi i tij.",
+                    "Një mësues ndikon në përjetësi; nuk mund të dijë kurrë se ku përfundon ndikimi i tij. – Henry Adams",
                     "Çdo fëmijë është i talentuar. Ata vetëm i zbulojnë dhuntitë e tyre në kohë të ndryshme.",
                     "Mësimdhënia nuk është të japësh përgjigje, por të ngresh pyetje – të hapësh dyer që nuk i imagjinonin.",
                     "Suksesi është shuma e përpjekjeve të vogla, të përsëritura çdo ditë. – Robert Collier",
@@ -167,6 +167,19 @@ public class ProfDashboardService extends BaseProfessorService{
                 new PieChart.Data("Male (" + maleCount + ")", maleCount),
                 new PieChart.Data("Female (" + femaleCount + ")", femaleCount)
         };
+    }
+    public int professorId(){
+        return sessionManager.currentUser().getId();
+    }
+
+    public int maxCourses(int professorId)
+    {
+        return professorsRepository.getMaxCourses(professorId);
+    }
+
+    public int maxStudents(int professorId)
+    {
+        return professorsRepository.getMaxStudents(professorId);
     }
 
 

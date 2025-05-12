@@ -178,4 +178,38 @@ public class ProfessorsRepository extends BaseRepository<Professors, CreateProfe
         }
         return false;
     }
+
+    public int getMaxCourses(int professorId) {
+        String query = "SELECT max_courses FROM Professors WHERE id = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, professorId);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getInt("max_courses");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 10;
+    }
+
+    public int getMaxStudents(int professorId) {
+        String query = "SELECT max_students FROM Professors WHERE id = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, professorId);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getInt("max_students");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 10;
+    }
 }

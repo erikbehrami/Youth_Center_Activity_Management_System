@@ -8,15 +8,16 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import services.ProfServices.ProfDashboardService;
+import services.SessionManager;
 import utils.PDFGenerator;
 
 
 public class ProfDashboardController extends ProfController {
     private final ProfDashboardService profDashboardService  = new ProfDashboardService();
     @FXML
-    private Label profTotalClasses;
+    private Label totalCoursesLabel;
     @FXML
-    private Label profTotalStudents;
+    private Label totalStudentsLabel;
     @FXML
     private Label profName;
     @FXML
@@ -31,8 +32,6 @@ public class ProfDashboardController extends ProfController {
     private Label assistantTipLabel;
     @FXML
     private Label motivationalQuoteLabel;
-    @FXML
-    private Button generatePdfButton;
 
     @FXML
     private void initialize() {
@@ -40,15 +39,22 @@ public class ProfDashboardController extends ProfController {
         loadCharts();
         loadMessages();
         loadGenderDistribution();
-
     }
 
     private void loadCounts() {
-        if (profTotalClasses !=null){
-            profTotalClasses.setText(String.valueOf(profDashboardService.getTotalCourses()));
+        if (totalCoursesLabel !=null){
+            int professorId = profDashboardService.professorId();
+            int maxCourses = profDashboardService.maxCourses(professorId);
+            int currentCoursesCount = profDashboardService.getTotalCourses();
+
+            totalCoursesLabel.setText(currentCoursesCount + " / " + maxCourses);
         }
-        if (profTotalStudents !=null){
-            profTotalStudents.setText(String.valueOf(profDashboardService.getTotalStudents()));
+        if (totalStudentsLabel !=null){
+            int professorId = profDashboardService.professorId();
+            int maxStudents = profDashboardService.maxStudents(professorId);
+            int currentStudentsCount = profDashboardService.getTotalStudents();
+
+            totalStudentsLabel.setText(currentStudentsCount + " / " + maxStudents);
         }
         if (profName !=null)
         {

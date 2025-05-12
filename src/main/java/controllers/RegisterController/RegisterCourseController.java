@@ -74,6 +74,12 @@ public class RegisterCourseController extends BaseController implements Initiali
                 showAlert("Error", "All fields must be filled in.", Alert.AlertType.ERROR, false);
                 return;
             }
+            int professorId = courseService.getProfessorIdByIndex(professorIndex);
+
+            if(!courseService.canRegisterMoreCourses(professorId)){
+                showAlert("Error", "Professor cannot register more courses!", Alert.AlertType.ERROR, false);
+                return;
+            }
 
 
             int totalNum = Integer.parseInt(totalNumberText);
@@ -81,7 +87,6 @@ public class RegisterCourseController extends BaseController implements Initiali
             Date startDate = java.sql.Date.valueOf(startLocalDate);
             Date endDate = java.sql.Date.valueOf(endLocalDate);
 
-            int professorId = courseService.getProfessorIdByIndex(professorIndex);
             int lectureRoomId = courseService.getLectureRoomIdByIndex(roomIndex);
 
             CreateCourseDto courseDto = new CreateCourseDto(
@@ -130,3 +135,4 @@ public class RegisterCourseController extends BaseController implements Initiali
         timeline.play();
     }
 }
+

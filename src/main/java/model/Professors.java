@@ -18,10 +18,12 @@ public class Professors implements User{
     private String address;
     private String gender;
     private String biographicalInfo;
+    private int max_courses;
+    private int max_students;
 
     private Professors(int id, String username, String salt, String passwordHash, String name, String surname,
                        String email, Date birthdate, String phoneNumber, String address,
-                       String gender, String biographicalInfo, boolean verified) {
+                       String gender, String biographicalInfo, boolean verified,int max_courses,int max_students) {
         this.id = id;
         this.username = username;
         this.passwordHash = passwordHash;
@@ -35,6 +37,8 @@ public class Professors implements User{
         this.gender = gender;
         this.biographicalInfo = biographicalInfo;
         this.verified = verified;
+        this.max_courses = max_courses;
+        this.max_students = max_students;
     }
 
     public static Professors getInstance(ResultSet resultSet) throws SQLException {
@@ -51,10 +55,12 @@ public class Professors implements User{
         String gender = resultSet.getString("gender");
         String biographicalInfo = resultSet.getString("biographicalInfo");
         boolean verified = resultSet.getBoolean("verified");
+        int max_courses = resultSet.getInt("max_courses");
+        int max_students = resultSet.getInt("max_students");
 
         return new Professors(id, username, salt, passwordHash, name, surname, email,
                 birthdate, phoneNumber, address, gender,
-                biographicalInfo, verified);
+                biographicalInfo, verified,max_courses,max_students);
     }
 
     public int getId() {
@@ -107,5 +113,13 @@ public class Professors implements User{
 
     public String getBiographicalInfo() {
         return biographicalInfo;
+    }
+
+    public int getMax_courses() {
+        return max_courses;
+    }
+
+    public int getMax_students() {
+        return max_students;
     }
 }

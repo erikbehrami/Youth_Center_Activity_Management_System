@@ -21,16 +21,16 @@
     <children>
 
         <fx:include source="profSidebar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0" />
-        <AnchorPane layoutX="250.0" layoutY="50.0" prefHeight="628.0" prefWidth="955.0" AnchorPane.bottomAnchor="0.39999999999997726" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="-6.2000000000000455" AnchorPane.topAnchor="50.0">
+        <AnchorPane layoutX="244.0" layoutY="50.0" prefHeight="628.0" prefWidth="955.0" AnchorPane.bottomAnchor="0.39999999999997726" AnchorPane.leftAnchor="244.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
             <children>
             <Label fx:id="generateDate" layoutX="22.0" layoutY="56.0">
                <graphic>
                       <Label prefHeight="18.0" prefWidth="34.0" text="Data:" />
                </graphic>
             </Label>
-                <Pane layoutX="733.0" layoutY="25.0" prefHeight="36.0" prefWidth="200.0">
+                <Pane layoutX="745.0" layoutY="27.0" prefHeight="36.0" prefWidth="200.0">
                     <children>
-                        <Button graphicTextGap="40.0" layoutX="6.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="181.0" style="-fx-background-color: white;" stylesheets="@../css/prof.css" text="%prof.AddCourse">
+                        <Button fx:id="generatePdfButton" graphicTextGap="40.0" layoutX="6.0" layoutY="-2.0" mnemonicParsing="false" onAction="#generatePDFReport" prefHeight="36.0" prefWidth="181.0" style="-fx-background-color: white;" stylesheets="@../css/prof.css" text="%prof.Generate">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -39,10 +39,10 @@
                                 <String fx:value="change" />
                             </styleClass>
                         </Button>
-                        <FontAwesomeIconView glyphName="PLUS" layoutX="22.0" layoutY="24.0" size="20" styleClass="icon" />
+                        <FontAwesomeIconView glyphName="FILE" layoutX="22.0" layoutY="24.0" size="20" styleClass="icon" />
                     </children>
                 </Pane>
-                <Pane layoutX="19.0" layoutY="117.0" prefHeight="142.0" prefWidth="160.0" stylesheets="@../css/prof.css">
+                <Pane layoutX="19.0" layoutY="90.0" prefHeight="142.0" prefWidth="160.0" stylesheets="@../css/prof.css">
                     <children>
                         <Text layoutX="43.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="%prof.TotalClasses">
                             <font>
@@ -50,15 +50,7 @@
                             </font>
                         </Text>
                         <FontAwesomeIconView glyphName="BOOK" layoutX="14.0" layoutY="48.0" size="35" styleClass="icon" />
-                        <FontAwesomeIconView glyphName="ELLIPSIS_V" layoutX="130.0" layoutY="41.0" size="25" styleClass="icon" />
-                        <Label layoutX="57.0" layoutY="74.0" styleClass="icon" text="/10">
-                            <graphic>
-                                <Label fx:id="profTotalClasses" styleClass="icon" text="0">
-                                    <font>
-                                        <Font name="System Bold" size="22.0" />
-                                    </font>
-                                </Label>
-                            </graphic>
+                        <Label fx:id="totalCoursesLabel" layoutX="57.0" layoutY="74.0" styleClass="icon">
                             <font>
                                 <Font name="System Bold" size="22.0" />
                             </font>
@@ -69,7 +61,7 @@
                         <String fx:value="change" />
                     </styleClass>
                 </Pane>
-                <Pane layoutX="19.0" layoutY="285.0" prefHeight="142.0" prefWidth="160.0" stylesheets="@../css/prof.css">
+                <Pane layoutX="19.0" layoutY="253.0" prefHeight="142.0" prefWidth="160.0" stylesheets="@../css/prof.css">
                     <children>
                         <Text layoutX="38.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="%prof.TotalStudents">
                             <font>
@@ -77,15 +69,7 @@
                             </font>
                         </Text>
                         <FontAwesomeIconView glyphName="GRADUATION_CAP" layoutX="15.0" layoutY="48.0" size="35" styleClass="icon" />
-                        <FontAwesomeIconView glyphName="ELLIPSIS_V" layoutX="132.0" layoutY="40.0" size="25" styleClass="icon" />
-                        <Label layoutX="54.0" layoutY="71.0" styleClass="icon" text="/40">
-                            <graphic>
-                                <Label fx:id="profTotalStudents" styleClass="icon" text="0">
-                                    <font>
-                                        <Font name="System Bold" size="22.0" />
-                                    </font>
-                                </Label>
-                            </graphic>
+                        <Label fx:id="totalStudentsLabel" layoutX="54.0" layoutY="71.0" styleClass="icon">
                             <font>
                                 <Font name="System Bold" size="22.0" />
                             </font>
@@ -96,13 +80,13 @@
                         <String fx:value="change" />
                     </styleClass>
                 </Pane>
-                <Pane layoutX="204.0" layoutY="284.0" prefHeight="328.0" prefWidth="350.0" stylesheets="@../css/prof.css">
+                <Pane layoutX="582.0" layoutY="254.0" prefHeight="352.0" prefWidth="350.0" stylesheets="@../css/prof.css">
                     <styleClass>
                         <String fx:value="buttonShadow" />
                         <String fx:value="change" />
                     </styleClass>
                     <children>
-                        <BarChart fx:id="coursesChart" barGap="2.0" categoryGap="5.0" layoutX="7.0" layoutY="7.0" legendSide="TOP" prefHeight="317.0" prefWidth="342.0">
+                        <BarChart fx:id="coursesChart" barGap="2.0" categoryGap="5.0" layoutX="7.0" layoutY="7.0" legendSide="TOP" prefHeight="332.0" prefWidth="330.0">
                             <xAxis>
                                 <CategoryAxis prefHeight="19.0" prefWidth="463.0" side="BOTTOM" />
                             </xAxis>
@@ -112,34 +96,31 @@
                         </BarChart>
                     </children>
                 </Pane>
-                <Label graphicTextGap="0.0" layoutX="30.0" layoutY="23.0" prefHeight="36.0" prefWidth="341.0" text="%prof.Welcome" textFill="#101935">
+                <Label graphicTextGap="0.0" layoutX="22.0" layoutY="22.0" prefHeight="36.0" prefWidth="330.0" text="%prof.Welcome" textFill="#101935">
                     <font>
                         <Font name="System Bold Italic" size="17.0" />
                     </font>
                <graphic>
-                  <Label fx:id="profName" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="0.0" prefHeight="30.0" prefWidth="94.0" textFill="#101935">
+                  <Label fx:id="profName" textFill="#101935">
                      <font>
                         <Font name="System Bold Italic" size="17.0" />
                      </font>
-                     <padding>
-                        <Insets left="-10.0" top="1.0" />
-                     </padding>
                   </Label>
                </graphic>
                 </Label>
-            <VBox layoutX="582.0" layoutY="95.0" prefHeight="170.0" prefWidth="338.0" stylesheets="@../css/prof.css">
+            <VBox layoutX="582.0" layoutY="90.0" prefHeight="142.0" prefWidth="350.0" stylesheets="@../css/prof.css">
                <children>
                   <Label prefHeight="20.0" prefWidth="130.0" text="%prof.AssistantTip">
                      <VBox.margin>
-                        <Insets left="10.0" top="10.0" />
+                        <Insets left="10.0" top="5.0" />
                      </VBox.margin>
                      <font>
                         <Font name="System Italic" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="assistantTipLabel" prefHeight="48.0" prefWidth="290.0" textFill="#898383" wrapText="true">
+                  <Label fx:id="assistantTipLabel" prefHeight="39.0" prefWidth="311.0" textFill="#898383" wrapText="true">
                      <VBox.margin>
-                        <Insets left="30.0" />
+                        <Insets left="30.0" top="-2.0" />
                      </VBox.margin>
                      <font>
                         <Font name="System Italic" size="12.0" />
@@ -153,9 +134,9 @@
                         <Font name="System Italic" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="motivationalQuoteLabel" prefHeight="60.0" prefWidth="290.0" textFill="#898383" wrapText="true">
+                  <Label fx:id="motivationalQuoteLabel" prefHeight="52.0" prefWidth="310.0" textFill="#898383" wrapText="true">
                      <VBox.margin>
-                        <Insets left="30.0" />
+                        <Insets left="30.0" top="-2.0" />
                      </VBox.margin>
                      <font>
                         <Font name="System Italic" size="12.0" />
@@ -167,35 +148,35 @@
                   <String fx:value="change" />
                </styleClass>
             </VBox>
-            <AnchorPane layoutX="582.0" layoutY="285.0" prefHeight="328.0" prefWidth="338.0" stylesheets="@../css/prof.css">
+            <AnchorPane layoutX="19.0" layoutY="417.0" prefHeight="191.0" prefWidth="539.0" stylesheets="@../css/prof.css">
                <styleClass>
                   <String fx:value="buttonShadow" />
                   <String fx:value="change" />
                </styleClass>
                <children>
-                  <LineChart fx:id="studentChart" layoutX="3.0" layoutY="10.0" legendSide="TOP" prefHeight="310.0" prefWidth="331.0">
+                  <LineChart fx:id="studentChart" layoutX="3.0" layoutY="10.0" legendSide="TOP" prefHeight="178.0" prefWidth="519.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis forceZeroInRange="false" minorTickCount="7" prefHeight="270.0" prefWidth="26.0" side="LEFT" tickLabelGap="5.0" tickLength="7.0" upperBound="16.0">
+                      <NumberAxis forceZeroInRange="false" minorTickCount="7" prefHeight="270.0" prefWidth="26.0" side="LEFT" tickLabelGap="5.0" tickLength="7.0" upperBound="25.0">
                            <tickLabelFont>
                               <Font size="12.0" />
-                           </tickLabelFont></NumberAxis>
+                           </tickLabelFont>
+                        </NumberAxis>
                     </yAxis>
                   </LineChart>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="205.0" layoutY="95.0" prefHeight="170.0" prefWidth="350.0" stylesheets="@../css/prof.css">
+            <AnchorPane layoutX="199.0" layoutY="91.0" prefHeight="306.0" prefWidth="359.0" stylesheets="@../css/prof.css">
                <styleClass>
                   <String fx:value="buttonShadow" />
                   <String fx:value="change" />
                </styleClass>
                <children>
-                  <PieChart fx:id="genderPieChart" labelLineLength="2.0" layoutX="8.0" layoutY="6.0" legendSide="TOP" prefHeight="162.0" prefWidth="338.0" />
+                  <PieChart fx:id="genderPieChart" labelLineLength="2.0" labelsVisible="false" layoutX="8.0" layoutY="6.0" legendSide="TOP" prefHeight="290.0" prefWidth="342.0" />
                </children>
             </AnchorPane>
-            <Button fx:id="generatePdfButton" layoutX="57.0" layoutY="485.0" mnemonicParsing="false" onAction="#generatePDFReport" prefHeight="60.0" prefWidth="64.0" text="Button" />
             </children>
         </AnchorPane>
 
