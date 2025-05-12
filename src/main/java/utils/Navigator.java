@@ -6,6 +6,8 @@ interface OverallPages {
     String HOME = "/fxml/home.fxml";
     String INFO = "/fxml/info.fxml";
     String REGISTER_COURSE = "/fxml/registerCourse.fxml";
+    String UPDATE_COURSE = "/fxml/updateCourse.fxml";
+
     String REGISTER_STUDENT = "/fxml/registerStudent.fxml";
 }
 

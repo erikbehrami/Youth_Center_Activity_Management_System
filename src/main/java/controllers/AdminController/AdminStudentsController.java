@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import model.Students;
+import model.dto.students.UpdateStudentsDto;
 import services.AdminServices.AdminStudentsService;
 import services.LanguageManager;
 import utils.Navigator;
@@ -33,6 +34,8 @@ public class AdminStudentsController extends BaseController {
     private TableColumn<Students, java.util.Date> stdBIRTHDAY;
     @FXML
     private TableColumn<Students, Void> stdDELETE;
+    @FXML
+    private TableColumn<Students, Void> stdUPDATE;
 
     @FXML
     private TextField searchField;
@@ -47,9 +50,7 @@ public class AdminStudentsController extends BaseController {
         }
 
         if (searchField != null) {
-            searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-                handleSearch();
-            });
+            searchField.textProperty().addListener((observable, oldValue, newValue) -> handleSearch());
         }
     }
 
@@ -64,7 +65,8 @@ public class AdminStudentsController extends BaseController {
 
         filteredStudents.setPredicate(student -> {
             if (lowerText.isEmpty()) return true;
-            return student.getName().toLowerCase().contains(lowerText) || student.getSurname().toLowerCase().contains(lowerText);
+            return student.getName().toLowerCase().contains(lowerText)
+                    || student.getSurname().toLowerCase().contains(lowerText);
         });
     }
 
@@ -72,7 +74,6 @@ public class AdminStudentsController extends BaseController {
         List<Students> allStudents = AdminStudentsService.getAllStudents();
         ObservableList<Students> studentList = FXCollections.observableArrayList(allStudents);
         filteredStudents = new FilteredList<>(studentList, p -> true);
-
         studentsTable.setItems(filteredStudents);
     }
 
@@ -84,10 +85,11 @@ public class AdminStudentsController extends BaseController {
         if (stdGENDER != null) stdGENDER.setCellValueFactory(new PropertyValueFactory<>("gender"));
         if (stdBIRTHDAY != null) stdBIRTHDAY.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
 
-        if (stdDELETE != null) {
-            LanguageManager languageManager = LanguageManager.getInstance();
-            String deleteText = languageManager.getLocale().equals(Locale.ENGLISH) ? "Delete" : "Fshij";
+        LanguageManager languageManager = LanguageManager.getInstance();
+        String deleteText = languageManager.getLocale().equals(Locale.ENGLISH) ? "Delete" : "Fshij";
+        String updateText = languageManager.getLocale().equals(Locale.ENGLISH) ? "Update" : "Përditëso";
 
+        if (stdDELETE != null) {
             stdDELETE.setCellFactory(col -> new TableCell<>() {
                 private final Button btn = new Button(deleteText);
                 private final HBox container = new HBox(btn);
@@ -111,6 +113,32 @@ public class AdminStudentsController extends BaseController {
                                 loadStudentsData();
                             }
                         });
+                    });
+                }
+
+                @Override
+                protected void updateItem(Void item, boolean empty) {
+                    super.updateItem(item, empty);
+                    setGraphic(empty ? null : container);
+                }
+            });
+        }
+
+        if (stdUPDATE != null) {
+            stdUPDATE.setCellFactory(col -> new TableCell<>() {
+                private final Button btn = new Button(updateText);
+                private final HBox container = new HBox(btn);
+
+                {
+                    btn.setStyle("-fx-background-color: #0088ac; -fx-text-fill: white;");
+                    container.setStyle("-fx-alignment: center; -fx-padding: 5;");
+                    container.setMaxHeight(Double.MAX_VALUE);
+
+                    btn.setOnAction(event -> {
+                        Students student = getTableView().getItems().get(getIndex());
+                        UpdateStudentsDto updateStudentsDto = null;
+                        AdminStudentsService.updateStudent(updateStudentsDto);
+//                        sceneManager.createNewStage(Navigator.UPDATE_STUDENT, "Update Student");
                     });
                 }
 

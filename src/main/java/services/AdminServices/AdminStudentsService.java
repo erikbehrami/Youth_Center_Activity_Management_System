@@ -1,6 +1,7 @@
 package services.AdminServices;
 
 import model.Students;
+import model.dto.students.UpdateStudentsDto;
 import repository.StudentsRepository;
 
 import java.util.ArrayList;
@@ -17,5 +18,9 @@ public class AdminStudentsService {
 
     public static void deleteStudent(int studentId) {
         studentsRepository.delete(studentId);
+    }
+
+    public static void updateStudent(UpdateStudentsDto updateStudentsDto){
+        studentsRepository.update(updateStudentsDto);
     }
 }

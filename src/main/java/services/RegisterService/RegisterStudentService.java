@@ -8,13 +8,10 @@ import utils.EmailSender;
 import java.security.SecureRandom;
 
 public class RegisterStudentService {
-    private final StudentsRepository studentsRepository;
+    private static final StudentsRepository studentsRepository = new StudentsRepository();
 
-    public RegisterStudentService() {
-        this.studentsRepository = new StudentsRepository();
-    }
 
-    private String generateEmail(String name, String surname) {
+    private static String generateEmail(String name, String surname) {
         String email = name.toLowerCase() + "." + surname.toLowerCase() + "@gmail.com";
         int i = 2;
         while (studentsRepository.getByEmail(email) != null) {
@@ -23,7 +20,7 @@ public class RegisterStudentService {
         return email;
     }
 
-    private String generateRandomPassword() {
+    private static String generateRandomPassword() {
         int length = 8;
         String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String lower = "abcdefghijklmnopqrstuvwxyz";
@@ -52,7 +49,7 @@ public class RegisterStudentService {
     }
 
 
-    public void registerStudent(String email, String name, String surname) {
+    public static void registerStudent(String email, String name, String surname) {
         try {
             String stdEmail = generateEmail(name, surname);
             String username = stdEmail.substring(0, stdEmail.indexOf("@"));

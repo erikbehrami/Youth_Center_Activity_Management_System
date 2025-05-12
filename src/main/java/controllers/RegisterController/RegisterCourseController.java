@@ -13,7 +13,7 @@ import javafx.util.Duration;
 import model.LectureRooms;
 import model.Professors;
 import model.dto.course.CreateCourseDto;
-import services.RegisterCourseService;
+import services.CourseService;
 import services.SceneManager;
 
 import java.net.URL;
@@ -43,16 +43,15 @@ public class RegisterCourseController extends BaseController implements Initiali
     @FXML
     private DatePicker dateEndingPicker;
 
-    private final RegisterCourseService courseService = new RegisterCourseService();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        for (Professors prof : courseService.getAllProfessors()) {
+        for (Professors prof : CourseService.getAllProfessors()) {
             String fullName = prof.getName() + " " + prof.getSurname();
             professorComboBox.getItems().add(fullName);
         }
 
-        for (LectureRooms room : courseService.getAllLectureRooms()) {
+        for (LectureRooms room : CourseService.getAllLectureRooms()) {
             roomComboBox.getItems().add(room.getName());
         }
     }
@@ -74,12 +73,6 @@ public class RegisterCourseController extends BaseController implements Initiali
                 showAlert("Error", "All fields must be filled in.", Alert.AlertType.ERROR, false);
                 return;
             }
-            int professorId = courseService.getProfessorIdByIndex(professorIndex);
-
-            if(!courseService.canRegisterMoreCourses(professorId)){
-                showAlert("Error", "Professor cannot register more courses!", Alert.AlertType.ERROR, false);
-                return;
-            }
 
 
             int totalNum = Integer.parseInt(totalNumberText);
@@ -87,7 +80,8 @@ public class RegisterCourseController extends BaseController implements Initiali
             Date startDate = java.sql.Date.valueOf(startLocalDate);
             Date endDate = java.sql.Date.valueOf(endLocalDate);
 
-            int lectureRoomId = courseService.getLectureRoomIdByIndex(roomIndex);
+            int professorId = CourseService.getProfessorIdByIndex(professorIndex);
+            int lectureRoomId = CourseService.getLectureRoomIdByIndex(roomIndex);
 
             CreateCourseDto courseDto = new CreateCourseDto(
                     name,
@@ -100,7 +94,7 @@ public class RegisterCourseController extends BaseController implements Initiali
                     endDate
             );
 
-            String result = courseService.saveCourse(courseDto);
+            String result = CourseService.saveCourse(courseDto);
             if (result != null && result.toLowerCase().contains("success")) {
                 showAlert("Success", "Course was registered successfully!", Alert.AlertType.INFORMATION, true);
             } else {
@@ -135,4 +129,3 @@ public class RegisterCourseController extends BaseController implements Initiali
         timeline.play();
     }
 }
-

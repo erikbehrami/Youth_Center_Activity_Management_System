@@ -3,13 +3,13 @@ package repository;
 import database.DBConnector;
 import model.Courses;
 import model.dto.course.CreateCourseDto;
+import model.dto.course.UpdateCourseDto;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, Object> {
+public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, UpdateCourseDto> {
 
     public CourseRepository() {
         super("courses");
@@ -48,9 +48,31 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, O
     }
 
     @Override
-    Courses update(Object updateDto) {
+    public Courses update(UpdateCourseDto updateDto) {
+        String query = "UPDATE courses SET category = ?, id_professor = ?, " +
+                "id_lectureRooms = ?, totalNum = ?, " +
+                "dateStarted = ?, dateEnding = ? WHERE id = ?";
+
+        try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+            stmt.setString(1, updateDto.getCategory());
+            stmt.setInt(2, updateDto.getProfessorId());
+            stmt.setInt(3, updateDto.getLectureRoomId());
+            stmt.setInt(4, updateDto.getTotalNum());
+            stmt.setDate(5, new java.sql.Date(updateDto.getDateStarted().getTime()));
+            stmt.setDate(6, new java.sql.Date(updateDto.getDateEnding().getTime()));
+            stmt.setInt(7, updateDto.getId());
+
+            int affectedRows = stmt.executeUpdate();
+            if (affectedRows > 0) {
+                return this.getById(updateDto.getId());
+            }
+        } catch (SQLException e) {
+            System.out.println("Error updating course: " + e.getMessage());
+        }
         return null;
     }
+
+
 
     public HashMap<Integer, Integer> getCourseCountByYear() {
         HashMap<Integer, Integer> courseCountByYear = new HashMap<>();
@@ -107,8 +129,8 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, O
                 """;
 
         try (PreparedStatement stmt = connection.prepareStatement(query)){
-                  stmt.setInt(1, professorId);
-              ResultSet rs = stmt.executeQuery();
+            stmt.setInt(1, professorId);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 int year = rs.getInt("year");
@@ -125,8 +147,8 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, O
     public String getProfessorNameById(int profId) {
         String query = "SELECT name, surname FROM professors WHERE id = ?";
         try (
-            Connection conn = DBConnector.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(query)) {
+                Connection conn = DBConnector.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, profId);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {

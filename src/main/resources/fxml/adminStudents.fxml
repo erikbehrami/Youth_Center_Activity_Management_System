@@ -26,6 +26,7 @@
                                 <TableColumn fx:id="stdEMAIL" prefWidth="200.0" text="%admin.Email" />
                                 <TableColumn fx:id="stdGENDER" prefWidth="145.0" text="%admin.Gender" />
                                 <TableColumn fx:id="stdBIRTHDAY" prefWidth="145.0" text="%admin.Birthday" />
+                                <TableColumn fx:id="stdUPDATE" prefWidth="145.0" />
                                 <TableColumn fx:id="stdDELETE" prefWidth="145.0" />
                             </columns>
                             <columnResizePolicy>
@@ -35,23 +36,18 @@
                         <HBox layoutX="15.0" layoutY="14.0" minHeight="0.0" minWidth="0.0" prefHeight="35.0" prefWidth="906.0" spacing="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="8.0">
                             <children>
                                 <TextField fx:id="searchField" prefHeight="31.0" prefWidth="255.0" promptText="%admin.SearchByName" style="-fx-border-color: #101935; -fx-border-radius: 5;" styleClass="change" />
-                        <AnchorPane prefHeight="35.0" prefWidth="514.0" HBox.hgrow="ALWAYS">
-                           <children>
-                                    <Button alignment="CENTER" layoutX="397.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleGenerateData" prefHeight="30.0" prefWidth="119.0" style="-fx-background-color: #0088ac;" text="Refresh Data" textFill="WHITE" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                           </children>
-                        </AnchorPane>
+                                <AnchorPane prefHeight="35.0" prefWidth="514.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Button alignment="CENTER" layoutX="397.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleGenerateData" prefHeight="30.0" prefWidth="119.0" style="-fx-background-color: #0088ac;" text="%refreshData" textFill="WHITE" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    </children>
+                                </AnchorPane>
                             </children>
                         </HBox>
                     </children>
                 </AnchorPane>
                 <HBox alignment="TOP_RIGHT" layoutX="712.0" layoutY="576.0" minHeight="0.0" minWidth="0.0" prefHeight="35.0" prefWidth="205.0" spacing="15.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="712.0" AnchorPane.rightAnchor="28.0">
                     <children>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #101935;" styleClass="change" text="%admin.Add" textFill="WHITE" onAction="#handleAddStudent">
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                        </Button>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #101935;" styleClass="change" text="%admin.Delete" textFill="WHITE">
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAddStudent" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #101935;" styleClass="change" text="%admin.Add" textFill="WHITE">
                             <font>
                                 <Font size="13.0" />
                             </font>

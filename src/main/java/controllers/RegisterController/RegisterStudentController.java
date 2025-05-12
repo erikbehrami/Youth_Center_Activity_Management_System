@@ -16,8 +16,6 @@ public class RegisterStudentController extends BaseController {
     @FXML
     private TextField stdEMAIL;
 
-    private final RegisterStudentService registerStudentService = new RegisterStudentService();
-
     @FXML
     private void handleSaveStudent() {
         String name = stdNAME.getText().trim();
@@ -29,7 +27,7 @@ public class RegisterStudentController extends BaseController {
             return;
         }
 
-        registerStudentService.registerStudent(email, name, surname);
+        RegisterStudentService.registerStudent(email, name, surname);
 
         Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
         successAlert.setTitle("Success");
