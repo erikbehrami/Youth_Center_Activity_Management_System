@@ -1,13 +1,11 @@
 package controllers.RegisterController;
 
 import controllers.BaseController;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import services.RegisterService.RegisterStudentService;
 
 public class RegisterStudentController extends BaseController {
@@ -37,17 +35,11 @@ public class RegisterStudentController extends BaseController {
         successAlert.setTitle("Success");
         successAlert.setHeaderText(null);
         successAlert.setContentText("Student registered successfully!");
-        successAlert.show();
-
-        Timeline timeline = new Timeline(new KeyFrame(
-                Duration.seconds(2),
-                event -> {
-                    Stage stage = (Stage) stdEMAIL.getScene().getWindow();
-                    stage.close();
-                }
-        ));
-        timeline.setCycleCount(1);
-        timeline.play();
+        successAlert.showAndWait();
+        if(successAlert.getResult() == ButtonType.OK) {
+            Stage stage = (Stage) stdEMAIL.getScene().getWindow();
+            stage.close();
+        }
     }
 
     private void showAlert(Alert.AlertType type, String title, String content) {
@@ -55,6 +47,6 @@ public class RegisterStudentController extends BaseController {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
-        alert.show();
+        alert.showAndWait();
     }
 }

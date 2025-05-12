@@ -25,14 +25,32 @@ public class RegisterStudentService {
 
     private String generateRandomPassword() {
         int length = 8;
-        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String lower = "abcdefghijklmnopqrstuvwxyz";
+        String digits = "0123456789";
+        String allChars = upper + lower + digits;
+
         SecureRandom random = new SecureRandom();
         StringBuilder sb = new StringBuilder(length);
-        for (int i = 0; i < length; i++) {
-            sb.append(chars.charAt(random.nextInt(chars.length())));
+
+        sb.append(upper.charAt(random.nextInt(upper.length())));
+        sb.append(digits.charAt(random.nextInt(digits.length())));
+
+        for (int i = 2; i < length; i++) {
+            sb.append(allChars.charAt(random.nextInt(allChars.length())));
         }
-        return sb.toString();
+
+        char[] passwordChars = sb.toString().toCharArray();
+        for (int i = 0; i < passwordChars.length; i++) {
+            int randomIndex = random.nextInt(passwordChars.length);
+            char temp = passwordChars[i];
+            passwordChars[i] = passwordChars[randomIndex];
+            passwordChars[randomIndex] = temp;
+        }
+
+        return new String(passwordChars);
     }
+
 
     public void registerStudent(String email, String name, String surname) {
         try {

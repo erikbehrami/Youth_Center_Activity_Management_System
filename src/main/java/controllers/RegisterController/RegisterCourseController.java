@@ -75,6 +75,7 @@ public class RegisterCourseController extends BaseController implements Initiali
                 return;
             }
 
+
             int totalNum = Integer.parseInt(totalNumberText);
 
             Date startDate = java.sql.Date.valueOf(startLocalDate);
