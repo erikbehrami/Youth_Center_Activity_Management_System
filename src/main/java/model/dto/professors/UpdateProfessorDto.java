@@ -4,8 +4,6 @@ import java.sql.Date;
 
 public class UpdateProfessorDto {
     private int id;
-    private String salt;
-    private String passwordHash;
     private String name;
     private String surname;
     private String email;
@@ -14,15 +12,12 @@ public class UpdateProfessorDto {
     private String address;
     private String gender;
     private String biographicalInfo;
-    private boolean verified;
 
 
-    public UpdateProfessorDto(int id, String salt, String passwordHash, String name, String surname,
+    public UpdateProfessorDto(int id, String name, String surname,
                               String email, Date birthdate, String phoneNumber, String address,
-                              String gender, String biographicalInfo, boolean verified) {
+                              String gender, String biographicalInfo) {
         this.id = id;
-        this.salt = salt;
-        this.passwordHash = passwordHash;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -31,7 +26,7 @@ public class UpdateProfessorDto {
         this.address = address;
         this.gender = gender;
         this.biographicalInfo = biographicalInfo;
-        this.verified = verified;
+
     }
 
 
@@ -71,11 +66,6 @@ public class UpdateProfessorDto {
         return biographicalInfo;
     }
 
-    public boolean isVerified() {
-        return verified;
-    }
-
-
     public void setId(int id) {
         this.id = id;
     }
@@ -112,23 +102,4 @@ public class UpdateProfessorDto {
         this.biographicalInfo = biographicalInfo;
     }
 
-    public void setVerified(boolean verified) {
-        this.verified = verified;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
-    }
 }

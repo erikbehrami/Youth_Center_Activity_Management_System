@@ -5,8 +5,6 @@ import java.sql.Date;
 public class UpdateAdminsDto {
 
     private int id;
-    private String username;
-    private String password;
     private String name;
     private String surname;
     private String email;
@@ -14,11 +12,10 @@ public class UpdateAdminsDto {
     private String phoneNumber;
     private String address;
     private String gender;
+    private String biographicalInfo;
 
-    public UpdateAdminsDto(int id, String username, String password, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender) {
+    public UpdateAdminsDto(int id, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender, String biographicalInfo) {
         this.id = id;
-        this.username = username;
-        this.password = password;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -26,16 +23,11 @@ public class UpdateAdminsDto {
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.gender = gender;
+        this.biographicalInfo = biographicalInfo;
     }
 
-    public int getId() { return id; }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -66,14 +58,6 @@ public class UpdateAdminsDto {
         return gender;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -100,5 +84,13 @@ public class UpdateAdminsDto {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getBiographicalInfo() {
+        return biographicalInfo;
+    }
+
+    public void setBiographicalInfo(String biographicalInfo) {
+        this.biographicalInfo = biographicalInfo;
     }
 }

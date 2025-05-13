@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-public class Admins implements User{
+public class Admins implements User {
     private int id;
     private String username;
     private String salt;
@@ -18,9 +18,9 @@ public class Admins implements User{
     private String phoneNumber;
     private String address;
     private String gender;
+    private String biographicalInfo;
 
-
-    private Admins(int id, String username, String salt, String passwordHash, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender) {
+    private Admins(int id, String username, String salt, String passwordHash, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender, String biographicalInfo) {
         this.id = id;
         this.username = username;
         this.salt = salt;
@@ -32,7 +32,7 @@ public class Admins implements User{
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.gender = gender;
-
+        this.biographicalInfo = biographicalInfo;
     }
 
     public static Admins getInstance(ResultSet resultSet) throws SQLException {
@@ -47,8 +47,9 @@ public class Admins implements User{
         String phoneNumber = resultSet.getString("phoneNumber");
         String address = resultSet.getString("address");
         String gender = resultSet.getString("gender");
+        String biographicalInfo = resultSet.getString("biographicalInfo");
 
-        return new Admins(id, username, salt, passwordHash, name, surname, email, birthdate, phoneNumber, address, gender);
+        return new Admins(id, username, salt, passwordHash, name, surname, email, birthdate, phoneNumber, address, gender, biographicalInfo);
     }
 
     public int getId() {
@@ -94,5 +95,10 @@ public class Admins implements User{
     public String getGender() {
         return this.gender;
     }
+
+    public String getBiographicalInfo() {
+        return this.biographicalInfo;
+    }
+
 }
 

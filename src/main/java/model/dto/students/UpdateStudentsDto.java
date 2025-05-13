@@ -3,8 +3,6 @@ package model.dto.students;
 import java.sql.Date;
 
 public class UpdateStudentsDto {
-    private String salt;
-    private String passwordHash;
     private String name;
     private String surname;
     private String email;
@@ -15,9 +13,7 @@ public class UpdateStudentsDto {
     private String biographicalInfo;
     private int id;
 
-    public UpdateStudentsDto(String salt, String passwordHash, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender, String biographicalInfo, int id) {
-        this.salt = salt;
-        this.passwordHash = passwordHash;
+    public UpdateStudentsDto(int id, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender, String biographicalInfo) {
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -99,19 +95,4 @@ public class UpdateStudentsDto {
         return id;
     }
 
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
-    }
 }

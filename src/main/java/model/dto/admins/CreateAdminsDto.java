@@ -5,25 +5,21 @@ import java.sql.Date;
 public class CreateAdminsDto {
 
     private String username;
-    private String password;
+    private String salt;
+    private String passwordHash;
     private String name;
     private String surname;
     private String email;
-    private Date birthdate;
-    private String phoneNumber;
-    private String address;
-    private String gender;
 
-    public CreateAdminsDto(String username, String password, String name, String surname, String email, Date birthdate, String phoneNumber, String address, String gender) {
+
+    public CreateAdminsDto(String username, String salt, String passwordHash, String name, String surname, String email) {
         this.username = username;
-        this.password = password;
+        this.salt = salt;
+        this.passwordHash = passwordHash;
         this.name = name;
         this.surname = surname;
         this.email = email;
-        this.birthdate = birthdate;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
-        this.gender = gender;
+
     }
 
     public String getUsername() {
@@ -32,14 +28,6 @@ public class CreateAdminsDto {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getName() {
@@ -66,35 +54,19 @@ public class CreateAdminsDto {
         this.email = email;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
+    public String getSalt() {
+        return salt;
     }
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 }
