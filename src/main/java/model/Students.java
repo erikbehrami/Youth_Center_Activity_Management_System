@@ -98,5 +98,9 @@ public class Students implements User{
     public String getBiographicalInfo() {
         return this.biographicalInfo;
     }
+
+    public String toString() {
+        return this.getName() + " " + this.getSurname() + " (" + this.getEmail() + ")";
+    }
 }
 

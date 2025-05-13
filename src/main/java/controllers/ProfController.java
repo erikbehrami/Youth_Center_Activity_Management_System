@@ -19,4 +19,10 @@ public class ProfController extends BaseController {
     private void handleProfStudents(){
         sceneManager.switchScene(Navigator.PROF_STUDENTS, "Prof Students");
     }
+
+    @FXML
+    private void handleProfProfile(){sceneManager.switchScene(Navigator.PROFILE, "Prof Profile");}
+
+    @FXML
+    private void handleProfMessages(){sceneManager.switchScene(Navigator.PROF_MESSAGES, "Prof Messages");}
 }

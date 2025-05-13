@@ -2,30 +2,32 @@ package model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class StudentMessages {
-
     private int id;
     private int idStudent;
     private int idProfessor;
     private String message;
-    private final Date sendAt = new Date();
+    private Timestamp sendAt;
 
-    private StudentMessages(int id, int idStudent, int idProfessor, String message) {
+    public StudentMessages(int id, int idStudent, int idProfessor, String message, Timestamp sendAt) {
         this.id = id;
         this.idStudent = idStudent;
         this.idProfessor = idProfessor;
         this.message = message;
+        this.sendAt = sendAt;
     }
 
     public static StudentMessages getInstance(ResultSet rs) throws SQLException {
-        int id = rs.getInt("id");
-        int idStudent = rs.getInt("id_student");
-        int idProfessor = rs.getInt("id_professor");
-        String message = rs.getString("message");
-
-        return new StudentMessages(id,idStudent,idProfessor,message);
+        return new StudentMessages(
+                rs.getInt("id"),
+                rs.getInt("id_student"),
+                rs.getInt("id_professor"),
+                rs.getString("message"),
+                rs.getTimestamp("sendAt")
+        );
     }
 
     public int getId() {

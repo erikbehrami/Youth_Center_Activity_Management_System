@@ -114,7 +114,7 @@ CREATE TABLE studentMessages (
                                   id_Student INTEGER,
                                   id_Professor INTEGER,
                                   message TEXT,
-                                  sentAt DATE,
+                                  sendAt TIMESTAMP,
                                   FOREIGN KEY (id_Student) REFERENCES students(id),
                                   FOREIGN KEY (id_Professor) REFERENCES professors(id)
 );

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" stylesheets="@../css/prof.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfessorController.ProfStudentMessagesController">
+    <fx:include source="profSidebar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0" />
+   <AnchorPane layoutX="241.0" layoutY="50.0" prefHeight="625.0" prefWidth="958.0">
+      <children>
+          <VBox alignment="TOP_CENTER" layoutX="45.0" layoutY="8.0" prefHeight="619.0" prefWidth="866.0" spacing="10">
+      
+          <HBox spacing="10">
+              <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Compose Message" />
+          </HBox>
+      
+          <GridPane hgap="10" vgap="10">
+              <Label text="Student:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+              <ComboBox fx:id="studentComboBox" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+      
+              <Label text="Message:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+              <TextArea fx:id="messageTextArea" prefHeight="100" prefWidth="478.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+               </rowConstraints>
+
+          </GridPane>
+      
+          <Button fx:id="sendButton" onAction="#handleSendMessage" style="-fx-background-color: #0078D7; -fx-text-fill: white; -fx-padding: 5px 15px;" text="Send Message" />
+      
+          <Separator />
+      
+          <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Sent Messages" />
+      
+          <TableView fx:id="messagesTableView" prefHeight="268.0" prefWidth="810.0">
+              <columns>
+                  <TableColumn fx:id="messageColumn" prefWidth="449.5999755859375" text="Message" />
+                  <TableColumn fx:id="dateColumn" prefWidth="416.0000366210937" text="Sent At" />
+              </columns>
+          </TableView>
+      </VBox>
+      </children>
+   </AnchorPane>
+    <AnchorPane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #101935;" styleClass="navbar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <fx:include source="navBar.fxml" />
+    </AnchorPane>
+</AnchorPane>
