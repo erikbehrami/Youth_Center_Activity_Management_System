@@ -73,23 +73,20 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
     }
 
     public Students update(UpdateStudentsDto UpdateSDTO) {
-        String query = "update students set salt = ?,passwordHash name = ?, surname = ?, email = ?, birthdate = ?, phoneNumber = ?, address = ?, gender = ?, biographicalInfo = ? where id = ?";
+        String query = "update students set name = ?, surname = ?, email = ?, birthdate = ?, phoneNumber = ?, address = ?, gender = ?, biographicalInfo = ? where id = ?";
         try {
             PreparedStatement statement =
                     this.connection.prepareStatement(
                             query, Statement.RETURN_GENERATED_KEYS);
-
-            statement.setString(1, UpdateSDTO.getSalt());
-            statement.setString(2, UpdateSDTO.getPasswordHash());
-            statement.setString(3, UpdateSDTO.getName());
-            statement.setString(4, UpdateSDTO.getSurname());
-            statement.setString(5, UpdateSDTO.getEmail());
-            statement.setDate(6, UpdateSDTO.getBirthdate());
-            statement.setString(7, UpdateSDTO.getPhoneNumber());
-            statement.setString(8, UpdateSDTO.getAddress());
-            statement.setString(9, UpdateSDTO.getGender());
-            statement.setString(10, UpdateSDTO.getBiographicalInfo());
-            statement.setInt(11, UpdateSDTO.getId());
+            statement.setString(1, UpdateSDTO.getName());
+            statement.setString(2, UpdateSDTO.getSurname());
+            statement.setString(3, UpdateSDTO.getEmail());
+            statement.setDate(4, UpdateSDTO.getBirthdate());
+            statement.setString(5, UpdateSDTO.getPhoneNumber());
+            statement.setString(6, UpdateSDTO.getAddress());
+            statement.setString(7, UpdateSDTO.getGender());
+            statement.setString(8, UpdateSDTO.getBiographicalInfo());
+            statement.setInt(9, UpdateSDTO.getId());
             statement.execute();
             ResultSet res = statement.getGeneratedKeys();
             if (res.next()) {
@@ -140,7 +137,7 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
         return null;
     }
 
-    public ArrayList<Students> getEnrolledStudents(int professorId){
+    public ArrayList<Students> getEnrolledStudents(int professorId) {
         ArrayList<Students> enrolledStudents = new ArrayList<>();
         String query = """
                 SELECT
@@ -162,17 +159,17 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
                 WHERE c.id_professor = ?
                 """;
 
-        try(Connection conn = DBConnector.getConnection();
-            PreparedStatement preparedStatement = conn.prepareStatement(query)){
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 
-            preparedStatement.setInt(1,professorId);
+            preparedStatement.setInt(1, professorId);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Students students = Students.getInstance(resultSet);
                 enrolledStudents.add(students);
             }
-        }catch (SQLException se){
+        } catch (SQLException se) {
             se.printStackTrace();
         }
 
@@ -191,7 +188,7 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
                    ORDER BY year;
                 """;
 
-        try (PreparedStatement stmt = connection.prepareStatement(query)){
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, professorId);
             ResultSet rs = stmt.executeQuery();
 
@@ -209,12 +206,12 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
 
     public int getMaleStudentsCountForProfessor(int professorId) {
         String query = """
-            SELECT count(*)
-            FROM students s
-            JOIN enrolled e ON s.id = e.id_student
-            JOIN courses c ON c.id = e.id_course
-            WHERE c.id_professor = ? AND s.gender = 'Male'
-            """;
+                SELECT count(*)
+                FROM students s
+                JOIN enrolled e ON s.id = e.id_student
+                JOIN courses c ON c.id = e.id_course
+                WHERE c.id_professor = ? AND s.gender = 'Male'
+                """;
 
         int maleStudentsCount = 0;
 

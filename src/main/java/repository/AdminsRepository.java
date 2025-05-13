@@ -18,20 +18,17 @@ public class AdminsRepository extends BaseRepository<Admins, CreateAdminsDto, Up
 
     // Create new admins
     public Admins create(CreateAdminsDto createAdminsDto) {
-        String query = "insert into admins (username, password, name, surname, email, birthdate, phoneNumber, address, gender) values (?,?,?,?,?,?,?,?,?)";
+        String query = "insert into admins (username, salt, passwordHash, name, surname, email) values (?,?,?,?,?,?)";
         try {
             PreparedStatement pstm =
                     this.connection.prepareStatement(
                             query, Statement.RETURN_GENERATED_KEYS);
             pstm.setString(1, createAdminsDto.getUsername());
-            pstm.setString(2, createAdminsDto.getPassword());
-            pstm.setString(3, createAdminsDto.getName());
-            pstm.setString(4, createAdminsDto.getSurname());
-            pstm.setString(5, createAdminsDto.getEmail());
-            pstm.setDate(6, createAdminsDto.getBirthdate());
-            pstm.setString(7, createAdminsDto.getPhoneNumber());
-            pstm.setString(8, createAdminsDto.getAddress());
-            pstm.setString(9, createAdminsDto.getGender());
+            pstm.setString(2, createAdminsDto.getSalt());
+            pstm.setString(3, createAdminsDto.getPasswordHash());
+            pstm.setString(4, createAdminsDto.getName());
+            pstm.setString(5, createAdminsDto.getSurname());
+            pstm.setString(6, createAdminsDto.getEmail());
             pstm.execute();
             ResultSet res = pstm.getGeneratedKeys();
             if (res.next()) {
@@ -46,19 +43,20 @@ public class AdminsRepository extends BaseRepository<Admins, CreateAdminsDto, Up
 
     //Update admins
     public Admins update(UpdateAdminsDto updateAdDto) {
-        String query = "update admins set password = ?, name = ?, surname = ?, email = ?, birthdate = ?, phoneNumber = ?, address = ?, gender = ? where id = ?";
+        String query = "update admins set  name = ?, surname = ?, email = ?, birthdate = ?, phoneNumber = ?, address = ?, gender = ?, biographicalInfo=? where id = ?";
         try {
             PreparedStatement pstm =
                     this.connection.prepareStatement(
                             query, Statement.RETURN_GENERATED_KEYS);
-            pstm.setString(1, updateAdDto.getPassword());
-            pstm.setString(2, updateAdDto.getName());
-            pstm.setString(3, updateAdDto.getSurname());
-            pstm.setString(4, updateAdDto.getEmail());
-            pstm.setDate(5, updateAdDto.getBirthdate());
-            pstm.setString(6, updateAdDto.getPhoneNumber());
-            pstm.setString(7, updateAdDto.getAddress());
-            pstm.setString(8, updateAdDto.getGender());
+            ;
+            pstm.setString(1, updateAdDto.getName());
+            pstm.setString(2, updateAdDto.getSurname());
+            pstm.setString(3, updateAdDto.getEmail());
+            pstm.setDate(4, updateAdDto.getBirthdate());
+            pstm.setString(5, updateAdDto.getPhoneNumber());
+            pstm.setString(6, updateAdDto.getAddress());
+            pstm.setString(7, updateAdDto.getGender());
+            pstm.setString(8, updateAdDto.getBiographicalInfo());
             pstm.setInt(9, updateAdDto.getId());
             pstm.execute();
             ResultSet res = pstm.getGeneratedKeys();

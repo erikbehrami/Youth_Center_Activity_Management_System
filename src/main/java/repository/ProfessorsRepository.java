@@ -71,23 +71,20 @@ public class ProfessorsRepository extends BaseRepository<Professors, CreateProfe
     }
 
     public Professors update(UpdateProfessorDto UpdatePDto) {
-        String query = "update professors set salt = ?,passwordHash name = ?, surname = ?, email = ?, birthdate = ?, phoneNumber = ?, address = ?, gender = ?, biographicalInfo = ? where id = ?";
+        String query = "update professors set name = ?, surname = ?, email = ?, birthdate = ?, phoneNumber = ?, address = ?, gender = ?, biographicalInfo = ? where id = ?";
         try {
             PreparedStatement statement =
                     this.connection.prepareStatement(
                             query, Statement.RETURN_GENERATED_KEYS);
-
-            statement.setString(1, UpdatePDto.getSalt());
-            statement.setString(2, UpdatePDto.getPasswordHash());
-            statement.setString(3, UpdatePDto.getName());
-            statement.setString(4, UpdatePDto.getSurname());
-            statement.setString(5, UpdatePDto.getEmail());
-            statement.setDate(6, UpdatePDto.getBirthdate());
-            statement.setString(7, UpdatePDto.getPhoneNumber());
-            statement.setString(8, UpdatePDto.getAddress());
-            statement.setString(9, UpdatePDto.getGender());
-            statement.setString(10, UpdatePDto.getBiographicalInfo());
-            statement.setInt(11, UpdatePDto.getId());
+            statement.setString(1, UpdatePDto.getName());
+            statement.setString(2, UpdatePDto.getSurname());
+            statement.setString(3, UpdatePDto.getEmail());
+            statement.setDate(4, UpdatePDto.getBirthdate());
+            statement.setString(5, UpdatePDto.getPhoneNumber());
+            statement.setString(6, UpdatePDto.getAddress());
+            statement.setString(7, UpdatePDto.getGender());
+            statement.setString(8, UpdatePDto.getBiographicalInfo());
+            statement.setInt(9, UpdatePDto.getId());
             statement.execute();
             ResultSet res = statement.getGeneratedKeys();
             if (res.next()) {
@@ -177,39 +174,5 @@ public class ProfessorsRepository extends BaseRepository<Professors, CreateProfe
             System.out.println("Error accepting professor: " + e.getMessage());
         }
         return false;
-    }
-
-    public int getMaxCourses(int professorId) {
-        String query = "SELECT max_courses FROM Professors WHERE id = ?";
-
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, professorId);
-            ResultSet resultSet = statement.executeQuery();
-
-            if (resultSet.next()) {
-                return resultSet.getInt("max_courses");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return 10;
-    }
-
-    public int getMaxStudents(int professorId) {
-        String query = "SELECT max_students FROM Professors WHERE id = ?";
-
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, professorId);
-            ResultSet resultSet = statement.executeQuery();
-
-            if (resultSet.next()) {
-                return resultSet.getInt("max_students");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return 10;
     }
 }
