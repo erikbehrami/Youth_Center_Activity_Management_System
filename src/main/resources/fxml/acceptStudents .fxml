@@ -17,7 +17,7 @@
             <TableView fx:id="professorsTable1" prefHeight="351.0" prefWidth="957.0" styleClass="change">
                <columns>
                   <TableColumn fx:id="profID1" prefWidth="100.0" text="ID" />
-                  <TableColumn fx:id="profNAME1" prefWidth="145.0" text="acceptstudent.Name" />
+                  <TableColumn fx:id="profNAME1" prefWidth="145.0" text="%acceptstudent.Name" />
                   <TableColumn fx:id="profSURNAME1" prefWidth="145.0" text="%acceptstudent.Surname" />
                   <TableColumn fx:id="profEMAIL1" prefWidth="200.0" text="%acceptstudent.Email" />
                   <TableColumn fx:id="profGENDER1" prefWidth="145.0" text="%acceptstudent.Course" />
