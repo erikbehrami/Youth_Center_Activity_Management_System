@@ -19,6 +19,7 @@ create table admins(
                        phoneNumber varchar(15),
                        address varchar(255),
                        gender varchar(20),
+                       biographicalInfo text,
                        registration_date date default CURRENT_DATE
 );
 
@@ -36,8 +37,8 @@ create table professors(
                            address varchar(255),
                            gender varchar(20),
                            biographicalInfo text,
-                           registration_date date default CURRENT_DATE
-                           max_courses integer
+                           registration_date date default CURRENT_DATE,
+                           max_courses integer,
                            max_students integer
 );
 
