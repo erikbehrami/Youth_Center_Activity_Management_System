@@ -22,6 +22,7 @@ module com.example.demo {
     opens controllers.StudentController to javafx.fxml;
     opens controllers.UpdateController to javafx.fxml;
     opens controllers.RegisterController to javafx.fxml;
+    opens controllers.CourseController to javafx.fxml;
     opens controllers to javafx.fxml;
     opens model.dto.course to javafx.fxml;
     opens model.dto to javafx.fxml;
@@ -37,6 +38,7 @@ module com.example.demo {
     exports controllers.StudentController;
     exports controllers.UpdateController;
     exports controllers.RegisterController;
+    exports controllers.CourseController;
     exports model.dto;
     exports model.dto.course;
 }
