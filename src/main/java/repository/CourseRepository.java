@@ -159,4 +159,55 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, U
         }
         return "";
     }
+
+    public ArrayList<Courses> getAllCoursesInDB() {
+        ArrayList<Courses> listOfCourses = new ArrayList<>();
+        String query = "SELECT * FROM courses";
+
+        try (
+                Connection conn = DBConnector.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Courses course = Courses.getInstance(rs);
+                listOfCourses.add(course);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return listOfCourses;
+    }
+
+    public HashMap<Integer, Integer> getEnrollmentsForCourse() {
+        HashMap<Integer, Integer> enrollments = new HashMap<>();
+
+        String query = """
+            SELECT 
+                c.id AS course_id,
+                COUNT(e.id_Student) AS students_enrolled
+            FROM 
+                courses c
+            LEFT JOIN 
+                enrolled e ON c.id = e.id_Course
+            GROUP BY 
+                c.id
+        """;
+
+        try (
+                Connection conn = DBConnector.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query);
+                ResultSet rs = stmt.executeQuery()
+        ) {
+            while (rs.next()) {
+                int courseId = rs.getInt("course_id");
+                int count = rs.getInt("students_enrolled");
+                enrollments.put(courseId, count);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return enrollments;
+    }
 }
