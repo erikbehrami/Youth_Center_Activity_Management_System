@@ -14,4 +14,9 @@ public class StdController extends BaseController{
         sceneManager.switchScene(Navigator.STUDENT_PROFILE, "Student Profile");
     }
 
+    @FXML
+    private void stdMessages(){
+        sceneManager.switchScene(Navigator.STUDENT_MESSAGES, "Student Messages");
+    }
+
 }

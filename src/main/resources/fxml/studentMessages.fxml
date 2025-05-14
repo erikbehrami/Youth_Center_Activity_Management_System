@@ -15,17 +15,18 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" stylesheets="@../css/prof.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentController.StudentMessagesController">
     <children>
-        <AnchorPane layoutX="227.0" layoutY="14.0" prefHeight="623.0" prefWidth="958.0">
+        <fx:include source="stdSideBar.fxml" AnchorPane.leftAnchor="14" AnchorPane.topAnchor="54" />
+        <AnchorPane layoutX="323.0" layoutY="50.0" prefHeight="626.0" prefWidth="879.0">
             <children>
-                <VBox layoutX="79.0" layoutY="14.0" prefWidth="800.0" spacing="10">
+                <VBox layoutX="25.0" layoutY="14.0" prefHeight="585.0" prefWidth="811.0" spacing="10">
                     <Label prefHeight="26.0" prefWidth="155.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Received Messages" />
                     <Label text="Professor:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                     <ComboBox fx:id="professorComboBox" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                    <TableView fx:id="messagesTable" prefHeight="303.0" prefWidth="773.0">
+                    <TableView fx:id="messagesTable" prefHeight="270.0" prefWidth="746.0">
                         <columns>
                             <TableColumn fx:id="idColumn" prefWidth="150.0" text="ID" />
                             <TableColumn fx:id="messageColumn" prefWidth="415.1999816894531" text="Message" />
-                            <TableColumn fx:id="sendAtColumn" prefWidth="234.40008544921875" text="Sent At" />
+                            <TableColumn fx:id="sendAtColumn" prefWidth="244.8000366210938" text="Sent At" />
                         </columns>
                     </TableView>
 
@@ -53,6 +54,10 @@
                     </GridPane>
                 </VBox>
             </children>
+        </AnchorPane>
+
+        <AnchorPane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #101935;" styleClass="navbar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <fx:include source="navBar.fxml" />
         </AnchorPane>
     </children>
 </AnchorPane>

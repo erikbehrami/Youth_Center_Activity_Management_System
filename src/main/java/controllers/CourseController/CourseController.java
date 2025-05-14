@@ -121,6 +121,5 @@ public class CourseController {
         return mainCard;
     }
 
-    public void handleMessages(){sceneManager.switchScene(Navigator.STUDENT_MESSAGES,"StudentMessages");}
 
 }
