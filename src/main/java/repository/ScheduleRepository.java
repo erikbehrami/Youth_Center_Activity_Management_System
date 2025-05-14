@@ -100,22 +100,22 @@ public class ScheduleRepository {
     // get schdeule for student
     public ArrayList<Schedules> getScheduleForAStudent(int studentId) {
         String query = """
-            SELECT DISTINCT ON (s.id_courses) s.*
+            SELECT
+                s.*
             FROM schedules s
             JOIN enrolled e ON s.id_courses = e.id_course
             WHERE e.id_student = ?
             ORDER BY
-              s.id_courses,
-              CASE s.day
-                WHEN 'Monday' THEN 1
-                WHEN 'Tuesday' THEN 2
-                WHEN 'Wednesday' THEN 3
-                WHEN 'Thursday' THEN 4
-                WHEN 'Friday' THEN 5
-                WHEN 'Saturday' THEN 6
-                WHEN 'Sunday' THEN 7
-                ELSE 8
-              END;
+                CASE s.day
+                    WHEN 'Monday' THEN 1
+                    WHEN 'Tuesday' THEN 2
+                    WHEN 'Wednesday' THEN 3
+                    WHEN 'Thursday' THEN 4
+                    WHEN 'Friday' THEN 5
+                    WHEN 'Saturday' THEN 6
+                    WHEN 'Sunday' THEN 7
+                    ELSE 8
+            	END;
         """;
         ArrayList<Schedules> result = new ArrayList<>();
         try (PreparedStatement stmt = connection.prepareStatement(query)) {

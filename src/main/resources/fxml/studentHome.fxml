@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -13,65 +13,113 @@
 
 <AnchorPane maxHeight="675.0" maxWidth="1200.0" minHeight="675.0" minWidth="1200.0" prefHeight="675.0" prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentController.StudentDashboardController">
    <children>
-      <AnchorPane layoutX="33.0" layoutY="64.0" maxHeight="220.0" maxWidth="300.0" minHeight="220.0" minWidth="300.0" prefHeight="220.0" prefWidth="300.0" style="-fx-background-color: #0f1832; -fx-background-radius: 20;" styleClass="studentBorders" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="60.0">
+      <AnchorPane layoutX="320.0" layoutY="64.80000305175781" prefHeight="605.0" prefWidth="870.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="323.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="64.0">
          <children>
-            <ImageView fitHeight="106.0" fitWidth="200.0" layoutX="52.6" layoutY="30.4" AnchorPane.leftAnchor="52.6" AnchorPane.topAnchor="30.4">
-               <image>
-                  <Image url="@../images/user1.png" />
-               </image>
-            </ImageView>
-            <HBox alignment="CENTER" layoutY="137.4" spacing="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <Label fx:id="usernameLabel" text="username" textFill="WHITE" />
+            <HBox layoutY="103.19999694824219" spacing="14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="114.0">
+               <children>
+                  <AnchorPane prefHeight="498.0" prefWidth="460.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label layoutX="2.4" layoutY="-5.4" text="%Courses" textFill="#0f1832" AnchorPane.leftAnchor="2.4" AnchorPane.topAnchor="-5.4">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane fitToWidth="true" layoutY="36.8" prefHeight="419.0" prefWidth="462.0" style="-fx-background: white; -fx-border-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+                           <content>
+                              <HBox>
+                                 <children>
+                                    <GridPane fx:id="coursesGrid" hgap="5" prefHeight="418.0" prefWidth="426.0" style="-fx-background-color: white;" vgap="5" HBox.hgrow="ALWAYS">
+                                       <columnConstraints>
+                                          <ColumnConstraints percentWidth="100.0" />
+                                       </columnConstraints>
+                                    </GridPane>
+                                 </children>
+                              </HBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+                  <VBox spacing="14.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <PieChart prefHeight="158.0" prefWidth="410.0" style="-fx-border-color: lightgrey; -fx-border-radius: 10;" VBox.vgrow="ALWAYS" />
+                  
+                                    <AnchorPane prefHeight="314.0" prefWidth="410.0" style="-fx-border-color: lightgrey; -fx-border-radius: 10;" styleClass="studentBorders" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label layoutX="11.6" layoutY="7.0" text="%Schedule">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <ScrollPane fx:id="scheduleScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="339.0" prefWidth="300.0" style="-fx-background: white; -fx-border-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
+                                 <content>
+                                    <VBox fx:id="scheduleVBox" prefWidth="330.0" spacing="10" />
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
             </HBox>
-
-            <HBox alignment="CENTER" layoutY="160.0" spacing="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <Label fx:id="fullNameLabel" text="userfullname" textFill="WHITE">
-                  <font>
-                     <Font size="16.0" />
-                  </font>
-               </Label>
-            </HBox>
-         </children>
-      </AnchorPane>
-
-      <AnchorPane prefHeight="379.0" prefWidth="300.0" style="-fx-background-color: #0f1832; -fx-background-radius: 20;" styleClass="studentBorders" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="290.0">
-         <children>
-            <Label layoutX="10.6" layoutY="12.0" text="%Schedule" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <ScrollPane fx:id="scheduleScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="339.0" prefWidth="300.0" style="-fx-background-color: #0f1832;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
-               <content>
-                  <VBox fx:id="scheduleVBox" prefWidth="306.0" spacing="10" style="-fx-background-color: #0f1832;" />
-               </content>
-            </ScrollPane>
-         </children>
-      </AnchorPane>
-
-      <AnchorPane layoutX="327.0" layoutY="60.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="315.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="60.0">
-         <children>
-            <Label layoutX="1.4" layoutY="4.8" text="%Courses" textFill="#0f1832" AnchorPane.leftAnchor="1.4" AnchorPane.topAnchor="4.8">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <ScrollPane fitToWidth="true" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
-               <content>
-                  <GridPane fx:id="coursesGrid" hgap="5" style="-fx-background-color: white;" vgap="5">
-                     <columnConstraints>
-                        <ColumnConstraints percentWidth="33.3" />
-                        <ColumnConstraints percentWidth="33.3" />
-                        <ColumnConstraints percentWidth="33.3" />
-                     </columnConstraints>
-                  </GridPane>
-               </content>
-            </ScrollPane>
+            <AnchorPane layoutX="9.5999755859375" prefHeight="100.0" prefWidth="870.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <HBox layoutX="191.0" layoutY="44.0" prefHeight="100.0" prefWidth="870.0" spacing="14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane minWidth="250.0" prefHeight="200.0" prefWidth="288.0" style="-fx-border-color: lightGREy; -fx-border-radius: 10;" HBox.hgrow="ALWAYS">
+                           <children>
+                              <VBox alignment="CENTER_LEFT" layoutX="116.0" layoutY="-50.0" prefHeight="200.0" prefWidth="100.0" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label text="120">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Enrolled Courses" />
+                                 </children>
+                              </VBox>
+                              <FontAwesomeIconView layoutX="25.0" layoutY="62.0" size="35.0" text="" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane minWidth="250.0" prefHeight="200.0" prefWidth="288.0" style="-fx-border-color: lightGREy; -fx-border-radius: 10;" HBox.hgrow="ALWAYS">
+                           <children>
+                              <VBox alignment="CENTER_LEFT" layoutX="116.0" layoutY="-50.0" prefHeight="200.0" prefWidth="100.0" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label text="120">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Enrolled Courses" />
+                                 </children>
+                              </VBox>
+                              <FontAwesomeIconView layoutX="25.0" layoutY="62.0" size="35.0" text="" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane minWidth="250.0" prefHeight="200.0" prefWidth="288.0" style="-fx-border-color: lightGREy; -fx-border-radius: 10;" HBox.hgrow="ALWAYS">
+                           <children>
+                              <VBox alignment="CENTER_LEFT" layoutX="116.0" layoutY="-50.0" prefHeight="200.0" prefWidth="100.0" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label text="120">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Enrolled Courses" />
+                                 </children>
+                              </VBox>
+                              <FontAwesomeIconView layoutX="25.0" layoutY="62.0" size="35.0" text="" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
 
       <AnchorPane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #101935;" styleClass="navbar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <fx:include source="navBar.fxml" />
       </AnchorPane>
+      <fx:include source="stdSideBar.fxml" AnchorPane.leftAnchor="14" AnchorPane.topAnchor="54" />
    </children>
 </AnchorPane>

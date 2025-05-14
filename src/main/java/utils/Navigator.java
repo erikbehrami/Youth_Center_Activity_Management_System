@@ -39,6 +39,7 @@ interface AccountPages {
 
 interface StudentPages {
     String STUDENT_PROFILE = "/fxml/studentHome.fxml";
+    String STUDENT_COURSES = "/fxml/courses.fxml";
 }
 
 public class Navigator implements OverallPages, AdminPages, AccountPages, Modes, ProfPages, StudentPages {

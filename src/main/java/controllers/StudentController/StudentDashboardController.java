@@ -36,17 +36,24 @@ public class StudentDashboardController {
 
     @FXML
     private void initialize() {
-        loadStudentInfo();
-        loadCourses();
-        loadSchedule();
+            loadStudentInfo();
+            loadCourses();
+            loadSchedule();
+
     }
 
     private void loadStudentInfo() {
+        if(usernameLabel == null){
+            return;
+        }
         usernameLabel.setText(studentDashboardService.getUsername());
         fullNameLabel.setText(studentDashboardService.getStudentName());
     }
 
     private void loadCourses() {
+        if(coursesGrid == null){
+            return;
+        }
         List<Courses> coursesList = studentDashboardService.getEnrolledCourses();
         int column = 0;
         int row = 0;
@@ -67,7 +74,7 @@ public class StudentDashboardController {
             coursesGrid.add(courseCard, column, row);
 
             column++;
-            if (column == 3) {
+            if (column == 1) {
                 column = 0;
                 row++;
             }
@@ -75,6 +82,9 @@ public class StudentDashboardController {
     }
 
     private void loadSchedule() {
+        if(scheduleVBox == null){
+            return;
+        }
         List<Schedules> scheduleList = studentDashboardService.getStudentSchedule();
 
         int counter = 1;
@@ -89,7 +99,7 @@ public class StudentDashboardController {
             Label numLabel = new Label(String.format("%02d", counter));
             numLabel.setLayoutX(14);
             numLabel.setLayoutY(12);
-            numLabel.setStyle("-fx-text-fill: white;");
+            numLabel.setStyle("-fx-text-fill: black;");
             numLabel.setFont(Font.font(22));
 
             Line line = new Line();
@@ -97,29 +107,29 @@ public class StudentDashboardController {
             line.setLayoutX(55);
             line.setLayoutY(10);
             line.setStrokeWidth(2);
-            line.setStyle("-fx-stroke: white;");
+            line.setStyle("-fx-stroke: black;");
 
             Label profLabel = new Label(professorName);
             profLabel.setLayoutX(75);
             profLabel.setLayoutY(12);
             profLabel.setFont(Font.font(11));
-            profLabel.setStyle("-fx-text-fill: white;");
+            profLabel.setStyle("-fx-text-fill: black;");
 
             Label courseLabel = new Label(courseName);
             courseLabel.setLayoutX(75);
             courseLabel.setLayoutY(30);
             courseLabel.setFont(Font.font(14));
-            courseLabel.setStyle("-fx-text-fill: white;");
+            courseLabel.setStyle("-fx-text-fill: black;");
 
             Label timeLabel = new Label(schedule.getTimeStart() + " - " + schedule.getTimeEnd());
             timeLabel.setLayoutX(200);
             timeLabel.setLayoutY(12);
-            timeLabel.setStyle("-fx-text-fill: white;");
+            timeLabel.setStyle("-fx-text-fill: black;");
 
             Label dayLabel = new Label(schedule.getDay());
             dayLabel.setLayoutX(200);
             dayLabel.setLayoutY(30);
-            dayLabel.setStyle("-fx-text-fill: white;");
+            dayLabel.setStyle("-fx-text-fill: black;");
 
             scheduleCard.getChildren().addAll(numLabel, line, profLabel, courseLabel, timeLabel, dayLabel);
             scheduleVBox.getChildren().add(scheduleCard);
@@ -163,7 +173,7 @@ public class StudentDashboardController {
         profpane.getChildren().add(profLabel);
 
         Button enrollbtn = new Button("Details");
-        enrollbtn.setPrefSize(349, 35);
+        enrollbtn.setPrefSize(749, 35);
         enrollbtn.setStyle("-fx-border-color: black; -fx-background-color: black; -fx-background-radius: 10; -fx-border-radius: 10;");
         enrollbtn.setTextFill(javafx.scene.paint.Color.WHITE);
         enrollbtn.setFont(Font.font("System Bold", 14));
