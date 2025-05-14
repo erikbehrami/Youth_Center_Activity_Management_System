@@ -10,13 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentMessagesRepository {
-    public List<StudentMessages> getMessagesByStudent(int studentId) {
+
+
+    public List<StudentMessages> getMessagesByStudent(int studentId,int professorId) {
         List<StudentMessages> messages = new ArrayList<>();
-        String query = "SELECT * FROM studentMessages WHERE id_student = ? ORDER BY sendat DESC";
+        String query = "SELECT * FROM studentMessages WHERE id_student = ? and id_professor = ? ORDER BY sendat DESC";
 
         try (Connection connection = DBConnector.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, studentId);
+            statement.setInt(2, professorId);
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -46,6 +49,35 @@ public class StudentMessagesRepository {
             e.printStackTrace();
         }
         return false;
+    }
+
+
+    public List<StudentMessages> getMessagesForStudent(int studentId,int professorId) {
+        List<StudentMessages> messages = new ArrayList<>();
+        String query = """
+                SELECT DISTINCT sm.* from studentMessages sm
+                JOIN enrolled e on e.id_student = sm.id_student
+                JOIN professors p on p.id = sm.id_professor
+                JOIN courses s on s.id = e.id_course
+                WHERE e.id_student = ? and sm.id_professor = ?
+                """;
+
+        try (Connection connection = DBConnector.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, studentId);
+            statement.setInt(2, professorId);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                StudentMessages studentMessage = StudentMessages.getInstance(rs);
+
+                messages.add(studentMessage);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return messages;
     }
 }
 

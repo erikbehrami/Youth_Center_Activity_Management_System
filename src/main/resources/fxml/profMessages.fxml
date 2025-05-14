@@ -8,10 +8,8 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" stylesheets="@../css/prof.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfessorController.ProfStudentMessagesController">
@@ -30,16 +28,6 @@
       
               <Label text="Message:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
               <TextArea fx:id="messageTextArea" prefHeight="100" prefWidth="478.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-               <columnConstraints>
-                  <ColumnConstraints />
-                  <ColumnConstraints />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints />
-                  <RowConstraints />
-                  <RowConstraints />
-               </rowConstraints>
-
           </GridPane>
       
           <Button fx:id="sendButton" onAction="#handleSendMessage" style="-fx-background-color: #0078D7; -fx-text-fill: white; -fx-padding: 5px 15px;" text="Send Message" />

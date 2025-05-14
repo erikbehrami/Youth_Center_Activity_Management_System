@@ -30,16 +30,6 @@
       
               <Label text="Message:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
               <TextArea fx:id="messageTextArea" prefHeight="100" prefWidth="478.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-               <columnConstraints>
-                  <ColumnConstraints />
-                  <ColumnConstraints />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints />
-                  <RowConstraints />
-                  <RowConstraints />
-               </rowConstraints>
-
           </GridPane>
       
           <Button fx:id="sendButton" onAction="#handleSendMessage" style="-fx-background-color: #0078D7; -fx-text-fill: white; -fx-padding: 5px 15px;" text="Send Message" />

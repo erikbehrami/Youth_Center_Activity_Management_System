@@ -33,12 +33,19 @@ public class ProfStudentMessagesController extends ProfController {
     private TableColumn<StudentMessages, Timestamp> dateColumn;
 
     private final ProfStudentMessagesService messageService = new ProfStudentMessagesService();
+    SessionManager sessionManager = SessionManager.getInstance();
 
     @FXML
     public void initialize() {
         setupMessagesTable();
         loadStudents();
-        loadMessages();
+        studentComboBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
+            if (newValue != null) {
+                loadMessages();
+            } else {
+                messagesTableView.getItems().clear();
+            }
+        });
     }
 
     private void setupMessagesTable() {
@@ -75,8 +82,13 @@ public class ProfStudentMessagesController extends ProfController {
     private void loadMessages() {
         Students selectedStudent = studentComboBox.getValue();
         if (selectedStudent != null) {
-            List<StudentMessages> messages = messageService.getMessagesForStudent(selectedStudent.getId());
-            messagesTableView.setItems(FXCollections.observableArrayList(messages));
+            if (sessionManager.isProfessor())
+            {
+                int professorId = sessionManager.currentUser().getId();
+                List<StudentMessages> messages = messageService.getMessagesForStudent(selectedStudent.getId(),professorId);
+                messagesTableView.setItems(FXCollections.observableArrayList(messages));
+            }
+
         } else {
             messagesTableView.setItems(FXCollections.observableArrayList());
         }

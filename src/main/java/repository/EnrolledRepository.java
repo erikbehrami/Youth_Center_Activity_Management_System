@@ -3,6 +3,7 @@ package repository;
 import database.DBConnector;
 import model.Courses;
 import model.Enrolled;
+import model.Professors;
 import model.Students;
 import model.dto.enrolled.CreateEnrolledDto;
 
@@ -85,5 +86,28 @@ public class EnrolledRepository extends BaseRepository<Enrolled, CreateEnrolledD
             e.printStackTrace();
         }
         return courses;
+    }
+
+    public List<Professors> getProfessorsByStudentId(int studentId) {
+        List<Professors> professors = new ArrayList<>();
+        String query = """
+            SELECT * FROM professors p
+            JOIN enrolled e ON p.id = e.id_professor
+            WHERE e.id_student = ?
+            """;
+
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, studentId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                professors.add(Professors.getInstance(resultSet));
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return professors;
     }
 }

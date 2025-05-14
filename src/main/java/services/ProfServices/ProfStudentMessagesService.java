@@ -4,7 +4,6 @@ import model.Students;
 import repository.StudentsRepository;
 import repository.StudentMessagesRepository;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class ProfStudentMessagesService extends BaseProfessorService{
         return messageRepository.saveMessage(studentId, professorId, message);
     }
 
-    public List<StudentMessages> getMessagesForStudent(int studentId) {
-        return messageRepository.getMessagesByStudent(studentId);
+    public List<StudentMessages> getMessagesForStudent(int studentId,int professorId) {
+        return messageRepository.getMessagesByStudent(studentId,professorId);
     }
 }

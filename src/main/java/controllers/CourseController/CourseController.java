@@ -9,12 +9,15 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import model.Courses;
 import repository.CourseRepository;
+import services.SceneManager;
+import services.SessionManager;
+import utils.Navigator;
 
 import java.util.HashMap;
 import java.util.List;
 
 public class CourseController {
-
+    SceneManager sceneManager = SceneManager.getInstance();
     @FXML private GridPane coursesGrid;
 
     private final CourseRepository courseRepository = new CourseRepository();
@@ -117,4 +120,7 @@ public class CourseController {
 
         return mainCard;
     }
+
+    public void handleMessages(){sceneManager.switchScene(Navigator.STUDENT_MESSAGES,"StudentMessages");}
+
 }

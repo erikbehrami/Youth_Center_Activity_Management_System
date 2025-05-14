@@ -10,12 +10,13 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import model.Courses;
 import model.Schedules;
+import services.SceneManager;
 import services.StudentServices.StudentDashboardService;
 
 import java.util.List;
 
 public class StudentDashboardController {
-
+    public SceneManager sceneManager = SceneManager.getInstance();
     private final StudentDashboardService studentDashboardService = new StudentDashboardService();
 
     @FXML private
@@ -183,4 +184,5 @@ public class StudentDashboardController {
 
         return thecard;
     }
+
 }
