@@ -5,26 +5,49 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="baseAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#handleMouseMoved" prefHeight="675.0" prefWidth="1200.0" stylesheets="@../css/profile.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfileController">
-    <StackPane layoutY="49.400001525878906" onMouseMoved="#handleMouseMoved" style="-fx-background-color: #d8d8d8;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+<AnchorPane fx:id="baseAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            onMouseMoved="#handleMouseMoved" prefHeight="675.0" prefWidth="1200.0" stylesheets="@../css/profile.css"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.ProfileController">
+    <StackPane layoutY="49.400001525878906" onMouseMoved="#handleMouseMoved" style="-fx-background-color: #d8d8d8;"
+               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+               AnchorPane.topAnchor="50.0">
         <children>
-            <AnchorPane maxHeight="634.0" maxWidth="1200.0" minHeight="0.0" minWidth="0.0" prefHeight="630.0" prefWidth="1200.0" scaleX="1.01" scaleY="1.01" style="-fx-border-color: #696969; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 4);">
+            <AnchorPane maxHeight="634.0" maxWidth="1200.0" minHeight="0.0" minWidth="0.0" prefHeight="630.0"
+                        prefWidth="1200.0" scaleX="1.01" scaleY="1.01"
+                        style="-fx-border-color: #696969; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 4);">
                 <children>
-                    <VBox layoutY="-1.0" prefHeight="626.0" prefWidth="328.0" spacing="30.0" style="-fx-background-color: #101935;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <VBox layoutY="-1.0" prefHeight="626.0" prefWidth="328.0" spacing="30.0"
+                          style="-fx-background-color: #101935;" AnchorPane.bottomAnchor="0.0"
+                          AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <children>
+                            <AnchorPane prefHeight="35.0" prefWidth="328.0">
+                                <children>
+                                    <Button layoutX="29.0" layoutY="26.0" maxHeight="-Infinity" minHeight="-Infinity"
+                                            mnemonicParsing="false" onAction="#handleGoBack" prefHeight="30.0"
+                                            style="-fx-border-color: white; -fx-border-width: 1; -fx-background-radius: 4; -fx-border-radius: 4; -fx-background-color: white;"
+                                            text="%profile.back"/>
+                                </children>
+                            </AnchorPane>
                             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                 <children>
-                                    <FontAwesomeIconView fill="WHITE" glyphName="USER_CIRCLE" layoutX="74.0" layoutY="164.0" size="180" wrappingWidth="179.65994506835932">
+                                    <FontAwesomeIconView fill="WHITE" glyphName="USER_CIRCLE" layoutX="74.0"
+                                                         layoutY="164.0" size="180" wrappingWidth="179.65994506835932">
                                         <font>
-                                            <Font size="11.0" />
+                                            <Font size="11.0"/>
                                         </font>
                                     </FontAwesomeIconView>
                                 </children>
@@ -33,56 +56,83 @@
                                 <children>
                                     <Label layoutX="29.0" layoutY="28.0" text="%profile.status" textFill="WHITE">
                                         <font>
-                                            <Font size="16.0" />
+                                            <Font size="16.0"/>
                                         </font>
                                     </Label>
                                     <Label fx:id="status" layoutX="85.0" layoutY="28.0" text="Online" textFill="WHITE">
                                         <font>
-                                            <Font size="16.0" />
+                                            <Font size="16.0"/>
                                         </font>
                                     </Label>
-                                    <Label fx:id="statusDot" layoutX="134.0" layoutY="27.0" prefHeight="26.0" prefWidth="29.0" style="-fx-font-family: 'FontAwesome'; -fx-font-size: 16;" text="" textFill="#11ff00" />
+                                    <Label fx:id="statusDot" layoutX="134.0" layoutY="27.0" prefHeight="26.0"
+                                           prefWidth="29.0" style="-fx-font-family: 'FontAwesome'; -fx-font-size: 16;"
+                                           text="" textFill="#11ff00"/>
+                                    <Label fx:id="userTypeLabel" layoutX="249.0" layoutY="28.0" textFill="WHITE">
+                                        <font>
+                                            <Font size="16.0"/>
+                                        </font>
+                                    </Label>
 
 
                                 </children>
                             </AnchorPane>
                             <AnchorPane prefHeight="31.0" prefWidth="328.0">
                                 <children>
-                                    <TextField fx:id="id" editable="false" layoutX="115.0" layoutY="1.0" prefHeight="30.0" prefWidth="191.0" style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.5;" styleClass="change" />
-                                    <Label layoutX="29.0" layoutY="3.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: white;" text="%profile.ID" textFill="WHITE">
+                                    <TextField fx:id="id" editable="false" focusTraversable="false" layoutX="115.0"
+                                               layoutY="1.0" prefHeight="30.0" prefWidth="191.0"
+                                               style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.5;"
+                                               styleClass="change"/>
+                                    <Label layoutX="29.0" layoutY="3.0"
+                                           style="-fx-border-width: 0 0 1 0; -fx-border-color: white;"
+                                           text="%profile.ID" textFill="WHITE">
                                         <font>
-                                            <Font size="16.0" />
+                                            <Font size="16.0"/>
                                         </font>
                                     </Label>
                                 </children>
                             </AnchorPane>
                             <AnchorPane prefHeight="31.0" prefWidth="328.0">
                                 <children>
-                                    <Label layoutX="29.0" layoutY="3.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: white;" text="%profile.userName" textFill="WHITE">
+                                    <Label layoutX="29.0" layoutY="3.0"
+                                           style="-fx-border-width: 0 0 1 0; -fx-border-color: white;"
+                                           text="%profile.userName" textFill="WHITE">
                                         <font>
-                                            <Font size="16.0" />
+                                            <Font size="16.0"/>
                                         </font>
                                     </Label>
-                                    <TextField fx:id="username" editable="false" layoutX="115.0" layoutY="1.0" prefHeight="30.0" prefWidth="191.0" style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.5;" styleClass="change" />
+                                    <TextField fx:id="username" editable="false" focusTraversable="false"
+                                               layoutX="115.0" layoutY="1.0" prefHeight="30.0" prefWidth="191.0"
+                                               style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.5;"
+                                               styleClass="change"/>
                                 </children>
                             </AnchorPane>
                             <AnchorPane prefHeight="31.0" prefWidth="328.0">
                                 <children>
-                                    <ProgressBar fx:id="progressBar" layoutX="115.0" layoutY="1.0" prefHeight="30.0" prefWidth="191.0" progress="0.0" />
-                                    <Label layoutX="29.0" layoutY="3.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: white;" text="%profile.accountprogress" textFill="WHITE">
+                                    <ProgressBar fx:id="progressBar" layoutX="115.0" layoutY="1.0" prefHeight="30.0"
+                                                 prefWidth="191.0" progress="0.0"/>
+                                    <Label focusTraversable="false" layoutX="29.0" layoutY="3.0"
+                                           style="-fx-border-width: 0 0 1 0; -fx-border-color: white;"
+                                           text="%profile.accountprogress" textFill="WHITE">
                                         <font>
-                                            <Font size="16.0" />
+                                            <Font size="16.0"/>
+                                        </font>
+                                    </Label>
+                                    <Label fx:id="showPercentage" layoutX="125.0" layoutY="4.0">
+                                        <font>
+                                            <Font size="16.0"/>
                                         </font>
                                     </Label>
                                 </children>
                             </AnchorPane>
                         </children>
                     </VBox>
-                    <AnchorPane layoutX="343.0" layoutY="104.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="370.0" styleClass="anchorGroup">
+                    <AnchorPane layoutX="343.0" layoutY="104.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                                minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="370.0"
+                                styleClass="anchorGroup">
                         <children>
                             <Label layoutX="14.0" layoutY="14.0" text="%profile.contact">
                                 <font>
-                                    <Font size="20.0" />
+                                    <Font size="20.0"/>
                                 </font>
                             </Label>
                             <VBox layoutX="61.0" layoutY="113.0" prefHeight="242.0" prefWidth="226.0" spacing="30.0">
@@ -91,135 +141,292 @@
                                         <children>
                                             <Label layoutY="-5.0" text="%profile.email">
                                                 <font>
-                                                    <Font size="16.0" />
+                                                    <Font size="16.0"/>
                                                 </font>
                                             </Label>
-                                            <TextField fx:id="email" layoutX="33.0" layoutY="29.0" prefHeight="30.0" prefWidth="191.0" style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.5;" styleClass="change" />
+                                            <TextField fx:id="email" layoutX="33.0" layoutY="29.0" prefHeight="30.0"
+                                                       prefWidth="191.0"
+                                                       style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.5;"
+                                                       styleClass="change"/>
                                         </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="58.0" prefWidth="141.0">
                                         <children>
                                             <Label layoutY="-5.0" text="%profile.phoneNumber">
                                                 <font>
-                                                    <Font size="16.0" />
+                                                    <Font size="16.0"/>
                                                 </font>
                                             </Label>
-                                            <TextField fx:id="phoneNumber" layoutX="33.0" layoutY="29.0" prefHeight="30.0" prefWidth="191.0" style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.5;" styleClass="change" />
+                                            <TextField fx:id="phoneNumber" layoutX="33.0" layoutY="29.0"
+                                                       prefHeight="30.0" prefWidth="191.0"
+                                                       style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.5;"
+                                                       styleClass="change"/>
                                         </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="58.0" prefWidth="141.0">
                                         <children>
                                             <Label layoutY="-5.0" text="%profile.address">
                                                 <font>
-                                                    <Font size="16.0" />
+                                                    <Font size="16.0"/>
                                                 </font>
                                             </Label>
-                                            <TextField fx:id="address" layoutX="33.0" layoutY="29.0" prefHeight="30.0" prefWidth="191.0" style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.5;" styleClass="change" />
+                                            <TextField fx:id="address" layoutX="33.0" layoutY="29.0" prefHeight="30.0"
+                                                       prefWidth="191.0"
+                                                       style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.5;"
+                                                       styleClass="change"/>
                                         </children>
                                     </AnchorPane>
                                 </children>
                             </VBox>
-                            <FontAwesomeIconView fill="#101935" glyphName="ENVELOPE" layoutX="317.0" layoutY="43.0" size="40" />
+                            <FontAwesomeIconView fill="#101935" glyphName="ENVELOPE" layoutX="317.0" layoutY="43.0"
+                                                 size="40"/>
                         </children>
                     </AnchorPane>
-                    <AnchorPane layoutX="731.0" layoutY="27.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="455.0" styleClass="anchorGroup">
+                    <AnchorPane layoutX="731.0" layoutY="27.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                                minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="455.0"
+                                styleClass="anchorGroup">
                         <children>
                             <Label layoutX="15.0" layoutY="14.0" text="%profile.personalInfo">
                                 <font>
-                                    <Font size="20.0" />
+                                    <Font size="20.0"/>
                                 </font>
                             </Label>
-                            <VBox alignment="CENTER" layoutX="16.0" layoutY="56.0" prefHeight="444.0" prefWidth="422.0" spacing="20.0">
+                            <VBox alignment="CENTER" layoutX="16.0" layoutY="56.0" prefHeight="444.0" prefWidth="422.0"
+                                  spacing="20.0">
                                 <children>
                                     <AnchorPane prefHeight="60.0" prefWidth="206.0">
                                         <children>
                                             <Label layoutX="40.0" layoutY="1.0" text="%profile.name">
                                                 <font>
-                                                    <Font size="16.0" />
+                                                    <Font size="16.0"/>
                                                 </font>
                                             </Label>
-                                            <TextField fx:id="name" alignment="CENTER" layoutX="115.0" layoutY="29.0" prefHeight="30.0" prefWidth="191.0" style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.5;" styleClass="change" />
+                                            <TextField fx:id="name" layoutX="115.0" layoutY="29.0" prefHeight="30.0"
+                                                       prefWidth="191.0"
+                                                       style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.5;"
+                                                       styleClass="change"/>
                                         </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="58.0" prefWidth="141.0">
                                         <children>
                                             <Label layoutX="40.0" layoutY="1.0" text="%profile.surname">
                                                 <font>
-                                                    <Font size="16.0" />
+                                                    <Font size="16.0"/>
                                                 </font>
                                             </Label>
-                                            <TextField fx:id="surname" layoutX="115.0" layoutY="29.0" prefHeight="30.0" prefWidth="191.0" style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.5;" styleClass="change" />
+                                            <TextField fx:id="surname" layoutX="115.0" layoutY="29.0" prefHeight="30.0"
+                                                       prefWidth="191.0"
+                                                       style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.5;"
+                                                       styleClass="change"/>
                                         </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="58.0" prefWidth="141.0">
                                         <children>
                                             <Label layoutX="40.0" layoutY="1.0" text="%profile.birthdate">
                                                 <font>
-                                                    <Font size="16.0" />
+                                                    <Font size="16.0"/>
                                                 </font>
                                             </Label>
-                                            <DatePicker fx:id="birthdate" layoutX="115.0" layoutY="29.0" prefHeight="30.0" prefWidth="191.0" style="-fx-border-color: black; -fx-border-width: 0.5;" />
+                                            <DatePicker fx:id="birthdate" layoutX="115.0" layoutY="29.0"
+                                                        prefHeight="30.0" prefWidth="191.0"
+                                                        style="-fx-border-color: black; -fx-border-width: 0.5;"/>
                                         </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="60.0" prefWidth="222.0">
                                         <children>
                                             <Label layoutX="40.0" layoutY="1.0" text="%profile.gender">
                                                 <font>
-                                                    <Font size="16.0" />
+                                                    <Font size="16.0"/>
                                                 </font>
                                             </Label>
-                                            <TextField fx:id="gender" layoutX="115.0" layoutY="31.0" prefHeight="30.0" prefWidth="191.0" style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.5;" styleClass="change" />
+                                            <TextField fx:id="gender" layoutX="115.0" layoutY="31.0" prefHeight="30.0"
+                                                       prefWidth="191.0"
+                                                       style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.5;"
+                                                       styleClass="change"/>
                                         </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="60.0" prefWidth="222.0">
                                         <children>
                                             <Label layoutX="40.0" layoutY="1.0" text="%profile.bio">
                                                 <font>
-                                                    <Font size="16.0" />
+                                                    <Font size="16.0"/>
                                                 </font>
                                             </Label>
-                                            <TextArea layoutX="31.0" layoutY="27.0" prefHeight="67.0" prefWidth="370.0" style="-fx-border-color: black; -fx-border-width: 0.5; -fx-background-radius: 4; -fx-border-radius: 4;" wrapText="true" />
+                                            <TextArea fx:id="bio" focusTraversable="false" layoutX="31.0" layoutY="27.0"
+                                                      prefHeight="67.0" prefWidth="370.0"
+                                                      style="-fx-border-color: black; -fx-border-width: 0.5; -fx-background-radius: 4; -fx-border-radius: 4;"
+                                                      wrapText="true"/>
                                         </children>
                                     </AnchorPane>
                                 </children>
                             </VBox>
-                            <FontAwesomeIconView fill="#101935" glyphName="COGS" layoutX="387.0" layoutY="57.0" size="50" />
+                            <FontAwesomeIconView fill="#101935" glyphName="COGS" layoutX="387.0" layoutY="57.0"
+                                                 size="50"/>
                         </children>
                     </AnchorPane>
-                    <AnchorPane layoutX="343.0" layoutY="27.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="370.0" styleClass="anchorGroup">
+                    <AnchorPane layoutX="343.0" layoutY="27.0" minHeight="-Infinity" minWidth="-Infinity"
+                                prefHeight="60.0" prefWidth="370.0" styleClass="anchorGroup">
                         <children>
                             <Label layoutX="14.0" layoutY="17.0" text="%profile.systemTime">
                                 <font>
-                                    <Font size="16.0" />
+                                    <Font size="16.0"/>
                                 </font>
                             </Label>
-                            <Label fx:id="time" layoutX="110.0" layoutY="17.0" prefHeight="26.0" prefWidth="188.0" text="ORA">
+                            <Label fx:id="time" layoutX="125.0" layoutY="17.0" prefHeight="26.0" prefWidth="188.0"
+                                   text="ORA">
                                 <font>
-                                    <Font size="16.0" />
+                                    <Font size="16.0"/>
                                 </font>
                             </Label>
-                            <FontAwesomeIconView fill="#101935" glyphName="HOURGLASS_START" layoutX="324.0" layoutY="40.0" size="30" />
+                            <FontAwesomeIconView fill="#101935" glyphName="HOURGLASS_START" layoutX="324.0"
+                                                 layoutY="40.0" size="30"/>
 
                         </children>
                     </AnchorPane>
-                    <AnchorPane layoutX="343.0" layoutY="550.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="843.0" styleClass="anchorGroup">
+                    <AnchorPane layoutX="343.0" layoutY="550.0" minHeight="-Infinity" minWidth="-Infinity"
+                                prefHeight="60.0" prefWidth="843.0" styleClass="anchorGroup">
                         <children>
-                            <Button layoutX="92.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="191.0" style="-fx-background-color: #101935; -fx-border-color: black; -fx-border-width: 1; -fx-background-radius: 4; -fx-border-radius: 4;" text="Change Password" textFill="WHITE" />
-                            <Button layoutX="516.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="191.0" style="-fx-background-color: #101935; -fx-border-color: black; -fx-border-width: 1; -fx-background-radius: 4; -fx-border-radius: 4;" text="Save Changes" textFill="WHITE" />
+                            <Button layoutX="92.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0"
+                                    prefWidth="191.0"
+                                    style="-fx-background-color: #101935; -fx-border-color: black; -fx-border-width: 1; -fx-background-radius: 4; -fx-border-radius: 4;"
+                                    text="Change Password" textFill="WHITE"/>
+                            <Button layoutX="516.0" layoutY="14.0" mnemonicParsing="false" onAction="#saveChanges"
+                                    prefHeight="30.0" prefWidth="191.0"
+                                    style="-fx-background-color: #101935; -fx-border-color: black; -fx-border-width: 1; -fx-background-radius: 4; -fx-border-radius: 4;"
+                                    text="Save Changes" textFill="WHITE"/>
                         </children>
                     </AnchorPane>
                 </children>
                 <opaqueInsets>
-                    <Insets />
+                    <Insets/>
                 </opaqueInsets>
                 <StackPane.margin>
-                    <Insets />
+                    <Insets/>
                 </StackPane.margin>
             </AnchorPane>
         </children>
     </StackPane>
 
-    <AnchorPane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #2E2E2E;" styleClass="navbar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <fx:include source="navBar.fxml" />
+    <AnchorPane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #2E2E2E;" styleClass="navbar"
+                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <children>
+            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1200.0"
+                        style="-fx-background-color: #101935;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                        AnchorPane.topAnchor="0.0">
+                <children>
+                    <AnchorPane prefHeight="50.0" prefWidth="302.0" AnchorPane.leftAnchor="0.0"
+                                AnchorPane.topAnchor="0.0">
+                        <children>
+                            <Label layoutX="66.0" layoutY="-1.0" prefHeight="50.0" prefWidth="222.0"
+                                   text="Youth Center Management " textFill="#fff6f6">
+                                <font>
+                                    <Font size="18.0"/>
+                                </font>
+                            </Label>
+                            <ImageView fitHeight="41.0" fitWidth="63.0" layoutX="9.0" layoutY="4.0" pickOnBounds="true"
+                                       preserveRatio="true">
+                                <image>
+                                    <Image url="@../images/youthcenter_logo.png"/>
+                                </image>
+                            </ImageView>
+                        </children>
+                    </AnchorPane>
+                    <HBox alignment="CENTER" layoutX="302.0" prefHeight="50.0" prefWidth="614.0" spacing="20.0"
+                          AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="302.0" AnchorPane.rightAnchor="302.4"
+                          AnchorPane.topAnchor="1.0" HBox.hgrow="ALWAYS">
+                        <children>
+                            <Button fx:id="homeButton" focusTraversable="false" mnemonicParsing="false"
+                                    prefHeight="48.0" prefWidth="100.0"
+                                    style="-fx-background-color: transparent; -fx-border-color: transparent;"
+                                    text="%navbar.Home" textFill="#ffebeb">
+                                <opaqueInsets>
+                                    <Insets/>
+                                </opaqueInsets>
+                                <font>
+                                    <Font size="14.0"/>
+                                </font>
+                            </Button>
+                            <Button fx:id="profileButton" focusTraversable="false" mnemonicParsing="false"
+                                    prefHeight="48.0" prefWidth="100.0"
+                                    style="-fx-background-color: transparent; -fx-border-color: transparent;"
+                                    text="%navbar.Profile" textFill="#ffebeb">
+                                <opaqueInsets>
+                                    <Insets/>
+                                </opaqueInsets>
+                                <font>
+                                    <Font size="14.0"/>
+                                </font>
+                            </Button>
+                            <Button fx:id="aboutButton" focusTraversable="false" maxHeight="-Infinity"
+                                    maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                    mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0"
+                                    style="-fx-background-color: transparent; -fx-border-color: transparent;"
+                                    text="%navbar.About" textFill="#ffebeb">
+                                <opaqueInsets>
+                                    <Insets/>
+                                </opaqueInsets>
+                                <font>
+                                    <Font size="14.0"/>
+                                </font>
+                            </Button>
+                            <Button fx:id="contactButton" focusTraversable="false" maxHeight="-Infinity"
+                                    maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                    mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0"
+                                    style="-fx-background-color: transparent; -fx-border-color: transparent;"
+                                    text="%navbar.Contact" textFill="#ffebeb">
+                                <opaqueInsets>
+                                    <Insets/>
+                                </opaqueInsets>
+                                <font>
+                                    <Font size="14.0"/>
+                                </font>
+                            </Button>
+                        </children>
+                    </HBox>
+                    <AnchorPane layoutX="892.0" prefHeight="50.0" prefWidth="302.0" AnchorPane.rightAnchor="0.0"
+                                AnchorPane.topAnchor="0.0">
+                        <children>
+                            <Button focusTraversable="false" layoutX="208.0" layoutY="10.0" maxHeight="30.0"
+                                    maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                    mnemonicParsing="false" onAction="#handleLogOutClick" prefHeight="30.0"
+                                    prefWidth="80.0" style="-fx-background-color: #0088ac;" styleClass="change"
+                                    text="%navbar.LogOut" textFill="#ffebeb" AnchorPane.rightAnchor="14.399999999999977"
+                                    AnchorPane.topAnchor="10.0">
+                                <opaqueInsets>
+                                    <Insets/>
+                                </opaqueInsets>
+                                <font>
+                                    <Font size="14.0"/>
+                                </font>
+                            </Button>
+                            <SplitMenuButton focusTraversable="false" layoutX="66.0" layoutY="10.0"
+                                             mnemonicParsing="false" prefHeight="30.0" prefWidth="66.0"
+                                             style="-fx-border-color: black; -fx-background-color: #101935;"
+                                             styleClass="change" text="%language" textOverrun="CLIP"
+                                             AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="10.0">
+                                <items>
+                                    <MenuItem fx:id="ENGLISH" mnemonicParsing="false" onAction="#handleENLanguageClick"
+                                              styleClass="navButton" text="EN"/>
+                                    <MenuItem fx:id="ALBANIAN" mnemonicParsing="false" onAction="#handleSQLanguageClick"
+                                              styleClass="navButton" text="SQ"/>
+                                </items>
+                            </SplitMenuButton>
+                            <Button focusTraversable="false" layoutX="137.0" layoutY="10.0" maxHeight="30.0"
+                                    maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                                    mnemonicParsing="false" onAction="#changeMode" prefHeight="30.0" prefWidth="66.0"
+                                    style="-fx-background-color: #0088ac;" styleClass="change" text="%navbar.mode"
+                                    textFill="#ffebeb" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="10.0">
+                                <opaqueInsets>
+                                    <Insets/>
+                                </opaqueInsets>
+                                <font>
+                                    <Font size="14.0"/>
+                                </font>
+                            </Button>
+                        </children>
+                    </AnchorPane>
+                </children>
+            </AnchorPane>
+        </children>
     </AnchorPane>
 </AnchorPane>

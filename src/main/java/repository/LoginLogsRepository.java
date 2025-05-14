@@ -1,10 +1,14 @@
 package repository;
 
-
+import database.DBConnector;
 import model.LoginLogs;
+import model.Professors;
 import model.dto.loginLogs.CreateLoginLogsDto;
-import java.sql.*;
+import model.dto.professors.CreateProfessorDto;
+import model.dto.professors.UpdateProfessorDto;
 
+import java.sql.*;
+import java.util.ArrayList;
 
 public class LoginLogsRepository extends BaseRepository<LoginLogs, CreateLoginLogsDto, Object> {
 

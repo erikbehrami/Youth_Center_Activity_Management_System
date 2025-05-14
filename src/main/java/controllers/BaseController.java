@@ -23,7 +23,7 @@ public abstract class BaseController {
     }
 
     @FXML
-    private void loadLanguage(Locale locale) {
+    protected void loadLanguage(Locale locale) {
         languageManager.setLocale(locale);
         sceneManager.reload();
     }

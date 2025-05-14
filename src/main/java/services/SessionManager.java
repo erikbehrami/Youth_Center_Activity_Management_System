@@ -2,6 +2,7 @@ package services;
 
 import model.User;
 import model.dto.LoginDTO;
+import model.dto.ProfileTemporaryDTO;
 import model.dto.RegisterDTO;
 
 public class SessionManager {
@@ -9,6 +10,7 @@ public class SessionManager {
     private User user;
     private RegisterDTO registerDTO;
     private LoginDTO loginDTO;
+    private ProfileTemporaryDTO profileTemporaryDTO;
 
     private SessionManager() {
     }
@@ -58,5 +60,13 @@ public class SessionManager {
 
     public void setLoginDTO(LoginDTO loginDTO) {
         this.loginDTO = loginDTO;
+    }
+
+    public ProfileTemporaryDTO getProfileTemporaryDTO() {
+        return profileTemporaryDTO;
+    }
+
+    public void setProfileTemporaryDTO(ProfileTemporaryDTO profileTemporaryDTO) {
+        this.profileTemporaryDTO = profileTemporaryDTO;
     }
 }

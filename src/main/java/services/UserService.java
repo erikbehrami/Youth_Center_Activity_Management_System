@@ -50,7 +50,7 @@ public class UserService {
     }
 
     public boolean doesEmailExist(String email) {
-        return (studentsRepository.getByEmail(email) == null && professorsRepository.getByEmail(email) == null);
+        return (studentsRepository.getByEmail(email) == null && professorsRepository.getByEmail(email) == null && adminsRepository.getByEmail(email) == null);
     }
 
     public boolean isValidPassword(String password) {
@@ -78,21 +78,6 @@ public class UserService {
     public boolean createProfessor(CreateProfessorDto createProfessorDto) {
         return professorsRepository.create(createProfessorDto) != null;
     }
-
-    boolean checkIfEmailAlreadyExists(String email) {
-        if (isAdmin(email)) {
-            if ((adminsRepository.getByEmail(email) == null)) {
-                return false;
-            }
-        }
-        if (isProfessor(email)) {
-            if ((professorsRepository.getByEmail(email) == null)) {
-                return false;
-            }
-        }
-        return !(studentsRepository.getByEmail(email) == null);
-    }
-
 
     public void handleLogin(LoginDTO loginDTO) {
 
@@ -226,8 +211,8 @@ public class UserService {
             } else {
                 registerDTO.getTermsAndConditions().setText("");
             }
-            if (checkIfEmailAlreadyExists(registerDTO.getEmailAddress())) {
-                throw new EmailAlreadyExists("Email already exists");
+            if (!doesEmailExist(registerDTO.getEmailAddress())) {
+                throw new EmailAlreadyExistsException("Email already exists");
             }
             String rawPassword = registerDTO.getPassword();
             String salt = PasswordHasher.encodeSalt(PasswordHasher.generateSalt());
