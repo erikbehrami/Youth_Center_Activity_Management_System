@@ -23,13 +23,19 @@ public class StudentMessagesController {
     private TableView<StudentMessages> messagesTable;
 
     @FXML
-    private TableColumn<StudentMessages, Integer> idColumn;
-
-    @FXML
     private TableColumn<StudentMessages, String> messageColumn;
 
     @FXML
     private TableColumn<StudentMessages, Timestamp> sendAtColumn;
+
+    @FXML
+    private ComboBox<Professors> professorMesComboBox;
+
+    @FXML
+    private Button sendMessageButton;
+
+    @FXML
+    private TextArea messageTextArea;
 
     private final StudentMessagesService messagesService = new StudentMessagesService();
     private final EnrolledRepository enrolledRepository = new EnrolledRepository();
@@ -45,10 +51,10 @@ public class StudentMessagesController {
                 messagesTable.getItems().clear();
             }
         });
+
     }
 
     private void setupMessagesTable() {
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         messageColumn.setCellValueFactory(new PropertyValueFactory<>("message"));
         sendAtColumn.setCellValueFactory(new PropertyValueFactory<>("sendAt"));
     }
@@ -60,8 +66,21 @@ public class StudentMessagesController {
 
             ObservableList<Professors> professorList = FXCollections.observableArrayList(professors);
             professorComboBox.setItems(professorList);
+            professorMesComboBox.setItems(professorList);
 
             professorComboBox.setConverter(new StringConverter<>() {
+                @Override
+                public String toString(Professors professor) {
+                    return (professor == null) ? "" : professor.getEmail();
+                }
+
+                @Override
+                public Professors fromString(String string) {
+                    return null;
+                }
+            });
+
+            professorMesComboBox.setConverter(new StringConverter<>() {
                 @Override
                 public String toString(Professors professor) {
                     return (professor == null) ? "" : professor.getEmail();
@@ -86,6 +105,36 @@ public class StudentMessagesController {
         } else {
             messagesTable.setItems(FXCollections.observableArrayList());
         }
+    }
+
+    @FXML
+    private void handleSendMessage() {
+        Professors selectedProfessor = professorMesComboBox.getValue();
+        String message = messageTextArea.getText();
+
+        if (selectedProfessor == null || message.isEmpty()) {
+            showAlert("Error", "Please select a professor and write a message.");
+            return;
+        }
+
+        int studentId = sessionManager.currentUser().getId();
+        String sender_type = "student";
+        boolean success = messagesService.sendMessage(studentId,selectedProfessor.getId(),message,sender_type);
+
+        if (success) {
+            showAlert("Success", "Message sent successfully!");
+            messageTextArea.clear();
+        } else {
+            showAlert("Failure", "Failed to send message.");
+        }
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 }

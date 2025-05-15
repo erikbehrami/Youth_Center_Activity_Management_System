@@ -115,9 +115,11 @@ CREATE TABLE studentMessages (
                                   id_Professor INTEGER,
                                   message TEXT,
                                   sendAt TIMESTAMP,
+                                  sender_type TEXT,
                                   FOREIGN KEY (id_Student) REFERENCES students(id),
                                   FOREIGN KEY (id_Professor) REFERENCES professors(id)
 );
+
 
 CREATE TABLE studentBadges (
                                 id SERIAL PRIMARY KEY,

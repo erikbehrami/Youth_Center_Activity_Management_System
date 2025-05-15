@@ -8,15 +8,17 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" stylesheets="@../css/prof.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfessorController.ProfStudentMessagesController">
     <fx:include source="profSidebar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0" />
    <AnchorPane layoutX="241.0" layoutY="50.0" prefHeight="625.0" prefWidth="958.0">
       <children>
-          <VBox alignment="TOP_CENTER" layoutX="45.0" layoutY="8.0" prefHeight="619.0" prefWidth="866.0" spacing="10">
+          <VBox alignment="TOP_CENTER" layoutX="45.0" layoutY="8.0" prefHeight="610.0" prefWidth="866.0" spacing="10">
       
           <HBox spacing="10">
               <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Compose Message" />
@@ -27,19 +29,25 @@
               <ComboBox fx:id="studentComboBox" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="0" />
       
               <Label text="Message:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-              <TextArea fx:id="messageTextArea" prefHeight="100" prefWidth="478.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+              <TextArea fx:id="messageTextArea" prefHeight="121.0" prefWidth="202.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
           </GridPane>
       
-          <Button fx:id="sendButton" onAction="#handleSendMessage" style="-fx-background-color: #0078D7; -fx-text-fill: white; -fx-padding: 5px 15px;" text="Send Message" />
+          <Button fx:id="sendButton" alignment="TOP_LEFT" onAction="#handleSendMessage" style="-fx-background-color: #0078D7; -fx-text-fill: white; -fx-padding: 5px 15px;" text="Send Message" />
       
           <Separator />
       
-          <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Sent Messages" />
+          <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Received Messages" />
+            <AnchorPane prefHeight="70.0" prefWidth="866.0">
+               <children>
+                    <Label layoutY="5.0" text="Students:" />
+                    <ComboBox fx:id="studentsComboBox" layoutY="35.0" prefHeight="26.0" prefWidth="213.0" />
+               </children>
+            </AnchorPane>
       
-          <TableView fx:id="messagesTableView" prefHeight="268.0" prefWidth="810.0">
+             <TableView fx:id="messagesTableView" prefHeight="218.0" prefWidth="866.0">
               <columns>
-                  <TableColumn fx:id="messageColumn" prefWidth="449.5999755859375" text="Message" />
-                  <TableColumn fx:id="dateColumn" prefWidth="416.0000366210937" text="Sent At" />
+                  <TableColumn fx:id="messageColumn" prefWidth="426.3999328613281" text="Message" />
+                  <TableColumn fx:id="dateColumn" prefWidth="440.800048828125" text="Sent At" />
               </columns>
           </TableView>
       </VBox>

@@ -25,11 +25,12 @@ public class ProfStudentMessagesService extends BaseProfessorService{
         return null;
     }
 
-    public boolean sendMessage(int studentId, int professorId, String message) {
-        return messageRepository.saveMessage(studentId, professorId, message);
+    public boolean sendMessage(int studentId, int professorId, String message,String sender_type) {
+        return messageRepository.saveMessage(studentId, professorId, message, sender_type);
     }
 
     public List<StudentMessages> getMessagesForStudent(int studentId,int professorId) {
         return messageRepository.getMessagesByStudent(studentId,professorId);
     }
+
 }

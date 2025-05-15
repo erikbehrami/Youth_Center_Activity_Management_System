@@ -3,7 +3,6 @@ package model;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class StudentMessages {
     private int id;
@@ -11,13 +10,15 @@ public class StudentMessages {
     private int idProfessor;
     private String message;
     private Timestamp sendAt;
+    private String sender_type;
 
-    public StudentMessages(int id, int idStudent, int idProfessor, String message, Timestamp sendAt) {
+    public StudentMessages(int id, int idStudent, int idProfessor, String message, Timestamp sendAt,String sender_type) {
         this.id = id;
         this.idStudent = idStudent;
         this.idProfessor = idProfessor;
         this.message = message;
         this.sendAt = sendAt;
+        this.sender_type = sender_type;
     }
 
     public static StudentMessages getInstance(ResultSet rs) throws SQLException {
@@ -26,7 +27,9 @@ public class StudentMessages {
                 rs.getInt("id_student"),
                 rs.getInt("id_professor"),
                 rs.getString("message"),
-                rs.getTimestamp("sendAt")
+                rs.getTimestamp("sendAt"),
+                rs.getString("sender_type")
+
         );
     }
 
@@ -46,7 +49,11 @@ public class StudentMessages {
         return message;
     }
 
-    public Date getSendAt() {
+    public Timestamp getSendAt() {
         return sendAt;
+    }
+
+    public String getSender_type() {
+        return sender_type;
     }
 }

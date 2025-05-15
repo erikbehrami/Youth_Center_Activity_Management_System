@@ -18,15 +18,14 @@
         <fx:include source="stdSideBar.fxml" AnchorPane.leftAnchor="14" AnchorPane.topAnchor="54" />
         <AnchorPane layoutX="323.0" layoutY="50.0" prefHeight="626.0" prefWidth="879.0">
             <children>
-                <VBox layoutX="25.0" layoutY="14.0" prefHeight="585.0" prefWidth="811.0" spacing="10">
+                <VBox layoutX="10.0" layoutY="-29.0" prefHeight="585.0" prefWidth="811.0" spacing="10">
                     <Label prefHeight="26.0" prefWidth="155.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Received Messages" />
                     <Label text="Professor:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                     <ComboBox fx:id="professorComboBox" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                     <TableView fx:id="messagesTable" prefHeight="270.0" prefWidth="746.0">
                         <columns>
-                            <TableColumn fx:id="idColumn" prefWidth="150.0" text="ID" />
-                            <TableColumn fx:id="messageColumn" prefWidth="415.1999816894531" text="Message" />
-                            <TableColumn fx:id="sendAtColumn" prefWidth="244.8000366210938" text="Sent At" />
+                            <TableColumn fx:id="messageColumn" prefWidth="429.60003662109375" text="Message" />
+                            <TableColumn fx:id="sendAtColumn" prefWidth="380.800048828125" text="Sent At" />
                         </columns>
                     </TableView>
 
@@ -35,12 +34,12 @@
                     <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Compose Message to Professor" />
                     <GridPane hgap="10" vgap="10">
                         <Label text="Professor:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                        <ComboBox fx:id="" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                        <ComboBox fx:id="professorMesComboBox" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
                         <Label prefHeight="2.0" prefWidth="50.0" text="Message:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                         <TextArea fx:id="messageTextArea" prefHeight="100.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-                        <Button fx:id="sendMessageButton" style="-fx-background-color: #0078D7; -fx-text-fill: white;" text="Send Message" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                        <Button fx:id="sendMessageButton" onAction="#handleSendMessage" style="-fx-background-color: #0078D7; -fx-text-fill: white;" text="Send Message" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
 
                         <columnConstraints>
                             <ColumnConstraints />

@@ -32,6 +32,10 @@ public class ProfStudentMessagesController extends ProfController {
     @FXML
     private TableColumn<StudentMessages, Timestamp> dateColumn;
 
+    @FXML
+    private ComboBox<Students> studentsComboBox;
+
+
     private final ProfStudentMessagesService messageService = new ProfStudentMessagesService();
     SessionManager sessionManager = SessionManager.getInstance();
 
@@ -40,6 +44,14 @@ public class ProfStudentMessagesController extends ProfController {
         setupMessagesTable();
         loadStudents();
         studentComboBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
+            if (newValue != null) {
+                loadMessages();
+            } else {
+                messagesTableView.getItems().clear();
+            }
+        });
+
+        studentsComboBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
             if (newValue != null) {
                 loadMessages();
             } else {
@@ -55,7 +67,12 @@ public class ProfStudentMessagesController extends ProfController {
 
     private void loadStudents() {
         List<Students> students = messageService.getAllStudents();
-        studentComboBox.setItems(FXCollections.observableArrayList(students));
+        if (studentComboBox !=null) {
+            studentComboBox.setItems(FXCollections.observableArrayList(students));
+        }
+        if (studentsComboBox !=null) {
+            studentsComboBox.setItems(FXCollections.observableArrayList(students));
+        }
     }
 
     @FXML
@@ -69,7 +86,8 @@ public class ProfStudentMessagesController extends ProfController {
         }
 
         int professorId = SessionManager.getInstance().currentUser().getId();
-        boolean success = messageService.sendMessage(selectedStudent.getId(), professorId, message);
+        String sender_type = "prof";
+        boolean success = messageService.sendMessage(selectedStudent.getId(), professorId, message,sender_type);
 
         if (success) {
             showAlert("Success", "Message sent successfully!");
@@ -80,7 +98,7 @@ public class ProfStudentMessagesController extends ProfController {
     }
 
     private void loadMessages() {
-        Students selectedStudent = studentComboBox.getValue();
+        Students selectedStudent = studentsComboBox.getValue();
         if (selectedStudent != null) {
             if (sessionManager.isProfessor())
             {
