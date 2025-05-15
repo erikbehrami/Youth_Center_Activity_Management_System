@@ -115,4 +115,32 @@ public class RequestsRepository {
         }
         return false;
     }
+    public List<Requests> getByProfessorId(int id) {
+        List<Requests> requestsList = new ArrayList<>();
+        String query = "SELECT * FROM requests WHERE id_Professor = ?";
+
+        try (Connection connection = DBConnector.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(query)) {
+
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Requests request = createRequestInstance(
+                        rs.getInt("id"),
+                        rs.getInt("id_Student"),
+                        rs.getInt("id_Professor"),
+                        rs.getInt("id_Course")
+                );
+                requestsList.add(request);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return requestsList;
+    }
+
+
 }

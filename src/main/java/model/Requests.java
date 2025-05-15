@@ -1,5 +1,8 @@
 package model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Requests {
     private int id;
     private int studentID;
@@ -11,6 +14,17 @@ public class Requests {
         this.studentID = studentID;
         this.professorID = professorID;
         this.courseID = courseID;
+    }
+
+    public static Requests getInstance(ResultSet resultSet) throws SQLException {
+        int id = resultSet.getInt("id");
+        int id_professor = resultSet.getInt("id_professor");
+        int id_student = resultSet.getInt("id_student");
+        int id_course = resultSet.getInt("id_course");
+
+
+        return new Requests(id, id_professor, id_student, id_course);
+
     }
 
     public int getId() {

@@ -26,6 +26,7 @@ interface ProfPages {
     String PROF_COURSES = "/fxml/profCourses.fxml";
     String PROF_STUDENTS = "/fxml/profStudents.fxml";
     String PROF_MESSAGES = "/fxml/profMessages.fxml";
+    String PROF_ACCEPT = "/fxml/acceptStudents.fxml";
 }
 
 interface Modes {

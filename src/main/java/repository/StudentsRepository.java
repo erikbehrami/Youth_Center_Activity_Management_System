@@ -6,13 +6,19 @@ import model.Professors;
 import model.Students;
 import model.dto.students.CreateStudentsDto;
 import model.dto.students.UpdateStudentsDto;
+import model.Enrolled;
+import model.Requests;
+import model.Students;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class StudentsRepository extends BaseRepository<Students, CreateStudentsDto, UpdateStudentsDto> {
+
+    RequestsRepository requestsRepository = new RequestsRepository();
 
     public StudentsRepository() {
         super("students");
@@ -231,4 +237,72 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
 
         return maleStudentsCount;
     }
+
+    public List<Requests> getPendingRequestsByProfessor(int professorId) {
+        List<Requests> requests = requestsRepository.getByProfessorId(professorId);
+        return requests;
+    }
+    public boolean approveRequest(int requestId) {
+        String selectSQL = "SELECT student_id, professor_id FROM requests WHERE id = ?";
+        String updateSQL = "UPDATE requests SET status = 'approved' WHERE id = ?";
+        String insertSQL = "INSERT INTO enrolled (student_id, professor_id, enrolled_date) "
+                + "VALUES (?, ?, CURRENT_DATE)";
+        try (Connection conn = DBConnector.getConnection()) {
+            conn.setAutoCommit(false);  // begin transaction
+            try (PreparedStatement selectStmt = conn.prepareStatement(selectSQL);
+                 PreparedStatement updateStmt = conn.prepareStatement(updateSQL);
+                 PreparedStatement insertStmt = conn.prepareStatement(insertSQL)) {
+
+                // 1. Fetch student and professor IDs
+                selectStmt.setInt(1, requestId);
+                try (ResultSet rs = selectStmt.executeQuery()) {
+                    if (!rs.next()) {
+                        conn.rollback();
+                        return false; // request not found
+                    }
+                    int studentId  = rs.getInt("student_id");
+                    int professorId = rs.getInt("professor_id");
+
+                    // 2. Update request status to 'approved'
+                    updateStmt.setInt(1, requestId);
+                    int updated = updateStmt.executeUpdate();
+                    if (updated != 1) {
+                        conn.rollback();
+                        return false;
+                    }
+
+                    // 3. Insert into enrolled table
+                    insertStmt.setInt(1, studentId);
+                    insertStmt.setInt(2, professorId);
+                    int inserted = insertStmt.executeUpdate();
+                    if (inserted != 1) {
+                        conn.rollback();
+                        return false;
+                    }
+
+                    // 4. Commit transaction
+                    conn.commit();
+                    return true;
+                }
+            }
+        } catch (SQLException e) {
+            // On any error, print/log and return false (connection will auto-close and rollback)
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean declineRequest(int requestId) {
+        String sql = "UPDATE requests SET status = 'declined' WHERE id = ?";
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, requestId);
+            int affected = stmt.executeUpdate();
+            return (affected == 1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
 }

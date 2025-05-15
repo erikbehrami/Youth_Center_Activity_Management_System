@@ -19,7 +19,7 @@
             <children>
                 <StackPane layoutX="-0.8" prefHeight="624.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="601.0" AnchorPane.topAnchor="0.0">
                     <children>
-                        <VBox alignment="TOP_CENTER" layoutX="13.0" layoutY="32.0" prefHeight="534.0" prefWidth="546.0" spacing="10" style="-fx-background-color: white;" styleClass="aboutInfo" stylesheets="@../css/about.css">
+                        <VBox alignment="TOP_CENTER" layoutX="13.0" layoutY="32.0" prefHeight="613.0" prefWidth="559.0" spacing="10" style="-fx-background-color: white;" styleClass="aboutInfo" stylesheets="@../css/about.css">
                             <!-- Title -->
                             <Label fx:id="labelTitle" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="About Us" VBox.vgrow="ALWAYS" />
 
