@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" stylesheets="@../css/admin.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController.AdminLogsController">
+    <children>
+        <AnchorPane layoutY="50.0" prefHeight="620.0" prefWidth="239.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
+            <fx:include source="adminSidebar.fxml" AnchorPane.bottomAnchor="0" AnchorPane.topAnchor="0" />
+        </AnchorPane>
+
+        <AnchorPane layoutX="253.0" layoutY="53.0" minHeight="0.0" minWidth="0.0" prefHeight="625.0" prefWidth="947.0" stylesheets="@../css/table.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="254.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <HBox alignment="CENTER" layoutX="62.0" layoutY="291.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane prefHeight="625.0" prefWidth="841.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TableView fx:id="loginLogsTable" layoutX="14.0" layoutY="50.0" prefHeight="561.0" prefWidth="563.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="41.0">
+                          <columns>
+                            <TableColumn fx:id="colUserId" prefWidth="95.0" text="UserID" />
+                            <TableColumn fx:id="colUserType" prefWidth="111.0" text="UserType" />
+                              <TableColumn fx:id="colEmail" prefWidth="130.0" text="Email" />
+                              <TableColumn fx:id="colLoginTime" prefWidth="130.0" text="LoginTime" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="14.0" text="Login Logs" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="7.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="625.0" prefWidth="853.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TableView fx:id="enrollmentLogsTable" layoutX="14.0" layoutY="50.0" prefHeight="561.0" prefWidth="563.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="41.0">
+                           <columns>
+                              <TableColumn fx:id="StudentID" prefWidth="95.0" text="StudentID" />
+                              <TableColumn fx:id="CourseID" prefWidth="113.0" text="CourseID" />
+                              <TableColumn fx:id="Action" prefWidth="130.0" text="Action" />
+                              <TableColumn fx:id="ActionTime" prefWidth="130.0" text="ActionTime" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <Label layoutX="7.0" layoutY="1.0" text="Enroll Logs" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="7.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+        </AnchorPane>
+
+        <AnchorPane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #101935;" styleClass="navbar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <fx:include source="navBar.fxml" />
+        </AnchorPane>
+    </children>
+</AnchorPane>

@@ -174,7 +174,6 @@ CREATE TABLE loginLogs (
                             userType VARCHAR(20),
                             email varchar(255),
                             loginTime TIMESTAMPTZ
-
 );
 
 

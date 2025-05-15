@@ -17,6 +17,7 @@ interface AdminPages {
     String ADMIN_STUDENTS = "/fxml/adminStudents.fxml";
     String ADMIN_TEACHERS = "/fxml/adminProfessors.fxml";
     String ADMIN_COURSES = "/fxml/adminCourses.fxml";
+    String ADMIN_LOGS = "/fxml/adminLogs.fxml";
 
 }
 

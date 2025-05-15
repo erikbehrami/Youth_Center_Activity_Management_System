@@ -8,6 +8,8 @@ import utils.Navigator;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SceneManager {
     private static SceneManager instance;
@@ -19,9 +21,12 @@ public class SceneManager {
     private String lastPath;
     private String title;
 
+    private final Map<String, Scene> sceneCache;
+
     private SceneManager() {
         languageManager = LanguageManager.getInstance();
         this.currentPath = Navigator.HOME;
+        sceneCache = new HashMap<>();
         this.title = "Youth Center Management System";
     }
 
@@ -33,44 +38,13 @@ public class SceneManager {
     }
 
     public void setPrimaryStage(Stage stage) {
-        SceneManager.primaryStage = stage;
-        this.currentScene = this.createScene(this.currentPath);
+        primaryStage = stage;
+        this.currentScene = getOrCreateScene(this.currentPath);
         this.configurePrimaryStage();
     }
 
-    private Scene createScene(String fxmlPath) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-            loader.setResources(languageManager.getResourceBundle());
-            Scene scene = new Scene(loader.load());
-            ModeManager.changeMode(scene);
-            return scene;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
     public void switchScene(String fxmlPath) {
-        this.switchScene(fxmlPath, null);
-    }
-
-    public void createNewStage(String fxmlPath, String title) {
-        if (secondaryStage != null) {
-            secondaryStage.close();
-        }
-        Scene scene = this.createScene(fxmlPath);
-        secondaryStage = new Stage();
-        secondaryStage.setTitle(title);
-        secondaryStage.setScene(scene);
-        setLogo(secondaryStage);
-        secondaryStage.centerOnScreen();
-        secondaryStage.setResizable(false);
-        secondaryStage.show();
-    }
-
-    public static Stage getSecondaryStage() {
-        return SceneManager.secondaryStage;
+        switchScene(fxmlPath, null);
     }
 
     public void switchScene(String fxmlPath, String title) {
@@ -81,13 +55,62 @@ public class SceneManager {
             this.title = title;
         }
 
-        this.currentScene = createScene(this.currentPath);
-
+        this.currentScene = getOrCreateScene(this.currentPath);
         this.configurePrimaryStage();
     }
 
+    public void createNewStage(String fxmlPath, String title) {
+        if (secondaryStage != null) {
+            secondaryStage.close();
+        }
+        Scene scene = getOrCreateScene(fxmlPath);
+        secondaryStage = new Stage();
+        secondaryStage.setTitle(title);
+        secondaryStage.setScene(scene);
+        setLogo(secondaryStage);
+        secondaryStage.centerOnScreen();
+        secondaryStage.setResizable(false);
+        secondaryStage.show();
+    }
+
+    public static Stage getSecondaryStage() {
+        return secondaryStage;
+    }
+
     public void reload() {
-        switchScene(this.currentPath, this.title);
+        if (currentPath != null) {
+            // Force reload by removing from cache
+            sceneCache.remove(currentPath);
+            this.currentScene = getOrCreateScene(currentPath);
+            configurePrimaryStage();
+        }
+    }
+
+    private Scene getOrCreateScene(String fxmlPath) {
+        if (sceneCache.containsKey(fxmlPath)) {
+            return sceneCache.get(fxmlPath);
+        }
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            loader.setResources(languageManager.getResourceBundle());
+            Scene scene = new Scene(loader.load());
+            ModeManager.changeMode(scene);
+            sceneCache.put(fxmlPath, scene);
+            return scene;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void configurePrimaryStage() {
+        setLogo(primaryStage);
+        primaryStage.setResizable(setResizeable(currentPath));
+        primaryStage.setScene(currentScene);
+        primaryStage.setTitle(title);
+        primaryStage.centerOnScreen();
+        primaryStage.show();
     }
 
     public void setLogo(Stage stage) {
@@ -97,20 +120,11 @@ public class SceneManager {
         }
     }
 
-    public void configurePrimaryStage() {
-        setLogo(primaryStage);
-        primaryStage.setResizable(this.setResizeable(this.currentPath));
-        primaryStage.setScene(this.currentScene);
-        primaryStage.setTitle(this.title);
-        primaryStage.centerOnScreen();
-        primaryStage.show();
-    }
-
     public String getLastPath() {
-        return this.lastPath;
+        return lastPath;
     }
 
     private boolean setResizeable(String path) {
-        return !(path.equals(Navigator.SIGN_IN) || path.equals(Navigator.SIGN_UP) || path.equals(Navigator.HOME));
+        return !(Navigator.SIGN_IN.equals(path) || Navigator.SIGN_UP.equals(path) || Navigator.HOME.equals(path));
     }
 }

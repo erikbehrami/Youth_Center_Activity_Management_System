@@ -130,7 +130,7 @@ public class AdminStudentsController extends BaseController {
                 private final HBox container = new HBox(btn);
 
                 {
-                    btn.setStyle("-fx-background-color: #0088ac; -fx-text-fill: white;");
+                    btn.setStyle("-fx-background-color: #0275d8; -fx-text-fill: white;");
                     container.setStyle("-fx-alignment: center; -fx-padding: 5;");
                     container.setMaxHeight(Double.MAX_VALUE);
 

@@ -1,0 +1,20 @@
+/* Header background */
+.table-view .column-header {
+    -fx-background-color: #0275d8;
+}
+
+/* Header cell style */
+.table-view .column-header {
+    -fx-border-width: 1 0 1 1;
+    -fx-border-color:  black;
+    -fx-pref-height: 32px;
+}
+
+
+/* Header label style */
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+

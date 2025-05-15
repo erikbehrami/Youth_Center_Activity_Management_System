@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -16,7 +17,7 @@
 
         <AnchorPane layoutX="239.0" layoutY="56.0" minHeight="0.0" minWidth="0.0" prefHeight="620.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="254.0" AnchorPane.rightAnchor="0.7999999999999545" AnchorPane.topAnchor="50.0">
             <children>
-                <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="552.0" prefWidth="921.0" style="-fx-border-color: #101935;" styleClass="change" stylesheets="@../css/admin.css" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="552.0" prefWidth="921.0" style="-fx-border-color: #101935;" styleClass="change" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
                     <children>
                         <TableView fx:id="studentsTable" editable="true" layoutX="17.0" layoutY="47.0" prefHeight="486.0" prefWidth="885.0" styleClass="change" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="47.0">
                             <columns>
@@ -38,12 +39,16 @@
                                 <TextField fx:id="searchField" prefHeight="31.0" prefWidth="255.0" promptText="%admin.SearchByName" style="-fx-border-color: #101935; -fx-border-radius: 5;" styleClass="change" />
                                 <AnchorPane prefHeight="35.0" prefWidth="514.0" HBox.hgrow="ALWAYS">
                                     <children>
-                                        <Button alignment="CENTER" layoutX="397.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleGenerateData" prefHeight="30.0" prefWidth="119.0" style="-fx-background-color: #0088ac;" text="%refreshData" textFill="WHITE" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                        <Button alignment="CENTER" layoutX="397.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleGenerateData" prefHeight="30.0" prefWidth="119.0" style="-fx-background-color: #0275d8;" text="%refreshData" textFill="WHITE" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                     </children>
                                 </AnchorPane>
                             </children>
                         </HBox>
                     </children>
+               <stylesheets>
+                  <URL value="@../css/admin.css" />
+                  <URL value="@../css/table.css" />
+               </stylesheets>
                 </AnchorPane>
                 <HBox alignment="TOP_RIGHT" layoutX="712.0" layoutY="576.0" minHeight="0.0" minWidth="0.0" prefHeight="35.0" prefWidth="205.0" spacing="15.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="712.0" AnchorPane.rightAnchor="28.0">
                     <children>

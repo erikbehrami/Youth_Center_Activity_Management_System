@@ -2,9 +2,26 @@ package controllers.AdminController;
 
 import controllers.BaseController;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import services.SessionManager;
 import utils.Navigator;
 
-public class AdminSidebarController extends BaseController {
+import java.awt.*;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class AdminSidebarController extends BaseController implements Initializable {
+    @FXML
+    Label adminName;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(adminName != null) {
+            adminName.setText(SessionManager.getInstance().currentUser().getName());
+        }
+    }
+
     @FXML
     private void handleAdminDashboard() {
         sceneManager.switchScene(Navigator.ADMIN_DASHBOARD, "Admin Dashboard");
@@ -28,6 +45,11 @@ public class AdminSidebarController extends BaseController {
     @FXML
     private void handleAdminCourses() {
         sceneManager.switchScene(Navigator.ADMIN_COURSES, "Admin Courses");
+    }
+
+    @FXML
+    private void handleAdminLogs() {
+        sceneManager.switchScene(Navigator.ADMIN_LOGS, "Admin Logs");
     }
 
 }
