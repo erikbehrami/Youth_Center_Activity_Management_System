@@ -21,16 +21,16 @@
                      <children>
                         <TableView fx:id="loginLogsTable" layoutX="14.0" layoutY="50.0" prefHeight="561.0" prefWidth="563.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="41.0">
                           <columns>
-                            <TableColumn fx:id="colUserId" prefWidth="95.0" text="UserID" />
-                            <TableColumn fx:id="colUserType" prefWidth="111.0" text="UserType" />
-                              <TableColumn fx:id="colEmail" prefWidth="130.0" text="Email" />
-                              <TableColumn fx:id="colLoginTime" prefWidth="130.0" text="LoginTime" />
+                            <TableColumn fx:id="colUserId" prefWidth="95.0" text="%admin.UserID" />
+                            <TableColumn fx:id="colUserType" prefWidth="111.0" text="%admin.UserType" />
+                              <TableColumn fx:id="colEmail" prefWidth="130.0" text="%admin.Email" />
+                              <TableColumn fx:id="colLoginTime" prefWidth="130.0" text="%admin.LoginTime" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
-                        <Label layoutX="14.0" layoutY="14.0" text="Login Logs" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="7.0">
+                        <Label layoutX="14.0" layoutY="14.0" text="%admin.LoginLogs" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="7.0">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -41,16 +41,16 @@
                      <children>
                         <TableView fx:id="enrollmentLogsTable" layoutX="14.0" layoutY="50.0" prefHeight="561.0" prefWidth="563.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="41.0">
                            <columns>
-                              <TableColumn fx:id="StudentID" prefWidth="95.0" text="StudentID" />
-                              <TableColumn fx:id="CourseID" prefWidth="113.0" text="CourseID" />
-                              <TableColumn fx:id="Action" prefWidth="130.0" text="Action" />
-                              <TableColumn fx:id="ActionTime" prefWidth="130.0" text="ActionTime" />
+                              <TableColumn fx:id="StudentID" prefWidth="95.0" text="%admin.StudentID" />
+                              <TableColumn fx:id="CourseID" prefWidth="113.0" text="%admin.CourseID" />
+                              <TableColumn fx:id="Action" prefWidth="130.0" text="%admin.Action" />
+                              <TableColumn fx:id="ActionTime" prefWidth="130.0" text="%admin.ActionTime" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
-                        <Label layoutX="7.0" layoutY="1.0" text="Enroll Logs" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="7.0">
+                        <Label layoutX="7.0" layoutY="1.0" text="%admin.EnrollLogs" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="7.0">
                            <font>
                               <Font size="18.0" />
                            </font>
