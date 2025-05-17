@@ -8,38 +8,42 @@
 
 <AnchorPane prefHeight="530.0" prefWidth="414.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegisterController.RegisterStudentController">
     <children>
-        <AnchorPane layoutX="86.0" layoutY="54.0" maxWidth="354.0" minHeight="0.0" minWidth="0.0" prefHeight="92.0" prefWidth="242.0">
+        <AnchorPane layoutX="86.0" layoutY="54.0" maxWidth="354.0" minHeight="0.0" minWidth="0.0" prefHeight="92.0" prefWidth="242.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <Label layoutX="14.0" layoutY="28.0" text="Register Student" textFill="#133348">
+                <Label alignment="CENTER" layoutX="-27.0" layoutY="26.0" prefHeight="40.0" prefWidth="355.0" text="%registerStudent.Title" textFill="#133348" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <font>
                         <Font name="System Bold" size="28.0" />
                     </font>
                 </Label>
             </children>
         </AnchorPane>
+
         <AnchorPane layoutX="72.0" layoutY="169.0" maxWidth="250.0" prefWidth="250.0">
             <children>
                 <AnchorPane maxWidth="320.0" prefHeight="56.0" prefWidth="270.0">
                     <children>
-                        <Label layoutX="1.0" text="Name" />
+                        <Label layoutX="1.0" text="%registerStudent.Name" />
                         <TextField fx:id="stdNAME" layoutY="16.0" prefHeight="30.0" prefWidth="270.0" />
                     </children>
                 </AnchorPane>
+
                 <AnchorPane layoutY="66.0" maxWidth="354.0" prefHeight="56.0" prefWidth="270.0">
                     <children>
-                        <Label text="Surname" />
+                        <Label text="%registerStudent.Surname" />
                         <TextField fx:id="stdSURNAME" layoutY="16.0" prefHeight="30.0" prefWidth="270.0" />
                     </children>
                 </AnchorPane>
+
                 <AnchorPane layoutY="132.0" maxWidth="354.0" prefHeight="71.0" prefWidth="270.0">
                     <children>
-                        <Label text="Email" />
+                        <Label text="%registerStudent.Email" />
                         <TextField fx:id="stdEMAIL" layoutY="16.0" prefHeight="30.0" prefWidth="270.0" />
                     </children>
                 </AnchorPane>
+
                 <AnchorPane layoutY="213.0" maxHeight="71.0" maxWidth="354.0" prefHeight="71.0" prefWidth="270.0">
                     <children>
-                        <Button layoutX="1.0" layoutY="16.0" onAction="#handleSaveStudent" prefHeight="35.0" prefWidth="270.0" style="-fx-background-color: #3271a8; -fx-text-fill: white;" text="Save Student" AnchorPane.bottomAnchor="50.0" />
+                        <Button layoutX="1.0" layoutY="16.0" onAction="#handleSaveStudent" prefHeight="35.0" prefWidth="270.0" style="-fx-background-color: #3271a8; -fx-text-fill: white;" text="%registerStudent.SaveButton" AnchorPane.bottomAnchor="50.0" />
                     </children>
                 </AnchorPane>
             </children>

@@ -21,6 +21,8 @@ public class LanguageManager {
 
     public void setLocale(Locale locale) {
         this.locale = locale;
+
+        SceneManager.getInstance().reloadAllScenes();
     }
 
     public Locale getLocale() {

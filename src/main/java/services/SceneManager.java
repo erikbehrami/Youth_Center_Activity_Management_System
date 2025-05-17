@@ -79,11 +79,15 @@ public class SceneManager {
 
     public void reload() {
         if (currentPath != null) {
-            // Force reload by removing from cache
             sceneCache.remove(currentPath);
             this.currentScene = getOrCreateScene(currentPath);
             configurePrimaryStage();
         }
+    }
+
+    public void reloadAllScenes() {
+        sceneCache.clear();
+        reload();
     }
 
     private Scene getOrCreateScene(String fxmlPath) {
@@ -99,7 +103,7 @@ public class SceneManager {
             sceneCache.put(fxmlPath, scene);
             return scene;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
             return null;
         }
     }

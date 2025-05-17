@@ -27,7 +27,6 @@
                                 <TableColumn fx:id="stdEMAIL" prefWidth="200.0" text="%admin.Email" />
                                 <TableColumn fx:id="stdGENDER" prefWidth="145.0" text="%admin.Gender" />
                                 <TableColumn fx:id="stdBIRTHDAY" prefWidth="145.0" text="%admin.Birthday" />
-                                <TableColumn fx:id="stdUPDATE" prefWidth="145.0" />
                                 <TableColumn fx:id="stdDELETE" prefWidth="145.0" />
                             </columns>
                             <columnResizePolicy>
