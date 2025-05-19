@@ -117,11 +117,6 @@
                                 <Font size="13.0" />
                             </font>
                         </Button>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #101935;" styleClass="change" text="%admin.Update" textFill="WHITE">
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                        </Button>
                     </children>
                 </HBox>
             </children>

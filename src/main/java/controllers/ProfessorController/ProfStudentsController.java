@@ -40,7 +40,7 @@ public class ProfStudentsController extends ProfController {
 
     @FXML
     private void initialize(){
-        setupCoursesTable();
+        setupStudentsTable();
         if (studentsTable != null){
             loadStudentsData();
         }
@@ -61,7 +61,7 @@ public class ProfStudentsController extends ProfController {
 
     }
 
-    private void setupCoursesTable() {
+    private void setupStudentsTable() {
         if (stdID != null) stdID.setCellValueFactory(new PropertyValueFactory<>("id"));
         if (stdNAME != null) stdNAME.setCellValueFactory(new PropertyValueFactory<>("name"));
         if (stdSURNAME != null) stdSURNAME.setCellValueFactory(new PropertyValueFactory<>("surname"));
