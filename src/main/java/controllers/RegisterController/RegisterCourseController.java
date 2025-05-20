@@ -14,6 +14,7 @@ import model.LectureRooms;
 import model.Professors;
 import model.dto.course.CreateCourseDto;
 import services.CourseService;
+import services.RegisterCourseService;
 import services.SceneManager;
 
 import java.net.URL;
@@ -43,6 +44,7 @@ public class RegisterCourseController extends BaseController implements Initiali
     @FXML
     private DatePicker dateEndingPicker;
 
+    private RegisterCourseService courseService = new RegisterCourseService();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -82,6 +84,12 @@ public class RegisterCourseController extends BaseController implements Initiali
 
             int professorId = CourseService.getProfessorIdByIndex(professorIndex);
             int lectureRoomId = CourseService.getLectureRoomIdByIndex(roomIndex);
+
+
+            if(!courseService.canRegisterMoreCourses(professorId)){
+                showAlert("Error", "Professor cannot register more courses!", Alert.AlertType.ERROR, false);
+                return;
+            }
 
             CreateCourseDto courseDto = new CreateCourseDto(
                     name,

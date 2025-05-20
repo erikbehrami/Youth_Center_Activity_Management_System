@@ -18,12 +18,12 @@ public class Requests {
 
     public static Requests getInstance(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("id");
-        int id_professor = resultSet.getInt("id_professor");
         int id_student = resultSet.getInt("id_student");
+        int id_professor = resultSet.getInt("id_professor");
         int id_course = resultSet.getInt("id_course");
 
 
-        return new Requests(id, id_professor, id_student, id_course);
+        return new Requests(id, id_student, id_professor, id_course);
 
     }
 

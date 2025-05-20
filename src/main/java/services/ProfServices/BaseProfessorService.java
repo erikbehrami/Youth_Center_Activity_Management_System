@@ -3,10 +3,8 @@ package services.ProfServices;
 import controllers.ProfessorController.ProfDashboardController;
 import database.DBConnector;
 import javafx.scene.chart.XYChart;
-import repository.CourseRepository;
-import repository.EnrolledRepository;
-import repository.ProfessorsRepository;
-import repository.StudentsRepository;
+import model.Requests;
+import repository.*;
 import services.SessionManager;
 
 import java.sql.Connection;
@@ -21,6 +19,7 @@ public abstract class BaseProfessorService {
     protected final CourseRepository courseRepository;
     protected final ProfessorsRepository professorsRepository;
     protected final EnrolledRepository enrolledRepository;
+    protected final RequestsRepository requestsRepository;
     SessionManager sessionManager = SessionManager.getInstance();
 
     public BaseProfessorService() {
@@ -28,6 +27,7 @@ public abstract class BaseProfessorService {
         this.courseRepository = new CourseRepository();
         this.professorsRepository = new ProfessorsRepository();
         this.enrolledRepository = new EnrolledRepository();
+        this.requestsRepository = new RequestsRepository();
     }
 
     public int getTotalCoursesForProfessor(int professorId) {

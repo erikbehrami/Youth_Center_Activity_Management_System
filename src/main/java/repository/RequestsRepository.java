@@ -115,31 +115,83 @@ public class RequestsRepository {
         }
         return false;
     }
-    public List<Requests> getByProfessorId(int id) {
-        List<Requests> requestsList = new ArrayList<>();
-        String query = "SELECT * FROM requests WHERE id_Professor = ?";
 
-        try (Connection connection = DBConnector.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(query)) {
+    public ArrayList<Requests> getPendingRequestsForProfessor(int professorId) {
+        ArrayList<Requests> pendingRequests = new ArrayList<>();
 
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
+        String query = """
+        SELECT * FROM requests
+        WHERE id_professor = ?
+        """;
+
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement ps = conn.prepareStatement(query)) {
+
+            ps.setInt(1, professorId);
+            ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                Requests request = createRequestInstance(
-                        rs.getInt("id"),
-                        rs.getInt("id_Student"),
-                        rs.getInt("id_Professor"),
-                        rs.getInt("id_Course")
-                );
-                requestsList.add(request);
+                Requests request = Requests.getInstance(rs);
+                pendingRequests.add(request);
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException se) {
+            se.printStackTrace();
         }
 
-        return requestsList;
+        return pendingRequests;
+    }
+
+    public boolean acceptRequest(Requests request) {
+        String insertEnrolled = """
+            INSERT INTO enrolled (id_professor, id_student, id_course)
+            VALUES (?, ?, ?)
+            """;
+        String deleteRequest = "DELETE FROM requests WHERE id = ?";
+
+        try (Connection conn = DBConnector.getConnection()) {
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement insertStmt = conn.prepareStatement(insertEnrolled);
+                 PreparedStatement deleteStmt = conn.prepareStatement(deleteRequest)) {
+
+                insertStmt.setInt(1, request.getProfessorID());
+                insertStmt.setInt(2, request.getStudentID());
+                insertStmt.setInt(3, request.getCourseID());
+                insertStmt.executeUpdate();
+
+                deleteStmt.setInt(1, request.getId());
+                deleteStmt.executeUpdate();
+
+                conn.commit();
+                return true;
+
+            } catch (SQLException e) {
+                conn.rollback();
+                e.printStackTrace();
+            }
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public boolean declineRequest(Requests request) {
+        String deleteQuery = "DELETE FROM requests WHERE id = ?";
+
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement ps = conn.prepareStatement(deleteQuery)) {
+
+            ps.setInt(1, request.getId());
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+
+        return false;
     }
 
 
