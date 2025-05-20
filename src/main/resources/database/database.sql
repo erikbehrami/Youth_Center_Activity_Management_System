@@ -199,8 +199,7 @@ CREATE TABLE courseEnrollmentLogs (
                                         id SERIAL PRIMARY KEY,
                                         student_id INTEGER,
                                         course_id INTEGER,
-                                        action VARCHAR(50),
-                                        action_time DATE,
+                                        action_time TIMESTAMPTZ,
                                         FOREIGN KEY (student_id) REFERENCES students(id),
                                         FOREIGN KEY (course_id) REFERENCES courses(id)
 );
