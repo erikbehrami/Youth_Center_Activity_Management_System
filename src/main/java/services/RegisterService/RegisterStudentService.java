@@ -5,7 +5,6 @@ import repository.StudentsRepository;
 import services.PasswordHasher;
 import utils.EmailSender;
 
-import java.security.SecureRandom;
 
 public class RegisterStudentService {
     private static final StudentsRepository studentsRepository = new StudentsRepository();
@@ -20,40 +19,11 @@ public class RegisterStudentService {
         return email;
     }
 
-    private static String generateRandomPassword() {
-        int length = 8;
-        String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String lower = "abcdefghijklmnopqrstuvwxyz";
-        String digits = "0123456789";
-        String allChars = upper + lower + digits;
-
-        SecureRandom random = new SecureRandom();
-        StringBuilder sb = new StringBuilder(length);
-
-        sb.append(upper.charAt(random.nextInt(upper.length())));
-        sb.append(digits.charAt(random.nextInt(digits.length())));
-
-        for (int i = 2; i < length; i++) {
-            sb.append(allChars.charAt(random.nextInt(allChars.length())));
-        }
-
-        char[] passwordChars = sb.toString().toCharArray();
-        for (int i = 0; i < passwordChars.length; i++) {
-            int randomIndex = random.nextInt(passwordChars.length);
-            char temp = passwordChars[i];
-            passwordChars[i] = passwordChars[randomIndex];
-            passwordChars[randomIndex] = temp;
-        }
-
-        return new String(passwordChars);
-    }
-
-
     public static void registerStudent(String email, String name, String surname) {
         try {
             String stdEmail = generateEmail(name, surname);
             String username = stdEmail.substring(0, stdEmail.indexOf("@"));
-            String password = generateRandomPassword();
+            String password = GeneratePassword.generateRandomPassword();
             String salt = PasswordHasher.encodeSalt(PasswordHasher.generateSalt());
             String hashedPassword = PasswordHasher.hashPassword(password, salt);
 

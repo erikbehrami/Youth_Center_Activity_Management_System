@@ -1,8 +1,6 @@
 package services.AdminServices;
 
-
 import model.Courses;
-import model.dto.course.UpdateCourseDto;
 import repository.CourseRepository;
 
 import java.util.ArrayList;
@@ -21,8 +19,5 @@ public class AdminCoursesService {
         coursesRepository.delete(courseId);
     }
 
-    public static void updateCourse(UpdateCourseDto updateCourseDto){
-        coursesRepository.update(updateCourseDto);
-    }
 }
 

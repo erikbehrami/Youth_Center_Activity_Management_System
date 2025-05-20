@@ -8,8 +8,6 @@ import utils.Navigator;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 public class SceneManager {
     private static SceneManager instance;
@@ -21,12 +19,9 @@ public class SceneManager {
     private String lastPath;
     private String title;
 
-    private final Map<String, Scene> sceneCache;
-
     private SceneManager() {
         languageManager = LanguageManager.getInstance();
         this.currentPath = Navigator.HOME;
-        sceneCache = new HashMap<>();
         this.title = "Youth Center Management System";
     }
 
@@ -79,28 +74,17 @@ public class SceneManager {
 
     public void reload() {
         if (currentPath != null) {
-            sceneCache.remove(currentPath);
             this.currentScene = getOrCreateScene(currentPath);
             configurePrimaryStage();
         }
     }
 
-    public void reloadAllScenes() {
-        sceneCache.clear();
-        reload();
-    }
-
     private Scene getOrCreateScene(String fxmlPath) {
-        if (sceneCache.containsKey(fxmlPath)) {
-            return sceneCache.get(fxmlPath);
-        }
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             loader.setResources(languageManager.getResourceBundle());
             Scene scene = new Scene(loader.load());
             ModeManager.changeMode(scene);
-            sceneCache.put(fxmlPath, scene);
             return scene;
         } catch (IOException e) {
             System.out.println(e.getMessage());

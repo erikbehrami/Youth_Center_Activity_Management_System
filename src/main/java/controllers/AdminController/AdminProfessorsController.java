@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 import model.Professors;
 import services.AdminServices.AdminProfessorsService;
 import services.LanguageManager;
+import utils.Navigator;
 
 import java.util.List;
 import java.util.Locale;
@@ -141,7 +142,7 @@ public class AdminProfessorsController extends BaseController {
                                 "Are you sure you want to accept this professor?",
                                 "This action cannot be undone.");
                         if (confirmAcceptance) {
-                            AdminProfessorsService.acceptProfessor(prof.getId()); // ✅ Correct method
+                            AdminProfessorsService.acceptProfessor(prof.getId());
                             loadUnverifiedProfessorsData();
                             loadVerifiedProfessorsData();
                         }
@@ -196,5 +197,10 @@ public class AdminProfessorsController extends BaseController {
         List<Professors> unverifiedProfessors = AdminProfessorsService.getUnVerifiedProfessors();
         ObservableList<Professors> unverifiedList = FXCollections.observableArrayList(unverifiedProfessors);
         professorsTable1.setItems(unverifiedList);
+    }
+
+    @FXML
+    private void handleAddProfessor() {
+        this.sceneManager.createNewStage(Navigator.REGISTER_PROFESSOR, "Register New Professor");
     }
 }

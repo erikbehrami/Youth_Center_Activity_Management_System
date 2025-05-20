@@ -1,7 +1,6 @@
 package services.ProfServices;
 
 import model.dto.professors.CreateProfessorDto;
-import model.dto.professors.CreateProfessorDto;
 import repository.ProfessorsRepository;
 import services.PasswordHasher;
 import utils.EmailSender;

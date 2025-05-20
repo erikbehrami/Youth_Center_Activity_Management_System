@@ -41,6 +41,5 @@ public abstract class BaseController {
         } else {
             ModeManager.setMode(Navigator.DARK_MODE);
         }
-        sceneManager.reload();
     }
 }

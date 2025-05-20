@@ -7,7 +7,7 @@ import java.sql.*;
 public class CourseEnrollmentLogRepository extends BaseRepository<CourseEnrollmentLog,CreateCourseEnrollmentLogDto,Object> {
 
     public CourseEnrollmentLogRepository() {
-        super("course_enrollment_logs");
+        super("courseEnrollmentLogs");
     }
 
     CourseEnrollmentLog fromResultSet(ResultSet res) throws SQLException{

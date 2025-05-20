@@ -84,7 +84,6 @@ public class AdminStudentsController extends BaseController {
 
         LanguageManager languageManager = LanguageManager.getInstance();
         String deleteText = languageManager.getLocale().equals(Locale.ENGLISH) ? "Delete" : "Fshij";
-        String updateText = languageManager.getLocale().equals(Locale.ENGLISH) ? "Update" : "Përditëso";
 
         if (stdDELETE != null) {
             stdDELETE.setCellFactory(col -> new TableCell<>() {
