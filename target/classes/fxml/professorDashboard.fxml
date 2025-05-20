@@ -11,6 +11,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -23,25 +24,6 @@
         <fx:include source="profSidebar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0" />
         <AnchorPane layoutX="244.0" layoutY="50.0" prefHeight="628.0" prefWidth="955.0" AnchorPane.bottomAnchor="0.39999999999997726" AnchorPane.leftAnchor="244.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
             <children>
-            <Label fx:id="generateDate" layoutX="22.0" layoutY="56.0">
-               <graphic>
-                      <Label prefHeight="18.0" prefWidth="34.0" text="Data:" />
-               </graphic>
-            </Label>
-                <Pane layoutX="745.0" layoutY="27.0" prefHeight="36.0" prefWidth="200.0">
-                    <children>
-                        <Button fx:id="generatePdfButton" graphicTextGap="40.0" layoutX="6.0" layoutY="-2.0" mnemonicParsing="false" onAction="#generatePDFReport" prefHeight="36.0" prefWidth="181.0" style="-fx-background-color: white;" stylesheets="@../css/prof.css" text="%prof.Generate">
-                            <font>
-                                <Font name="System Bold" size="12.0" />
-                            </font>
-                            <styleClass>
-                                <String fx:value="buttonShadow" />
-                                <String fx:value="change" />
-                            </styleClass>
-                        </Button>
-                        <FontAwesomeIconView glyphName="FILE" layoutX="22.0" layoutY="24.0" size="20" styleClass="icon" />
-                    </children>
-                </Pane>
                 <Pane layoutX="19.0" layoutY="90.0" prefHeight="142.0" prefWidth="160.0" stylesheets="@../css/prof.css">
                     <children>
                         <Text layoutX="43.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" text="%prof.TotalClasses">
@@ -96,18 +78,6 @@
                         </BarChart>
                     </children>
                 </Pane>
-                <Label graphicTextGap="0.0" layoutX="22.0" layoutY="22.0" prefHeight="36.0" prefWidth="330.0" text="%prof.Welcome" textFill="#101935">
-                    <font>
-                        <Font name="System Bold Italic" size="17.0" />
-                    </font>
-               <graphic>
-                  <Label fx:id="profName" textFill="#101935">
-                     <font>
-                        <Font name="System Bold Italic" size="17.0" />
-                     </font>
-                  </Label>
-               </graphic>
-                </Label>
             <VBox layoutX="582.0" layoutY="90.0" prefHeight="142.0" prefWidth="350.0" stylesheets="@../css/prof.css">
                <children>
                   <Label prefHeight="20.0" prefWidth="130.0" text="%prof.AssistantTip">
@@ -177,6 +147,69 @@
                   <PieChart fx:id="genderPieChart" labelLineLength="2.0" labelsVisible="false" layoutX="8.0" layoutY="6.0" legendSide="TOP" prefHeight="290.0" prefWidth="342.0" />
                </children>
             </AnchorPane>
+            <VBox layoutX="21.0" layoutY="7.0" prefHeight="76.0" prefWidth="423.0">
+               <children>
+                      <Label graphicTextGap="0.0" prefHeight="36.0" prefWidth="330.0" text="%prof.Welcome" textFill="#101935">
+                          <font>
+                              <Font name="System Bold Italic" size="17.0" />
+                          </font>
+                     <graphic>
+                        <Label fx:id="profName" textFill="#101935">
+                           <font>
+                              <Font name="System Bold Italic" size="17.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                      </Label>
+                  <HBox prefHeight="31.0" prefWidth="310.0">
+                     <children>
+                        <Label prefHeight="34.0" prefWidth="38.0" text="Date:" />
+                        <Label fx:id="generateDate" prefHeight="27.0" prefWidth="145.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="-5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="27.0" prefWidth="310.0">
+                     <children>
+                        <Label prefHeight="23.0" prefWidth="87.0" text="%prof.Specializations" />
+                        <Label fx:id="specializationLabel" maxHeight="-Infinity" prefHeight="23.2" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="-5.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+
+            </VBox>
+            <VBox layoutX="772.0" layoutY="7.0" prefHeight="86.0" prefWidth="160.0">
+               <children>
+                        <Button graphicTextGap="20.0" mnemonicParsing="false" onAction="#generatePDFReport" prefHeight="23.0" prefWidth="160.0" style="-fx-background-color: white;" stylesheets="@../css/prof.css" text="%prof.Generate">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                            <styleClass>
+                                <String fx:value="buttonShadow" />
+                                <String fx:value="change" />
+                            </styleClass>
+                     <graphic>
+                              <FontAwesomeIconView glyphName="FILE" size="20" styleClass="icon" />
+                     </graphic>
+                        </Button>
+                  <Button graphicTextGap="40.0" mnemonicParsing="false" onAction="#handleAddSpecialization" prefHeight="23.0" prefWidth="160.0" style="-fx-background-color: white;" stylesheets="@../css/prof.css" text="%prof.Specialization">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="buttonShadow" />
+                        <String fx:value="change" />
+                     </styleClass>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
             </children>
         </AnchorPane>
 

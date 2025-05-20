@@ -2,9 +2,12 @@ package services.ProfServices;
 
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import model.ProfessorSpecializations;
+import model.dto.professorSpecializations.CreateProfSpecializationsDto;
 import services.LanguageManager;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
@@ -45,6 +48,37 @@ public class ProfDashboardService extends BaseProfessorService{
 
     public LocalDate getDate(){
         return LocalDate.now();
+    }
+
+    public ArrayList<String> getSpecializations() {
+        ArrayList<String> specializations = new ArrayList<>();
+        if (sessionManager.isProfessor()) {
+            int professorId = sessionManager.currentUser().getId();
+            ArrayList<ProfessorSpecializations> profSpecializations = profSpecializationsRepository.getById(professorId);
+            if (profSpecializations != null) {
+                for (ProfessorSpecializations spec : profSpecializations) {
+                    specializations.add(spec.getSpecialization());
+                }
+            }
+        }
+        return specializations;
+    }
+
+    public boolean addSpecialization(int professorId, String specialization) {
+        CreateProfSpecializationsDto dto = new CreateProfSpecializationsDto(professorId, specialization);
+        return profSpecializationsRepository.create(dto);
+    }
+
+    public boolean deleteSpecialization(int professorId, String specialization) {
+        ArrayList<ProfessorSpecializations> profSpecializations = profSpecializationsRepository.getById(professorId);
+        if (profSpecializations != null) {
+            for (ProfessorSpecializations spec : profSpecializations) {
+                if (spec.getSpecialization().equalsIgnoreCase(specialization)) {
+                    return profSpecializationsRepository.delete(spec.getId());
+                }
+            }
+        }
+        return false;
     }
 
     public XYChart.Series<String, Number> getCourseChartSeries() {

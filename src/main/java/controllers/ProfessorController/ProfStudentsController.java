@@ -94,7 +94,8 @@ public class ProfStudentsController extends ProfController {
 
         filteredStudents.setPredicate(student -> {
             if (lowerText.isEmpty()) return true;
-            return student.getName().toLowerCase().contains(lowerText) || student.getSurname().toLowerCase().contains(lowerText);
+            return student.getName().toLowerCase().contains(lowerText) ||
+                    student.getSurname().toLowerCase().contains(lowerText);
         });
     }
 
@@ -198,7 +199,8 @@ public class ProfStudentsController extends ProfController {
     private void loadStudentsData() {
         List<Students> students = profStudentsService.getAllStudents();
         ObservableList<Students> studentList = FXCollections.observableArrayList(students);
-        studentsTable.setItems(studentList);
+        filteredStudents = new FilteredList<>(studentList);
+        studentsTable.setItems(filteredStudents);
     }
 
     private void loadPendingRequestsData() {

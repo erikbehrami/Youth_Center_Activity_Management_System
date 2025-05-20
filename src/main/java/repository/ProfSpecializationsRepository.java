@@ -16,7 +16,7 @@ public class ProfSpecializationsRepository {
     }
 
     public ArrayList<ProfessorSpecializations> getAll() {
-        String query = "select * from professor_specializations";
+        String query = "select * from professorSpecializations";
         ArrayList<ProfessorSpecializations> profSpeclist = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
@@ -33,7 +33,7 @@ public class ProfSpecializationsRepository {
     }
 
     public ArrayList<ProfessorSpecializations> getById(int id) {
-        String query = "select * from professor_specializations where id_Professor = ?";
+        String query = "select * from professorSpecializations where id_Professor = ?";
         ArrayList<ProfessorSpecializations> profSpeclist = new ArrayList<>();
         try {
             PreparedStatement statement = connection.prepareStatement(query);
@@ -51,7 +51,7 @@ public class ProfSpecializationsRepository {
     }
 
     public boolean create(CreateProfSpecializationsDto CPdto) {
-        String query = "insert into professor_specializations (id_Professor, specialization) values (?, ?)";
+        String query = "insert into professorSpecializations (id_Professor, specialization) values (?, ?)";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, CPdto.getIdProfessor());
@@ -65,7 +65,7 @@ public class ProfSpecializationsRepository {
     }
 
     public boolean update(UpdateProfSpecializationsDto UPdto) {
-        String query = "update professor_specializations set id_Professor = ?, specialization = ? where id = ?";
+        String query = "update professorSpecializations set id_Professor = ?, specialization = ? where id = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, UPdto.getIdProfessor());
@@ -81,7 +81,7 @@ public class ProfSpecializationsRepository {
     }
 
     public boolean delete(int id) {
-        String query = "delete from professor_specializations where id = ?";
+        String query = "delete from professorSpecializations where id = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, id);
@@ -92,4 +92,6 @@ public class ProfSpecializationsRepository {
             return false;
         }
     }
+
+
 }
