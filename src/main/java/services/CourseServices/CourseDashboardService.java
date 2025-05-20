@@ -16,5 +16,18 @@ public class CourseDashboardService {
     public static HashMap<Integer, Integer> getEnrollmentsForCourse() {
         return courseRepository.getEnrollmentsForCourse();
     }
+
+    public boolean enrollStudentInCourse(int studentId, int courseId) {
+        return courseRepository.enrollStudentInCourse(studentId, courseId);
+    }
+
+    public boolean isStudentAlreadyEnrolled(int studentId, int courseId) {
+        return courseRepository.isStudentEnrolled(studentId, courseId);
+    }
+
+    public boolean unenrollStudentFromCourse(int studentId, int courseId) {
+        return courseRepository.unenrollStudentFromCourse(studentId, courseId);
+    }
+
 }
 

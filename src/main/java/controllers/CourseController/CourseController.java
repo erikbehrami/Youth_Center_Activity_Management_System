@@ -1,6 +1,7 @@
 package controllers.CourseController;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -8,19 +9,24 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import model.Courses;
+import model.dto.courseEnrollmentLog.CreateCourseEnrollmentLogDto;
 import repository.CourseRepository;
+import services.CourseServices.CourseDashboardService;
+import services.LogsService;
 import services.SceneManager;
 import services.SessionManager;
-import utils.Navigator;
 
 import java.util.HashMap;
 import java.util.List;
 
 public class CourseController {
-    SceneManager sceneManager = SceneManager.getInstance();
+    private final SceneManager sceneManager = SceneManager.getInstance();
+    private final CourseRepository courseRepository = new CourseRepository();
+    private final CourseDashboardService courseService = new CourseDashboardService();
+    private final LogsService logsService = LogsService.getInstance();
+
     @FXML private GridPane coursesGrid;
 
-    private final CourseRepository courseRepository = new CourseRepository();
     private List<Courses> allCourses;
     private HashMap<Integer, Integer> enrollmentMap;
 
@@ -71,7 +77,6 @@ public class CourseController {
 
         AnchorPane coloredpane = new AnchorPane();
         coloredpane.setPrefHeight(60);
-
         String color = bgColors[i % bgColors.length];
         coloredpane.setStyle("-fx-background-color: " + color + "; -fx-background-radius: 10; -fx-border-color: lightgrey; -fx-border-radius: 10;");
         AnchorPane.setTopAnchor(coloredpane, 5.0);
@@ -84,7 +89,7 @@ public class CourseController {
         AnchorPane.setLeftAnchor(enrolledLabel, 5.0);
 
         Label timeLabel = new Label("10:00 - 12:00");
-        timeLabel.setTextFill(javafx.scene.paint.Color.web("#00000096"));
+        timeLabel.setStyle("-fx-text-fill: #00000096;");
         AnchorPane.setTopAnchor(timeLabel, 5.0);
         AnchorPane.setRightAnchor(timeLabel, 5.0);
 
@@ -115,11 +120,39 @@ public class CourseController {
         enrollbtn.setTextFill(javafx.scene.paint.Color.WHITE);
         enrollbtn.setFont(Font.font("System Bold", 14));
 
+        int studentId = SessionManager.getInstance().currentUser().getId();
+        int courseId = course.getId();
+
+        if (courseService.isStudentAlreadyEnrolled(studentId, courseId)) {
+            enrollbtn.setText("Enrolled");
+            enrollbtn.setDisable(true);
+        }
+
+        enrollbtn.setOnAction(e -> {
+            boolean success = courseService.enrollStudentInCourse(studentId, courseId);
+
+            if (success) {
+                enrollbtn.setText("Enrolled");
+                enrollbtn.setDisable(true);
+
+                CreateCourseEnrollmentLogDto createCEDto = new CreateCourseEnrollmentLogDto(studentId, courseId);
+                logsService.EnrollLogInProcess(createCEDto);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("Successfully enrolled in: " + course.getName());
+                alert.showAndWait();
+
+                loadCourses();
+            } else {
+                enrollbtn.setText("Enrolled or failed");
+            }
+
+        });
+
         details.getChildren().addAll(courseLabel, profpane, enrollbtn);
         mainCard.getChildren().addAll(coloredpane, details);
 
         return mainCard;
     }
-
-
 }

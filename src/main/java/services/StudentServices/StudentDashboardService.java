@@ -2,10 +2,19 @@ package services.StudentServices;
 
 import model.Courses;
 import model.Schedules;
+import repository.CourseRepository;
+import repository.EnrolledRepository;
+import repository.ScheduleRepository;
+import services.SessionManager;
 
 import java.util.List;
 
-public class StudentDashboardService extends BaseStudentService {
+public class StudentDashboardService{
+    private final SessionManager sessionManager = SessionManager.getInstance();
+    private final EnrolledRepository enrolledRepository = new EnrolledRepository();
+    private final ScheduleRepository scheduleRepository = new ScheduleRepository();
+    private final CourseRepository courseRepository = new CourseRepository();
+
     public String getUsername() {
         return sessionManager.currentUser().getUsername();
     }

@@ -10,7 +10,9 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import model.Courses;
 import model.Schedules;
+import services.CourseServices.CourseDashboardService;
 import services.SceneManager;
+import services.SessionManager;
 import services.StudentServices.StudentDashboardService;
 
 import java.util.List;
@@ -18,6 +20,7 @@ import java.util.List;
 public class StudentDashboardController {
     public SceneManager sceneManager = SceneManager.getInstance();
     private final StudentDashboardService studentDashboardService = new StudentDashboardService();
+    private final CourseDashboardService courseService = new CourseDashboardService();
 
     @FXML private
     Label usernameLabel;
@@ -122,17 +125,21 @@ public class StudentDashboardController {
             courseLabel.setFont(Font.font(14));
             courseLabel.setStyle("-fx-text-fill: black;");
 
+            AnchorPane timeday = new AnchorPane();
             Label timeLabel = new Label(schedule.getTimeStart() + " - " + schedule.getTimeEnd());
-            timeLabel.setLayoutX(200);
+            timeLabel.setLayoutX(280);
             timeLabel.setLayoutY(12);
             timeLabel.setStyle("-fx-text-fill: black;");
 
             Label dayLabel = new Label(schedule.getDay());
-            dayLabel.setLayoutX(200);
+            dayLabel.setLayoutX(280);
             dayLabel.setLayoutY(30);
             dayLabel.setStyle("-fx-text-fill: black;");
 
-            scheduleCard.getChildren().addAll(numLabel, line, profLabel, courseLabel, timeLabel, dayLabel);
+            timeday.getChildren().addAll(dayLabel, timeLabel);
+            AnchorPane.setRightAnchor(timeday, 15.0);
+
+            scheduleCard.getChildren().addAll(numLabel, line, profLabel, courseLabel, timeday);
             scheduleVBox.getChildren().add(scheduleCard);
             counter++;
         }
@@ -173,16 +180,26 @@ public class StudentDashboardController {
         AnchorPane.setLeftAnchor(profLabel, 0.0);
         profpane.getChildren().add(profLabel);
 
-        Button enrollbtn = new Button("Details");
-        enrollbtn.setPrefSize(749, 35);
-        enrollbtn.setStyle("-fx-border-color: black; -fx-background-color: black; -fx-background-radius: 10; -fx-border-radius: 10;");
-        enrollbtn.setTextFill(javafx.scene.paint.Color.WHITE);
-        enrollbtn.setFont(Font.font("System Bold", 14));
+        Button unenrollbtn = new Button("Unenroll");
+        unenrollbtn.setStyle("-fx-border-color: black; -fx-background-color: black; -fx-background-radius: 10; -fx-border-radius: 10;");
+        unenrollbtn.setPrefSize(749, 35);
+        unenrollbtn.setTextFill(javafx.scene.paint.Color.WHITE);
+        unenrollbtn.setFont(Font.font("System Bold", 14));
 
-        details.getChildren().addAll(courseLabel, profpane, enrollbtn);
+        unenrollbtn.setOnAction(e -> {
+            int studentId = SessionManager.getInstance().currentUser().getId();
+            int courseId = course.getId();
+            boolean removed = courseService.unenrollStudentFromCourse(studentId, courseId);
+            if (removed) {
+                loadCourses();
+            } else {
+                unenrollbtn.setText("Failed");
+            }
+        });
+
+        details.getChildren().addAll(courseLabel, profpane, unenrollbtn);
         thecard.getChildren().addAll(coloredPane, details);
 
         return thecard;
     }
-
 }

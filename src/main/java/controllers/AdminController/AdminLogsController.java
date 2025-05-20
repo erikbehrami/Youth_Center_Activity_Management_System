@@ -39,8 +39,6 @@ public class AdminLogsController extends BaseController implements Initializable
     @FXML
     private TableColumn<CourseEnrollmentLog, Integer> CourseID;
     @FXML
-    private TableColumn<CourseEnrollmentLog, String> Action;
-    @FXML
     private TableColumn<CourseEnrollmentLog, String> ActionTime;
 
     @Override
@@ -56,12 +54,7 @@ public class AdminLogsController extends BaseController implements Initializable
 
         StudentID.setCellValueFactory(new PropertyValueFactory<>("studentID"));
         CourseID.setCellValueFactory(new PropertyValueFactory<>("courseID"));
-        Action.setCellValueFactory(new PropertyValueFactory<>("action"));
-        ActionTime.setCellValueFactory(cellData -> {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String formatted = sdf.format(cellData.getValue().getActionTime());
-            return new SimpleStringProperty(formatted);
-        });
+        ActionTime.setCellValueFactory(new PropertyValueFactory<>("actionTime"));
 
         loadLoginLogs();
         loadEnrollmentLogs();
