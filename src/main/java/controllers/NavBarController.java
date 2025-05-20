@@ -10,4 +10,9 @@ public class NavBarController extends BaseController {
         ModeManager.setMode("LIGHT_MODE");
         sceneManager.switchScene(Navigator.HOME, "Youth Center Management System");
     }
+
+    @FXML
+    private void handleContactButtonClick() {
+        sceneManager.createNewStage(Navigator.CONTACT, "Contact Us");
+    }
 }

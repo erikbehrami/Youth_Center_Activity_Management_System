@@ -160,7 +160,7 @@ CREATE TABLE contactMessages (
                                   name VARCHAR(100),
                                   email VARCHAR(255),
                                   message TEXT,
-                                  sentAt DATE
+                                  sentAt timestamp
 );
 
 

@@ -157,11 +157,16 @@ VALUES (1000, 220000, 501),
 
 
 INSERT INTO admins (username, salt, passwordHash, name, surname, email)
-VALUES (
-           'admin',
-           'jTGxeqYSfUAiWahgDMGIZA==',
-           'mpiEm1uIatV+AE1wwXBz/1BZfyiVr7cKEt61yctCO5o=',
-           'admin',
-           'admin',
-           'admin@admin.com'
-       ); // pw Admin123@
+VALUES ('admin',
+        'jTGxeqYSfUAiWahgDMGIZA==',
+        'mpiEm1uIatV+AE1wwXBz/1BZfyiVr7cKEt61yctCO5o=',
+        'admin',
+        'admin',
+        'admin@admin.com'); -- pw Admin123@
+
+INSERT INTO advertisements (sponsorName, adTitle, adImageUrl)
+VALUES ('TechTrend Innovations', 'NextGen Smartphone Launch', '/images/adsImages/techTrendInnovations.png'),
+       ('FitLife Gym', 'Join Our Fitness Revolution', '/images/adsImages/fitLifeGym.png'),
+       ('Gourmet Bites', 'Taste the Difference', '/images/adsImages/gourmetBites.png'),
+       ('TravelVibe Agency', 'Explore the World Today', '/images/adsImages/travelVibeAgency.png'),
+       ('EcoWear Clothing', 'Sustainable Fashion for All', '/images/adsImages/ecoWearClothing.png')

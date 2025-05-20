@@ -14,93 +14,78 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="900.0"
-            style="-fx-background-color: linear-gradient(to bottom, #f7f9fc, #e3eaf3);"
-            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.HomeController">
+<AnchorPane prefHeight="750.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(to bottom, #f7f9fc, #e3eaf3);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
     <stylesheets>
-        <URL value="@../css/home.css"/>
+        <URL value="@../css/home.css" />
     </stylesheets>
     <children>
-        <!-- Info Icon and Help Text -->
-        <AnchorPane prefHeight="32.0" prefWidth="900.0"
-                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+        <AnchorPane prefHeight="32.0" prefWidth="900.0" translateZ="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <FontAwesomeIconView glyphName="INFO_CIRCLE" layoutX="859.0" layoutY="28.0"
-                                     onMouseClicked="#handleInfo" size="30" text=""
-                                     wrappingWidth="26.285776138305664"/>
-                <Text layoutX="625.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                      text=" Learn how to use the app — click for help."/>
+                <FontAwesomeIconView focusTraversable="true" glyphName="INFO_CIRCLE" layoutX="859.0" layoutY="28.0" onMouseClicked="#handleInfo" size="30" text="" wrappingWidth="26.285776138305664" />
+                <Text layoutX="625.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Learn how to use the app — click for help." />
             </children>
         </AnchorPane>
 
-        <!-- Main Content -->
-        <VBox alignment="TOP_CENTER" prefHeight="750.0" prefWidth="900.0" spacing="30.0"
-              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+        <VBox alignment="TOP_CENTER" layoutY="36.0" prefHeight="714.0" prefWidth="900.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
             <padding>
-                <Insets left="40.0" right="40.0" top="10.0" bottom="10.0"/>
+                <Insets bottom="10.0" left="40.0" right="40.0" top="10.0" />
             </padding>
             <children>
-                <!-- Spacer to Push Content Down -->
-                <Region VBox.vgrow="ALWAYS"/>
 
-                <!-- Logo -->
+                <Region prefHeight="5.0" prefWidth="820.0" VBox.vgrow="ALWAYS" />
+
+
                 <ImageView fitHeight="170.0" fitWidth="170.0">
                     <image>
-                        <Image url="@../images/youthcenter_logo.png"/>
+                        <Image url="@../images/youthcenter_logo.png" />
                     </image>
                 </ImageView>
 
-                <!-- Title -->
+
                 <Text fill="#101935" text="Youth Center Management">
                     <font>
-                        <Font name="Segoe UI Bold" size="32.0"/>
+                        <Font name="Segoe UI Bold" size="32.0" />
                     </font>
                 </Text>
 
-                <!-- Welcome Message -->
+
                 <VBox alignment="CENTER" spacing="10">
                     <children>
                         <Text fill="#0c1821" text="Welcome to the Youth Center!">
                             <font>
-                                <Font name="Segoe UI Semibold" size="22.0"/>
+                                <Font name="Segoe UI Semibold" size="22.0" />
                             </font>
                         </Text>
                         <Text fill="#3a475e" text="To continue, please choose one of the options below:">
                             <font>
-                                <Font name="Segoe UI" size="16.0"/>
+                                <Font name="Segoe UI" size="16.0" />
                             </font>
                         </Text>
                     </children>
                 </VBox>
 
-                <!-- Buttons -->
+
                 <HBox alignment="CENTER" spacing="25">
                     <children>
-                        <Button onAction="#handleSignIn" prefWidth="140"
-                                style="-fx-background-color: #101935; -fx-text-fill: white; -fx-background-radius: 10; -fx-font-size: 14px; -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1);"
-                                text="Log In"/>
-                        <Button onAction="#handleSignUp" prefWidth="140"
-                                style="-fx-background-color: transparent; -fx-border-color: #101935; -fx-border-radius: 10; -fx-text-fill: #101935; -fx-font-size: 14px; -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.1), 3, 0, 0, 1);"
-                                text="Sign Up"/>
+                        <Button onAction="#handleSignIn" prefWidth="140" style="-fx-background-color: #101935; -fx-text-fill: white; -fx-background-radius: 10; -fx-font-size: 14px; -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1);" text="Log In" />
+                        <Button onAction="#handleSignUp" prefWidth="140" style="-fx-background-color: transparent; -fx-border-color: #101935; -fx-border-radius: 10; -fx-text-fill: #101935; -fx-font-size: 14px; -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.1), 3, 0, 0, 1);" text="Sign Up" />
                     </children>
                 </HBox>
 
-                <!-- Advertisements Panel -->
+
                 <VBox alignment="CENTER" spacing="15">
                     <children>
                         <Text fill="#101935" text="Sponsored Advertisements">
                             <font>
-                                <Font name="Segoe UI Bold" size="20.0"/>
+                                <Font name="Segoe UI Bold" size="20.0" />
                             </font>
                         </Text>
-                        <ScrollPane fx:id="adScrollPane" prefHeight="200.0"
-                                    style="-fx-background-color: transparent;" vbarPolicy="NEVER">
+                        <ScrollPane fx:id="adScrollPane" prefHeight="200.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
                             <content>
-                                <HBox fx:id="adContainer" alignment="CENTER" spacing="15"
-                                      style="-fx-background-color: #ffffff; -fx-background-radius: 10; -fx-padding: 5; -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);">
-                                    <!-- Ads will be dynamically added here -->
+                                <HBox fx:id="adContainer" alignment="CENTER" spacing="15" style="-fx-background-color: #ffffff; -fx-background-radius: 10; -fx-padding: 5; -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+                                    <!-- Ads shtohen qetu -->
                                 </HBox>
                             </content>
                         </ScrollPane>

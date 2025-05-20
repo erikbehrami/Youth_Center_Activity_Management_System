@@ -5,18 +5,18 @@ import model.dto.contactMessage.CreateContactMessageDto;
 
 import java.sql.*;
 
-public class ContactMessagesRepository extends BaseRepository<ContactMessages,CreateContactMessageDto, Object> {
+public class ContactMessagesRepository extends BaseRepository<ContactMessages, CreateContactMessageDto, Object> {
 
-    public ContactMessagesRepository(){
-        super("contact_messages");
+    public ContactMessagesRepository() {
+        super("contactmessages");
     }
 
-    ContactMessages fromResultSet(ResultSet res) throws SQLException{
+    ContactMessages fromResultSet(ResultSet res) throws SQLException {
         return ContactMessages.getInstance(res);
     }
 
     public ContactMessages create(CreateContactMessageDto createContactMessageDto) {
-        String query = "insert into contact_messages (name, email, message, sentAt) values (?, ?, ?, ?)";
+        String query = "insert into contactmessages (name, email, message, sentAt) values (?, ?, ?, ?)";
 
         try {
             PreparedStatement pstm =
