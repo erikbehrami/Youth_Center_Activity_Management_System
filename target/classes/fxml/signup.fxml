@@ -15,16 +15,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="baseAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" styleClass="dont" stylesheets="@../css/focus.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignUpController">
+<AnchorPane fx:id="baseAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" styleClass="dont" stylesheets="@../css/focus.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignUpController">
     <children>
         <AnchorPane prefHeight="660.0" prefWidth="370.0" style="-fx-background-color: #101935;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0">
             <children>
-                <ImageView fitHeight="160.0" fitWidth="186.0" layoutX="91.0" layoutY="188.0" style="-fx-z-index: 1;">
+                <ImageView fitHeight="160.0" fitWidth="186.0" layoutX="92.0" layoutY="256.0" style="-fx-z-index: 1;">
                     <image>
                         <Image url="@../images/youthcenter_logo.png" />
                     </image>
                 </ImageView>
-                <Text fill="WHITE" fontSmoothingType="LCD" layoutX="22.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: sans-serif;" text="Youth Center Management" textAlignment="CENTER" wrappingWidth="324.8000366210938">
+                <Text fill="WHITE" fontSmoothingType="LCD" layoutX="23.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: sans-serif;" text="Youth Center Management" textAlignment="CENTER" wrappingWidth="324.8000366210938">
                     <font>
                         <Font name="System Bold" size="30.0" />
                     </font>
@@ -36,7 +36,7 @@
                 <Font size="10.0" />
             </font>
         </Text>
-        <VBox layoutX="415.0" layoutY="82.0" prefHeight="464.0" prefWidth="223.0" spacing="5.0">
+        <VBox layoutX="450.0" layoutY="134.0" prefHeight="464.0" prefWidth="223.0" spacing="5.0">
             <children>
                 <AnchorPane prefHeight="57.0" prefWidth="223.0">
                     <children>
@@ -143,7 +143,7 @@
                 </AnchorPane>
             </children>
         </VBox>
-        <Label fx:id="passwordsMessage" layoutX="650.0" layoutY="403.0" text="Passwords do not equal!" textFill="WHITE">
+        <Label fx:id="passwordsMessage" layoutX="680.0" layoutY="456.0" text="Passwords do not equal!" textFill="WHITE">
             <font>
                 <Font size="10.0" />
             </font>
