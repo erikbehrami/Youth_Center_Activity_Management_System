@@ -48,7 +48,11 @@ public class SignInController extends BaseController {
         }
         LoginDTO loginDTO = new LoginDTO(email.getText().toLowerCase(), password.getText());
         UserService userService = new UserService();
-        userService.handleLogin(loginDTO);
+        if (userService.handleLogin(loginDTO)) {
+            clear();
+        }
+
+
     }
 
     @FXML
@@ -108,6 +112,17 @@ public class SignInController extends BaseController {
             password.requestFocus();
 
         }
+
+    }
+
+    public void clear() {
+
+        email.clear();
+        password.clear();
+        passwordFieldText.clear();
+
+        check = false;
+
     }
 
 

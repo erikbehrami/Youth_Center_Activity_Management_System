@@ -1,9 +1,9 @@
 package services;
 
-import app.Profile;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.Admins;
 import model.Professors;
@@ -11,15 +11,15 @@ import model.Students;
 import model.User;
 import model.dto.ProfileTemporaryDTO;
 import model.dto.admins.UpdateAdminsDto;
+import model.dto.admins.UpdateAdminsPasswordDto;
 import model.dto.professors.UpdateProfessorDto;
+import model.dto.professors.UpdateProfessorsPasswordDto;
 import model.dto.students.UpdateStudentsDto;
+import model.dto.students.UpdateStudentsPasswordDto;
 import repository.AdminsRepository;
 import repository.ProfessorsRepository;
 import repository.StudentsRepository;
-import utils.customExceptions.CustomException;
-import utils.customExceptions.EmailAlreadyExistsException;
-import utils.customExceptions.EmailShouldContainException;
-import utils.customExceptions.InvalidEmailException;
+import utils.customExceptions.*;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -33,6 +33,9 @@ public class ProfileService {
     private static final int IDLE_TIMEOUT = 5 * 60;
     private final SessionManager sessionManager = SessionManager.getInstance();
     private UserService userService = new UserService();
+    AdminsRepository adminsRepository = new AdminsRepository();
+    StudentsRepository studentsRepository = new StudentsRepository();
+    ProfessorsRepository professorsRepository = new ProfessorsRepository();
 
     public void startClock(Label timeLabel) {
         Timeline clock = new Timeline(
@@ -164,9 +167,7 @@ public class ProfileService {
             Label userTypeLabel,
             TextArea bio
     ) {
-        AdminsRepository adminsRepository = new AdminsRepository();
-        StudentsRepository studentsRepository = new StudentsRepository();
-        ProfessorsRepository professorsRepository = new ProfessorsRepository();
+
         User user = sessionManager.currentUser();
 
         int idValue = Integer.parseInt(id.getText());
@@ -252,5 +253,53 @@ public class ProfileService {
         }
 
     }
+
+    public void handlePasswordChange(PasswordField currentPasswordField, PasswordField newPasswordField, PasswordField confirmPasswordField) {
+        String currentPass = currentPasswordField.getText();
+        String newPass = newPasswordField.getText();
+        String confirmPass = confirmPasswordField.getText();
+
+        User user = sessionManager.currentUser();
+        String salt = user.getSalt();
+        String hashedPassword = user.getPasswordHash();
+
+
+        try {
+            String passwordGenerated = PasswordHasher.hashPassword(currentPass, salt);
+
+            if (!hashedPassword.equals(passwordGenerated)) {
+                throw new WrongCurrentPasswordException("Wrong current password");
+            }
+            if (!newPass.equals(confirmPass)) {
+                throw new PasswordsAreNotEqualException("Passwords are not equal");
+            }
+            if (sessionManager.isAdmin()) {
+
+                UpdateAdminsPasswordDto updateAdminsPasswordDto = new UpdateAdminsPasswordDto(user.getId(), salt, PasswordHasher.hashPassword(newPass, salt));
+                adminsRepository.updatePassword(updateAdminsPasswordDto);
+                Admins admin = adminsRepository.getById(user.getId());
+                SessionManager.getInstance().setCurrentUser(admin);
+            } else if (sessionManager.isProfessor()) {
+                UpdateProfessorsPasswordDto updateProfessorsPasswordDto = new UpdateProfessorsPasswordDto(user.getId(), salt, PasswordHasher.hashPassword(newPass, salt));
+                professorsRepository.updatePassword(updateProfessorsPasswordDto);
+                Professors professors = professorsRepository.getById(user.getId());
+                SessionManager.getInstance().setCurrentUser(professors);
+
+            } else if (sessionManager.isStudent()) {
+                UpdateStudentsPasswordDto updateStudentsPasswordDto = new UpdateStudentsPasswordDto(user.getId(), salt, PasswordHasher.hashPassword(newPass, salt));
+                studentsRepository.updatePassword(updateStudentsPasswordDto);
+                Students students = studentsRepository.getById(user.getId());
+                SessionManager.getInstance().setCurrentUser(students);
+            }
+
+            throw new PasswordHasBeenChangedSuccessfulyException("password change");
+
+        } catch (Exception e) {
+
+        }
+
+
+    }
+
 
 }

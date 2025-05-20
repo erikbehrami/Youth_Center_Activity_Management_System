@@ -213,7 +213,23 @@ public class SignUpController extends BaseController {
                 termsAndConditions
         );
         UserService userService = new UserService();
-        userService.handleSignUp(registerDTO);
+        if (userService.handleSignUp(registerDTO)) {
+            clear();
+        }
+
+    }
+
+    public void clear() {
+        name.clear();
+        surname.clear();
+        username.clear();
+        emailAddress.clear();
+        birthDate.setValue(null);
+        password.clear();
+        confirmPassword.clear();
+        passwordFieldText.clear();
+        confirmPasswordFieldText.clear();
+        termsAndConditionsCheckBox.setSelected(false);
     }
 
 

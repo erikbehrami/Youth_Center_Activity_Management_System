@@ -112,7 +112,7 @@
                 </VBox>
                 <HBox alignment="TOP_RIGHT" layoutX="708.0" layoutY="565.0" minHeight="0.0" minWidth="0.0" prefHeight="35.0" prefWidth="200.0" spacing="15.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="708.0" AnchorPane.rightAnchor="29.0">
                     <children>
-                        <Button onAction="#handleAddProfessor" alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #101935;" styleClass="change" text="%admin.Add" textFill="WHITE">
+                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #101935;" styleClass="change" text="%admin.Add" textFill="WHITE">
                             <font>
                                 <Font size="13.0" />
                             </font>

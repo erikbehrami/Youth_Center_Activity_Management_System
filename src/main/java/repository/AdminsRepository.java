@@ -3,6 +3,7 @@ package repository;
 import model.Admins;
 import model.dto.admins.CreateAdminsDto;
 import model.dto.admins.UpdateAdminsDto;
+import model.dto.admins.UpdateAdminsPasswordDto;
 
 import java.sql.*;
 
@@ -58,6 +59,28 @@ public class AdminsRepository extends BaseRepository<Admins, CreateAdminsDto, Up
             pstm.setString(7, updateAdDto.getGender());
             pstm.setString(8, updateAdDto.getBiographicalInfo());
             pstm.setInt(9, updateAdDto.getId());
+            pstm.execute();
+            ResultSet res = pstm.getGeneratedKeys();
+            if (res.next()) {
+                int id = res.getInt(1);
+                return this.getById(id);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public Admins updatePassword(UpdateAdminsPasswordDto updateAdDto) {
+        String query = "update admins set  salt = ?, passwordhash = ? where id = ?";
+        try {
+            PreparedStatement pstm =
+                    this.connection.prepareStatement(
+                            query, Statement.RETURN_GENERATED_KEYS);
+            ;
+            pstm.setString(1, updateAdDto.getSalt());
+            pstm.setString(2, updateAdDto.getPasswordHash());
+            pstm.setInt(3, updateAdDto.getId());
             pstm.execute();
             ResultSet res = pstm.getGeneratedKeys();
             if (res.next()) {

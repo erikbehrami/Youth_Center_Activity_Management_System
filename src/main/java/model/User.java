@@ -23,5 +23,9 @@ public interface User {
 
     String getBiographicalInfo();
 
+    String getSalt();
+
+    String getPasswordHash();
+
 
 }

@@ -2,13 +2,12 @@ package repository;
 
 
 import database.DBConnector;
-import model.Professors;
-import model.Students;
+import model.*;
+import model.dto.admins.UpdateAdminsPasswordDto;
 import model.dto.students.CreateStudentsDto;
 import model.dto.students.UpdateStudentsDto;
-import model.Enrolled;
-import model.Requests;
 import model.Students;
+import model.dto.students.UpdateStudentsPasswordDto;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -95,6 +94,28 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
             statement.setInt(9, UpdateSDTO.getId());
             statement.execute();
             ResultSet res = statement.getGeneratedKeys();
+            if (res.next()) {
+                int id = res.getInt(1);
+                return this.getById(id);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public Students updatePassword(UpdateStudentsPasswordDto updateSdDto) {
+        String query = "update students set  salt = ?, passwordhash = ? where id = ?";
+        try {
+            PreparedStatement pstm =
+                    this.connection.prepareStatement(
+                            query, Statement.RETURN_GENERATED_KEYS);
+            ;
+            pstm.setString(1, updateSdDto.getSalt());
+            pstm.setString(2, updateSdDto.getPasswordHash());
+            pstm.setInt(3, updateSdDto.getId());
+            pstm.execute();
+            ResultSet res = pstm.getGeneratedKeys();
             if (res.next()) {
                 int id = res.getInt(1);
                 return this.getById(id);
@@ -242,6 +263,7 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
         List<Requests> requests = requestsRepository.getByProfessorId(professorId);
         return requests;
     }
+
     public boolean approveRequest(int requestId) {
         String selectSQL = "SELECT student_id, professor_id FROM requests WHERE id = ?";
         String updateSQL = "UPDATE requests SET status = 'approved' WHERE id = ?";
@@ -260,7 +282,7 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
                         conn.rollback();
                         return false; // request not found
                     }
-                    int studentId  = rs.getInt("student_id");
+                    int studentId = rs.getInt("student_id");
                     int professorId = rs.getInt("professor_id");
 
                     // 2. Update request status to 'approved'
@@ -291,6 +313,7 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
         }
         return false;
     }
+
     public boolean declineRequest(int requestId) {
         String sql = "UPDATE requests SET status = 'declined' WHERE id = ?";
         try (Connection conn = DBConnector.getConnection();

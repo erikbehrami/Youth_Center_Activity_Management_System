@@ -2,8 +2,11 @@ package repository;
 
 import database.DBConnector;
 import model.Professors;
+import model.Students;
 import model.dto.professors.CreateProfessorDto;
 import model.dto.professors.UpdateProfessorDto;
+import model.dto.professors.UpdateProfessorsPasswordDto;
+import model.dto.students.UpdateStudentsPasswordDto;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -87,6 +90,28 @@ public class ProfessorsRepository extends BaseRepository<Professors, CreateProfe
             statement.setInt(9, UpdatePDto.getId());
             statement.execute();
             ResultSet res = statement.getGeneratedKeys();
+            if (res.next()) {
+                int id = res.getInt(1);
+                return this.getById(id);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public Professors updatePassword(UpdateProfessorsPasswordDto updatePdDto) {
+        String query = "update professors set  salt = ?, passwordhash = ? where id = ?";
+        try {
+            PreparedStatement pstm =
+                    this.connection.prepareStatement(
+                            query, Statement.RETURN_GENERATED_KEYS);
+            ;
+            pstm.setString(1, updatePdDto.getSalt());
+            pstm.setString(2, updatePdDto.getPasswordHash());
+            pstm.setInt(3, updatePdDto.getId());
+            pstm.execute();
+            ResultSet res = pstm.getGeneratedKeys();
             if (res.next()) {
                 int id = res.getInt(1);
                 return this.getById(id);
@@ -192,6 +217,7 @@ public class ProfessorsRepository extends BaseRepository<Professors, CreateProfe
 
         return 10;
     }
+
     public int getMaxStudents(int professorId) {
         String query = "SELECT max_students FROM Professors WHERE id = ?";
 

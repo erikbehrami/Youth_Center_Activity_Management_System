@@ -17,10 +17,6 @@ import services.ProfileService;
 import services.SessionManager;
 import utils.Navigator;
 
-import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
-
 
 public class ProfileController extends BaseController {
     @FXML
@@ -198,6 +194,11 @@ public class ProfileController extends BaseController {
                 name, surname, gender, birthdate, userTypeLabel, bio);
         updateProgressBar();
         sessionManager.setProfileTemporaryDTO(null);
+    }
+
+    @FXML
+    public void handleChangePassword() {
+        sceneManager.createNewStage(Navigator.CHANGE_PASSWORD, "Change Password");
     }
 
 

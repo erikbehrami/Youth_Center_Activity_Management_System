@@ -53,7 +53,7 @@ public class UserService {
         return (studentsRepository.getByEmail(email) == null && professorsRepository.getByEmail(email) == null && adminsRepository.getByEmail(email) == null);
     }
 
-    public boolean isValidPassword(String password) {
+    public static boolean isValidPassword(String password) {
         if (password == null) return false;
 
         final String PASSWORD_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$";
@@ -79,7 +79,7 @@ public class UserService {
         return professorsRepository.create(createProfessorDto) != null;
     }
 
-    public void handleLogin(LoginDTO loginDTO) {
+    public boolean handleLogin(LoginDTO loginDTO) {
 
         String email = loginDTO.getEmail();
         String password = loginDTO.getPassword();
@@ -102,7 +102,7 @@ public class UserService {
                         logsService.logLogInProcess(createLoginLogsDto);
                         sessionManager.setRegisterDTO(null);
                         sceneManager.switchScene(Navigator.ADMIN_DASHBOARD, "Admin Dashboard");
-                        return;
+                        return true;
                     }
                 }
                 throw new WrongLoginException("Invalid email or password.");
@@ -118,7 +118,7 @@ public class UserService {
                             logsService.logLogInProcess(createLoginLogsDto);
                             sessionManager.setRegisterDTO(null);
                             sceneManager.switchScene(Navigator.PROF_DASHBOARD, "Professor Dashboard");
-                            return;
+                            return true;
                         } else {
                             throw new NotVerifiedException("Account not verified");
                         }
@@ -137,7 +137,7 @@ public class UserService {
                         logsService.logLogInProcess(createLoginLogsDto);
                         sessionManager.setRegisterDTO(null);
                         sceneManager.switchScene(Navigator.STUDENT_PROFILE, "Student Dashboard");
-                        return;
+                        return true;
                     }
                 }
                 throw new WrongLoginException("Invalid email or password.");
@@ -148,10 +148,10 @@ public class UserService {
             System.out.println();
 
         }
-
+        return false;
     }
 
-    public void handleSignUp(RegisterDTO registerDTO) {
+    public boolean handleSignUp(RegisterDTO registerDTO) {
         UserService userService = new UserService();
 
         try {
@@ -250,8 +250,10 @@ public class UserService {
                 if (userService.createUser(createStudentsDto)) {
                     sessionManager.setRegisterDTO(null);
                     ErrorDialog.showRegistrationSuccess(Alert.AlertType.INFORMATION, "Success");
+                    return true;
                 } else {
                     ErrorDialog.showRegistrationSuccess(Alert.AlertType.INFORMATION, "Fail");
+                    return false;
                 }
 
             }
@@ -259,6 +261,7 @@ public class UserService {
         } catch (Exception e) {
             System.out.println();
         }
+        return false;
     }
 }
 
