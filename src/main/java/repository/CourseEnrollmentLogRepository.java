@@ -15,16 +15,13 @@ public class CourseEnrollmentLogRepository extends BaseRepository<CourseEnrollme
     }
 
     public CourseEnrollmentLog create(CreateCourseEnrollmentLogDto dto) {
-        String query = "INSERT INTO course_enrollment_logs (student_id, course_id, action, action_time) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO courseenrollmentlogs (student_id, course_id, action_time) VALUES (?, ?, ?)";
         try {
-            PreparedStatement pstm =
-                    this.connection.prepareStatement(
-                            query, Statement.RETURN_GENERATED_KEYS);
-            pstm.setInt(1, dto.getstudentID());
-            pstm.setInt(2, dto.getcourseID());
-            pstm.setString(3, dto.getAction());
-            java.util.Date actionTime = dto.getActionTime();
-            pstm.setTimestamp(4, new java.sql.Timestamp(actionTime.getTime()));
+            PreparedStatement pstm = this.connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            pstm.setInt(1, dto.getStudentID());
+            pstm.setInt(2, dto.getCourseID());
+            pstm.setTimestamp(3, dto.getActionTime());
+
             pstm.execute();
             ResultSet res = pstm.getGeneratedKeys();
             if (res.next()) {
@@ -36,6 +33,7 @@ public class CourseEnrollmentLogRepository extends BaseRepository<CourseEnrollme
         }
         return null;
     }
+
 
     public CourseEnrollmentLog update(Object object) {
         return null;

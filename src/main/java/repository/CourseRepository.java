@@ -1,6 +1,5 @@
 package repository;
 
-import database.DBConnector;
 import model.Courses;
 import model.dto.course.CreateCourseDto;
 import model.dto.course.UpdateCourseDto;
@@ -19,7 +18,6 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, U
         return Courses.getInstance(res);
     }
 
-    // Create new course
     public Courses create(CreateCourseDto createCourseDto) {
         String query = "INSERT INTO courses (name, category, id_professor, id_lectureRooms, totalNum, studentsEnrolled, dateStarted, dateEnding) VALUES (?,?,?,?,?,?,?,?)";
         try {
@@ -101,8 +99,7 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, U
         ArrayList<Courses> coursesList = new ArrayList<>();
         String query = "SELECT * FROM courses WHERE id_Professor = ?";
 
-        try (Connection conn = DBConnector.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
 
             stmt.setInt(1, professorId);
             ResultSet rs = stmt.executeQuery();
@@ -146,9 +143,7 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, U
 
     public String getProfessorNameById(int profId) {
         String query = "SELECT name, surname FROM professors WHERE id = ?";
-        try (
-                Connection conn = DBConnector.getConnection();
-                PreparedStatement stmt = conn.prepareStatement(query)) {
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, profId);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -164,10 +159,7 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, U
         ArrayList<Courses> listOfCourses = new ArrayList<>();
         String query = "SELECT * FROM courses";
 
-        try (
-                Connection conn = DBConnector.getConnection();
-                PreparedStatement stmt = conn.prepareStatement(query)) {
-
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Courses course = Courses.getInstance(rs);
@@ -194,11 +186,8 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, U
                 c.id
         """;
 
-        try (
-                Connection conn = DBConnector.getConnection();
-                PreparedStatement stmt = conn.prepareStatement(query);
-                ResultSet rs = stmt.executeQuery()
-        ) {
+        try (PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 int courseId = rs.getInt("course_id");
                 int count = rs.getInt("students_enrolled");
@@ -209,5 +198,53 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, U
         }
 
         return enrollments;
+    }
+
+    public boolean enrollStudentInCourse(int studentId, int courseId) {
+        String query = "INSERT INTO enrolled (id_student, id_course) VALUES (?, ?)";
+
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+
+            stmt.setInt(1, studentId);
+            stmt.setInt(2, courseId);
+            stmt.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean isStudentEnrolled(int studentId, int courseId) {
+        String query = "SELECT COUNT(*) FROM enrolled WHERE id_student = ? AND id_course = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)
+        ) {
+            stmt.setInt(1, studentId);
+            stmt.setInt(2, courseId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean unenrollStudentFromCourse(int studentId, int courseId) {
+        String sql = "DELETE FROM enrolled WHERE id_student = ? AND id_course = ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, studentId);
+            stmt.setInt(2, courseId);
+
+            int affectedRows = stmt.executeUpdate();
+            return affectedRows > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
