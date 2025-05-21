@@ -2,10 +2,15 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import services.ContactService;
+import services.SceneManager;
+import services.SessionManager;
+import utils.Navigator;
 import utils.customExceptions.CustomException;
 import utils.customExceptions.InvalidEmailException;
 
@@ -16,8 +21,18 @@ public class ContactController {
     private TextField emailField;
     @FXML
     private TextArea messageField;
+    @FXML
+    private Button submitButton;
 
     private final ContactService contactService = new ContactService();
+
+
+    @FXML
+    private void initialize() {
+        submitButton.setDefaultButton(true);
+
+    }
+
 
     @FXML
     private void submitContact() {

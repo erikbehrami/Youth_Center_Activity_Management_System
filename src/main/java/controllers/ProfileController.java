@@ -202,4 +202,19 @@ public class ProfileController extends BaseController {
     }
 
 
+    @FXML
+    public void handleAboutUsButtonClick() {
+        sceneManager.switchScene(Navigator.ABOUT, "About");
+    }
+
+    @FXML
+    public void handleProfileButtonClick() {
+        sceneManager.switchScene(Navigator.PROFILE, "Profile");
+    }
+
+    @FXML
+    public void handleContactButtonClick() {
+        sceneManager.createNewStage(Navigator.CONTACT, "Contact");
+    }
+
 }

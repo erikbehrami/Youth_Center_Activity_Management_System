@@ -259,7 +259,7 @@
                     </AnchorPane>
                     <HBox alignment="CENTER" layoutX="302.0" prefHeight="50.0" prefWidth="614.0" spacing="20.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="302.0" AnchorPane.rightAnchor="302.4" AnchorPane.topAnchor="1.0" HBox.hgrow="ALWAYS">
                         <children>
-                            <Button fx:id="homeButton" focusTraversable="false" mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.Home" textFill="#ffebeb">
+                            <Button fx:id="profileButton" focusTraversable="false" mnemonicParsing="false" onAction="#handleProfileButtonClick" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.Profile" textFill="#ffebeb">
                                 <opaqueInsets>
                                     <Insets />
                                 </opaqueInsets>
@@ -267,7 +267,7 @@
                                     <Font size="14.0" />
                                 </font>
                             </Button>
-                            <Button fx:id="profileButton" focusTraversable="false" mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.Profile" textFill="#ffebeb">
+                            <Button fx:id="aboutButton" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAboutUsButtonClick" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.About" textFill="#ffebeb">
                                 <opaqueInsets>
                                     <Insets />
                                 </opaqueInsets>
@@ -275,15 +275,7 @@
                                     <Font size="14.0" />
                                 </font>
                             </Button>
-                            <Button fx:id="aboutButton" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.About" textFill="#ffebeb">
-                                <opaqueInsets>
-                                    <Insets />
-                                </opaqueInsets>
-                                <font>
-                                    <Font size="14.0" />
-                                </font>
-                            </Button>
-                            <Button fx:id="contactButton" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.Contact" textFill="#ffebeb">
+                            <Button fx:id="contactButton" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleContactButtonClick" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="%navbar.Contact" textFill="#ffebeb">
                                 <opaqueInsets>
                                     <Insets />
                                 </opaqueInsets>

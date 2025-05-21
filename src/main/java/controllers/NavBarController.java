@@ -15,4 +15,14 @@ public class NavBarController extends BaseController {
     private void handleContactButtonClick() {
         sceneManager.createNewStage(Navigator.CONTACT, "Contact Us");
     }
+
+    @FXML
+    private void handleAboutUsButtonClick() {
+        sceneManager.switchScene(Navigator.ABOUT, "About");
+    }
+
+    @FXML
+    private void handleProfileButtonClick() {
+        sceneManager.switchScene(Navigator.PROFILE, "Profile");
+    }
 }

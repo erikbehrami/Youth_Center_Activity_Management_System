@@ -53,6 +53,6 @@
             </font>
         </Text>
         <TextArea fx:id="messageField" layoutX="415.0" layoutY="393.0" prefHeight="100.0" prefWidth="230.0" styleClass="change" />
-        <Button fx:id="submitButton" layoutX="415.0" layoutY="511.0" mnemonicParsing="false" onAction="#submitContact" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #0c1821;" styleClass="accButton1" text="%contact.button" textFill="WHITE" />
+        <Button fx:id="submitButton" layoutX="415.0" layoutY="511.0" mnemonicParsing="false" onAction="#submitContact" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: #101935;" styleClass="accButton1" text="%contact.button" textFill="WHITE" />
     </children>
 </AnchorPane>

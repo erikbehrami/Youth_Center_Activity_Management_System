@@ -7,6 +7,9 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.layout.VBox;
 import model.Faqs;
 import repository.FaqsRepository;
+import services.SceneManager;
+import services.SessionManager;
+import utils.Navigator;
 
 import java.util.List;
 
@@ -21,6 +24,19 @@ public class AboutController {
     private Label labelMission;
 
     private final FaqsRepository faqsRepository = new FaqsRepository();
+    SceneManager sceneManager = SceneManager.getInstance();
+    SessionManager sessionManager = SessionManager.getInstance();
+
+    @FXML
+    public void handleGoBack() {
+        if (sessionManager.isAdmin()) {
+            sceneManager.switchScene(Navigator.ADMIN_DASHBOARD, "Admin Dashboard");
+        } else if (sessionManager.isProfessor()) {
+            sceneManager.switchScene(Navigator.PROF_DASHBOARD, "Professor Dashboard");
+        } else if (sessionManager.isStudent()) {
+            sceneManager.switchScene(Navigator.STUDENT_PROFILE, "Student Home");
+        }
+    }
 
     @FXML
     private void initialize() {
