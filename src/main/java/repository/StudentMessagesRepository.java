@@ -1,22 +1,43 @@
 package repository;
 
 import database.DBConnector;
+import model.Admins;
 import model.StudentMessages;
+import model.dto.studentMessages.CreateStudentMessages;
 
 
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class StudentMessagesRepository {
+public class StudentMessagesRepository extends BaseRepository<StudentMessages, CreateStudentMessages, Object> {
+
+    public StudentMessagesRepository() {
+        super("StudentMessages");
+    }
+
+    StudentMessages fromResultSet(ResultSet res) throws SQLException {
+        return StudentMessages.getInstance(res);
+    }
+
+    @Override
+    StudentMessages create(CreateStudentMessages createDto) {
+        return null;
+    }
+
+    @Override
+    StudentMessages update(Object updateDto) {
+        return null;
+    }
 
     public List<StudentMessages> getMessagesByStudent(int studentId, int professorId) {
         List<StudentMessages> messages = new ArrayList<>();
         String query = "SELECT * FROM studentMessages WHERE id_student = ? AND id_professor = ? ORDER BY sendat DESC";
 
-        try (Connection connection = DBConnector.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+        try {
+             PreparedStatement statement = this.connection.prepareStatement(query);
 
             statement.setInt(1, studentId);
             statement.setInt(2, professorId);
@@ -29,7 +50,7 @@ public class StudentMessagesRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return messages;
     }
@@ -49,7 +70,7 @@ public class StudentMessagesRepository {
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return false;
     }
@@ -64,8 +85,8 @@ public class StudentMessagesRepository {
                 WHERE e.id_student = ? and sm.id_professor = ?
                 """;
 
-        try (Connection connection = DBConnector.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+        try {
+             PreparedStatement statement = this.connection.prepareStatement(query);
 
             statement.setInt(1, studentId);
             statement.setInt(2, professorId);
@@ -79,7 +100,7 @@ public class StudentMessagesRepository {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return messages;
     }

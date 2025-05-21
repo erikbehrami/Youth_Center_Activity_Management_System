@@ -35,7 +35,7 @@
                                 <TextField fx:id="searchField" prefHeight="30.0" prefWidth="255.0" promptText="Search" style="-fx-border-color: #101935; -fx-border-radius: 5;" styleClass="change" />
                             </children>
                         </HBox>
-                  <TableView fx:id="pendingStdTable" layoutX="16.0" layoutY="320.0" prefHeight="254.0" prefWidth="898.0">
+                  <TableView fx:id="pendingStdTable" layoutX="16.0" layoutY="320.0" prefHeight="254.0" prefWidth="898.0" styleClass="change">
                     <columns>
                       <TableColumn fx:id="pendingStdID" prefWidth="44.79998207092285" text="ID" />
                       <TableColumn fx:id="pendingStdNAME" prefWidth="68.79999542236328" text="%profStudent.Name" />

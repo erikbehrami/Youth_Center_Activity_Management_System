@@ -228,10 +228,4 @@ public class ProfDashboardService extends BaseProfessorService{
         return professorsRepository.getMaxCourses(professorId);
     }
 
-    public int maxStudents(int professorId)
-    {
-        return professorsRepository.getMaxStudents(professorId);
-    }
-
-
 }

@@ -57,11 +57,8 @@ public class ProfDashboardController extends ProfController {
             totalCoursesLabel.setText(currentCoursesCount + " / " + maxCourses);
         }
         if (totalStudentsLabel !=null){
-            int professorId = profDashboardService.professorId();
-            int maxStudents = profDashboardService.maxStudents(professorId);
             int currentStudentsCount = profDashboardService.getTotalStudents();
-
-            totalStudentsLabel.setText(currentStudentsCount + " / " + maxStudents);
+            totalStudentsLabel.setText("" + currentStudentsCount);
         }
         if (profName !=null)
         {

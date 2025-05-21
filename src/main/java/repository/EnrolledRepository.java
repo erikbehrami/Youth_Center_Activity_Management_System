@@ -55,8 +55,8 @@ public class EnrolledRepository extends BaseRepository<Enrolled, CreateEnrolledD
             WHERE e.id_professor = ? AND e.id_course = ?
             """;
         int count = 0;
-        try (Connection conn = DBConnector.getConnection();
-             PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+        try {
+             PreparedStatement preparedStatement = this.connection.prepareStatement(query);
 
             preparedStatement.setInt(1, professorId);
             preparedStatement.setInt(2, courseId);
@@ -74,9 +74,8 @@ public class EnrolledRepository extends BaseRepository<Enrolled, CreateEnrolledD
     public List<Courses> getCoursesForStudent(int studentId) {
         String query = "SELECT c.* FROM courses c JOIN enrolled e ON c.id = e.id_course WHERE e.id_student = ?";
         List<Courses> courses = new ArrayList<>();
-        try (
-            Connection conn = DBConnector.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(query)) {
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(query);
             stmt.setInt(1, studentId);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -96,8 +95,8 @@ public class EnrolledRepository extends BaseRepository<Enrolled, CreateEnrolledD
             WHERE e.id_student = ?
             """;
 
-        try (Connection conn = DBConnector.getConnection();
-             PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+        try{
+             PreparedStatement preparedStatement = this.connection.prepareStatement(query);
 
             preparedStatement.setInt(1, studentId);
             ResultSet resultSet = preparedStatement.executeQuery();

@@ -2,8 +2,6 @@ package repository;
 
 
 import database.DBConnector;
-import model.*;
-import model.dto.admins.UpdateAdminsPasswordDto;
 import model.dto.students.CreateStudentsDto;
 import model.dto.students.UpdateStudentsDto;
 import model.Students;
@@ -12,12 +10,11 @@ import model.dto.students.UpdateStudentsPasswordDto;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
 
 
 public class StudentsRepository extends BaseRepository<Students, CreateStudentsDto, UpdateStudentsDto> {
 
-    RequestsRepository requestsRepository = new RequestsRepository();
 
     public StudentsRepository() {
         super("students");
@@ -174,8 +171,8 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
                                 WHERE e.id_professor = ?
                 """;
 
-        try (Connection conn = DBConnector.getConnection();
-             PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+        try {
+             PreparedStatement preparedStatement = this.connection.prepareStatement(query);
 
             preparedStatement.setInt(1, professorId);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -185,7 +182,7 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
                 enrolledStudents.add(students);
             }
         } catch (SQLException se) {
-            se.printStackTrace();
+            System.out.println(se.getMessage());
         }
 
         return enrolledStudents;
@@ -230,8 +227,8 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
 
         int maleStudentsCount = 0;
 
-        try (Connection conn = DBConnector.getConnection();
-             PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+        try{
+             PreparedStatement preparedStatement = this.connection.prepareStatement(query);
 
             preparedStatement.setInt(1, professorId);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -241,7 +238,7 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
             }
 
         } catch (SQLException se) {
-            se.printStackTrace();
+            System.out.println(se.getMessage());
         }
 
         return maleStudentsCount;

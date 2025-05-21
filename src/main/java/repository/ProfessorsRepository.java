@@ -6,7 +6,6 @@ import model.Students;
 import model.dto.professors.CreateProfessorDto;
 import model.dto.professors.UpdateProfessorDto;
 import model.dto.professors.UpdateProfessorsPasswordDto;
-import model.dto.students.UpdateStudentsPasswordDto;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -217,23 +216,5 @@ public class ProfessorsRepository extends BaseRepository<Professors, CreateProfe
 
         return 10;
     }
-
-    public int getMaxStudents(int professorId) {
-        String query = "SELECT max_students FROM Professors WHERE id = ?";
-
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, professorId);
-            ResultSet resultSet = statement.executeQuery();
-
-            if (resultSet.next()) {
-                return resultSet.getInt("max_students");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return 10;
-    }
-
 
 }

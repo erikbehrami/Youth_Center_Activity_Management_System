@@ -61,17 +61,6 @@
                         <FontAwesomeIconView glyphName="CALENDAR" size="27" styleClass="icon" />
                     </graphic>
                 </Button>
-            <Button alignment="TOP_LEFT" graphicTextGap="44.0" mnemonicParsing="false" onAction="#handleProfProfile" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: white;" styleClass="change" text="%profSideBar.Profile">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIconView glyphName="USER" size="27" styleClass="icon" />
-               </graphic>
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-            </Button>
             <Button alignment="TOP_LEFT" graphicTextGap="40.0" mnemonicParsing="false" onAction="#handleProfMessages" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: white;" styleClass="change" text="%profSideBar.Messages">
                <font>
                   <Font name="System Bold" size="12.0" />

@@ -51,7 +51,7 @@
                             </font>
                         </Text>
                         <FontAwesomeIconView glyphName="GRADUATION_CAP" layoutX="15.0" layoutY="48.0" size="35" styleClass="icon" />
-                        <Label fx:id="totalStudentsLabel" layoutX="54.0" layoutY="71.0" styleClass="icon">
+                        <Label fx:id="totalStudentsLabel" layoutX="66.0" layoutY="64.0" prefHeight="32.0" prefWidth="45.0" styleClass="icon">
                             <font>
                                 <Font name="System Bold" size="22.0" />
                             </font>
@@ -182,7 +182,7 @@
                </children>
 
             </VBox>
-            <VBox layoutX="772.0" layoutY="7.0" prefHeight="86.0" prefWidth="160.0">
+            <VBox layoutX="772.0" layoutY="7.0" prefHeight="76.0" prefWidth="160.0">
                <children>
                         <Button graphicTextGap="20.0" mnemonicParsing="false" onAction="#generatePDFReport" prefHeight="23.0" prefWidth="160.0" style="-fx-background-color: white;" stylesheets="@../css/prof.css" text="%prof.Generate">
                             <font>

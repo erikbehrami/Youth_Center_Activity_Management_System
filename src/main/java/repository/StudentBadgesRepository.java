@@ -2,6 +2,9 @@ package repository;
 
 import database.DBConnector;
 import model.StudentBadges;
+import model.Students;
+import model.dto.studentBadges.CreateStudentBadges;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,12 +12,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentBadgesRepository {
-    private final Connection connection;
+public class StudentBadgesRepository extends BaseRepository<StudentBadges, CreateStudentBadges,Object> {
 
     public StudentBadgesRepository() {
-        this.connection = DBConnector.getConnection();
+        super("StudentBadge");
     }
+
+    StudentBadges fromResultSet(ResultSet res) throws SQLException {
+        return StudentBadges.getInstance(res);
+    }
+
+    @Override
+    StudentBadges create(CreateStudentBadges createDto) {
+        return null;
+    }
+
+    @Override
+    StudentBadges update(Object updateDto) {
+        return null;
+    }
+
 
     public boolean awardBadge(int studentId, int professorId, String badgeName, String description) {
         String query = "INSERT INTO studentBadges (id_student, id_professor, badgeName, description) VALUES (?, ?, ?, ?)";
