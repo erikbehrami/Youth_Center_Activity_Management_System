@@ -33,5 +33,8 @@ public class CourseDashboardService {
         return courseRepository.unenrollStudentFromCourse(studentId, courseId);
     }
 
+    public boolean cancelEnrollmentRequest(int studentId, int courseId) {
+        return courseRepository.deleteEnrollmentRequest(studentId, courseId);
+    }
 }
 

@@ -20,12 +20,12 @@ import java.util.HashMap;
 import java.util.List;
 
 public class CourseController {
-    private final SceneManager sceneManager = SceneManager.getInstance();
     private final CourseRepository courseRepository = new CourseRepository();
     private final CourseDashboardService courseService = new CourseDashboardService();
     private final LogsService logsService = LogsService.getInstance();
 
-    @FXML private GridPane coursesGrid;
+    @FXML
+    private GridPane coursesGrid;
 
     private List<Courses> allCourses;
     private HashMap<Integer, Integer> enrollmentMap;
@@ -57,9 +57,10 @@ public class CourseController {
         for (int i = 0; i < allCourses.size(); i++) {
             Courses course = allCourses.get(i);
             String professorName = courseRepository.getProfessorNameById(course.getProfessorId());
+            String lectureRoom = courseRepository.getLectureRoomNameByCourseId(course.getId());
             int enrolled = enrollmentMap.getOrDefault(course.getId(), 0);
 
-            AnchorPane courseCard = createCourseCard(course, professorName, enrolled, i);
+            AnchorPane courseCard = createCourseCard(course, professorName, lectureRoom, enrolled, i);
             coursesGrid.add(courseCard, column, row);
 
             column++;
@@ -70,7 +71,7 @@ public class CourseController {
         }
     }
 
-    private AnchorPane createCourseCard(Courses course, String professorName, int enrolledCount, int i) {
+    private AnchorPane createCourseCard(Courses course, String professorName, String lectureRoom, int enrolledCount, int i) {
         AnchorPane mainCard = new AnchorPane();
         mainCard.setStyle("-fx-border-color: lightgrey; -fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10;");
         mainCard.setPrefSize(320, 180);
@@ -102,11 +103,18 @@ public class CourseController {
         AnchorPane profpane = new AnchorPane();
         Label profLabel = new Label("Prof. " + professorName);
         profLabel.setFont(Font.font(14));
+        AnchorPane.setTopAnchor(profLabel, 0.0);
         AnchorPane.setLeftAnchor(profLabel, 0.0);
+        Label roomLabel = new Label("Room: " + lectureRoom);
+        roomLabel.setFont(Font.font(12));
+        AnchorPane.setTopAnchor(roomLabel, 25.0);
+        AnchorPane.setLeftAnchor(roomLabel, 0.0);
+
         Label categoryLabel = new Label(course.getCategory());
         categoryLabel.setStyle("-fx-background-color: rgba(230,230,250,0.6); -fx-padding: 2; -fx-border-radius: 5; -fx-border-color: lightgrey; -fx-background-radius: 5;");
+        AnchorPane.setTopAnchor(categoryLabel, 0.0);
         AnchorPane.setRightAnchor(categoryLabel, 0.0);
-        profpane.getChildren().addAll(profLabel, categoryLabel);
+        profpane.getChildren().addAll(profLabel, roomLabel, categoryLabel);
 
         Button enrollbtn = new Button("Enroll");
         enrollbtn.setPrefSize(349, 35);
@@ -118,34 +126,48 @@ public class CourseController {
         int professorId = course.getProfessorId();
         int courseId = course.getId();
 
-        if (courseService.EnrollRequest(studentId, courseId)) {
-            enrollbtn.setText("Request Sent");
-            enrollbtn.setDisable(true);
-        } else if (courseService.isStudentAlreadyEnrolled(studentId, courseId)) {
+        if (courseService.isStudentAlreadyEnrolled(studentId, courseId)) {
             enrollbtn.setText("Enrolled");
-            enrollbtn.setDisable(true);
+            enrollbtn.setStyle("-fx-border-color: #113700; -fx-background-color: #113700; -fx-background-radius: 10; -fx-border-radius: 10;");
+        } else if (courseService.EnrollRequest(studentId, courseId)) {
+            enrollbtn.setText("Request Sent");
+            enrollbtn.setStyle("-fx-border-color: #5e5e5e; -fx-background-color: #5e5e5e; -fx-background-radius: 10; -fx-border-radius: 10;");
         }
 
         enrollbtn.setOnAction(e -> {
-            boolean success = courseService.sendEnrollmentRequest(studentId, professorId, courseId);
-            if (success) {
-                enrollbtn.setText("Request Sent");
-                enrollbtn.setDisable(true);
+            String currentText = enrollbtn.getText().trim();
 
-                CreateCourseEnrollmentLogDto createCEDto = new CreateCourseEnrollmentLogDto(studentId, courseId);
-                logsService.EnrollLogInProcess(createCEDto);
+            if (currentText.equalsIgnoreCase("Request Sent")) {
+                boolean cancelled = courseService.cancelEnrollmentRequest(studentId, courseId);
+                if (cancelled) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Enrollment request cancelled.");
+                    alert.showAndWait();
+                    loadCourses();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Failed to cancel the request.");
+                    alert.showAndWait();
+                }
+            } else if (currentText.equalsIgnoreCase("Enroll")) {
+                boolean success = courseService.sendEnrollmentRequest(studentId, professorId, courseId);
+                if (success) {
+                    CreateCourseEnrollmentLogDto createCEDto = new CreateCourseEnrollmentLogDto(studentId, courseId);
+                    logsService.EnrollLogInProcess(createCEDto);
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setContentText("Your request to enroll in " + course.getName() + " has been sent.");
-                alert.showAndWait();
-
-                loadCourses();
-            } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setContentText("Failed to send enrollment request.");
-                alert.showAndWait();
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Your request to enroll in " + course.getName() + " has been sent.");
+                    alert.showAndWait();
+                    loadCourses();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Enrollment request failed.");
+                    alert.showAndWait();
+                }
             }
         });
 

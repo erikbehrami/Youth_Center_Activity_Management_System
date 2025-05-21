@@ -272,4 +272,36 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, U
         }
         return "Unknown";
     }
+
+    public String getLectureRoomNameByCourseId(int courseId) {
+        String query = """
+                SELECT lr.name
+                FROM lectureRooms lr
+                JOIN courses c ON c.id_lectureRooms = lr.id
+                WHERE c.id = ?
+        """;
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, courseId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("name");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "Unknown LectureRoom";
+    }
+
+    public boolean deleteEnrollmentRequest(int studentId, int courseId) {
+        String query = "DELETE FROM requests WHERE id_student = ? AND id_course = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, studentId);
+            stmt.setInt(2, courseId);
+            int rows = stmt.executeUpdate();
+            return rows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
