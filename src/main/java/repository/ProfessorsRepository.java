@@ -208,7 +208,7 @@ public class ProfessorsRepository extends BaseRepository<Professors, CreateProfe
             statement.setInt(1, professorId);
             ResultSet resultSet = statement.executeQuery();
 
-            if (resultSet.next()) {
+            if (resultSet.next() && resultSet.getInt("max_courses") > 0) {
                 return resultSet.getInt("max_courses");
             }
         } catch (SQLException e) {

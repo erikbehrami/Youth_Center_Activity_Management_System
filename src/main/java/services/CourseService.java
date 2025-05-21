@@ -9,73 +9,61 @@ import repository.CourseRepository;
 import repository.LectureRoomsRepository;
 import repository.ProfessorsRepository;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class CourseService {
-    private static final ProfessorsRepository professorRepository = new ProfessorsRepository();
-    private static final LectureRoomsRepository lectureRoomsRepository = new LectureRoomsRepository();
-    private static final CourseRepository coursesRepository = new CourseRepository();
-
-    private static final ArrayList<Professors> professorList = professorRepository.getAll();
-    private static final ArrayList<LectureRooms> roomList = lectureRoomsRepository.getAll();
-    private static final ArrayList<Courses> coursesList = coursesRepository.getAll();
+    private static final ProfessorsRepository professorRepo = new ProfessorsRepository();
+    private static final LectureRoomsRepository roomRepo = new LectureRoomsRepository();
+    private static final CourseRepository courseRepo = new CourseRepository();
 
     private static int selectedCourseId = -1;
 
-    public static void refreshData() {
-        professorList.clear();
-        professorList.addAll(professorRepository.getVerifiedProfessors());
-
-        roomList.clear();
-        roomList.addAll(lectureRoomsRepository.getAll());
-
-        coursesList.clear();
-        coursesList.addAll(coursesRepository.getAll());
-    }
-
-
     private CourseService() {}
 
+    public static List<Professors> getAllProfessors() {
+        return professorRepo.getAll();
+    }
+
+    public static List<LectureRooms> getAllLectureRooms() {
+        return roomRepo.getAll();
+    }
+
+    public static Courses getCourse(int courseId) {
+        return courseRepo.getById(courseId);
+    }
+
+    public static LectureRooms getLectureRoom(int roomId) {
+        return roomRepo.getById(roomId);
+    }
+
+    public static Professors getProfessor(int professorId) {
+        return professorRepo.getById(professorId);
+    }
+
     public static int getProfessorIdByIndex(int index) {
-        return (index >= 0 && index < professorList.size()) ? professorList.get(index).getId() : -1;
+        List<Professors> professors = getAllProfessors();
+        return (index >= 0 && index < professors.size()) ? professors.get(index).getId() : -1;
     }
 
     public static int getLectureRoomIdByIndex(int index) {
-        return (index >= 0 && index < roomList.size()) ? roomList.get(index).getId() : -1;
-    }
-
-    public static Courses getCourse(int courseId){
-        return coursesRepository.getById(courseId);
-    }
-
-    public static ArrayList<Professors> getAllProfessors() {
-        return professorRepository.getAll();
-        }
-
-    public static ArrayList<LectureRooms> getAllLectureRooms() {
-        return lectureRoomsRepository.getAll();
-    }
-
-    public static LectureRooms getLectureRoom(int lectureRoomId){
-        return lectureRoomsRepository.getById(lectureRoomId);
-    }
-
-    public static Professors getProfessor(int professorId){
-        return professorRepository.getById(professorId);
+        List<LectureRooms> rooms = getAllLectureRooms();
+        return (index >= 0 && index < rooms.size()) ? rooms.get(index).getId() : -1;
     }
 
     public static String saveCourse(CreateCourseDto dto) {
-        if (dto.getProfessorId() == -1 || dto.getLectureRoomId() == -1)
+        if (dto.getProfessorId() == -1 || dto.getLectureRoomId() == -1) {
             return "Error: Invalid professor or room.";
-        coursesRepository.create(dto);
+        }
+        courseRepo.create(dto);
         return "Course saved successfully: " + dto.getName();
     }
 
     public static String updateCourse(UpdateCourseDto dto) {
-        if (dto.getProfessorId() == -1 || dto.getLectureRoomId() == -1)
+        if (dto.getProfessorId() == -1 || dto.getLectureRoomId() == -1) {
             return "Error: Invalid professor or room.";
-        Courses updated = coursesRepository.update(dto);
-        return updated != null ? "Course updated successfully." : "Failed to update the course.";
+        }
+        Courses updated = courseRepo.update(dto);
+        return (updated != null) ? "Course updated successfully." : "Failed to update the course.";
     }
 
     public static void setSelectedCourseId(int id) {
@@ -85,5 +73,4 @@ public class CourseService {
     public static int getSelectedCourseId() {
         return selectedCourseId;
     }
-
 }

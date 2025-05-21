@@ -83,9 +83,12 @@ public class HomeController {
                     Image image = new Image(file.toURI().toString());
                     adImageView.setImage(image);
                 } else {
-                    System.err.println("Ad image not found: " + file.getAbsolutePath());
+                    throw new Exception("Ad image not found: " + file.getAbsolutePath());
                 }
             } catch (Exception e) {
+                File file = new File(System.getProperty("user.dir") + "/src/main/java/adsImages/placeholder.png");
+                Image image = new Image(file.toURI().toString());
+                adImageView.setImage(image);
                 System.err.println("Failed to load ad image: " + ad.getAdImageUrl() + " - " + e.getMessage());
             }
 

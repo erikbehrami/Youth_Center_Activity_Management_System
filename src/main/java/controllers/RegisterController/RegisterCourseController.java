@@ -49,7 +49,6 @@ public class RegisterCourseController extends BaseController implements Initiali
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CourseService.refreshData();
 
         for (Professors prof : AdminProfessorsService.getVerifiedProfessors()) {
             professorComboBox.getItems().add(prof.getName() + " " + prof.getSurname());
@@ -88,6 +87,8 @@ public class RegisterCourseController extends BaseController implements Initiali
             int professorId = CourseService.getProfessorIdByIndex(professorIndex);
             int lectureRoomId = CourseService.getLectureRoomIdByIndex(roomIndex);
 
+
+            System.out.println(professorId);
 
             if(!courseService.canRegisterMoreCourses(professorId)){
                 showAlert("Error", "Professor cannot register more courses!", Alert.AlertType.ERROR, false);
