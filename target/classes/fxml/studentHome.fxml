@@ -45,7 +45,7 @@
                <children>
                   <HBox layoutX="191.0" layoutY="44.0" prefHeight="100.0" prefWidth="870.0" spacing="14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane minWidth="250.0" prefHeight="200.0" prefWidth="288.0" style="-fx-border-color: #242C39FF; -fx-border-radius: 10;" HBox.hgrow="ALWAYS">
+                        <AnchorPane minWidth="250.0" prefHeight="200.0" prefWidth="288.0" style="-fx-border-color: #242C39FF; -fx-border-radius: 10;" styleClass="change" HBox.hgrow="ALWAYS">
                            <children>
                               <VBox alignment="CENTER_LEFT" layoutX="116.0" layoutY="-50.0" prefHeight="200.0" prefWidth="100.0" spacing="2.0" style="-fx-background-radius: 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
@@ -60,7 +60,7 @@
                               <FontAwesomeIconView glyphName="BOOK" layoutX="27.0" layoutY="61.0" size="33.0" styleClass="icon" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane minWidth="250.0" prefHeight="200.0" prefWidth="288.0" style="-fx-border-color: #242C39FF; -fx-border-radius: 10;" HBox.hgrow="ALWAYS">
+                        <AnchorPane minWidth="250.0" prefHeight="200.0" prefWidth="288.0" style="-fx-border-color: #242C39FF; -fx-border-radius: 10;" styleClass="change" HBox.hgrow="ALWAYS">
                            <children>
                               <VBox alignment="CENTER_LEFT" layoutX="116.0" layoutY="-50.0" prefHeight="200.0" prefWidth="100.0" spacing="2.0" style="-fx-background-radius: 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
@@ -75,7 +75,7 @@
                               <FontAwesomeIconView glyphName="HOURGLASS_HALF" layoutX="25.0" layoutY="61.0" size="31.0" styleClass="icon" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane minWidth="250.0" prefHeight="200.0" prefWidth="288.0" style="-fx-border-color: #242C39FF; -fx-border-radius: 10;" HBox.hgrow="ALWAYS">
+                        <AnchorPane minWidth="250.0" prefHeight="200.0" prefWidth="288.0" style="-fx-border-color: #242C39FF; -fx-border-radius: 10;" styleClass="change" HBox.hgrow="ALWAYS">
                            <children>
                               <VBox alignment="CENTER_LEFT" layoutX="116.0" layoutY="-50.0" prefHeight="200.0" prefWidth="100.0" spacing="2.0" style="-fx-background-radius: 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>

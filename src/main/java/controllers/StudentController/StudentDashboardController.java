@@ -6,15 +6,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import model.Courses;
-import model.Schedules;
 import services.CourseServices.CourseDashboardService;
 import services.SceneManager;
 import services.SessionManager;
 import services.StudentServices.StudentDashboardService;
-
 import java.util.List;
 
 public class StudentDashboardController {
@@ -91,7 +88,6 @@ public class StudentDashboardController {
             pendingCoursesLabel.setText(String.valueOf(pendingCount));
         }
     }
-
 
     private AnchorPane createCourseCard(Courses course, String professorName, int i) {
         AnchorPane thecard = new AnchorPane();
