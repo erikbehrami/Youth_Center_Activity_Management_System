@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" stylesheets="@../css/prof.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentController.StudentMessagesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1200.0" style="-fx-background-color: white;" stylesheets="@../css/prof.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentController.StudentMessagesController">
     <children>
         <fx:include source="stdSideBar.fxml" AnchorPane.leftAnchor="14" AnchorPane.topAnchor="54" />
         <AnchorPane layoutX="323.0" layoutY="50.0" prefHeight="626.0" prefWidth="879.0">
@@ -22,8 +22,8 @@
                 <VBox layoutX="10.0" layoutY="-29.0" prefHeight="585.0" prefWidth="811.0" spacing="10">
                     <Label prefHeight="26.0" prefWidth="155.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Received Messages" />
                     <Label text="%studentMes.prof" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                    <ComboBox fx:id="professorComboBox" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                    <TableView fx:id="messagesTable" prefHeight="270.0" prefWidth="746.0">
+                    <ComboBox fx:id="professorComboBox" prefWidth="300.0" styleClass="change" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <TableView fx:id="messagesTable" prefHeight="270.0" prefWidth="746.0" styleClass="change">
                         <columns>
                             <TableColumn fx:id="messageColumn" prefWidth="429.60003662109375" text="%studentMes.message" />
                             <TableColumn fx:id="sendAtColumn" prefWidth="380.800048828125" text="%studentMes.sendAt" />
@@ -35,15 +35,15 @@
                     <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="%studentMes.compose" />
                     <GridPane hgap="10" vgap="10">
                         <Label text="%studentMes.prof" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                        <ComboBox fx:id="professorMesComboBox" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                        <ComboBox fx:id="professorMesComboBox" prefWidth="300.0" styleClass="change" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
                         <Label prefHeight="18.0" prefWidth="63.0" text="%studentMes.message" GridPane.columnIndex="0" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets top="-75.0" />
                      </GridPane.margin></Label>
-                        <TextArea fx:id="messageTextArea" prefHeight="100.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextArea fx:id="messageTextArea" prefHeight="100.0" prefWidth="300.0" styleClass="change" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-                        <Button fx:id="sendMessageButton" onAction="#handleSendMessage" style="-fx-background-color: #0078D7; -fx-text-fill: white;" text="%studentMes.sendMessage" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                        <Button fx:id="sendMessageButton" onAction="#handleSendMessage" style="-fx-background-color: #0078D7; -fx-text-fill: white;" styleClass="change" text="%studentMes.sendMessage" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
 
                         <columnConstraints>
                             <ColumnConstraints />

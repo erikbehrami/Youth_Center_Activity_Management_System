@@ -18,11 +18,11 @@
                <children>
                   <AnchorPane prefHeight="482.0" prefWidth="880.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <ScrollPane fitToWidth="true" layoutY="36.8" prefHeight="454.0" prefWidth="664.0" style="-fx-background: white; -fx-border-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+                        <ScrollPane fitToWidth="true" layoutY="36.8" prefHeight="454.0" prefWidth="862.0" style="-fx-background: white; -fx-border-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-13.0" AnchorPane.topAnchor="28.0">
                            <content>
-                              <HBox prefHeight="418.0" prefWidth="789.0">
+                              <HBox maxWidth="886.0" minWidth="799.0" prefHeight="452.0" prefWidth="886.0">
                                  <children>
-                                    <GridPane fx:id="coursesGrid" hgap="5" prefHeight="418.0" prefWidth="749.0" style="-fx-background-color: white;" vgap="5" HBox.hgrow="ALWAYS">
+                                    <GridPane fx:id="coursesGrid" hgap="5" prefHeight="418.0" prefWidth="789.0" style="-fx-background-color: white;" vgap="10.0" HBox.hgrow="ALWAYS">
                                        <columnConstraints>
                                           <ColumnConstraints percentWidth="100.0" />
                                        </columnConstraints>
@@ -45,49 +45,49 @@
                <children>
                   <HBox layoutX="191.0" layoutY="44.0" prefHeight="100.0" prefWidth="870.0" spacing="14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane minWidth="250.0" prefHeight="200.0" prefWidth="288.0" style="-fx-border-color: lightGREy; -fx-border-radius: 10;" HBox.hgrow="ALWAYS">
+                        <AnchorPane minWidth="250.0" prefHeight="200.0" prefWidth="288.0" style="-fx-border-color: #242C39FF; -fx-border-radius: 10;" HBox.hgrow="ALWAYS">
                            <children>
-                              <VBox alignment="CENTER_LEFT" layoutX="116.0" layoutY="-50.0" prefHeight="200.0" prefWidth="100.0" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <VBox alignment="CENTER_LEFT" layoutX="116.0" layoutY="-50.0" prefHeight="200.0" prefWidth="100.0" spacing="2.0" style="-fx-background-radius: 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label text="120">
+                                    <Label fx:id="courseCountLabel" prefHeight="30.0" prefWidth="82.0">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Enrolled Courses" />
+                                    <Label text="%courseees" />
                                  </children>
                               </VBox>
-                              <FontAwesomeIconView layoutX="25.0" layoutY="62.0" size="35.0" text="" />
+                              <FontAwesomeIconView glyphName="BOOK" layoutX="27.0" layoutY="61.0" size="33.0" styleClass="icon" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane minWidth="250.0" prefHeight="200.0" prefWidth="288.0" style="-fx-border-color: lightGREy; -fx-border-radius: 10;" HBox.hgrow="ALWAYS">
+                        <AnchorPane minWidth="250.0" prefHeight="200.0" prefWidth="288.0" style="-fx-border-color: #242C39FF; -fx-border-radius: 10;" HBox.hgrow="ALWAYS">
                            <children>
-                              <VBox alignment="CENTER_LEFT" layoutX="116.0" layoutY="-50.0" prefHeight="200.0" prefWidth="100.0" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <VBox alignment="CENTER_LEFT" layoutX="116.0" layoutY="-50.0" prefHeight="200.0" prefWidth="100.0" spacing="2.0" style="-fx-background-radius: 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label text="120">
+                                    <Label fx:id="pendingCoursesLabel">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Total Badges" />
+                                    <Label text="%pending" />
                                  </children>
                               </VBox>
-                              <FontAwesomeIconView layoutX="25.0" layoutY="62.0" size="35.0" text="" />
+                              <FontAwesomeIconView glyphName="HOURGLASS_HALF" layoutX="25.0" layoutY="61.0" size="31.0" styleClass="icon" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane minWidth="250.0" prefHeight="200.0" prefWidth="288.0" style="-fx-border-color: lightGREy; -fx-border-radius: 10;" HBox.hgrow="ALWAYS">
+                        <AnchorPane minWidth="250.0" prefHeight="200.0" prefWidth="288.0" style="-fx-border-color: #242C39FF; -fx-border-radius: 10;" HBox.hgrow="ALWAYS">
                            <children>
-                              <VBox alignment="CENTER_LEFT" layoutX="116.0" layoutY="-50.0" prefHeight="200.0" prefWidth="100.0" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <VBox alignment="CENTER_LEFT" layoutX="116.0" layoutY="-50.0" prefHeight="200.0" prefWidth="100.0" spacing="2.0" style="-fx-background-radius: 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label text="120">
+                                    <Label fx:id="badgeCountLabel">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Enrolled Courses" />
+                                    <Label text="%totalBadges" />
                                  </children>
                               </VBox>
-                              <FontAwesomeIconView layoutX="25.0" layoutY="62.0" size="35.0" text="" />
+                              <FontAwesomeIconView glyphName="TROPHY" layoutX="30.0" layoutY="63.0" size="35" styleClass="icon" text="" />
                            </children>
                         </AnchorPane>
                      </children>
