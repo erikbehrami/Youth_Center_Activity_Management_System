@@ -25,7 +25,7 @@
     -fx-border-radius: 5;
 }
 
-Text {
+Text, .Text {
     -fx-fill: white !important;
 }
 

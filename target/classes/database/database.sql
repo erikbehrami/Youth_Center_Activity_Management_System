@@ -38,8 +38,7 @@ create table professors(
                            gender varchar(20),
                            biographicalInfo text,
                            registration_date date default CURRENT_DATE,
-                           max_courses integer,
-                           max_students integer
+                           max_courses INTEGER DEFAULT 10
 );
 
 create table students(

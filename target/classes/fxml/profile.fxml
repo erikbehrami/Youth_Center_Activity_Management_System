@@ -139,7 +139,7 @@
                                     </AnchorPane>
                                 </children>
                             </VBox>
-                            <FontAwesomeIconView fill="#101935" glyphName="ENVELOPE" layoutX="317.0" layoutY="43.0" size="40" />
+                            <FontAwesomeIconView glyphName="ENVELOPE" layoutX="317.0" layoutY="43.0" size="40" styleClass="Text" />
                         </children>
                     </AnchorPane>
                     <AnchorPane layoutX="731.0" layoutY="27.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="455.0" styleClass="anchorGroup">
@@ -178,7 +178,7 @@
                                                     <Font size="16.0" />
                                                 </font>
                                             </Label>
-                                            <DatePicker fx:id="birthdate" layoutX="115.0" layoutY="29.0" prefHeight="30.0" prefWidth="191.0" style="-fx-border-color: black; -fx-border-width: 0.5;" />
+                                            <DatePicker fx:id="birthdate" layoutX="115.0" layoutY="29.0" prefHeight="30.0" prefWidth="191.0" style="-fx-border-color: black; -fx-border-width: 0.5;" styleClass="change" />
                                         </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="60.0" prefWidth="222.0">
@@ -198,12 +198,12 @@
                                                     <Font size="16.0" />
                                                 </font>
                                             </Label>
-                                            <TextArea fx:id="bio" focusTraversable="false" layoutX="31.0" layoutY="27.0" prefHeight="67.0" prefWidth="370.0" style="-fx-border-color: black; -fx-border-width: 0.5; -fx-background-radius: 4; -fx-border-radius: 4;" wrapText="true" />
+                                            <TextArea fx:id="bio" focusTraversable="false" layoutX="31.0" layoutY="27.0" prefHeight="67.0" prefWidth="370.0" style="-fx-border-color: black; -fx-border-width: 0.5; -fx-background-radius: 4; -fx-border-radius: 4;" styleClass="change" wrapText="true" />
                                         </children>
                                     </AnchorPane>
                                 </children>
                             </VBox>
-                            <FontAwesomeIconView fill="#101935" glyphName="COGS" layoutX="387.0" layoutY="57.0" size="50" />
+                            <FontAwesomeIconView fill="#101935" glyphName="COGS" layoutX="387.0" layoutY="57.0" size="50" styleClass="Text" />
                         </children>
                     </AnchorPane>
                     <AnchorPane layoutX="343.0" layoutY="27.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="370.0" styleClass="anchorGroup">
@@ -218,14 +218,14 @@
                                     <Font size="16.0" />
                                 </font>
                             </Label>
-                            <FontAwesomeIconView fill="#101935" glyphName="HOURGLASS_START" layoutX="324.0" layoutY="40.0" size="30" />
+                            <FontAwesomeIconView fill="#101935" glyphName="HOURGLASS_START" layoutX="324.0" layoutY="40.0" size="30" styleClass="Text" />
 
                         </children>
                     </AnchorPane>
                     <AnchorPane layoutX="343.0" layoutY="550.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="843.0" styleClass="anchorGroup">
                         <children>
-                            <Button layoutX="92.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleChangePassword" prefHeight="30.0" prefWidth="191.0" style="-fx-background-color: #101935; -fx-border-color: black; -fx-border-width: 1; -fx-background-radius: 4; -fx-border-radius: 4;" text="Change Password" textFill="WHITE" />
-                            <Button layoutX="516.0" layoutY="14.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="30.0" prefWidth="191.0" style="-fx-background-color: #101935; -fx-border-color: black; -fx-border-width: 1; -fx-background-radius: 4; -fx-border-radius: 4;" text="Save Changes" textFill="WHITE" />
+                            <Button layoutX="92.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleChangePassword" prefHeight="30.0" prefWidth="191.0" style="-fx-background-color: #101935; -fx-border-color: black; -fx-border-width: 1; -fx-background-radius: 4; -fx-border-radius: 4;" styleClass="change" text="Change Password" textFill="WHITE" />
+                            <Button layoutX="516.0" layoutY="14.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="30.0" prefWidth="191.0" style="-fx-background-color: #101935; -fx-border-color: black; -fx-border-width: 1; -fx-background-radius: 4; -fx-border-radius: 4;" styleClass="change" text="Save Changes" textFill="WHITE" />
                         </children>
                     </AnchorPane>
                 </children>
