@@ -29,7 +29,7 @@
 
       <AnchorPane AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="57.0">
          <children>
-            <Label layoutY="3.0" text="\%Courses" AnchorPane.leftAnchor="0.0">
+            <Label layoutY="3.0" text="%Courses" AnchorPane.leftAnchor="0.0">
                <font><Font name="System Bold" size="16.0" /></font>
             </Label>
          </children>

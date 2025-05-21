@@ -20,19 +20,19 @@
                               <FontAwesomeIconView glyphName="USER" size="60.0" />
                               <VBox alignment="CENTER_LEFT" prefHeight="139.0" prefWidth="100.0">
                                   <children>
-                                      <Label fx:id="fullNameLabel" text="userfullname">
+                                      <Label fx:id="stdFullName" text="userfullname">
                                           <font>
                                               <Font name="System Bold" size="16.0" />
                                           </font>
                                       </Label>
-                                      <Label fx:id="usernameLabel" text="username" />
+                                      <Label fx:id="stdUsername" text="username" />
                                   </children>
                               </VBox>
                           </children>
                       </HBox>
                   </children>
               </AnchorPane>
-              <VBox layoutX="0.8" layoutY="143.0" prefHeight="478.0" prefWidth="298.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="165.0">
+              <VBox layoutX="0.8" layoutY="143.0" prefHeight="478.0" prefWidth="298.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="175.0">
                   <children>
                       <Button fx:id="stdCourses" graphicTextGap="0.0" mnemonicParsing="false" onAction="#stdCourses" prefHeight="40.0" prefWidth="542.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-color: lightgrey; -fx-border-radius: 20;" styleClass="change" text="Courses" textOverrun="LEADING_ELLIPSIS">
                           <graphic>

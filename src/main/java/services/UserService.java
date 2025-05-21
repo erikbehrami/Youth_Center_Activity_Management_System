@@ -136,7 +136,7 @@ public class UserService {
                         CreateLoginLogsDto createLoginLogsDto = new CreateLoginLogsDto(student.getId(), student.getEmail(), student.getClass().getSimpleName());
                         logsService.logLogInProcess(createLoginLogsDto);
                         sessionManager.setRegisterDTO(null);
-                        sceneManager.switchScene(Navigator.STUDENT_PROFILE, "Student Dashboard");
+                        sceneManager.switchScene(Navigator.STUDENT_COURSES, "Student Dashboard");
                         return true;
                     }
                 }
