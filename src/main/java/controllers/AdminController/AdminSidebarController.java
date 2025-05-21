@@ -3,10 +3,10 @@ package controllers.AdminController;
 import controllers.BaseController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import services.SessionManager;
 import utils.Navigator;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -18,7 +18,7 @@ public class AdminSidebarController extends BaseController implements Initializa
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(adminName != null) {
-            adminName.setText(SessionManager.getInstance().currentUser().getName());
+            adminName.setText("Welcome, " + SessionManager.getInstance().currentUser().getName());
         }
     }
 
