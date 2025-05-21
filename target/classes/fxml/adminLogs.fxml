@@ -43,7 +43,6 @@
                            <columns>
                               <TableColumn fx:id="StudentID" prefWidth="95.0" text="%admin.StudentID" />
                               <TableColumn fx:id="CourseID" prefWidth="113.0" text="%admin.CourseID" />
-                              <TableColumn fx:id="Action" prefWidth="130.0" text="%admin.Action" />
                               <TableColumn fx:id="ActionTime" prefWidth="130.0" text="%admin.ActionTime" />
                            </columns>
                            <columnResizePolicy>
