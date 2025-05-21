@@ -19,12 +19,15 @@ import utils.Navigator;
 
 import java.io.File;
 import java.util.ArrayList;
+
 import javafx.util.Duration;
 
 public class HomeController {
 
-    @FXML private HBox adContainer;
-    @FXML private ScrollPane adScrollPane;
+    @FXML
+    private HBox adContainer;
+    @FXML
+    private ScrollPane adScrollPane;
 
     private final AdvertisementRepository adsRepository = new AdvertisementRepository();
     private final SceneManager sceneManager = SceneManager.getInstance();

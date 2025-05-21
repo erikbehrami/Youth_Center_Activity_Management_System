@@ -34,9 +34,9 @@ public class ScheduleController implements Initializable {
             .toFormatter(Locale.US);
 
     private static final String[] DAYS = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
-    private static final int START_HOUR = 8; // 8:00 AM
-    private static final int END_HOUR = 20; // 8:00 PM
-    private static final int ROW_HEIGHT = 40; // Pixels per hour
+    private static final int START_HOUR = 7;
+    private static final int END_HOUR = 20;
+    private static final int ROW_HEIGHT = 40;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -84,7 +84,6 @@ public class ScheduleController implements Initializable {
     }
 
     private void addScheduleToGrid(Schedules schedule) {
-        // Get day index (Monday = 1, etc.)
         int dayIndex = -1;
         for (int i = 0; i < DAYS.length; i++) {
             if (DAYS[i].equalsIgnoreCase(schedule.getDay())) {
@@ -97,7 +96,6 @@ public class ScheduleController implements Initializable {
             return;
         }
 
-        // Parse time strings to LocalTime for calculation
         String startTimeStr = schedule.getTimeStart();
         String endTimeStr = schedule.getTimeEnd();
         if (startTimeStr == null || endTimeStr == null || startTimeStr.isEmpty() || endTimeStr.isEmpty()) {
@@ -118,22 +116,19 @@ public class ScheduleController implements Initializable {
         int startHour = startTime.getHour();
         int endHour = endTime.getHour();
 
-        // Check if schedule is within grid hours
         if (startHour < START_HOUR || endHour > END_HOUR + 1) {
             System.err.println("Schedule outside grid hours: " + startTimeStr + " to " + endTimeStr);
             return;
         }
 
-        // Calculate row and span
         int startRow = startHour - START_HOUR + 1;
         int rowSpan = Math.max(1, endHour - startHour);
 
-        // Create schedule cell
-        VBox scheduleCell = new VBox(3);
+        VBox scheduleCell = new VBox(1);
         scheduleCell.getStyleClass().add("schedule-cell");
-        scheduleCell.setMinHeight(ROW_HEIGHT * rowSpan - 4); // Adjust for gaps
+        scheduleCell.setMinHeight(ROW_HEIGHT * rowSpan - 4);
+        scheduleCell.setAlignment(javafx.geometry.Pos.TOP_LEFT);
 
-        // Add course name, time, and room
         ArrayList<String> array;
         try {
             array = courseRepository.getCourseNameAndLectureRoom(schedule.getCourseID());
@@ -149,16 +144,16 @@ public class ScheduleController implements Initializable {
         }
 
         Label courseLabel = new Label(courseName);
-        courseLabel.setStyle("-fx-font-weight: bold;");
-        Text timeText = new Text(startTime.format(timeFormatter) + " - " + endTime.format(timeFormatter));
-        timeText.setStyle("-fx-font-size: 10px;");
-        Text roomText = new Text("Room: " + roomName);
-        roomText.setStyle("-fx-font-size: 10px;");
+        courseLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 11px;");
+        courseLabel.setWrapText(true);
+        courseLabel.setMaxWidth(100);
 
-        scheduleCell.getChildren().addAll(courseLabel, timeText, roomText);
-        scheduleCell.setPadding(new Insets(5));
 
-        // Add tooltip
+        courseLabel.setText(courseLabel.getText() + " | " + roomName);
+
+        scheduleCell.getChildren().addAll(courseLabel);
+        scheduleCell.setPadding(new Insets(2));
+
         String tooltipText = courseName + "\n" +
                 startTime.format(timeFormatter) + " - " + endTime.format(timeFormatter) + "\n" +
                 "Room: " + roomName + "\n" +
@@ -166,7 +161,6 @@ public class ScheduleController implements Initializable {
         Tooltip tooltip = new Tooltip(tooltipText);
         Tooltip.install(scheduleCell, tooltip);
 
-        // Add to grid
         try {
             scheduleGrid.add(scheduleCell, dayIndex, startRow, 1, rowSpan);
             System.out.println("Added schedule cell: course=" + courseName + ", day=" + schedule.getDay() +
