@@ -247,4 +247,26 @@ public class StudentsRepository extends BaseRepository<Students, CreateStudentsD
         return maleStudentsCount;
     }
 
+    public boolean deleteStudent(int studentId, int professorId) {
+        String deleteFromEnrolled = """
+            DELETE FROM enrolled
+            WHERE id_student = ? AND id_professor = ?
+            """;
+        try (PreparedStatement stmt = this.connection.prepareStatement(deleteFromEnrolled)) {
+            stmt.setInt(1, studentId);
+            stmt.setInt(2, professorId);
+            int affectedRows = stmt.executeUpdate();
+            if (affectedRows > 0) {
+                System.out.println("Student ID " + studentId + " unenrolled from professor ID " + professorId + " successfully.");
+                return true;
+            } else {
+                System.out.println("No enrollment found for student ID " + studentId + " with professor ID " + professorId + ".");
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println("Error unenrolling student ID " + studentId + " from professor ID " + professorId + ": " + e.getMessage());
+            return false;
+        }
+    }
+
 }

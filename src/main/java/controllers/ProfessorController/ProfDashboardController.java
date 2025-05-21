@@ -134,8 +134,9 @@ public class ProfDashboardController extends ProfController {
                         loadCounts();
                         showAlert(Alert.AlertType.INFORMATION, "Specialization added successfully!");
                     } else {
-                        showAlert(Alert.AlertType.WARNING, "Failed to add specialization. Please try again.");
-                    }
+                        showAlert(Alert.AlertType.WARNING, "Specialization '" + specialization + "' already exists!");
+                        }
+
                 });
             } else if (action.equals("Delete Specialization")) {
                 List<String> specializations = profDashboardService.getSpecializations();
@@ -161,6 +162,25 @@ public class ProfDashboardController extends ProfController {
                 });
             }
         });
+    }
+
+    private void showAlert(Alert.AlertType alertType, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(alertType == Alert.AlertType.INFORMATION ? "Success" : "Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+
+        if (alertType == Alert.AlertType.INFORMATION) {
+            Label checkmarkLabel = new Label("✔");
+            checkmarkLabel.setStyle("-fx-text-fill: green; -fx-font-size: 24px;");
+            alert.setGraphic(checkmarkLabel);
+        } else {
+            Label errorLabel = new Label("✘");
+            errorLabel.setStyle("-fx-text-fill: red; -fx-font-size: 24px;");
+            alert.setGraphic(errorLabel);
+        }
+
+        alert.showAndWait();
     }
 
 

@@ -5,16 +5,17 @@ import java.sql.SQLException;
 import java.util.Date;
 
 public class StudentBadges {
-
     private int id;
     private int idStudent;
+    private int idProfessor;
     private String badgeName;
     private String description;
     private final Date awardedAt = new Date();
 
-    private StudentBadges(int id, int idStudent, String badgeName, String description) {
+    private StudentBadges(int id, int idStudent, int idProfessor, String badgeName, String description) {
         this.id = id;
         this.idStudent = idStudent;
+        this.idProfessor = idProfessor;
         this.badgeName = badgeName;
         this.description = description;
     }
@@ -22,10 +23,11 @@ public class StudentBadges {
     public static StudentBadges getInstance(ResultSet rs) throws SQLException {
         int id = rs.getInt("id");
         int idStudent = rs.getInt("id_student");
+        int idProfessor = rs.getInt("id_professor");
         String badgeName = rs.getString("badgeName");
         String description = rs.getString("description");
 
-        return new StudentBadges(id,idStudent,badgeName,description);
+        return new StudentBadges(id, idStudent, idProfessor, badgeName, description);
     }
 
     public int getId() {
@@ -34,6 +36,10 @@ public class StudentBadges {
 
     public int getIdStudent() {
         return idStudent;
+    }
+
+    public int getIdProfessor() {
+        return idProfessor;
     }
 
     public String getBadgeName() {

@@ -124,10 +124,13 @@ CREATE TABLE studentMessages (
 CREATE TABLE studentBadges (
                                 id SERIAL PRIMARY KEY,
                                 id_Student INTEGER,
+                                id_Professor INTEGER,
                                 badgeName VARCHAR(100),
                                 description TEXT,
                                 awardedAt DATE,
-                                FOREIGN KEY (id_Student) REFERENCES students(id)
+                                FOREIGN KEY (id_Student) REFERENCES students(id),
+                                FOREIGN KEY (id_Professor) REFERENCES professors(id)
+
 );
 
 CREATE TABLE feedback (

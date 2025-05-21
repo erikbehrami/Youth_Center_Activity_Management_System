@@ -85,7 +85,7 @@
             </Button>
             </children>
         </VBox>
-        <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="18.0" layoutY="62.0" size="50" />
+        <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="18.0" layoutY="62.0" onMouseClicked="#handleProfProfile" size="50" />
         <Label fx:id="profName" layoutX="81.0" layoutY="31.0" prefHeight="18.0" prefWidth="126.0" textFill="WHITE">
             <font>
                 <Font size="16.0" />

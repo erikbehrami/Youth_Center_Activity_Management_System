@@ -65,6 +65,23 @@ public class ProfDashboardService extends BaseProfessorService{
     }
 
     public boolean addSpecialization(int professorId, String specialization) {
+        if (specialization == null) {
+            System.out.println("Invalid specialization: null");
+            return false;
+        }
+        String normalizedSpecialization = specialization.trim().toLowerCase();
+
+        ArrayList<ProfessorSpecializations> existingSpecializations = profSpecializationsRepository.getById(professorId);
+        if (existingSpecializations != null) {
+            for (ProfessorSpecializations spec : existingSpecializations) {
+                String existingSpec = spec.getSpecialization() != null ? spec.getSpecialization().trim().toLowerCase() : "";
+                if (existingSpec.equals(normalizedSpecialization)) {
+                    return false;
+                }
+            }
+        } else {
+            System.out.println("Warning: Could not fetch existing specializations for professor ID: " + professorId);
+        }
         CreateProfSpecializationsDto dto = new CreateProfSpecializationsDto(professorId, specialization);
         return profSpecializationsRepository.create(dto);
     }

@@ -22,6 +22,7 @@ public abstract class BaseProfessorService {
     protected final EnrolledRepository enrolledRepository;
     protected final RequestsRepository requestsRepository;
     protected final ProfSpecializationsRepository profSpecializationsRepository;
+    protected final StudentBadgesRepository studentBadgesRepository;
     SessionManager sessionManager = SessionManager.getInstance();
 
     public BaseProfessorService() {
@@ -30,6 +31,7 @@ public abstract class BaseProfessorService {
         this.professorsRepository = new ProfessorsRepository();
         this.enrolledRepository = new EnrolledRepository();
         this.requestsRepository = new RequestsRepository();
+        this.studentBadgesRepository = new StudentBadgesRepository();
         profSpecializationsRepository = new ProfSpecializationsRepository();
     }
 
@@ -49,4 +51,6 @@ public abstract class BaseProfessorService {
         }
         return series;
     }
+
+
 }
