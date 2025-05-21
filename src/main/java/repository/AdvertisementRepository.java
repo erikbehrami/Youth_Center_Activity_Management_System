@@ -25,7 +25,7 @@ public class AdvertisementRepository extends BaseRepository<Advertisement, Creat
                             query, Statement.RETURN_GENERATED_KEYS);
             pstm.setString(1, createAdDto.getSponsorName());
             pstm.setString(2, createAdDto.getAdTitle());
-            pstm.setInt(3, createAdDto.getAdImageUrl().length());
+            pstm.setString(3, createAdDto.getAdImageUrl());
             pstm.execute();
             ResultSet res = pstm.getGeneratedKeys();
             if(res.next()){

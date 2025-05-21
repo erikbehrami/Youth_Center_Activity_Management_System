@@ -5,7 +5,7 @@ public class CreateAdvertisementDto {
     private String adTitle;
     private String adImageUrl;
 
-    private CreateAdvertisementDto(String sponsorName, String adTitle, String adImageUrl) {
+    public CreateAdvertisementDto(String sponsorName, String adTitle, String adImageUrl) {
         this.sponsorName = sponsorName;
         this.adTitle = adTitle;
         this.adImageUrl = adImageUrl;

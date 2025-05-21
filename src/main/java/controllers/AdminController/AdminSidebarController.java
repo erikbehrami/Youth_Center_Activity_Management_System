@@ -48,8 +48,8 @@ public class AdminSidebarController extends BaseController implements Initializa
     }
 
     @FXML
-    private void handleAdminLogs() {
-        sceneManager.switchScene(Navigator.ADMIN_LOGS, "Admin Logs");
+    private void handleAdminMore() {
+        sceneManager.switchScene(Navigator.ADMIN_MORE, "Admin More");
     }
 
 }

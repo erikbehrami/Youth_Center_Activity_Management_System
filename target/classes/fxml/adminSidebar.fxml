@@ -11,29 +11,29 @@
 
 <AnchorPane prefHeight="625.0" prefWidth="254.0" style="-fx-background-color: #101935;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController.AdminSidebarController">
     <children>
-        <AnchorPane layoutX="14.0" layoutY="82.0" prefHeight="597.0" prefWidth="239.0" styleClass="adminSidebar" AnchorPane.bottomAnchor="-54.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="82.0">
-            <Line endX="100.79997253417969" layoutX="120.0" layoutY="72.0" startX="-95.19999694824219" stroke="WHITE" strokeLineCap="BUTT" strokeWidth="1.5" AnchorPane.rightAnchor="15.200027465820312" />
-            <VBox layoutX="23.0" layoutY="73.0" prefHeight="433.0" prefWidth="180.0" spacing="18.0" AnchorPane.bottomAnchor="125.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="94.0">
+        <AnchorPane layoutX="14.0" layoutY="7.0" prefHeight="672.0" prefWidth="226.0" styleClass="adminSidebar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+            <Line endX="100.79997253417969" layoutX="120.0" layoutY="72.0" startX="-95.19999694824219" stroke="WHITE" strokeLineCap="BUTT" strokeWidth="1.5" AnchorPane.rightAnchor="15.200027465820312" AnchorPane.topAnchor="145.0" />
+            <VBox layoutX="23.0" layoutY="73.0" prefHeight="433.0" prefWidth="180.0" spacing="18.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="175.0">
                 <children>
                     <Button layoutX="32.0" layoutY="199.0" minHeight="0.0" mnemonicParsing="false" onAction="#handleAdminDashboard" prefHeight="48.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white; -fx-border-radius: 10; -fx-border-width: 1.2;" styleClass="change" text="%admin.Dashboard" textFill="WHITE" AnchorPane.topAnchor="199.0" />
                     <Button layoutX="32.0" layoutY="274.0" minHeight="0.0" mnemonicParsing="false" onAction="#handleAdminProfile" prefHeight="48.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white; -fx-border-radius: 10; -fx-border-width: 1.2;" styleClass="change" text="%admin.Profile" textFill="WHITE" />
                     <Button layoutX="32.0" layoutY="349.0" minHeight="0.0" mnemonicParsing="false" onAction="#handleAdminStudents" prefHeight="48.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white; -fx-border-radius: 10; -fx-border-width: 1.2;" styleClass="change" text="%admin.Students" textFill="WHITE" />
                     <Button layoutX="32.0" layoutY="424.0" minHeight="0.0" mnemonicParsing="false" onAction="#handleAdminProfessors" prefHeight="48.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white; -fx-border-radius: 10; -fx-border-width: 1.2;" styleClass="change" text="%admin.Professors" textFill="WHITE" />
                     <Button layoutX="31.0" layoutY="498.0" minHeight="0.0" mnemonicParsing="false" onAction="#handleAdminCourses" prefHeight="48.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white; -fx-border-radius: 10; -fx-border-width: 1.2;" styleClass="change" text="%admin.Courses" textFill="WHITE" />
-               <Button minHeight="0.0" mnemonicParsing="false" onAction="#handleAdminLogs" prefHeight="48.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white; -fx-border-radius: 10; -fx-border-width: 1.2;" styleClass="change" text="%admin.Logs" textFill="WHITE" />
+                    <Button minHeight="0.0" mnemonicParsing="false" onAction="#handleAdminMore" prefHeight="48.0" prefWidth="180.0" style="-fx-background-color: #101935; -fx-border-color: white; -fx-border-radius: 10; -fx-border-width: 1.2;" styleClass="change" text="%admin.More" textFill="WHITE" />
                 </children>
             </VBox>
         </AnchorPane>
-         <ImageView fitHeight="112.0" fitWidth="203.0" layoutX="26.0" layoutY="14.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0">
-             <image>
-                 <Image url="@../images/user1.png" />
-             </image>
-         </ImageView>
+        <ImageView fitHeight="112.0" fitWidth="203.0" layoutX="26.0" layoutY="14.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0">
+            <image>
+                <Image url="@../images/user1.png" />
+            </image>
+        </ImageView>
 
-         <Label alignment="CENTER" layoutX="1.0" layoutY="102.0" text="%admin.Welcome" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="116.0">
-             <font>
-                 <Font size="15.0" />
-             </font>
-         </Label>
+        <Label alignment="CENTER" layoutX="1.0" layoutY="102.0" text="%admin.Welcome" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="116.0">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
     </children>
 </AnchorPane>

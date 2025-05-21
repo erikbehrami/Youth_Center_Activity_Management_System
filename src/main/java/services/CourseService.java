@@ -22,6 +22,18 @@ public class CourseService {
 
     private static int selectedCourseId = -1;
 
+    public static void refreshData() {
+        professorList.clear();
+        professorList.addAll(professorRepository.getVerifiedProfessors());
+
+        roomList.clear();
+        roomList.addAll(lectureRoomsRepository.getAll());
+
+        coursesList.clear();
+        coursesList.addAll(coursesRepository.getAll());
+    }
+
+
     private CourseService() {}
 
     public static int getProfessorIdByIndex(int index) {
@@ -37,23 +49,19 @@ public class CourseService {
     }
 
     public static ArrayList<Professors> getAllProfessors() {
-        return professorList;
-    }
+        return professorRepository.getAll();
+        }
 
     public static ArrayList<LectureRooms> getAllLectureRooms() {
-        return roomList;
-    }
-
-    public static ArrayList<Courses> getAllCourses() {
-        return coursesList;
+        return lectureRoomsRepository.getAll();
     }
 
     public static LectureRooms getLectureRoom(int lectureRoomId){
         return lectureRoomsRepository.getById(lectureRoomId);
     }
 
-    public static Professors getProfessor(int professoerId){
-        return professorRepository.getById(professoerId);
+    public static Professors getProfessor(int professorId){
+        return professorRepository.getById(professorId);
     }
 
     public static String saveCourse(CreateCourseDto dto) {

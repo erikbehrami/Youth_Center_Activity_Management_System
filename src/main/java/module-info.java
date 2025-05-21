@@ -28,6 +28,7 @@ module com.example.demo {
     opens model.dto to javafx.fxml;
     opens model.dto.courseEnrollmentLog to javafx.fxml;
     opens model.dto.loginLogs to javafx.fxml;
+    opens model.dto.advertisement to javafx.fxml;
 
     exports app;
     exports controllers;
@@ -45,5 +46,6 @@ module com.example.demo {
     exports model.dto;
     exports model.dto.course;
     exports model.dto.loginLogs;
+    exports model.dto.advertisement;
 
 }

@@ -13,6 +13,7 @@ import javafx.util.Duration;
 import model.LectureRooms;
 import model.Professors;
 import model.dto.course.CreateCourseDto;
+import services.AdminServices.AdminProfessorsService;
 import services.CourseService;
 import services.RegisterCourseService;
 import services.SceneManager;
@@ -48,15 +49,17 @@ public class RegisterCourseController extends BaseController implements Initiali
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        for (Professors prof : CourseService.getAllProfessors()) {
-            String fullName = prof.getName() + " " + prof.getSurname();
-            professorComboBox.getItems().add(fullName);
+        CourseService.refreshData();
+
+        for (Professors prof : AdminProfessorsService.getVerifiedProfessors()) {
+            professorComboBox.getItems().add(prof.getName() + " " + prof.getSurname());
         }
 
         for (LectureRooms room : CourseService.getAllLectureRooms()) {
             roomComboBox.getItems().add(room.getName());
         }
     }
+
 
     @FXML
     private void handleSaveCourse() {
