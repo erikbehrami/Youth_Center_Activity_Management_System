@@ -13,7 +13,6 @@ import model.dto.courseEnrollmentLog.CreateCourseEnrollmentLogDto;
 import repository.CourseRepository;
 import services.CourseServices.CourseDashboardService;
 import services.LogsService;
-import services.SceneManager;
 import services.SessionManager;
 
 import java.util.HashMap;
@@ -85,7 +84,7 @@ public class CourseController {
         AnchorPane.setRightAnchor(coloredpane, 5.0);
 
         Label enrolledLabel = new Label(enrolledCount + " enrolled");
-        enrolledLabel.setStyle("-fx-background-color: black; -fx-background-radius: 5; -fx-text-fill: white; -fx-padding: 2");
+        enrolledLabel.setStyle("-fx-background-color: #242C39FF ; -fx-background-radius: 5; -fx-text-fill: white; -fx-padding: 2");
         AnchorPane.setTopAnchor(enrolledLabel, 5.0);
         AnchorPane.setLeftAnchor(enrolledLabel, 5.0);
         coloredpane.getChildren().addAll(enrolledLabel);
@@ -118,7 +117,7 @@ public class CourseController {
 
         Button enrollbtn = new Button("Enroll");
         enrollbtn.setPrefSize(349, 35);
-        enrollbtn.setStyle("-fx-border-color: black; -fx-background-color: black; -fx-background-radius: 10; -fx-border-radius: 10;");
+        enrollbtn.setStyle("-fx-border-color: #242C39FF; -fx-border-width: 2; -fx-background-color: #242C39FF; -fx-background-radius: 10; -fx-border-radius: 10;");
         enrollbtn.setTextFill(javafx.scene.paint.Color.WHITE);
         enrollbtn.setFont(Font.font("System Bold", 14));
 
@@ -128,7 +127,7 @@ public class CourseController {
 
         if (courseService.isStudentAlreadyEnrolled(studentId, courseId)) {
             enrollbtn.setText("Enrolled");
-            enrollbtn.setStyle("-fx-border-color: #113700; -fx-background-color: #113700; -fx-background-radius: 10; -fx-border-radius: 10;");
+            enrollbtn.setStyle("-fx-border-color: #000000; -fx-background-color: #000000; -fx-background-radius: 10; -fx-border-radius: 10;");
         } else if (courseService.EnrollRequest(studentId, courseId)) {
             enrollbtn.setText("Request Sent");
             enrollbtn.setStyle("-fx-border-color: #5e5e5e; -fx-background-color: #5e5e5e; -fx-background-radius: 10; -fx-border-radius: 10;");

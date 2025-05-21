@@ -2,9 +2,7 @@ package services.StudentServices;
 
 import model.Courses;
 import model.Schedules;
-import repository.CourseRepository;
-import repository.EnrolledRepository;
-import repository.ScheduleRepository;
+import repository.*;
 import services.SessionManager;
 
 import java.util.List;
@@ -14,6 +12,8 @@ public class StudentDashboardService{
     private final EnrolledRepository enrolledRepository = new EnrolledRepository();
     private final ScheduleRepository scheduleRepository = new ScheduleRepository();
     private final CourseRepository courseRepository = new CourseRepository();
+    private final StudentBadgesRepository studentBadgesRepository = new StudentBadgesRepository();
+    private final RequestsRepository requestsRepository = new RequestsRepository();
 
     public String getUsername() {
         return sessionManager.currentUser().getUsername();
@@ -46,4 +46,11 @@ public class StudentDashboardService{
         return "";
     }
 
+    public int getTotalBadgesForStudent(int studentId) {
+        return studentBadgesRepository.getTotalBadgesForStudent(studentId);
+    }
+
+    public int getPendingRequests(int studentId) {
+        return requestsRepository.getPendingRequests(studentId);
+    }
 }

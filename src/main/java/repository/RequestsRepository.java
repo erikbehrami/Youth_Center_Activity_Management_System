@@ -194,5 +194,17 @@ public class RequestsRepository {
         return false;
     }
 
-
+    public int getPendingRequests(int studentId) {
+        String query = "SELECT COUNT(*) FROM requests WHERE id_Student = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, studentId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }
