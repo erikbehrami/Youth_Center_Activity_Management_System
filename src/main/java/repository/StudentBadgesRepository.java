@@ -95,4 +95,18 @@ public class StudentBadgesRepository extends BaseRepository<StudentBadges, Creat
             return false;
         }
     }
+
+    public int getTotalBadgesForStudent(int studentId) {
+        String query = "SELECT COUNT(*) FROM studentBadges WHERE id_Student = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, studentId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

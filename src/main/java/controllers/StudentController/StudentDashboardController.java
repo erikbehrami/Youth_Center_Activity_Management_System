@@ -22,14 +22,10 @@ public class StudentDashboardController {
     private final StudentDashboardService studentDashboardService = new StudentDashboardService();
     private final CourseDashboardService courseService = new CourseDashboardService();
 
-    @FXML private
-    Label usernameLabel;
-    @FXML private
-    Label fullNameLabel;
-    @FXML private
-    GridPane coursesGrid;
-    @FXML
-    private VBox scheduleVBox;
+    @FXML private GridPane coursesGrid;
+    @FXML private Label courseCountLabel;
+    @FXML private Label badgeCountLabel;
+    @FXML private Label pendingCoursesLabel;
 
     private final String[] bgColors = {
             "#FFB3BA", "#FFDFBA", "#FFFFBA",
@@ -40,27 +36,23 @@ public class StudentDashboardController {
 
     @FXML
     private void initialize() {
-            loadStudentInfo();
-            loadCourses();
-            loadSchedule();
-    }
-
-    private void loadStudentInfo() {
-        if(usernameLabel == null){
-            return;
-        }
-        usernameLabel.setText(studentDashboardService.getUsername());
-        fullNameLabel.setText(studentDashboardService.getStudentName());
+        loadCourses();
+        loadBadges();
+        loadPendingCourses();
     }
 
     private void loadCourses() {
-        if(coursesGrid == null){
-            return;
-        }
+        if (coursesGrid == null) return;
+
         List<Courses> coursesList = studentDashboardService.getEnrolledCourses();
+        coursesGrid.getChildren().clear();
+
+        if (courseCountLabel != null) {
+            courseCountLabel.setText(String.valueOf(coursesList.size()));
+        }
+
         int column = 0;
         int row = 0;
-        coursesGrid.getChildren().clear();
 
         if (coursesList.isEmpty()) {
             Label msg = new Label("You have not enrolled in any courses yet.");
@@ -84,65 +76,22 @@ public class StudentDashboardController {
         }
     }
 
-    private void loadSchedule() {
-        if(scheduleVBox == null){
-            return;
-        }
-        List<Schedules> scheduleList = studentDashboardService.getStudentSchedule();
-
-        int counter = 1;
-        for (Schedules schedule : scheduleList) {
-            Courses course = studentDashboardService.getCourseById(schedule.getCourseID());
-            String courseName = course.getName();
-            String professorName = studentDashboardService.getProfessorNameByCourseId(course.getId());
-
-            AnchorPane scheduleCard = new AnchorPane();
-            scheduleCard.setPrefSize(279, 60);
-
-            Label numLabel = new Label(String.format("%02d", counter));
-            numLabel.setLayoutX(14);
-            numLabel.setLayoutY(12);
-            numLabel.setStyle("-fx-text-fill: black;");
-            numLabel.setFont(Font.font(22));
-
-            Line line = new Line();
-            line.setEndY(40);
-            line.setLayoutX(55);
-            line.setLayoutY(10);
-            line.setStrokeWidth(2);
-            line.setStyle("-fx-stroke: black;");
-
-            Label profLabel = new Label(professorName);
-            profLabel.setLayoutX(75);
-            profLabel.setLayoutY(12);
-            profLabel.setFont(Font.font(11));
-            profLabel.setStyle("-fx-text-fill: black;");
-
-            Label courseLabel = new Label(courseName);
-            courseLabel.setLayoutX(75);
-            courseLabel.setLayoutY(30);
-            courseLabel.setFont(Font.font(14));
-            courseLabel.setStyle("-fx-text-fill: black;");
-
-            AnchorPane timeday = new AnchorPane();
-            Label timeLabel = new Label(schedule.getTimeStart() + " - " + schedule.getTimeEnd());
-            timeLabel.setLayoutX(280);
-            timeLabel.setLayoutY(12);
-            timeLabel.setStyle("-fx-text-fill: black;");
-
-            Label dayLabel = new Label(schedule.getDay());
-            dayLabel.setLayoutX(280);
-            dayLabel.setLayoutY(30);
-            dayLabel.setStyle("-fx-text-fill: black;");
-
-            timeday.getChildren().addAll(dayLabel, timeLabel);
-            AnchorPane.setRightAnchor(timeday, 15.0);
-
-            scheduleCard.getChildren().addAll(numLabel, line, profLabel, courseLabel, timeday);
-            scheduleVBox.getChildren().add(scheduleCard);
-            counter++;
+    private void loadBadges() {
+        if (badgeCountLabel != null) {
+            int studentId = SessionManager.getInstance().currentUser().getId();
+            int badgeCount = studentDashboardService.getTotalBadgesForStudent(studentId);
+            badgeCountLabel.setText(String.valueOf(badgeCount));
         }
     }
+
+    private void loadPendingCourses() {
+        if (pendingCoursesLabel != null) {
+            int studentId = SessionManager.getInstance().currentUser().getId();
+            int pendingCount = studentDashboardService.getPendingRequests(studentId);
+            pendingCoursesLabel.setText(String.valueOf(pendingCount));
+        }
+    }
+
 
     private AnchorPane createCourseCard(Courses course, String professorName, int i) {
         AnchorPane thecard = new AnchorPane();
@@ -158,7 +107,7 @@ public class StudentDashboardController {
         AnchorPane.setRightAnchor(coloredPane, 5.0);
 
         Label categoryLabel = new Label(course.getCategory());
-        categoryLabel.setStyle("-fx-background-color: black; -fx-text-fill: white ; -fx-padding: 2; -fx-border-radius: 5; -fx-border-color: black; -fx-background-radius: 5;");
+        categoryLabel.setStyle("-fx-background-color: #242C39FF; -fx-text-fill: white ; -fx-padding: 2; -fx-background-radius: 5;");
         AnchorPane.setTopAnchor(categoryLabel, 5.0);
         AnchorPane.setLeftAnchor(categoryLabel, 5.0);
         coloredPane.getChildren().add(categoryLabel);
@@ -180,8 +129,8 @@ public class StudentDashboardController {
         profpane.getChildren().add(profLabel);
 
         Button unenrollbtn = new Button("Unenroll");
-        unenrollbtn.setStyle("-fx-border-color: black; -fx-background-color: black; -fx-background-radius: 10; -fx-border-radius: 10;");
-        unenrollbtn.setPrefSize(749, 35);
+        unenrollbtn.setStyle("-fx-border-color: #242C39FF; -fx-border-width: 2; -fx-background-color: #242C39FF; -fx-background-radius: 10; -fx-border-radius: 10;");
+        unenrollbtn.setPrefSize(829, 35);
         unenrollbtn.setTextFill(javafx.scene.paint.Color.WHITE);
         unenrollbtn.setFont(Font.font("System Bold", 14));
 
@@ -192,6 +141,7 @@ public class StudentDashboardController {
             if (removed) {
                 sceneManager.reload();
                 loadCourses();
+                loadBadges();
             } else {
                 unenrollbtn.setText("Failed");
             }
