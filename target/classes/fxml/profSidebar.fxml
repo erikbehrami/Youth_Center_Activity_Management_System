@@ -50,7 +50,7 @@
                         <FontAwesomeIconView glyphName="USERS" size="27" styleClass="icon" translateY="1.0" />
                     </graphic>
                 </Button>
-                <Button alignment="TOP_LEFT" graphicTextGap="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: white;" styleClass="change" text="%profSideBar.Schedule">
+                <Button alignment="TOP_LEFT" graphicTextGap="40.0" mnemonicParsing="false" onAction="#handleScheduleClick" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: white;" styleClass="change" text="%profSideBar.Schedule">
                     <VBox.margin>
                         <Insets top="20.0" />
                     </VBox.margin>

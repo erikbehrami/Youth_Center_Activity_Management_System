@@ -17,25 +17,30 @@ public class StdController extends BaseController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(stdFullName != null && stdUsername != null) {
+        if (stdFullName != null && stdUsername != null) {
             stdFullName.setText(SessionManager.getInstance().currentUser().getName() + " " + SessionManager.getInstance().currentUser().getSurname());
             stdUsername.setText(SessionManager.getInstance().currentUser().getUsername());
         }
     }
 
     @FXML
-    private void stdProfile(){
+    private void stdProfile() {
         sceneManager.switchScene(Navigator.STUDENT_PROFILE, "Student Profile");
     }
 
     @FXML
-    private void stdCourses(){
+    private void stdCourses() {
         sceneManager.switchScene(Navigator.STUDENT_COURSES, "Student Profile");
     }
 
     @FXML
-    private void stdMessages(){
+    private void stdMessages() {
         sceneManager.switchScene(Navigator.STUDENT_MESSAGES, "Student Messages");
+    }
+
+    @FXML
+    private void handleScheduleClick() {
+        sceneManager.createNewStage(Navigator.SCHEDULE, "Schedule");
     }
 
 }

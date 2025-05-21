@@ -9,6 +9,8 @@ import repository.LectureRoomsRepository;
 import repository.ProfessorsRepository;
 import repository.StudentsRepository;
 
+import java.sql.*;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class RegisterCourseService {
@@ -44,8 +46,12 @@ public class RegisterCourseService {
             return "Error: Invalid professor or room.";
         }
 
-        coursesRepository.create(courseDto);
-        return "Course saved successfully: " + courseDto.getName();
+        int courseId = coursesRepository.create(courseDto).getId();
+        if (courseId != -1) {
+            return "Course saved successfully: ID " + courseId;
+        } else {
+            return "Error: Failed to save course.";
+        }
     }
 
     public ArrayList<Professors> getAllProfessors() {
@@ -63,5 +69,7 @@ public class RegisterCourseService {
         return currentCoursesCount < maxCourses;
     }
 
-
+    public boolean isRoomAvailable(int lectureRoomId, String day, LocalTime timeStart, LocalTime timeEnd) {
+        return coursesRepository.isRoomAvailable(lectureRoomId, day, timeStart, timeEnd);
+    }
 }

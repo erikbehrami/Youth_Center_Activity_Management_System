@@ -1,0 +1,76 @@
+.schedule-container {
+    -fx-background-color: #ffffff;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 2);
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-max-width: 900;
+    -fx-max-height: 600;
+}
+
+.schedule-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-padding: 0 0 15 0;
+}
+
+.schedule-grid {
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: #dfe6e9;
+    -fx-border-width: 1;
+}
+
+.schedule-grid .label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #2c3e50;
+    -fx-padding: 5;
+    -fx-alignment: center;
+}
+
+.schedule-grid .header-label {
+    -fx-font-weight: bold;
+    -fx-background-color: #3498db;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #dfe6e9;
+    -fx-border-width: 1;
+    -fx-padding: 10;
+    -fx-pref-width: 150;
+    -fx-min-width: 150;
+}
+
+.schedule-grid .time-label {
+    -fx-font-size: 12px;
+    -fx-min-width: 60;
+    -fx-pref-width: 60;
+    -fx-alignment: center-right;
+    -fx-padding: 5 10 5 5;
+    -fx-text-fill: #636e72;
+}
+
+.schedule-grid .schedule-cell {
+    -fx-background-color: #74b9ff;
+    -fx-border-color: #0984e3;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5;
+    -fx-alignment: top-left;
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 12px;
+    -fx-wrap-text: true;
+}
+
+.schedule-grid .schedule-cell:hover {
+    -fx-background-color: #a29bfe;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 1);
+    -fx-cursor: hand;
+}
+
+.schedule-grid .empty-cell {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dfe6e9;
+    -fx-border-width: 1;
+    -fx-pref-width: 150;
+    -fx-min-width: 150;
+}

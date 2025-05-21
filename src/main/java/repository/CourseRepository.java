@@ -1,10 +1,13 @@
 package repository;
 
 import model.Courses;
+import model.LectureRooms;
+import model.Schedules;
 import model.dto.course.CreateCourseDto;
 import model.dto.course.UpdateCourseDto;
 
 import java.sql.*;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -71,7 +74,6 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, U
     }
 
 
-
     public HashMap<Integer, Integer> getCourseCountByYear() {
         HashMap<Integer, Integer> courseCountByYear = new HashMap<>();
         String query = """
@@ -125,7 +127,7 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, U
                     ORDER BY year;
                 """;
 
-        try (PreparedStatement stmt = connection.prepareStatement(query)){
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, professorId);
             ResultSet rs = stmt.executeQuery();
 
@@ -175,16 +177,16 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, U
         HashMap<Integer, Integer> enrollments = new HashMap<>();
 
         String query = """
-            SELECT 
-                c.id AS course_id,
-                COUNT(e.id_Student) AS students_enrolled
-            FROM 
-                courses c
-            LEFT JOIN 
-                enrolled e ON c.id = e.id_Course
-            GROUP BY 
-                c.id
-        """;
+                    SELECT 
+                        c.id AS course_id,
+                        COUNT(e.id_Student) AS students_enrolled
+                    FROM 
+                        courses c
+                    LEFT JOIN 
+                        enrolled e ON c.id = e.id_Course
+                    GROUP BY 
+                        c.id
+                """;
 
         try (PreparedStatement stmt = connection.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
@@ -275,11 +277,11 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, U
 
     public String getLectureRoomNameByCourseId(int courseId) {
         String query = """
-                SELECT lr.name
-                FROM lectureRooms lr
-                JOIN courses c ON c.id_lectureRooms = lr.id
-                WHERE c.id = ?
-        """;
+                        SELECT lr.name
+                        FROM lectureRooms lr
+                        JOIN courses c ON c.id_lectureRooms = lr.id
+                        WHERE c.id = ?
+                """;
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, courseId);
             ResultSet rs = stmt.executeQuery();
@@ -303,5 +305,48 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, U
             e.printStackTrace();
             return false;
         }
+    }
+
+    public ArrayList<String> getCourseNameAndLectureRoom(int courseId) {
+        LectureRoomsRepository lectureRoomsRepository = new LectureRoomsRepository();
+        Courses courses = getById(courseId);
+        ArrayList<String> array = new ArrayList<>();
+        LectureRooms lectureRooms = lectureRoomsRepository.getById(courses.getLectureRoomId());
+        array.add(courses.getName());
+        array.add(lectureRooms.getName());
+        return array;
+    }
+
+    public boolean isRoomAvailable(int lectureRoomId, String day, LocalTime timeStart, LocalTime timeEnd) {
+        String query = """
+                SELECT COUNT(*) 
+                FROM schedules s
+                JOIN courses c ON s.id_Courses = c.id
+                WHERE c.id_lectureRooms = ? 
+                AND s.day = ?
+                AND (
+                    (s.timeStart <= ? AND s.timeEnd > ?) 
+                    OR (s.timeStart < ? AND s.timeEnd >= ?)
+                    OR (s.timeStart >= ? AND s.timeStart < ?)
+                )
+                """;
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setInt(1, lectureRoomId);
+            stmt.setString(2, day);
+            stmt.setTime(3, Time.valueOf(timeStart));
+            stmt.setTime(4, Time.valueOf(timeStart));
+            stmt.setTime(5, Time.valueOf(timeEnd));
+            stmt.setTime(6, Time.valueOf(timeEnd));
+            stmt.setTime(7, Time.valueOf(timeStart));
+            stmt.setTime(8, Time.valueOf(timeEnd));
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) == 0;
+            }
+        } catch (SQLException e) {
+            System.out.println("Error checking room availability: " + e.getMessage());
+        }
+        return false;
     }
 }

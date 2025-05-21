@@ -94,8 +94,8 @@ create table schedules (
                            id integer default nextval('schedules_id_seq') Primary Key ,
                            id_Courses integer,
                            day varchar(10),
-                           timeStart varchar(5),
-                           timeEnd varchar(5),
+                           timeStart TIME,
+                           timeEnd TIME,
                            FOREIGN KEY (id_Courses) REFERENCES courses(id) ON DELETE SET NULL ON UPDATE CASCADE
 );
 

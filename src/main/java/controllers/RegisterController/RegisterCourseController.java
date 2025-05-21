@@ -12,14 +12,21 @@ import javafx.scene.control.TextField;
 import javafx.util.Duration;
 import model.LectureRooms;
 import model.Professors;
+import model.Schedules;
 import model.dto.course.CreateCourseDto;
+import model.dto.schedule.CreateScheduleDto;
+import repository.ScheduleRepository;
 import services.AdminServices.AdminProfessorsService;
 import services.CourseService;
 import services.RegisterCourseService;
+import services.ScheduleService;
 import services.SceneManager;
+
 
 import java.net.URL;
 import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 public class RegisterCourseController extends BaseController implements Initializable {
@@ -45,11 +52,20 @@ public class RegisterCourseController extends BaseController implements Initiali
     @FXML
     private DatePicker dateEndingPicker;
 
-    private RegisterCourseService courseService = new RegisterCourseService();
+    @FXML
+    private ComboBox<String> scheduleDayComboBox;
+
+    @FXML
+    private ComboBox<String> scheduleStartTimeComboBox;
+
+    @FXML
+    private ComboBox<String> scheduleEndTimeComboBox;
+
+    RegisterCourseService registerCourseService = new RegisterCourseService();
+    ScheduleService scheduleService = new ScheduleService();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         for (Professors prof : AdminProfessorsService.getVerifiedProfessors()) {
             professorComboBox.getItems().add(prof.getName() + " " + prof.getSurname());
         }
@@ -59,7 +75,6 @@ public class RegisterCourseController extends BaseController implements Initiali
         }
     }
 
-
     @FXML
     private void handleSaveCourse() {
         try {
@@ -68,30 +83,39 @@ public class RegisterCourseController extends BaseController implements Initiali
             int professorIndex = professorComboBox.getSelectionModel().getSelectedIndex();
             int roomIndex = roomComboBox.getSelectionModel().getSelectedIndex();
             String totalNumberText = courseTotalNumber.getText();
+            String day = scheduleDayComboBox.getSelectionModel().getSelectedItem();
+            String timeStartStr = scheduleStartTimeComboBox.getSelectionModel().getSelectedItem();
+            String timeEndStr = scheduleEndTimeComboBox.getSelectionModel().getSelectedItem();
 
+            LocalTime timeStart = LocalTime.parse(timeStartStr);  // expects "HH:mm"
+            LocalTime timeEnd = LocalTime.parse(timeEndStr);
             var startLocalDate = dateStartedPicker.getValue();
             var endLocalDate = dateEndingPicker.getValue();
 
             if (name.isEmpty() || category.isEmpty() || totalNumberText.isEmpty() ||
-                    professorIndex < 0 || roomIndex < 0 || startLocalDate == null || endLocalDate == null) {
+                    professorIndex < 0 || roomIndex < 0 || startLocalDate == null ||
+                    endLocalDate == null || day == null || timeStart == null || timeEnd == null) {
                 showAlert("Error", "All fields must be filled in.", Alert.AlertType.ERROR, false);
                 return;
             }
 
-
             int totalNum = Integer.parseInt(totalNumberText);
-
-            Date startDate = java.sql.Date.valueOf(startLocalDate);
-            Date endDate = java.sql.Date.valueOf(endLocalDate);
+            Date startDate = Date.valueOf(startLocalDate);
+            Date endDate = Date.valueOf(endLocalDate);
 
             int professorId = CourseService.getProfessorIdByIndex(professorIndex);
             int lectureRoomId = CourseService.getLectureRoomIdByIndex(roomIndex);
 
-
             System.out.println(professorId);
 
-            if(!courseService.canRegisterMoreCourses(professorId)){
+            if (!registerCourseService.canRegisterMoreCourses(professorId)) {
                 showAlert("Error", "Professor cannot register more courses!", Alert.AlertType.ERROR, false);
+                return;
+            }
+
+
+            if (!registerCourseService.isRoomAvailable(lectureRoomId, day, timeStart, timeEnd)) {
+                showAlert("Error", "The selected lecture room is already booked for this time slot.", Alert.AlertType.ERROR, false);
                 return;
             }
 
@@ -106,17 +130,40 @@ public class RegisterCourseController extends BaseController implements Initiali
                     endDate
             );
 
-            String result = CourseService.saveCourse(courseDto);
-            if (result != null && result.toLowerCase().contains("success")) {
-                showAlert("Success", "Course was registered successfully!", Alert.AlertType.INFORMATION, true);
+            String result = registerCourseService.saveCourse(courseDto);
+            if (result != null && result.toLowerCase().contains("successfully")) {
+                int courseId;
+                try {
+                    courseId = Integer.parseInt(result.replaceAll("[^0-9]", ""));
+                } catch (NumberFormatException e) {
+                    showAlert("Failure", "Could not retrieve course ID from result.", Alert.AlertType.ERROR, true);
+                    return;
+                }
+
+                // Create schedule
+                CreateScheduleDto scheduleDto = new CreateScheduleDto(
+                        courseId,
+                        day,
+                        Time.valueOf(timeStart),
+                        Time.valueOf(timeEnd)
+                );
+                Schedules schedule = scheduleService.createSchedule(scheduleDto);
+
+                if (schedule != null) {
+                    showAlert("Success", "Course and schedule were registered successfully!", Alert.AlertType.INFORMATION, true);
+                } else {
+                    showAlert("Success", "Course was registered, but failed to create schedule.", Alert.AlertType.WARNING, true);
+                }
             } else {
                 showAlert("Failure", "Failed to register the course.", Alert.AlertType.ERROR, true);
             }
 
         } catch (NumberFormatException e) {
             showAlert("Invalid Input", "Total number must be a valid integer.", Alert.AlertType.ERROR, false);
+        } catch (IllegalArgumentException e) {
+            showAlert("Invalid Time", "Time format is incorrect (use HH:MM, e.g., 09:00).", Alert.AlertType.ERROR, false);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error: " + e.getMessage());
             showAlert("Exception", "An unexpected error occurred.", Alert.AlertType.ERROR, false);
         }
     }

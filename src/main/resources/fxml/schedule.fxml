@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="15" styleClass="schedule-container" stylesheets="@../css/schedule.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ScheduleController">
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+    <Label styleClass="schedule-title" text="My Weekly Schedule" />
+    <GridPane fx:id="scheduleGrid" alignment="CENTER" hgap="2" styleClass="schedule-grid" vgap="2">
+        <!-- Day and time labels will be added dynamically -->
+    </GridPane>
+</VBox>

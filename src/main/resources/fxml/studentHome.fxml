@@ -16,13 +16,13 @@
          <children>
             <HBox layoutY="103.19999694824219" spacing="14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="114.0">
                <children>
-                  <AnchorPane prefHeight="498.0" prefWidth="460.0" HBox.hgrow="ALWAYS">
+                  <AnchorPane prefHeight="482.0" prefWidth="880.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <ScrollPane fitToWidth="true" layoutY="36.8" prefHeight="419.0" prefWidth="462.0" style="-fx-background: white; -fx-border-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+                        <ScrollPane fitToWidth="true" layoutY="36.8" prefHeight="454.0" prefWidth="664.0" style="-fx-background: white; -fx-border-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
                            <content>
-                              <HBox>
+                              <HBox prefHeight="418.0" prefWidth="789.0">
                                  <children>
-                                    <GridPane fx:id="coursesGrid" hgap="5" prefHeight="418.0" prefWidth="426.0" style="-fx-background-color: white;" vgap="5" HBox.hgrow="ALWAYS">
+                                    <GridPane fx:id="coursesGrid" hgap="5" prefHeight="418.0" prefWidth="749.0" style="-fx-background-color: white;" vgap="5" HBox.hgrow="ALWAYS">
                                        <columnConstraints>
                                           <ColumnConstraints percentWidth="100.0" />
                                        </columnConstraints>
@@ -38,25 +38,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <VBox spacing="14.0" HBox.hgrow="ALWAYS">
-                     <children>
-                  
-                                    <AnchorPane prefHeight="314.0" prefWidth="410.0" style="-fx-border-color: lightgrey; -fx-border-radius: 10;" styleClass="studentBorders" VBox.vgrow="ALWAYS">
-                           <children>
-                              <Label layoutX="11.6" layoutY="7.0" text="%Schedule">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <ScrollPane fx:id="scheduleScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="339.0" prefWidth="300.0" style="-fx-background: white; -fx-border-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
-                                 <content>
-                                    <VBox fx:id="scheduleVBox" prefWidth="330.0" spacing="10" />
-                                 </content>
-                              </ScrollPane>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </VBox>
+                  <VBox spacing="14.0" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
             <AnchorPane layoutX="9.5999755859375" prefHeight="100.0" prefWidth="870.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

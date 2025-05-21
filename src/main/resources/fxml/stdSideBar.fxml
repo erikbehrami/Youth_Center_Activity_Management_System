@@ -61,6 +61,14 @@
                         <FontAwesomeIconView glyphName="USER" size="18.0" translateX="-19.0" />
                      </graphic>
                       </Button>
+                  <Button graphicTextGap="0.0" mnemonicParsing="false" onAction="#handleScheduleClick" prefHeight="40.0" prefWidth="542.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-color: lightgrey; -fx-border-radius: 20;" styleClass="change" text="Schedule" textOverrun="LEADING_ELLIPSIS">
+                     <padding>
+                        <Insets right="149.0" />
+                     </padding>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="CALENDAR" size="18.0" translateX="-18.0" />
+                     </graphic>
+                  </Button>
                   </children>
               </VBox>
           </children>

@@ -11,7 +11,7 @@ interface OverallPages {
     String REGISTER_PROFESSOR = "/fxml/registerProfessor.fxml";
     String UPDATE_COURSE = "/fxml/updateCourse.fxml";
     String ABOUT = "/fxml/about.fxml";
-
+    String SCHEDULE = "/fxml/schedule.fxml";
     String REGISTER_STUDENT = "/fxml/registerStudent.fxml";
 }
 

@@ -170,3 +170,9 @@ VALUES ('TechTrend Innovations', 'NextGen Smartphone Launch', 'techTrendInnovati
        ('Gourmet Bites', 'Taste the Difference', 'gourmetBites.png'),
        ('TravelVibe Agency', 'Explore the World Today', 'travelVibeAgency.png'),
        ('EcoWear Clothing', 'Sustainable Fashion for All', 'ecoWearClothing.png')
+
+    INSERT INTO faqs (question, answer) VALUES
+    ('What is YCAM?', 'YCAM is a platform to streamline youth center management, including event planning and member communication.'),
+    ('Who can use YCAM?', 'Youth centers, community organizations, and educational programs can use YCAM.'),
+    ('Does YCAM support multiple languages?', 'YCAM is available in several languages, and we are continuously working to add more.'),
+    ('How do I contact support?', 'Use the contact form or email youthcentersystem@gmail.com.');

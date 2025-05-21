@@ -1,17 +1,18 @@
 package model;
 
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 
 public class Schedules {
     private int id;
     private int courseID;
     private String day;
-    private String timeStart;
-    private String timeEnd;
+    private Time timeStart;
+    private Time timeEnd;
 
-    private Schedules(int id, int id_courses, String day, String timeStart, String timeEnd) {
+    private Schedules(int id, int id_courses, String day, Time timeStart, Time timeEnd) {
         this.id = id;
         this.courseID = id_courses;
         this.day = day;
@@ -23,8 +24,8 @@ public class Schedules {
         int id = rs.getInt("id");
         int courseID = rs.getInt("id_courses");
         String day = rs.getString("day");
-        String timeStart = rs.getString("timestart");
-        String timeEnd = rs.getString("timeend");
+        Time timeStart = rs.getTime("timestart"); // Use getTime for TIME column
+        Time timeEnd = rs.getTime("timeend");     // Use getTime for TIME column
 
         return new Schedules(id, courseID, day, timeStart, timeEnd);
     }
@@ -42,10 +43,14 @@ public class Schedules {
     }
 
     public String getTimeStart() {
-        return this.timeStart;
+        if (timeStart == null) return "";
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
+        return sdf.format(timeStart);
     }
 
     public String getTimeEnd() {
-        return this.timeEnd;
+        if (timeEnd == null) return "";
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
+        return sdf.format(timeEnd);
     }
 }
