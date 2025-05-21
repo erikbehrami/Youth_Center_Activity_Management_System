@@ -200,16 +200,26 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, U
         return enrollments;
     }
 
-    public boolean enrollStudentInCourse(int studentId, int courseId) {
-        String query = "INSERT INTO enrolled (id_student, id_course) VALUES (?, ?)";
-
+    public boolean createEnrollmentRequest(int studentId, int professorId, int courseId) {
+        String query = "INSERT INTO requests (id_student, id_professor, id_course) VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, studentId);
+            stmt.setInt(2, professorId);
+            stmt.setInt(3, courseId);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
+    public boolean checkPendingRequest(int studentId, int courseId) {
+        String query = "SELECT * FROM requests WHERE id_student = ? AND id_course = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, studentId);
             stmt.setInt(2, courseId);
-            stmt.executeUpdate();
-            return true;
-
+            ResultSet rs = stmt.executeQuery();
+            return rs.next();
         } catch (SQLException e) {
             e.printStackTrace();
             return false;

@@ -87,13 +87,7 @@ public class CourseController {
         enrolledLabel.setStyle("-fx-background-color: black; -fx-background-radius: 5; -fx-text-fill: white; -fx-padding: 2");
         AnchorPane.setTopAnchor(enrolledLabel, 5.0);
         AnchorPane.setLeftAnchor(enrolledLabel, 5.0);
-
-        Label timeLabel = new Label("10:00 - 12:00");
-        timeLabel.setStyle("-fx-text-fill: #00000096;");
-        AnchorPane.setTopAnchor(timeLabel, 5.0);
-        AnchorPane.setRightAnchor(timeLabel, 5.0);
-
-        coloredpane.getChildren().addAll(enrolledLabel, timeLabel);
+        coloredpane.getChildren().addAll(enrolledLabel);
 
         VBox details = new VBox(10);
         details.setPrefSize(294, 111);
@@ -121,18 +115,21 @@ public class CourseController {
         enrollbtn.setFont(Font.font("System Bold", 14));
 
         int studentId = SessionManager.getInstance().currentUser().getId();
+        int professorId = course.getProfessorId();
         int courseId = course.getId();
 
-        if (courseService.isStudentAlreadyEnrolled(studentId, courseId)) {
+        if (courseService.EnrollRequest(studentId, courseId)) {
+            enrollbtn.setText("Request Sent");
+            enrollbtn.setDisable(true);
+        } else if (courseService.isStudentAlreadyEnrolled(studentId, courseId)) {
             enrollbtn.setText("Enrolled");
             enrollbtn.setDisable(true);
         }
 
         enrollbtn.setOnAction(e -> {
-            boolean success = courseService.enrollStudentInCourse(studentId, courseId);
-
+            boolean success = courseService.sendEnrollmentRequest(studentId, professorId, courseId);
             if (success) {
-                enrollbtn.setText("Enrolled");
+                enrollbtn.setText("Request Sent");
                 enrollbtn.setDisable(true);
 
                 CreateCourseEnrollmentLogDto createCEDto = new CreateCourseEnrollmentLogDto(studentId, courseId);
@@ -140,14 +137,16 @@ public class CourseController {
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setHeaderText(null);
-                alert.setContentText("Successfully enrolled in: " + course.getName());
+                alert.setContentText("Your request to enroll in " + course.getName() + " has been sent.");
                 alert.showAndWait();
 
                 loadCourses();
             } else {
-                enrollbtn.setText("Enrolled or failed");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("Failed to send enrollment request.");
+                alert.showAndWait();
             }
-
         });
 
         details.getChildren().addAll(courseLabel, profpane, enrollbtn);

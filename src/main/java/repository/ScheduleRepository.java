@@ -100,9 +100,13 @@ public class ScheduleRepository {
     // get schdeule for student
     public ArrayList<Schedules> getScheduleForAStudent(int studentId) {
         String query = """
-            SELECT
-                s.*
+            SELECT s.*
             FROM schedules s
+            JOIN (
+                SELECT MIN(id) AS min_id
+                FROM schedules
+                GROUP BY id_courses
+            ) first_schedule ON s.id = first_schedule.min_id
             JOIN enrolled e ON s.id_courses = e.id_course
             WHERE e.id_student = ?
             ORDER BY
@@ -115,7 +119,7 @@ public class ScheduleRepository {
                     WHEN 'Saturday' THEN 6
                     WHEN 'Sunday' THEN 7
                     ELSE 8
-            	END;
+            END;
         """;
         ArrayList<Schedules> result = new ArrayList<>();
         try (PreparedStatement stmt = connection.prepareStatement(query)) {

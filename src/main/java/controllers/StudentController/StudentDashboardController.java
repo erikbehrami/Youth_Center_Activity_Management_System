@@ -43,7 +43,6 @@ public class StudentDashboardController {
             loadStudentInfo();
             loadCourses();
             loadSchedule();
-
     }
 
     private void loadStudentInfo() {
@@ -191,6 +190,7 @@ public class StudentDashboardController {
             int courseId = course.getId();
             boolean removed = courseService.unenrollStudentFromCourse(studentId, courseId);
             if (removed) {
+                sceneManager.reload();
                 loadCourses();
             } else {
                 unenrollbtn.setText("Failed");

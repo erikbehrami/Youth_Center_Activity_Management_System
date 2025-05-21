@@ -17,8 +17,12 @@ public class CourseDashboardService {
         return courseRepository.getEnrollmentsForCourse();
     }
 
-    public boolean enrollStudentInCourse(int studentId, int courseId) {
-        return courseRepository.enrollStudentInCourse(studentId, courseId);
+    public boolean sendEnrollmentRequest(int studentId, int professorId, int courseId) {
+        return courseRepository.createEnrollmentRequest(studentId, professorId, courseId);
+    }
+
+    public boolean EnrollRequest(int studentId, int courseId) {
+        return courseRepository.checkPendingRequest(studentId, courseId);
     }
 
     public boolean isStudentAlreadyEnrolled(int studentId, int courseId) {
