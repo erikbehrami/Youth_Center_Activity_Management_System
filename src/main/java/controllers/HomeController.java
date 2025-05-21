@@ -17,16 +17,14 @@ import repository.AdvertisementRepository;
 import services.SceneManager;
 import utils.Navigator;
 
+import java.io.File;
 import java.util.ArrayList;
-
 import javafx.util.Duration;
 
 public class HomeController {
-    @FXML
-    private HBox adContainer;
 
-    @FXML
-    private ScrollPane adScrollPane;
+    @FXML private HBox adContainer;
+    @FXML private ScrollPane adScrollPane;
 
     private final AdvertisementRepository adsRepository = new AdvertisementRepository();
     private final SceneManager sceneManager = SceneManager.getInstance();
@@ -56,7 +54,7 @@ public class HomeController {
         try {
             advertisements = adsRepository.getAll();
         } catch (Exception e) {
-            System.err.println("Failed to load advertisements: " + e.getMessage());
+            e.printStackTrace();
             Text errorText = new Text("Error loading advertisements.");
             errorText.setFont(Font.font("Segoe UI", 12));
             adContainer.getChildren().add(errorText);
@@ -79,31 +77,32 @@ public class HomeController {
             adImageView.setFitHeight(120);
             adImageView.setPreserveRatio(true);
 
-            String adImageUrl = ad.getAdImageUrl();
             try {
-                if (!adImageUrl.startsWith("/images/adsImages/")) {
-                    adImageUrl = "/images/adsImages/" + adImageUrl;
+                File file = new File(System.getProperty("user.dir") + "/src/main/java/adsImages/" + ad.getAdImageUrl());
+                if (file.exists()) {
+                    Image image = new Image(file.toURI().toString());
+                    adImageView.setImage(image);
+                } else {
+                    System.err.println("Ad image not found: " + file.getAbsolutePath());
                 }
-                Image image = new Image(getClass().getResource(adImageUrl).toExternalForm());
-                adImageView.setImage(image);
-            } catch (NullPointerException | IllegalArgumentException e) {
-                System.err.println("Failed to load ad image: " + adImageUrl + " - " + e.getMessage());
-                adImageView.setImage(new Image(getClass().getResource("/images/adsImages/placeholder.png").toExternalForm()));
+            } catch (Exception e) {
+                System.err.println("Failed to load ad image: " + ad.getAdImageUrl() + " - " + e.getMessage());
             }
+
 
             VBox textBox = new VBox(5);
             Text sponsorText = new Text(ad.getSponsorName());
             sponsorText.setFont(Font.font("Segoe UI Semibold", 16));
             sponsorText.setWrappingWidth(180);
+
             Text titleText = new Text(ad.getAdTitle());
             titleText.setFont(Font.font("Segoe UI", 14));
             titleText.setWrappingWidth(180);
-            textBox.getChildren().addAll(sponsorText, titleText);
 
+            textBox.getChildren().addAll(sponsorText, titleText);
             adBox.getChildren().addAll(adImageView, textBox);
             adContainer.getChildren().add(adBox);
         }
-
 
         if (advertisements.size() > 2) {
             startAdCycleAnimation(advertisements.size());
@@ -111,10 +110,8 @@ public class HomeController {
     }
 
     private void startAdCycleAnimation(int adCount) {
-
         double maxHvalue = 1.0;
         double cycleDurationSeconds = adCount * 3.0 + 1.0;
-
 
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.ZERO, new KeyValue(adScrollPane.hvalueProperty(), 0, Interpolator.LINEAR)),

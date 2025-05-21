@@ -110,16 +110,29 @@ public class AdminMoreController extends BaseController implements Initializable
 
         if (selectedFile != null) {
             try {
-                File destDir = new File("images/adsImages");
+                String sponsor = sponsorField.getText().replace(" ", "");
+                String title = titleField.getText().replace(" ", "");
+
+                if (sponsor.isEmpty() || title.isEmpty()) {
+                    showAlert(Alert.AlertType.WARNING, "Missing Info", "Please fill in Sponsor and Title before uploading image.");
+                    return;
+                }
+
+                String originalFileName = selectedFile.getName();
+                String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+
+                String newFileName = sponsor + title + extension;
+
+                File destDir = new File("src/main/java/adsImages");
                 if (!destDir.exists()) {
                     destDir.mkdirs();
                 }
 
-                String uniqueFileName = System.currentTimeMillis() + "_" + selectedFile.getName();
-                File destFile = new File(destDir, uniqueFileName);
+                File destFile = new File(destDir, newFileName);
 
+                Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-                uploadedImagePath = uniqueFileName;
+                uploadedImagePath = newFileName;
                 System.out.println("Saved image path: " + uploadedImagePath);
 
                 Image image = new Image(destFile.toURI().toString());
@@ -133,6 +146,7 @@ public class AdminMoreController extends BaseController implements Initializable
             showAlert(Alert.AlertType.INFORMATION, "No Image", "No image was selected.");
         }
     }
+
 
 
     @FXML
