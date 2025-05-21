@@ -1,13 +1,180 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="baseAnchor" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InfoController">
-    <children>
-        <Text layoutX="343.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ne implementim e siper"/>
-        <Button layoutX="418.0" layoutY="405.0" mnemonicParsing="false" text="Button"/>
-    </children>
-</AnchorPane>
+<BorderPane fx:id="root" minWidth="600" prefHeight="800" prefWidth="1000" stylesheets="@../css/styles.css"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.InfoController">
+    <top>
+        <VBox alignment="CENTER" styleClass="header">
+            <HBox alignment="CENTER" spacing="30" styleClass="header-content">
+                <Label fx:id="titleLabel" styleClass="header-title" text="%info.title"/>
+                <SplitMenuButton styleClass="language-selector" text="%info.language">
+                    <items>
+                        <MenuItem fx:id="ENGLISH" mnemonicParsing="false" onAction="#handleENLanguageClick"
+                                  styleClass="navButton" text="%info.lang.en"/>
+                        <MenuItem fx:id="ALBANIAN" mnemonicParsing="false" onAction="#handleSQLanguageClick"
+                                  styleClass="navButton" text="%info.lang.sq"/>
+                    </items>
+                </SplitMenuButton>
+
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <ScrollPane fitToWidth="true" prefHeight="600" styleClass="scroll-pane">
+            <content>
+                <VBox fx:id="featureContainer" alignment="CENTER" spacing="30" styleClass="feature-container">
+                    <!-- Gamification -->
+                    <VBox alignment="CENTER" styleClass="feature-card gamification-card" VBox.vgrow="ALWAYS">
+                        <HBox alignment="CENTER" styleClass="feature-card-header">
+                            <Label fx:id="gamificationPane" styleClass="feature-card-title" text="%info.gamification"/>
+                        </HBox>
+                        <VBox alignment="CENTER" spacing="20" styleClass="feature-card-content">
+                            <HBox alignment="CENTER" spacing="20" styleClass="feature-item">
+                                <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                                    <Label styleClass="feature-title" text="%info.gamification.badge.title"/>
+                                    <Text styleClass="feature-desc" text="%info.gamification.badge.desc"/>
+                                    <Text styleClass="feature-usage" text="%info.gamification.badge.usage"/>
+                                </VBox>
+                            </HBox>
+                            <HBox alignment="CENTER" spacing="20" styleClass="feature-item">
+                                <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                                    <Label styleClass="feature-title" text="%info.gamification.quotes.title"/>
+                                    <Text styleClass="feature-desc" text="%info.gamification.quotes.desc"/>
+                                    <Text styleClass="feature-usage" text="%info.gamification.quotes.usage"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                    <!-- Communication -->
+                    <VBox alignment="CENTER" styleClass="feature-card communication-card">
+                        <HBox alignment="CENTER" styleClass="feature-card-header">
+                            <Label fx:id="communicationPane" styleClass="feature-card-title"
+                                   text="%info.communication"/>
+                        </HBox>
+                        <VBox alignment="CENTER" spacing="20" styleClass="feature-card-content">
+                            <HBox alignment="CENTER" spacing="20" styleClass="feature-item">
+                                <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                                    <Label styleClass="feature-title" text="%info.communication.messaging.title"/>
+                                    <Text styleClass="feature-desc" text="%info.communication.messaging.desc"/>
+                                    <Text styleClass="feature-usage" text="%info.communication.messaging.usage"/>
+                                </VBox>
+                            </HBox>
+                            <HBox alignment="CENTER" spacing="20" styleClass="feature-item">
+                                <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                                    <Label styleClass="feature-title" text="%info.communication.emails.title"/>
+                                    <Text styleClass="feature-desc" text="%info.communication.emails.desc"/>
+                                    <Text styleClass="feature-usage" text="%info.communication.emails.usage"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                    <!-- Security -->
+                    <VBox alignment="CENTER" styleClass="feature-card security-card">
+                        <HBox alignment="CENTER" styleClass="feature-card-header" VBox.vgrow="ALWAYS">
+                            <Label fx:id="securityPane" styleClass="feature-card-title" text="%info.security"/>
+                        </HBox>
+                        <VBox alignment="CENTER" spacing="20" styleClass="feature-card-content">
+                            <HBox alignment="CENTER" spacing="20" styleClass="feature-item">
+                                <Label styleClass="feature-icon security" text="%info.security.verification.icon"/>
+                                <VBox alignment="CENTER">
+                                    <Label styleClass="feature-title" text="%info.security.verification.title"/>
+                                    <Text styleClass="feature-desc" text="%info.security.verification.desc"/>
+                                    <Text styleClass="feature-usage" text="%info.security.verification.usage"/>
+                                </VBox>
+                            </HBox>
+                            <HBox alignment="CENTER" spacing="20" styleClass="feature-item">
+                                <Label styleClass="feature-icon security" text="%info.security.jwt.icon"/>
+                                <VBox alignment="CENTER">
+                                    <Label styleClass="feature-title" text="%info.security.jwt.title"/>
+                                    <Text styleClass="feature-desc" text="%info.security.jwt.desc"/>
+                                    <Text styleClass="feature-usage" text="%info.security.jwt.usage"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                    <!-- Analytics -->
+                    <VBox alignment="CENTER" styleClass="feature-card analytics-card">
+                        <HBox alignment="CENTER" styleClass="feature-card-header" VBox.vgrow="ALWAYS">
+                            <Label fx:id="analyticsPane" styleClass="feature-card-title" text="%info.analytics"/>
+                        </HBox>
+                        <VBox alignment="CENTER" spacing="20" styleClass="feature-card-content">
+                            <HBox alignment="CENTER" spacing="20" styleClass="feature-item">
+                                <Label styleClass="feature-icon analytics" text="%info.analytics.gender.icon"/>
+                                <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                                    <Label styleClass="feature-title" text="%info.analytics.gender.title"/>
+                                    <Text styleClass="feature-desc" text="%info.analytics.gender.desc"/>
+                                    <Text styleClass="feature-usage" text="%info.analytics.gender.usage"/>
+                                </VBox>
+                            </HBox>
+                            <HBox alignment="CENTER" spacing="20" styleClass="feature-item">
+                                <Label styleClass="feature-icon analytics" text="%info.analytics.trends.icon"/>
+                                <VBox alignment="CENTER">
+                                    <Label styleClass="feature-title" text="%info.analytics.trends.title"/>
+                                    <Text styleClass="feature-desc" text="%info.analytics.trends.desc"/>
+                                    <Text styleClass="feature-usage" text="%info.analytics.trends.usage"/>
+                                </VBox>
+                            </HBox>
+                            <HBox alignment="CENTER" spacing="20" styleClass="feature-item">
+                                <Label styleClass="feature-icon analytics" text="%info.analytics.performance.icon"/>
+                                <VBox alignment="CENTER">
+                                    <Label styleClass="feature-title" text="%info.analytics.performance.title"/>
+                                    <Text styleClass="feature-desc" text="%info.analytics.performance.desc"/>
+                                    <Text styleClass="feature-usage" text="%info.analytics.performance.usage"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                    <!-- UI/UX -->
+                    <VBox alignment="CENTER" styleClass="feature-card uiux-card">
+                        <HBox alignment="CENTER" styleClass="feature-card-header">
+                            <Label fx:id="uiuxPane" styleClass="feature-card-title" text="%info.uiux"/>
+                        </HBox>
+                        <VBox alignment="CENTER" spacing="20" styleClass="feature-card-content">
+                            <HBox alignment="CENTER" spacing="20" styleClass="feature-item">
+                                <Label styleClass="feature-icon uiux" text="%info.uiux.mode.icon"/>
+                                <VBox alignment="CENTER">
+                                    <Label styleClass="feature-title" text="%info.uiux.mode.title"/>
+                                    <Text styleClass="feature-desc" text="%info.uiux.mode.desc"/>
+                                    <Text styleClass="feature-usage" text="%info.uiux.mode.usage"/>
+                                </VBox>
+                            </HBox>
+                            <HBox alignment="CENTER" spacing="20" styleClass="feature-item">
+                                <Label styleClass="feature-icon uiux" text="%info.uiux.ads.icon"/>
+                                <VBox alignment="CENTER">
+                                    <Label styleClass="feature-title" text="%info.uiux.ads.title"/>
+                                    <Text styleClass="feature-desc" text="%info.uiux.ads.desc"/>
+                                    <Text styleClass="feature-usage" text="%info.uiux.ads.usage"/>
+                                </VBox>
+                            </HBox>
+                            <HBox alignment="CENTER" spacing="20" styleClass="feature-item">
+                                <Label styleClass="feature-icon uiux" text="%info.uiux.i18n.icon"/>
+                                <VBox alignment="CENTER">
+                                    <Label styleClass="feature-title" text="%info.uiux.i18n.title"/>
+                                    <Text styleClass="feature-desc" text="%info.uiux.i18n.desc"/>
+                                    <Text styleClass="feature-usage" text="%info.uiux.i18n.usage"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER" spacing="40" styleClass="footer">
+            <Button fx:id="homeButton" onAction="#goHome" styleClass="footer-button" text="%info.home"/>
+            <Button fx:id="contactButton" onAction="#goContact" styleClass="footer-button" text="%info.contact"/>
+            <Button fx:id="githubButton" onAction="#goGitHub" styleClass="footer-button" text="%info.github"/>
+        </HBox>
+    </bottom>
+</BorderPane>
