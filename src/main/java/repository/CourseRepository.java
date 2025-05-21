@@ -257,4 +257,19 @@ public class CourseRepository extends BaseRepository<Courses, CreateCourseDto, U
             return false;
         }
     }
+
+    public String getCourseNameById(int courseId) {
+        String query = "SELECT name FROM courses WHERE id = ?";
+        try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+            stmt.setInt(1, courseId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("name");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error retrieving course name: " + e.getMessage());
+        }
+        return "Unknown";
+    }
 }
